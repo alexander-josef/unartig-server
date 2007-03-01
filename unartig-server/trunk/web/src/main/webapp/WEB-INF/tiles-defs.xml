@@ -1,0 +1,542 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+        "-//Apache Software Foundation//DTD Tiles Configuration 1.1//EN"
+        "http://jakarta.apache.org/struts/dtds/tiles-config_1_1.dtd">
+
+
+<!--
+     This is a blank Tiles definition file with a commented example.
+-->
+
+<tiles-definitions>
+
+
+    <definition name=".unartigHome" path="/WEB-INF/protected/layout/layoutBanner.jsp">
+        <put name="jsTreeInsert" value="/WEB-INF/protected/tiles/jsTreeInsert_de.jsp"/>
+        <put name="htmlHeader" value="/WEB-INF/protected/tiles/htmlHeadStandard.jsp"/>
+        <put name="cssOverrule" value="/WEB-INF/protected/tiles/cssOverrule_de.jsp"/>
+        <put name="htmlTitle" type="string">
+            <![CDATA[unartig studio -- Das mobile, professionelle Fotostudio - Das Online-Album für anspruchsvolle Fotografie]]></put>
+        <put name="topMenu" value="/WEB-INF/protected/tiles/topMenu.jsp"/>
+        <put name="indexNavigation" value="/WEB-INF/protected/tiles/Empty.jsp"/>
+        <put name="pageName" value="/WEB-INF/protected/tiles/Empty.jsp"/>
+        <put name="sidebar1" value="/WEB-INF/protected/tiles/sidebarNews_de.jsp"/>
+        <put name="sidebar2" value="/WEB-INF/protected/tiles/sidebarTree.jsp"/>
+        <put name="sidebar3" value="/WEB-INF/protected/tiles/Empty.jsp"/>
+        <!-- the following 'div' inserts need to be ALL empty ... -->
+        <put name="navDivOpen" value="/WEB-INF/protected/tiles/Empty.jsp"/>
+        <put name="navPagenav" value="/WEB-INF/protected/tiles/Empty.jsp"/>
+        <put name="navDivClose" value="/WEB-INF/protected/tiles/Empty.jsp"/>
+        <!---->
+        <put name="contentHead" value="/WEB-INF/protected/tiles/Empty.jsp"/>
+        <put name="content1" value="/WEB-INF/protected/tiles/contentHome.jsp"/>
+        <put name="content2" value="/WEB-INF/protected/tiles/TopMessage.jsp"/>
+        <put name="content3" value="/WEB-INF/protected/tiles/Empty.jsp"/>
+        <put name="content4" value="/WEB-INF/protected/tiles/Empty.jsp"/>
+        <put name="content5" value="/WEB-INF/protected/tiles/Empty.jsp"/>
+        <put name="content6" value="/WEB-INF/protected/tiles/Empty.jsp"/>
+        <put name="content7" value="/WEB-INF/protected/tiles/Empty.jsp"/>
+        <put name="Skyscraper" value="/WEB-INF/protected/tiles/bannerSkyRight.jsp"/>
+        <put name="footerLinks" value="/WEB-INF/protected/tiles/footerLinks.jsp"/>
+        <put name="Analysis" value="/WEB-INF/protected/tiles/GoogleAnalytics.jsp"/>
+    </definition>
+
+    <!--Unartig Links-->
+    <definition name=".unartigAbout" extends=".unartigHome">
+        <put name="sidebar1" value="/WEB-INF/protected/tiles/sidebarAbout.jsp"/>
+        <put name="sidebar2" value="/WEB-INF/protected/tiles/Empty.jsp"/>
+        <put name="content1" value="/WEB-INF/protected/tiles/contentAbout_de.jsp"/>
+        <put name="content2" value="/WEB-INF/protected/tiles/Empty.jsp"/>
+    </definition>
+
+    <definition name=".unartigServices" extends=".unartigAbout">
+        <put name="content1" value="/WEB-INF/protected/tiles/contentServices_de.jsp"/>
+    </definition>
+
+    <definition name=".unartigFirm" extends=".unartigAbout">
+        <put name="content1" value="/WEB-INF/protected/tiles/contentFirm_de.jsp"/>
+    </definition>
+
+    <definition name=".unartigPhotographers" extends=".unartigAbout">
+        <put name="htmlTitle" type="string"><![CDATA[unartig studio -- fotografen]]></put>
+        <put name="content1" value="/WEB-INF/protected/tiles/contentPhotographers.jsp"/>
+    </definition>
+
+<definition name=".unartigPhotographerMore" path="/WEB-INF/protected/layout/layoutNoBannerAlbum.jsp">
+        <put name="jsTreeInsert" value="/WEB-INF/protected/tiles/jsTreeInsert_de.jsp"/>
+        <put name="htmlHeader" value="/WEB-INF/protected/tiles/htmlHeadStandard.jsp"/>
+        <put name="cssOverrule" value="/WEB-INF/protected/tiles/Empty.jsp"/>
+        <put name="htmlTitle" type="string"><![CDATA[unartig studio -- Fotograf]]></put>
+        <put name="topMenu" value="/WEB-INF/protected/tiles/topMenuMin.jsp"/>
+        <put name="sidebar1" value="/WEB-INF/protected/tiles/sidebarPhotographerChoose.jsp"/>
+        <put name="sidebar2" value="/WEB-INF/protected/tiles/sidebarPhotographer.jsp"/>
+        <put name="sidebar3" value="/WEB-INF/protected/tiles/sidebarAlbums.jsp"/>
+        <put name="indexNavigation" value="/WEB-INF/protected/tiles/Empty.jsp"/>
+        <put name="pageName" value="/WEB-INF/protected/tiles/Empty.jsp"/>
+        <put name="navigationline" value="/WEB-INF/protected/tiles/Empty.jsp"/>
+        <put name="content" value="/WEB-INF/protected/tiles/contentPhotographer.jsp"/>
+        <put name="footNavigationline" value="/WEB-INF/protected/tiles/Empty.jsp"/>
+        <put name="footerLinks" value="/WEB-INF/protected/tiles/footerLinks.jsp"/>
+        <put name="Analysis" value="/WEB-INF/protected/tiles/GoogleAnalytics.jsp"/>
+    </definition>
+
+    <definition name=".unartigPortfolio" extends=".unartigDisplay">
+        <put name="htmlTitle" type="string"><![CDATA[unartig studio -- Fotograf]]></put>
+        <put name="topMenu" value="/WEB-INF/protected/tiles/topMenuMin.jsp"/>
+        <put name="sidebar1" value="/WEB-INF/protected/tiles/sidebarPhotographer.jsp"/>
+        <put name="sidebar2" value="/WEB-INF/protected/tiles/sidebarbackButton.jsp"/>
+        <put name="sidebar3" value="/WEB-INF/protected/tiles/Empty.jsp"/>
+        <put name="navigationline" value="/WEB-INF/protected/tiles/Empty.jsp"/>
+        <put name="content" value="/WEB-INF/protected/tiles/contentDisplayPortfolio.jsp"/>
+    </definition>
+
+
+    <definition name=".unartigPartners" extends=".unartigAbout">
+        <put name="htmlTitle" type="string"><![CDATA[unartig studio -- partner]]></put>
+        <put name="content1" value="/WEB-INF/protected/tiles/contentPartners.jsp"/>
+    </definition>
+
+    <definition name=".unartigContact" extends=".unartigHome">
+        <put name="htmlTitle" type="string"><![CDATA[unartig studio -- kontakt]]></put>
+        <put name="content1" value="/WEB-INF/protected/tiles/contentContact.jsp"/>
+        <put name="content2" value="/WEB-INF/protected/tiles/Empty.jsp"/>
+    </definition>
+
+    <definition name=".unartigFAQ" extends=".unartigHome">
+        <put name="htmlTitle" type="string"><![CDATA[unartig studio -- faq]]></put>
+        <put name="content1" value="/WEB-INF/protected/tiles/contentFAQ.jsp"/>
+        <put name="content2" value="/WEB-INF/protected/tiles/Empty.jsp"/>
+    </definition>
+
+    <!--Footnavigation Links-->
+    <definition name=".unartigCopyright" extends=".unartigHome">
+        <put name="content1" value="/WEB-INF/protected/tiles/contentCopyright_de.jsp"/>
+        <put name="content2" value="/WEB-INF/protected/tiles/Empty.jsp"/>
+    </definition>
+
+    <definition name=".unartigPrivacy" extends=".unartigHome">
+        <put name="content1" value="/WEB-INF/protected/tiles/contentPrivacy_de.jsp"/>
+        <put name="content2" value="/WEB-INF/protected/tiles/Empty.jsp"/>
+    </definition>
+
+    <definition name=".unartigAGB" extends=".unartigHome">
+        <put name="content1" value="/WEB-INF/protected/tiles/contentAGB_de.jsp"/>
+        <put name="content2" value="/WEB-INF/protected/tiles/Empty.jsp"/>
+    </definition>
+
+    <!--Find and order pictures,'normal' overview-->
+    <definition name=".unartigOverview" extends=".unartigHome">
+        <put name="htmlTitle" value="/WEB-INF/protected/tiles/Empty.jsp"/>
+        <put name="indexNavigation" value="/WEB-INF/protected/tiles/indexNavigation.jsp"/>
+
+        <put name="navDivOpen" value="/WEB-INF/protected/tiles/Empty.jsp"/>
+        <put name="navDivClose" value="/WEB-INF/protected/tiles/Empty.jsp"/>
+
+        <put name="pageName" value="/WEB-INF/protected/tiles/pageNameOverview.jsp"/>
+        <put name="content1" value="/WEB-INF/protected/tiles/contentOverview.jsp"/>
+        <put name="content2" value="/WEB-INF/protected/tiles/Empty.jsp"/>
+    </definition>
+    <!--new sports overview SOLA-->
+    <definition name=".unartigSportsOverview" extends=".unartigOverview">
+        <put name="sidebar1" value="/WEB-INF/protected/tiles/sidebarBib.jsp"/>
+        <!--navigation for sports events-->
+    </definition>
+
+    <definition name=".unartigProtectedAccess" extends=".unartigOverview">
+        <put name="htmlTitle" type="string"><![CDATA[studio unartig: limitierter Zugang]]></put>
+        <put name="indexNavigation" value="/WEB-INF/protected/tiles/Empty.jsp"/>
+        <put name="content1" value="/WEB-INF/protected/tiles/contentProtectedAccess.jsp"/>
+    </definition>
+
+    <definition name=".unartigAlbum" path="/WEB-INF/protected/layout/layoutBannerAlbum.jsp">
+        <put name="jsTreeInsert" value="/WEB-INF/protected/tiles/jsTreeInsert_de.jsp"/>
+        <put name="htmlHeader" value="/WEB-INF/protected/tiles/htmlHeadStandard.jsp"/>
+        <put name="cssOverrule" value="/WEB-INF/protected/tiles/cssOverrule_de.jsp"/>
+        <put name="topMenu" value="/WEB-INF/protected/tiles/topMenu.jsp"/>
+        <put name="htmlTitle" value="/WEB-INF/protected/tiles/dynamicAlbumTitle.jsp"/>
+        <!--<put name="htmlTitle" type="string"><![CDATA[studio unartig: Album]]></put>-->
+        <put name="indexNavigation" value="/WEB-INF/protected/tiles/indexNavigation.jsp"/>
+        <put name="sidebar1" value="/WEB-INF/protected/tiles/sidebarTime.jsp"/>
+        <put name="sidebar2" value="/WEB-INF/protected/tiles/sidebarPrice.jsp"/>
+        <put name="sidebar3" value="/WEB-INF/protected/tiles/sidebarTree.jsp"/>
+        <put name="Pagenav" value="/WEB-INF/protected/tiles/navPage.jsp"/>
+        <put name="content" value="/WEB-INF/protected/tiles/contentAlbum.jsp"/>
+        <put name="Skyscraper" value="/WEB-INF/protected/tiles/bannerSkyRight.jsp"/>
+        <put name="footerLinks" value="/WEB-INF/protected/tiles/footerLinks.jsp"/>
+        <put name="Analysis" value="/WEB-INF/protected/tiles/GoogleAnalytics.jsp"/>
+    </definition>
+
+    <definition name=".unartigSportsAlbum" extends=".unartigAlbum">
+        <!--navigation for sports events"-->
+        <put name="sidebar1" value="/WEB-INF/protected/tiles/sidebarBib.jsp"/>
+        <put name="pageName" value="/WEB-INF/protected/tiles/pageNameSports.jsp"/>
+    </definition>
+
+    <definition name=".unartigSportAlbum" extends=".unartigAlbum">
+        <put name="htmlTitle" value="/WEB-INF/protected/tiles/dynamicAlbumTitle.jsp"/>
+        <put name="indexNavigation" value="/WEB-INF/protected/tiles/indexNavigation.jsp"/>
+        <put name="sidebar1" value="/WEB-INF/protected/tiles/sidebarBib.jsp"/>
+        <put name="sidebar2" value="/WEB-INF/protected/tiles/sidebarPrice.jsp"/>
+        <put name="sidebar3" value="/WEB-INF/protected/tiles/sidebarTree.jsp"/>
+        <put name="content" value="/WEB-INF/protected/tiles/contentAlbum.jsp"/>
+    </definition>
+
+    <definition name=".unartigDisplay" path="/WEB-INF/protected/layout/layoutNoBanner.jsp">
+        <put name="htmlTitle" value="/WEB-INF/protected/tiles/dynamicDisplayTitle.jsp"/>
+        <put name="jsTreeInsert" value="/WEB-INF/protected/tiles/jsTreeInsert_de.jsp"/>
+        <put name="htmlHeader" value="/WEB-INF/protected/tiles/htmlHeadStandard.jsp"/>
+        <put name="cssOverrule" value="/WEB-INF/protected/tiles/cssOverrule_de.jsp"/>
+        <put name="topMenu" value="/WEB-INF/protected/tiles/topMenu.jsp"/>
+        <put name="indexNavigation" value="/WEB-INF/protected/tiles/Empty.jsp"/>
+        <put name="sidebar1" value="/WEB-INF/protected/tiles/sidebarPrice.jsp"/>
+        <put name="sidebar2" value="/WEB-INF/protected/tiles/sidebarTree.jsp"/>
+        <put name="sidebar3" value="/WEB-INF/protected/tiles/Empty.jsp"/>
+        <!--<put name="pageName" value="/WEB-INF/protected/tiles/Empty.jsp"/>-->
+        <put name="navigationline" value="/WEB-INF/protected/tiles/navigationlineDisplay.jsp"/>
+        <put name="content" value="/WEB-INF/protected/tiles/contentDisplay.jsp"/>
+        <put name="footNavigationline" value="/WEB-INF/protected/tiles/Empty.jsp"/>
+        <put name="footerLinks" value="/WEB-INF/protected/tiles/footerLinks.jsp"/>
+        <put name="Analysis" value="/WEB-INF/protected/tiles/GoogleAnalytics.jsp"/>
+    </definition>
+
+    <!--    <definition name=".unartigPrices" path="/WEB-INF/protected/unartigPrices.jsp">
+    </definition>-->
+
+    <definition name=".unartigPriceList" extends=".unartigDisplay">
+        <put name="htmlTitle" type="string"><![CDATA[unartig studio -- preisliste]]></put>
+        <put name="pageName" value="/WEB-INF/protected/tiles/pageNamePrice.jsp"/>
+        <put name="navigationline" value="/WEB-INF/protected/tiles/navigationlinePrices.jsp"/>
+        <put name="content" value="/WEB-INF/protected/tiles/contentPriceList.jsp"/>
+    </definition>
+
+    <definition name=".unartigInShoppingCart" path="/WEB-INF/protected/layout/layoutNoBannerSC.jsp">
+        <put name="htmlTitle" type="string"><![CDATA[studio unartig: im einkaufswagen]]></put>
+        <put name="jsTreeInsert" value="/WEB-INF/protected/tiles/jsTreeInsert_de.jsp"/>
+        <put name="htmlHeader" value="/WEB-INF/protected/tiles/htmlHeadStandard.jsp"/>
+        <put name="cssOverrule" value="/WEB-INF/protected/tiles/cssOverrule_de.jsp"/>
+        <put name="topMenu" value="/WEB-INF/protected/tiles/topMenu.jsp"/>
+        <put name="sidebar1" value="/WEB-INF/protected/tiles/sidebarTree.jsp"/>
+        <put name="sidebar2" value="/WEB-INF/protected/tiles/Empty.jsp"/>
+        <put name="sidebar3" value="/WEB-INF/protected/tiles/Empty.jsp"/>
+        <put name="content1" value="/WEB-INF/protected/tiles/contentInShoppingCart.jsp"/>
+        <put name="content2" value="/WEB-INF/protected/tiles/Empty.jsp"/>
+        <put name="content3" value="/WEB-INF/protected/tiles/Empty.jsp"/>
+        <put name="content4" value="/WEB-INF/protected/tiles/Empty.jsp"/>
+        <put name="content5" value="/WEB-INF/protected/tiles/Empty.jsp"/>
+        <put name="content6" value="/WEB-INF/protected/tiles/Empty.jsp"/>
+        <put name="content7" value="/WEB-INF/protected/tiles/Empty.jsp"/>
+        <put name="footerLinks" value="/WEB-INF/protected/tiles/footerLinks.jsp"/>
+        <put name="Analysis" value="/WEB-INF/protected/tiles/GoogleAnalytics.jsp"/>
+    </definition>
+
+    <!--Shopping Cart mit Inhalt uebersicht-->
+    <definition name=".unartigShoppingCartOver" extends=".unartigInShoppingCart">
+        <put name="htmlTitle" type="string"><![CDATA[unartig studio -- &uuml;bersicht Einkaufswagen]]></put>
+        <put name="sidebar1" value="/WEB-INF/protected/tiles/Empty.jsp"/>
+        <put name="sidebar2" value="/WEB-INF/protected/tiles/sidebarTree.jsp"/>
+        <put name="content1" value="/WEB-INF/protected/tiles/contentSCOrderlist.jsp"/>
+    </definition>
+
+    <definition name=".unartigShoppingCartLogin" extends=".unartigShoppingCartOver">
+        <put name="htmlTitle" type="string"><![CDATA[unartig studio -- login]]></put>
+        <put name="sidebar1" value="/WEB-INF/protected/tiles/sidebarSCLogin.jsp"/>
+        <put name="content1" value="/WEB-INF/protected/tiles/contentSCLoginForm.jsp"/>
+    </definition>
+
+    <definition name=".unartigShoppingCartLoginNoLoginPass" extends=".unartigShoppingCartLogin">
+        <put name="htmlTitle" type="string"><![CDATA[unartig studio -- passwort vergessen]]></put>
+        <put name="content1" value="/WEB-INF/protected/tiles/contentNoLoginPass.jsp"/>
+    </definition>
+
+    <definition name=".unartigShoppingCartAddress" extends=".unartigShoppingCartOver">
+        <put name="htmlTitle" type="string"><![CDATA[unartig studio -- adresse]]></put>
+        <put name="sidebar1" value="/WEB-INF/protected/tiles/sidebarSCAddress.jsp"/>
+        <put name="content1" value="/WEB-INF/protected/tiles/contentSCAddressForm.jsp"/>
+    </definition>
+
+    <definition name=".unartigShoppingCartBilling" extends=".unartigShoppingCartAddress">
+        <put name="htmlTitle" type="string"><![CDATA[unartig studio -- zahlungsmethode]]></put>
+        <put name="sidebar1" value="/WEB-INF/protected/tiles/sidebarSCBilling.jsp"/>
+        <put name="content1" value="/WEB-INF/protected/tiles/contentSCBilling.jsp"/>
+    </definition>
+
+    <!--confirms check-out process-->
+    <definition name=".unartigShoppingCartOrder" extends=".unartigShoppingCartOver">
+        <put name="htmlTitle" type="string"><![CDATA[unartig studio -- bestellung abschicken]]></put>
+        <put name="sidebar1" value="/WEB-INF/protected/tiles/sidebarSCOrder.jsp"/>
+        <put name="content1" value="/WEB-INF/protected/tiles/contentSCOrderlistFix.jsp"/>
+    </definition>
+
+    <definition name=".unartigShoppingCartConfirmOUT" extends=".unartigShoppingCartLogin">
+        <put name="htmlTitle" type="string"><![CDATA[unartig studio -- best&auml;tigung der bestellung]]></put>
+        <put name="sidebar1" value="/WEB-INF/protected/tiles/sidebarSCConfirm.jsp"/>
+        <put name="sidebar2" value="/WEB-INF/protected/tiles/Empty.jsp"/>
+        <put name="content1" value="/WEB-INF/protected/tiles/contentSCConfirm.jsp"/>
+    </definition>
+
+    <definition name=".unartigShoppingCartConfirmRegister" extends=".unartigShoppingCartConfirmOUT">
+        <put name="htmlTitle" type="string"><![CDATA[unartig studio -- konto erstellen]]></put>
+        <put name="contentHead" value="/WEB-INF/protected/tiles/contentRegisterHead.jsp"/>
+        <put name="content1" value="/WEB-INF/protected/tiles/contentRegister.jsp"/>
+    </definition>
+
+    <definition name=".unartigShoppingCartConfirmIN" extends=".unartigShoppingCartConfirmOUT">
+        <put name="htmlTitle" type="string"><![CDATA[unartig studio -- best&auml;tigung der bestellung]]></put>
+        <put name="contentHead" value="/WEB-INF/protected/tiles/contentSCConfirmHead.jsp"/>
+        <put name="content1" value="/WEB-INF/protected/tiles/Empty.jsp"/>
+        <put name="content2" value="/WEB-INF/protected/tiles/contentSCConfirmArchList.jsp"/>
+        <put name="content3" value="/WEB-INF/protected/tiles/contentSCConfirmArchLast.jsp"/>
+    </definition>
+
+    <!--Account, Login et.c.-->
+    <definition name=".unartigLogin" extends=".unartigHome">
+        <put name="htmlTitle" type="string"><![CDATA[unartig studio -- login]]></put>
+        <put name="sidebar1" value="/WEB-INF/protected/tiles/sidebarTree.jsp"/>
+        <put name="content1" value="/WEB-INF/protected/tiles/contentLoginForm.jsp"/>
+        <put name="content2" value="/WEB-INF/protected/tiles/TopMessage.jsp"/>
+    </definition>
+
+    <definition name=".unartigLoginNoLoginPass" extends=".unartigLogin">
+        <put name="htmlTitle" type="string"><![CDATA[unartig studio -- passwort vergessen]]></put>
+        <put name="contentHead" value="/WEB-INF/protected/tiles/contentLoginNoLoginPassHead.jsp"/>
+        <put name="content2" value="/WEB-INF/protected/tiles/contentLoginNoLoginPass.jsp"/>
+        <put name="content3" value="/WEB-INF/protected/tiles/Empty.jsp"/>
+    </definition>
+
+    <definition name=".unartigRegister" extends=".unartigLogin">
+        <put name="htmlTitle" type="string"><![CDATA[unartig studio -- konto erstellen]]></put>
+        <put name="contentHead" value="/WEB-INF/protected/tiles/contentRegisterHead.jsp"/>
+        <put name="content2" value="/WEB-INF/protected/tiles/Empty.jsp"/>
+        <put name="content3" value="/WEB-INF/protected/tiles/contentRegister.jsp"/>
+        <put name="content4" value="/WEB-INF/protected/tiles/Empty.jsp"/>
+    </definition>
+
+    <definition name=".unartigRegisterError" extends=".unartigRegister">
+        <put name="htmlTitle" type="string"><![CDATA[unartig studio -- fehler bei registrierung]]></put>
+        <put name="content2" value="/WEB-INF/protected/tiles/contentRegisterError.jsp"/>
+    </definition>
+
+    <definition name=".unartigAccount" path="/WEB-INF/protected/layout/layoutNoBannerSC.jsp">
+        <put name="htmlTitle" type="string"><![CDATA[unartig studio -- konto]]></put>
+        <put name="jsTreeInsert" value="/WEB-INF/protected/tiles/jsTreeInsert_de.jsp"/>
+        <put name="htmlHeader" value="/WEB-INF/protected/tiles/htmlHeadStandard.jsp"/>
+        <put name="cssOverrule" value="/WEB-INF/protected/tiles/cssOverrule_de.jsp"/>
+        <put name="topMenu" value="/WEB-INF/protected/tiles/topMenu.jsp"/>
+        <put name="sidebar1" value="/WEB-INF/protected/tiles/sidebarTree.jsp"/>
+        <put name="sidebar2" value="/WEB-INF/protected/tiles/Empty.jsp"/>
+        <put name="sidebar3" value="/WEB-INF/protected/tiles/Empty.jsp"/>
+        <put name="contentHead" value="/WEB-INF/protected/tiles/contentAccountHead.jsp"/>
+        <put name="content1" value="/WEB-INF/protected/tiles/contentAccountWelcome.jsp"/>
+        <put name="content2" value="/WEB-INF/protected/tiles/contentAccountArchLatest.jsp"/>
+        <put name="content3" value="/WEB-INF/protected/tiles/contentAccountLast.jsp"/>
+        <put name="content4" value="/WEB-INF/protected/tiles/Empty.jsp"/>
+        <put name="content5" value="/WEB-INF/protected/tiles/Empty.jsp"/>
+        <put name="content6" value="/WEB-INF/protected/tiles/Empty.jsp"/>
+        <put name="content7" value="/WEB-INF/protected/tiles/Empty.jsp"/>
+        <put name="footerLinks" value="/WEB-INF/protected/tiles/footerLinks.jsp"/>
+        <put name="Analysis" value="/WEB-INF/protected/tiles/GoogleAnalytics.jsp"/>
+    </definition>
+
+    <definition name=".unartigAccountPers" extends=".unartigAccount">
+        <put name="htmlTitle" type="string"><![CDATA[unartig studio -- konto personalien]]></put>
+        <put name="contentHead" value="/WEB-INF/protected/tiles/contentAccountPersHead.jsp"/>
+        <put name="content1" value="/WEB-INF/protected/tiles/contentAccountEmail.jsp"/>
+        <put name="content2" value="/WEB-INF/protected/tiles/contentAccountLoginPass.jsp"/>
+        <put name="content3" value="/WEB-INF/protected/tiles/contentAccountAddress.jsp"/>
+        <put name="content4" value="/WEB-INF/protected/tiles/contentAccountBilling.jsp"/>
+        <put name="content5" value="/WEB-INF/protected/tiles/contentAccountPersLast.jsp"/>
+    </definition>
+
+    <definition name=".unartigAccountEditEmail" extends=".unartigAccount">
+        <put name="htmlTitle" type="string"><![CDATA[unartig studio -- konto e-Mail &auml;ndern]]></put>
+        <put name="contentHead" value="/WEB-INF/protected/tiles/contentAccountPersHead.jsp"/>
+        <put name="content1" value="/WEB-INF/protected/tiles/contentAccountEditEmail.jsp"/>
+        <put name="content2" value="/WEB-INF/protected/tiles/Empty.jsp"/>
+        <put name="content3" value="/WEB-INF/protected/tiles/Empty.jsp"/>
+    </definition>
+
+    <definition name=".unartigAccountEditLoginPass" extends=".unartigAccountEditEmail">
+        <put name="htmlTitle" type="string"><![CDATA[unartig studio -- konto passwort &auml;ndern]]></put>
+        <put name="content1" value="/WEB-INF/protected/tiles/contentAccountEditLoginPass.jsp"/>
+    </definition>
+
+<!--
+nicht gebraucht:
+
+    <definition name=".unartigAccountEditAddressBill" extends=".unartigAccountEditEmail">
+        <put name="htmlTitle" type="string"><![CDATA[unartig studio -*- konto rechnungsadresse &auml;ndern]]></put>
+        <put name="content1" value="/WEB-INF/protected/tiles/contentAccountEditAddressBill.jsp"/>
+    </definition>
+
+    <definition name=".unartigAccountEditAddressMail" extends=".unartigAccountEditEmail">
+        <put name="htmlTitle" type="string"><![CDATA[unartig studio -*- konto lieferadresse &auml;ndern]]></put>
+        <put name="content1" value="/WEB-INF/protected/tiles/contentAccountEditAddressMail.jsp"/>
+    </definition>
+-->
+
+    <definition name=".unartigAccountEditBilling" extends=".unartigAccountEditEmail">
+        <put name="htmlTitle" type="string"><![CDATA[unartig studio -- konto Zahlungsmethode &auml;ndern]]></put>
+        <put name="content1" value="/WEB-INF/protected/tiles/contentAccountEditBilling.jsp"/>
+    </definition>
+
+    <definition name=".unartigAccountDelete" extends=".unartigAccountEditEmail">
+        <put name="htmlTitle" type="string"><![CDATA[unartig studio -- konto l&ouml;schen]]></put>
+        <put name="contentHead" value="/WEB-INF/protected/tiles/contentAccountDeleteHead.jsp"/>
+        <put name="content1" value="/WEB-INF/protected/tiles/contentAccountDelete.jsp"/>
+    </definition>
+
+    <definition name=".unartigAccountSet" extends=".unartigAccount">
+        <put name="htmlTitle" type="string"><![CDATA[unartig studio -- konto einstellungen]]></put>
+        <put name="contentHead" value="/WEB-INF/protected/tiles/contentAccountSettingsHead.jsp"/>
+        <put name="content1" value="/WEB-INF/protected/tiles/contentAccountSettings.jsp"/>
+        <put name="content2" value="/WEB-INF/protected/tiles/Empty.jsp"/>
+        <put name="content3" value="/WEB-INF/protected/tiles/Empty.jsp"/>
+    </definition>
+
+    <definition name=".unartigAccountAlbum" path="/WEB-INF/protected/layout/layoutNoBannerAlbum.jsp">
+        <put name="jsTreeInsert" value="/WEB-INF/protected/tiles/jsTreeInsert_de.jsp"/>
+        <put name="htmlHeader" value="/WEB-INF/protected/tiles/htmlHeadStandard.jsp"/>
+        <put name="cssOverrule" value="/WEB-INF/protected/tiles/Empty.jsp"/>
+        <put name="htmlTitle" type="string"><![CDATA[unartig studio -- pers&ouml;nliches album]]></put>
+        <put name="topMenu" value="/WEB-INF/protected/tiles/topMenu.jsp"/>
+        <put name="sidebar1" value="/WEB-INF/protected/tiles/sidebarTree.jsp"/>
+        <put name="sidebar2" value="/WEB-INF/protected/tiles/Empty.jsp"/>
+        <put name="sidebar3" value="/WEB-INF/protected/tiles/Empty.jsp"/>
+        <put name="indexNavigation" value="/WEB-INF/protected/tiles/Empty.jsp"/>
+        <put name="pageName" value="/WEB-INF/protected/tiles/pageNameAccountAlbum.jsp"/>
+        <put name="navigationline" value="/WEB-INF/protected/tiles/navigationlineAccountAlbum.jsp"/>
+        <put name="content" value="/WEB-INF/protected/tiles/contentAccountAlbum.jsp"/>
+        <put name="footNavigationline" value="/WEB-INF/protected/tiles/footNavigationlineAccountAlbum.jsp"/>
+        <put name="footerLinks" value="/WEB-INF/protected/tiles/footerLinks.jsp"/>
+        <put name="Analysis" value="/WEB-INF/protected/tiles/GoogleAnalytics.jsp"/>
+    </definition>
+
+    <definition name=".unartigAccountAlbumDelete" extends=".unartigAccountAlbum">
+        <put name="htmlTitle" type="string"><![CDATA[unartig studio -- konto bilder l&ouml;schen]]></put>
+        <put name="content" value="/WEB-INF/protected/tiles/contentAccountAlbumDelete.jsp"/>
+        <put name="footNavigationline" value="/WEB-INF/protected/tiles/footNavigationlineAccountAlbumDelete.jsp"/>
+    </definition>
+
+    <definition name=".unartigAccountDisplay" extends=".unartigDisplay">
+        <put name="htmlTitle" type="string"><![CDATA[unartig studio -- pers&ouml;nliches album]]></put>
+        <put name="topMenu" value="/WEB-INF/protected/tiles/topMenu.jsp"/>
+        <put name="indexNavigation" value="/WEB-INF/protected/tiles/Empty.jsp"/>
+        <put name="sidebar1" value="/WEB-INF/protected/tiles/sidebarAccount.jsp"/>
+        <put name="sidebar2" value="/WEB-INF/protected/tiles/Empty.jsp"/>
+        <put name="pageName" value="/WEB-INF/protected/tiles/pageNameWideAccount.jsp"/>
+        <put name="navigationline" value="/WEB-INF/protected/tiles/navigationlineAccountDisplay.jsp"/>
+        <put name="content" value="/WEB-INF/protected/tiles/contentDisplay.jsp"/>
+    </definition>
+
+    <!--ADMIN-->
+    <definition name=".unartigLogin" extends=".unartigHome">
+        <put name="htmlTitle" type="string"><![CDATA[unartig studio -- login]]></put>
+        <put name="sidebar1" value="/WEB-INF/protected/tiles/sidebarLogin.jsp"/>
+        <put name="sidebar2" value="/WEB-INF/protected/tiles/Empty.jsp"/>
+        <put name="content1" value="/WEB-INF/protected/tiles/contentLoginForm.jsp"/>
+        <put name="content2" value="/WEB-INF/protected/tiles/TopMessage.jsp"/>
+    </definition>
+
+
+    <definition name=".unartigAdminOver" extends=".unartigDisplay">
+        <put name="htmlTitle" type="string"><![CDATA[unartig studio -- admin database overview]]></put>
+        <put name="indexNavigation" value="/WEB-INF/protected/tiles/Empty.jsp"/>
+        <put name="sidebar1" value="/WEB-INF/protected/tiles/sidebarAdmin.jsp"/>
+        <put name="sidebar2" value="/WEB-INF/protected/tiles/Empty.jsp"/>
+        <!--<put name="pageName" value="/WEB-INF/protected/tiles/pageNameAdminOverview.jsp"/>-->
+        <put name="navigationline" value="/WEB-INF/protected/tiles/Empty.jsp"/>
+        <put name="content" value="/WEB-INF/protected/tiles/contentAdminOverview.jsp"/>
+    </definition>
+
+    <definition name=".unartigNewLevel" extends=".unartigAdminOver">
+        <put name="htmlTitle" type="string"><![CDATA[unartig studio -- admin create new level]]></put>
+        <!--<put name="pageName" value="/WEB-INF/protected/tiles/pageNameAdminNewLevel.jsp"/>-->
+        <put name="content" value="/WEB-INF/protected/tiles/contentAdminNewLevel.jsp"/>
+    </definition>
+
+    <definition name=".unartigUpload" extends=".unartigAdminOver">
+        <put name="htmlTitle" type="string"><![CDATA[unartig studio -- admin upload pictures]]></put>
+        <put name="pageName" value="/WEB-INF/protected/tiles/pageNameAdminUpload.jsp"/>
+        <put name="content" value="/WEB-INF/protected/tiles/contentAdminUpload.jsp"/>
+    </definition>
+
+    <!--edit any type of level-->
+    <definition name=".unartigEditLevel" extends=".unartigAdminOver">
+        <put name="htmlTitle" type="string"><![CDATA[unartig studio -- admin create new level]]></put>
+        <put name="pageName" value="/WEB-INF/protected/tiles/pageNameAdminEdit.jsp"/>
+        <put name="content" value="/WEB-INF/protected/tiles/contentAdminEdit.jsp"/>
+    </definition>
+
+    <definition name=".unartigOrderAdmin" extends=".unartigEditLevel">
+        <put name="htmlTitle" type="string"><![CDATA[unartig studio -- admin customer]]></put>
+        <put name="pageName" value="/WEB-INF/protected/tiles/pageNameAdminOrder.jsp"/>
+        <put name="content" value="/WEB-INF/protected/tiles/contentAdminOrder.jsp"/>
+    </definition>
+
+    <!--download ordered digital photos-->
+
+    <definition name=".orderDownload" extends=".unartigShoppingCartOver">
+        <put name="htmlTitle" type="string"><![CDATA[unartig studio -- digital photo dowload page]]></put>
+        <put name="sidebar1" value="/WEB-INF/protected/tiles/sidebarNews_de.jsp"/>
+        <put name="sidebar2" value="/WEB-INF/protected/tiles/sidebarTree.jsp"/>
+        <put name="content1" value="/WEB-INF/protected/tiles/contentOrderDownload.jsp"/>
+    </definition>
+
+    <!--report pages-->
+    <definition name=".reportSalesByAlbum" extends=".unartigAdminOver">
+        <put name="htmlTitle" type="string"><![CDATA[unartig studio -- sales reports]]></put>
+        <put name="pageName" value="/WEB-INF/protected/tiles/pageNameAdminEdit.jsp"/>
+        <put name="content" value="/WEB-INF/protected/tiles/contentReportSalesByAlbum.jsp"/>
+    </definition>
+
+    <!--fatal error pages-->
+    <definition name=".unartigError1" extends=".unartigInShoppingCart">
+        <put name="htmlTitle" type="string"><![CDATA[unartig studio -- error]]></put>
+        <put name="jsTreeInsert" value="/WEB-INF/protected/tiles/Empty.jsp"/>
+        <put name="htmlHeader" value="/WEB-INF/protected/tiles/htmlHeadStandard.jsp"/>
+        <put name="cssOverrule" value="/WEB-INF/protected/tiles/Empty.jsp"/>
+        <put name="topMenu" value="/WEB-INF/protected/tiles/Empty.jsp"/>
+        <put name="sidebar1" value="/WEB-INF/protected/tiles/Empty.jsp"/>
+        <put name="contentHead" value="/WEB-INF/protected/tiles/Empty.jsp"/>
+        <put name="content1" value="/WEB-INF/protected/tiles/contentError1.jsp"/>
+        <put name="footerLinks" value="/WEB-INF/protected/tiles/Empty.jsp"/>
+    </definition>
+
+
+    <definition name=".unartigExplainDigital" path="/WEB-INF/protected/unartigExplainDigital.jsp">
+
+    </definition>
+
+    <definition name=".unartigExplainPrint" path="/WEB-INF/protected/unartigExplainPrint.jsp">
+
+    </definition>
+
+
+    <!-- sample tiles definitions
+  <definition name=".mainLayout" path="/common/layouts/classicLayout.jsp">
+      <put name="title"  value="Sample Page Title" />
+      <put name="header" value="/common/header.jsp" />
+      <put name="menu"   value=".mainMenu" />
+      <put name="footer" value="/common/footer.jsp" />
+      <put name="body"   value=".portal.body" />
+  </definition>
+
+  <definition name=".mainMenu" path="/common/layouts/vboxLayout.jsp" >
+      <putList name="list" >
+          <add value=".menu.links" />
+          <add value=".menu.taglib.references" />
+          <add value=".menu.printer.friendly" />
+          <add value=".menu.old.documents" />
+    </putList>
+  </definition>
+
+  <definition name="aPage" extends=".mainLayout">
+      <put name="title"  value="Another Title" />
+      <put name="body"   value=".aPage.body" />
+  </definition>
+
+  end samples -->
+
+
+</tiles-definitions>
