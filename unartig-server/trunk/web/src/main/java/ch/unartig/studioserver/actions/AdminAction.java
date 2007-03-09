@@ -16,6 +16,9 @@
  *
  *************************************************
  * $Log$
+ * Revision 1.2  2007/03/09 23:44:24  alex
+ * no message
+ *
  * Revision 1.1  2007/03/01 18:23:41  alex
  * initial commit maven setup no history
  *
@@ -503,6 +506,7 @@ public class AdminAction extends MappingDispatchAction
     }
 
     /**
+     * todo album needs separate page and update method
      * load level, update with information from view and update on database
      *
      * @param mapping
@@ -519,6 +523,16 @@ public class AdminAction extends MappingDispatchAction
         final AdminForm adminForm = (AdminForm) form;
         GenericLevel level = glDao.load(adminForm.getGenericLevelId());
 
+        // set the products and prices for the album
+        _logger.debug("adminForm.getProductPrices() = " + adminForm.getProductPrices());
+
+        if (level.isAlbumLevel()) {
+             level = glDao.load(adminForm.getGenericLevelId(),StudioAlbum.class);
+            // visitor?
+            _logger.debug("AdminAction.updateLevel ALBUM LEVEL");
+            _logger.debug("Level : " + level.getClass().getName());
+            ((StudioAlbum)level).setProductPricesMap(adminForm.getProductPrices());
+        }
         // set ad
         AlbumAdvertisment albumAd = adDao.getAdvertismentFor(level, Registry._AD_BANNER_RIGHT_POSITION);
         if (albumAd == null)
@@ -529,11 +543,10 @@ public class AdminAction extends MappingDispatchAction
         }
         albumAd.setAdLinkText(adminForm.getSkyBannerRightAd());
         adDao.saveOrUpdate(albumAd);
-        System.out.println("AdminAction.updateLevel   ... nach addalbumadds");
         _logger.debug("trying to save level ......");
 
 
-        if (adminForm.getNoTime() != null && adminForm.getNoTime().booleanValue())
+        if (adminForm.getNoTime() != null && adminForm.getNoTime())
         {
             level.setAlbumType(new NoTimeAlbum());
         } else
@@ -633,14 +646,14 @@ public class AdminAction extends MappingDispatchAction
             public void visit(StudioAlbum album) throws UnartigException
             {
                 PriceSegmentDAO psDao = new PriceSegmentDAO();
-                try
-                {
-                    album.setPriceSegment(psDao.load(adminForm.getPriceSegmentId()));
-                } catch (UAPersistenceException e)
-                {
-                    _logger.error("Error loading price segment, see stack trace", e);
-                    throw new UnartigInvalidArgument("Error loading Price Segment ");
-                }
+//                try
+//                {
+//                    album.setPriceSegment(psDao.load(adminForm.getPriceSegmentId()));
+//                } catch (UAPersistenceException e)
+//                {
+//                    _logger.error("Error loading price segment, see stack trace", e);
+//                    throw new UnartigInvalidArgument("Error loading Price Segment ");
+//                }
             }
         };
         return setPriceSegmentVisitor;
@@ -687,6 +700,7 @@ public class AdminAction extends MappingDispatchAction
     {
         GenericLevelDAO glDao = new GenericLevelDAO();
         PriceSegmentDAO psDao = new PriceSegmentDAO();
+        ProductTypeDAO ptDao = new ProductTypeDAO();
         List parents;
         if (levelType != null && !"".equals(levelType) && !"Category".equals(levelType))
         {
@@ -717,13 +731,14 @@ public class AdminAction extends MappingDispatchAction
         List eventGroupList = glDao.listGenericLevel(EventGroup.class);
         List eventList = glDao.listGenericLevel(Event.class);
         List priceSegmentList = psDao.listPriceSegments();
-        List productTypeList = psDao.listPriceSegments();
+        List productTypeList = ptDao.listProductTypes();
 
 //        request.setAttribute("levelList", categoryList);
 
         request.setAttribute("eventGroupList", eventGroupList);
         request.setAttribute("eventList", eventList);
-        request.setAttribute("priceSegmentList", priceSegmentList);
+//        request.setAttribute("priceSegmentList", priceSegmentList);
+        request.setAttribute("productTypeList", productTypeList);
     }
 
     /**

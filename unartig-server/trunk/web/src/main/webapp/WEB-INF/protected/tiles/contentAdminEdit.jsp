@@ -4,7 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <jsp:useBean id="parentList" type="java.util.List" scope="request"/>
-<jsp:useBean id="priceSegmentList" type="java.util.List" scope="request"/>
+<jsp:useBean id="productTypeList" type="java.util.List" scope="request"/>
 <jsp:useBean id="level" type="ch.unartig.studioserver.model.GenericLevel" scope="request"/>
 
 
@@ -70,16 +70,16 @@
                     </tr>
                 </c:if>
                 <!--Price Segment only for album-->
-                <c:if test="${level.albumLevel}">
-                    <tr>
-                        <th><p>PriceSegment</p></th>
-                        <td>
-                            <html:select property="priceSegmentId">
-                                <html:options labelProperty="priceSegmentName" collection="priceSegmentList" property="priceSegmentId"/>
-                            </html:select></td>
-                        <td><p>( Only for album )</p></td>
-                    </tr>
-                </c:if>
+                <%--<c:if test="${level.albumLevel}">--%>
+                    <!--<tr>-->
+                        <!--<th><p>PriceSegment</p></th>-->
+                        <!--<td>-->
+                            <%--<html:select property="priceSegmentId">--%>
+                                <%--<html:options labelProperty="priceSegmentName" collection="priceSegmentList" property="priceSegmentId"/>--%>
+                            <%--</html:select></td>--%>
+                        <!--<td><p>( Only for album )</p></td>-->
+                    <!--</tr>-->
+                <%--</c:if>--%>
                 <tr>
                     <th><p>Navigation Title</p></th>
                     <td>
@@ -136,16 +136,10 @@
                         <html:textarea styleClass="navTitle" cols="50" rows="20" property="skyBannerRightAd"/></td>
                     <td>(falls nicht definiert wird sie fuer dieses level vom uebergeordneten level genommen)</td>
                 </tr>
-                <tr>
-                    <th></th>
-                    <td>
-                        <html:image styleClass="admin_button" styleId="abschicken" src="/images/update_button.gif" alt="" title="und los"/></td>
-                    <td></td>
-                </tr>
                 <!-- product definitions : -->
                 <c:if test="${level.albumLevel}">
 
-
+                    <tr>
                     <%--iterate over producttypes and show possible prices--%>
                         <th><p>Available Products</p></th>
                         <td>
@@ -154,18 +148,28 @@
                                     <th>Product Type</th>
                                     <th>Price</th>
                                 </tr>
-                                    <%--<logic:iterate id="productType" >--%>
-                                <tr>10 x 15 cm</tr>
-                                <tr>
-
-                                    <html:select property="prices" name="productType">
-                                    </html:select>
-
-                                </tr>
-                                    <%--</logic:iterate>--%>
+                                    <logic:iterate id="productType" name="productTypeList" >
+                                        <tr>
+                                            <td>${productType.name}</td>
+                                            <td>
+                                                <html:select property="productPrices(${productType.productTypeId})" >
+                                                    <html:option value="-1">not available</html:option>
+                                                    <html:optionsCollection name="productType" property="prices" value="priceId" label="priceCHF" />
+                                                </html:select>
+                                            </td>
+                                        </tr>
+                                    </logic:iterate>
                             </table>
                         </td>
+                    </tr>
                 </c:if>
+                <tr>
+                    <th></th>
+                    <td>
+                        <html:image styleClass="admin_button" styleId="abschicken" src="/images/update_button.gif" alt="" title="und los"/></td>
+                    <td></td>
+                </tr>
+
             </html:form>
         </table>
     </fieldset>

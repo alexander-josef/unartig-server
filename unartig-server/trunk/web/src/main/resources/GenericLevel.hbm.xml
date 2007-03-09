@@ -209,11 +209,10 @@
                 <one-to-many class="ch.unartig.studioserver.model.Photo"/>
             </set>
 
-            <!--maybe a separate mapping for 'albumproducts' needs to be introduced-->
+            <!--maybe a separate mapping for 'album2products' needs to be introduced-->
             <set name="products"
                  lazy="false"
-                 table="Albums2Products"
-                 cascade="save-update"
+                 cascade="all-delete-orphan"
                     >
                 <key column="albumId"/>
                 <one-to-many class="ch.unartig.studioserver.model.Product"/>

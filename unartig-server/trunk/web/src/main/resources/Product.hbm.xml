@@ -4,13 +4,14 @@
         "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
+    <!-- todo producttype, price, album should be the pk of this relation-->
     <class
             name="ch.unartig.studioserver.model.Product"
             table="Products"
             >
         <meta attribute="generated-class" inherit="false">ch.unartig.studioserver.model.GeneratedProduct</meta>
 
-        <cache usage="read-only"/>
+        <cache usage="read-write"/>
         <id
                 name="productId"
                 type="java.lang.Long"
@@ -25,7 +26,7 @@
                 name="productName"
                 type="java.lang.String"
                 length="255"
-                not-null="true"
+                not-null="false"
                 >
             <meta attribute="use-in-tostring">true</meta>
         </property>
@@ -34,7 +35,7 @@
                 name="oipsPid"
                 type="java.lang.String"
                 length="255"
-                not-null="true"
+                not-null="false"
                 >
             <meta attribute="use-in-tostring">true</meta>
         </property>
@@ -43,7 +44,7 @@
                 name="oipsName"
                 type="java.lang.String"
                 length="255"
-                not-null="true"
+                not-null="false"
                 >
             <meta attribute="use-in-tostring">true</meta>
         </property>
@@ -51,7 +52,7 @@
         <property
                 name="oipsPriceCHF"
                 type="java.lang.Integer"
-                not-null="true"
+                not-null="false"
                 >
             <meta attribute="use-in-tostring">true</meta>
         </property>
@@ -59,7 +60,7 @@
         <property
                 name="oipsPriceEUR"
                 type="java.lang.Integer"
-                not-null="true"
+                not-null="false"
                 >
             <meta attribute="use-in-tostring">true</meta>
         </property>
@@ -67,7 +68,7 @@
         <property
                 name="oipsPriceGBP"
                 type="java.lang.Integer"
-                not-null="true"
+                not-null="false"
                 >
             <meta attribute="use-in-tostring">true</meta>
         </property>
@@ -75,7 +76,7 @@
         <property
                 name="oipsPriceSEK"
                 type="java.lang.Integer"
-                not-null="true"
+                not-null="false"
                 >
             <meta attribute="use-in-tostring">true</meta>
         </property>
@@ -83,14 +84,14 @@
         <property
                 name="oipsWidth"
                 type="java.lang.Integer"
-                not-null="true"
+                not-null="false"
                 >
             <meta attribute="use-in-tostring">true</meta>
         </property>
        <property
                 name="oipsHeight"
                 type="java.lang.Integer"
-                not-null="true"
+                not-null="false"
                 >
             <meta attribute="use-in-tostring">true</meta>
         </property>
@@ -98,7 +99,7 @@
        <property
                 name="oipsVariableLength"
                 type="java.lang.Boolean"
-                not-null="true"
+                not-null="false"
                 >
             <meta attribute="use-in-tostring">true</meta>
         </property>
@@ -106,7 +107,7 @@
         <property
                 name="oipsGroupId"
                 type="java.lang.Integer"
-                not-null="true"
+                not-null="false"
                 >
             <meta attribute="use-in-tostring">true</meta>
         </property>
@@ -116,7 +117,7 @@
                 name="priceSegment"
                 class="ch.unartig.studioserver.model.PriceSegment"
                 lazy="false"
-                not-null="true"
+                not-null="false"
                 >
             <meta attribute="use-in-tostring">true</meta>
             <column name="priceSegmentId" index="Product_PriceSegement_INDEX"/>

@@ -12,14 +12,13 @@
 
     <dependencies>
 
-        
 
         <dependency>
             <groupId>javax.mail</groupId>
             <artifactId>mail</artifactId>
             <version>1.4</version>
         </dependency>
-        
+
         <dependency>
             <groupId>sslext</groupId>
             <artifactId>sslext</artifactId>
@@ -128,6 +127,14 @@
                 <artifactId>maven-war-plugin</artifactId>
                 <configuration>
                     <warName>ROOT</warName>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.5</source>
+                    <target>1.5</target>
                 </configuration>
             </plugin>
         </plugins>
