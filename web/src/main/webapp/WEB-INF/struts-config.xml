@@ -214,7 +214,9 @@
                 key="errors.order.noShoppingCart"
                 type="ch.unartig.exceptions.UnartigSessionExpiredException"
                 path="/index.html"/>
-        <exception type="java.lang.Exception" key="errors.unknown"   path=".unartigError1"/>
+
+
+        <!--<exception type="java.lang.Exception" key="errors.unknown"   path=".unartigError1"/>-->
         <!--<exception-->
         <!--key="error.order.noShoppingCart"-->
         <!--type="java.lang.Exception"-->

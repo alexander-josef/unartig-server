@@ -16,6 +16,9 @@
  *
  *************************************************
  * $Log$
+ * Revision 1.2  2007/03/09 23:44:24  alex
+ * no message
+ *
  * Revision 1.1  2007/03/01 18:23:41  alex
  * initial commit maven setup no history
  *
@@ -64,6 +67,9 @@
 package ch.unartig.studioserver.model;
 
 import ch.unartig.exceptions.UnartigInvalidArgument;
+import ch.unartig.exceptions.UAPersistenceException;
+import ch.unartig.studioserver.persistence.DAOs.ProductTypeDAO;
+import ch.unartig.studioserver.persistence.DAOs.PriceDAO;
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
@@ -81,7 +87,7 @@ public class Product extends GeneratedProduct
 
     private NumberFormat numberFormat = DecimalFormat.getInstance();
     // the IDs of digital products. todo find better solution ....
-    private static Long[] digitalProducts = new Long[]{new Long(17),new Long(18),new Long(19),new Long(20)};
+    private static Long[] digitalProducts = new Long[]{(long) 17, (long) 18, (long) 19, (long) 20};
     public static final int _SHIPPING_HANDLING_MINOR_UNITS_CHE_CHF = 490;
     public static final int _SHIPPING_HANDLING_MINOR_UNITS_GER_EUR = 330;
 
@@ -104,6 +110,22 @@ public class Product extends GeneratedProduct
     }
 
     /**
+     * 
+     * @param productTypeId
+     * @param priceId
+     * @throws UAPersistenceException
+     */
+    public Product(Long productTypeId, Long priceId, StudioAlbum album) throws UAPersistenceException
+    {
+        ProductTypeDAO ptDao = new ProductTypeDAO();
+        setProductType(ptDao.load(productTypeId));
+        PriceDAO priceDao = new PriceDAO();
+        setPrice(priceDao.load(priceId));
+    }
+
+
+
+    /**
      * static method to return the product id for the product that should be shown as a default in the shopping cart for the first product
      * @param priceSegment price segment for the product
      * @return product ID
@@ -113,11 +135,11 @@ public class Product extends GeneratedProduct
     {
         if (priceSegment.equals(PriceSegment.get_PS3()))
         { // '10 x 15 cm for CHF 5' - Segment
-            return new Long(_INITIAL_PRODUCT_ID_SEG1);
+            return (long) _INITIAL_PRODUCT_ID_SEG1;
         }
         else if (priceSegment.equals(PriceSegment.get_PS5()))
         { // '10 x 15 cm for CHF 10' - Segment
-            return new Long(_INITIAL_PRODUCT_ID_SEG2);
+            return (long) _INITIAL_PRODUCT_ID_SEG2;
         }
         else
         {

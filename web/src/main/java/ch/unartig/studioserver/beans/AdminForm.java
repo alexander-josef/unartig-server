@@ -16,6 +16,9 @@
  *
  *************************************************
  * $Log$
+ * Revision 1.2  2007/03/09 23:44:24  alex
+ * no message
+ *
  * Revision 1.1  2007/03/01 18:23:41  alex
  * initial commit maven setup no history
  *
@@ -55,9 +58,10 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.upload.FormFile;
 
 import java.io.Serializable;
+import java.util.Map;
+import java.util.HashMap;
 
-public class AdminForm extends ActionForm implements Serializable
-{
+public class AdminForm extends ActionForm implements Serializable {
     private String navTitle;
     private String longTitle;
     private String description;
@@ -73,171 +77,169 @@ public class AdminForm extends ActionForm implements Serializable
     private String quickAccess;
     private String albumTypeString;
     private String skyBannerRightAd;
+    /*map that contains the procuct id and the assigned price id*/
+    private Map productPrices = new HashMap();
 
     private Logger _logger = Logger.getLogger(getClass().getName());
 
-    public String getNavTitle()
-    {
+    public String getNavTitle() {
         return navTitle;
     }
 
-    public void setNavTitle(String navTitle)
-    {
+    public void setNavTitle(String navTitle) {
         this.navTitle = navTitle;
     }
 
-    public String getLongTitle()
-    {
+    public String getLongTitle() {
         return longTitle;
     }
 
-    public void setLongTitle(String longTitle)
-    {
+    public void setLongTitle(String longTitle) {
         this.longTitle = longTitle;
     }
 
-    public String getDescription()
-    {
+    public String getDescription() {
         return description;
     }
 
-    public void setDescription(String description)
-    {
+    public void setDescription(String description) {
         this.description = description;
     }
 
-    public Long getGenericLevelId()
-    {
+    public Long getGenericLevelId() {
         return genericLevelId;
     }
 
-    public void setGenericLevelId(Long genericLevelId)
-    {
+    public void setGenericLevelId(Long genericLevelId) {
         this.genericLevelId = genericLevelId;
     }
 
-    public FormFile getIndexPhoto()
-    {
+    public FormFile getIndexPhoto() {
         return indexPhoto;
     }
 
-    public void setIndexPhoto(FormFile indexPhoto)
-    {
+    public void setIndexPhoto(FormFile indexPhoto) {
         this.indexPhoto = indexPhoto;
     }
 
-    public Boolean getPrivateEvent()
-    {
+    public Boolean getPrivateEvent() {
         return privateEvent;
     }
 
-    public void setPrivateEvent(Boolean privateEvent)
-    {
+    public void setPrivateEvent(Boolean privateEvent) {
         this.privateEvent = privateEvent;
     }
 
-    public String getLevelType()
-    {
+    public String getLevelType() {
         return levelType;
     }
 
-    public void setLevelType(String levelType)
-    {
+    public void setLevelType(String levelType) {
         this.levelType = levelType;
     }
 
-    public Long getPriceSegmentId()
-    {
+    public Long getPriceSegmentId() {
         return priceSegmentId;
     }
 
-    public void setPriceSegmentId(Long priceSegmentId)
-    {
+    public void setPriceSegmentId(Long priceSegmentId) {
         this.priceSegmentId = priceSegmentId;
     }
 
-    public String getEventDateDisplay()
-    {
+    public String getEventDateDisplay() {
         return eventDateDisplay;
     }
 
-    public void setEventDateDisplay(String eventDateDisplay)
-    {
+    public void setEventDateDisplay(String eventDateDisplay) {
         this.eventDateDisplay = eventDateDisplay;
     }
 
-    public Boolean getNoTime()
-    {
+    public Boolean getNoTime() {
         return noTime;
     }
 
-    public void setNoTime(Boolean noTime)
-    {
+    public void setNoTime(Boolean noTime) {
         this.noTime = noTime;
     }
 
-    public Long getParentLevelId()
-    {
+    public Long getParentLevelId() {
         return parentLevelId;
     }
 
-    public void setParentLevelId(Long parentLevelId)
-    {
+    public void setParentLevelId(Long parentLevelId) {
         this.parentLevelId = parentLevelId;
     }
 
-    public String getPrivateAccessCode()
-    {
+    public String getPrivateAccessCode() {
         return privateAccessCode;
     }
 
-    public void setPrivateAccessCode(String privateAccessCode)
-    {
+    public void setPrivateAccessCode(String privateAccessCode) {
         this.privateAccessCode = privateAccessCode;
     }
 
-    public String getQuickAccess()
-    {
+    public String getQuickAccess() {
         return quickAccess;
     }
 
-    public void setQuickAccess(String quickAccess)
-    {
+    public void setQuickAccess(String quickAccess) {
         this.quickAccess = quickAccess;
     }
 
-    public PriceSegment getPriceSegment() throws UnartigInvalidArgument
-    {
+    public PriceSegment getPriceSegment() throws UnartigInvalidArgument {
         PriceSegmentDAO psDao = new PriceSegmentDAO();
-        try
-        {
+        try {
             return psDao.load(priceSegmentId);
-        } catch (UAPersistenceException e)
-        {
+        } catch (UAPersistenceException e) {
             _logger.error("Error loading price segment, see stack trace", e);
             throw new UnartigInvalidArgument("Error loading Price Segment ");
         }
     }
 
 
-    public void setAlbumTypeString(String albumTypeString)
-    {
+    public void setAlbumTypeString(String albumTypeString) {
         this.albumTypeString = albumTypeString;
     }
 
-    public String getAlbumTypeString()
-    {
+    public String getAlbumTypeString() {
         return albumTypeString;
     }
 
 
-    public String getSkyBannerRightAd()
-    {
+    public String getSkyBannerRightAd() {
         return skyBannerRightAd;
     }
 
-    public void setSkyBannerRightAd(String skyBannerRightAd)
-    {
+    public void setSkyBannerRightAd(String skyBannerRightAd) {
         this.skyBannerRightAd = skyBannerRightAd;
     }
+
+
+    public Map getProductPrices() {
+        return productPrices;
+    }
+
+    public void setProductPrices(Map productPrices) {
+        this.productPrices = productPrices;
+    }
+
+    /**
+     * bean-compliant setter
+     * key = productTypeId; value = priceId
+     * @param key
+     * @param value
+     */
+    public void setProductPrice(String key,Object value) {
+        productPrices.put(key,value);
+    }
+
+    /**
+     * bean - compliant getter
+     * @param key
+     * @return
+     */
+    public Object getProductPrice(String key){
+        return productPrices.get(key);
+    }
+
 }

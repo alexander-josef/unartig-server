@@ -16,6 +16,9 @@
  *
  *************************************************
  * $Log$
+ * Revision 1.2  2007/03/09 23:44:24  alex
+ * no message
+ *
  * Revision 1.1  2007/03/01 18:23:41  alex
  * initial commit maven setup no history
  *
@@ -172,10 +175,7 @@ import ch.unartig.studioserver.businesslogic.AlbumType;
 import ch.unartig.studioserver.businesslogic.GenericLevelVisitor;
 import ch.unartig.studioserver.imaging.ExifData;
 import ch.unartig.studioserver.imaging.ImagingHelper;
-import ch.unartig.studioserver.persistence.DAOs.GenericLevelDAO;
-import ch.unartig.studioserver.persistence.DAOs.OrderItemDAO;
-import ch.unartig.studioserver.persistence.DAOs.PhotoDAO;
-import ch.unartig.studioserver.persistence.DAOs.ProductDAO;
+import ch.unartig.studioserver.persistence.DAOs.*;
 import ch.unartig.studioserver.persistence.util.HibernateUtil;
 import ch.unartig.util.FileUtils;
 
@@ -685,4 +685,83 @@ public class StudioAlbum extends GeneratedStudioAlbum
         return albumProducts;
     }
 
+    /**
+     * Given the map of productTypeids (key) and the priceids (value) set the collections of products for this album
+     * @param productPrices
+     * @throws ch.unartig.exceptions.UAPersistenceException
+     */
+    public void setProductPricesMap(Map productPrices) throws UAPersistenceException {
+
+        // todo: make it simpler: create new set with all products and replace complete product set of album ?????
+        // todo product already exists?
+        // product entries per album: only one per productType
+        Set productTypeIds = productPrices.keySet();
+        PriceDAO priceDao = new PriceDAO();
+        for (Iterator iterator = productTypeIds.iterator(); iterator.hasNext();)
+        {
+            String productTypeIdString = (String) iterator.next();
+            String priceIdString = (String) productPrices.get(productTypeIdString);
+            //producttypes with priceid <=0 are not set for this album
+            final Long productTypeId = Long.valueOf(productTypeIdString);
+            final Long priceId = Long.valueOf(priceIdString);
+            if (priceId > 0 && !getAvailableProductTypes().keySet().contains(productTypeId))
+            {
+                // producttype does not yet exist for this album; create new product
+                getProducts().add(new Product(productTypeId, priceId,this));
+            }
+            // product exists, and producttype is already available for album. update?
+            else if (priceId > 0) {
+                final Product availableProduct = getProductFor(productTypeId);
+                final Price newPrice = priceDao.load(priceId);
+                _logger.debug("available product : [" + availableProduct + "] old price: [" + availableProduct.getPrice() + "] new Price [" + newPrice + "]");
+                availableProduct.setPrice(newPrice);
+                // update newPrice
+            } else {
+                removeProductFor(productTypeId);
+            }
+
+
+        }
+    }
+
+    /**
+     * if a product entry exists that has the passed productTypeId as identifier for its productType, delete it?
+     * @param productTypeId
+     * @return
+     */
+    private boolean removeProductFor(Long productTypeId) {
+        return getProducts().remove(getProductFor(productTypeId));
+    }
+
+    /**
+     * There is only one product for a product type in an album.
+     * @param productTypeId The ID of the ProductType
+     * @return the product that has the productType identified by the productTypeId or NULL, if no product exists with the given productType
+     */
+    private Product getProductFor(Long productTypeId) {
+        // make a query or use the collection???
+        for (Iterator iterator = getProducts().iterator(); iterator.hasNext();) {
+            Product product = (Product) iterator.next();
+            if (product.getProductType().getProductTypeId().equals(productTypeId)) {
+                return product;
+            }
+        }
+        _logger.debug("no product found with given productTypeId");
+        return null;
+    }
+
+    /**
+     * Return a map containing the productTypeId as key and the productType as Value
+     * @return
+     */
+    private Map getAvailableProductTypes() {
+
+        Map productTypeMap = new HashMap();
+        for (Iterator iterator = getProducts().iterator(); iterator.hasNext();) {
+            Product product = (Product) iterator.next();
+            ProductType productType = product.getProductType();
+            productTypeMap.put(productType.getProductTypeId(),productType);
+        }
+        return productTypeMap;
+    }
 }
