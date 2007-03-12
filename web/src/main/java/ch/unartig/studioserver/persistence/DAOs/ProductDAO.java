@@ -16,6 +16,9 @@
  *
  *************************************************
  * $Log$
+ * Revision 1.2  2007/03/12 19:43:52  alex
+ * product types for albums
+ *
  * Revision 1.1  2007/03/01 18:23:42  alex
  * initial commit maven setup no history
  *
@@ -49,8 +52,9 @@
 package ch.unartig.studioserver.persistence.DAOs;
 
 import ch.unartig.exceptions.UAPersistenceException;
-import ch.unartig.studioserver.model.PriceSegment;
+//import ch.unartig.studioserver.model.PriceSegment;
 import ch.unartig.studioserver.model.Product;
+import ch.unartig.studioserver.model.StudioAlbum;
 import ch.unartig.studioserver.persistence.util.HibernateUtil;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
@@ -92,19 +96,5 @@ public class ProductDAO
         return c.list();
     }
 
-    /**
-     * list ALL products from the passed price segment
-     * @return
-     * @throws UAPersistenceException
-     * @param priceSegment filtered segment
-     */
-    public List listProducts(PriceSegment priceSegment) throws UAPersistenceException
-    {
-        // todo exclude products
-        Criteria c = HibernateUtil.currentSession()
-                .createCriteria(Product.class)
-                .add(Expression.eq("priceSegment",priceSegment))
-                .addOrder(Order.asc("productId"));
-        return c.list();
-    }
+
 }
