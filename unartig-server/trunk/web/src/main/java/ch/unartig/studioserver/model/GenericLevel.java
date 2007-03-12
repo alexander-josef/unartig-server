@@ -16,6 +16,9 @@
  *
  *************************************************
  * $Log$
+ * Revision 1.2  2007/03/12 18:57:02  alex
+ * product types for albums
+ *
  * Revision 1.1  2007/03/01 18:23:41  alex
  * initial commit maven setup no history
  *
@@ -356,7 +359,7 @@ public abstract class GenericLevel extends GeneratedGenericLevel implements Comp
     }
 
     /**
-     * @return either "Category", "EventGroup", "Event" or "Album" as level type
+     * @return either "Category", "EventGroup", "Event" or "StudioAlbum" as level type
      */
     public abstract String getLevelType();
 

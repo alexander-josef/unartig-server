@@ -16,6 +16,9 @@
  *
  *************************************************
  * $Log$
+ * Revision 1.3  2007/03/12 18:57:02  alex
+ * product types for albums
+ *
  * Revision 1.2  2007/03/09 23:44:24  alex
  * no message
  *
@@ -362,13 +365,19 @@ public class AdminAction extends MappingDispatchAction
         adminForm.setParentLevelId(level.getParentLevel().getGenericLevelId());
         // todo special album treatment:
         // todo (casting level down to album causes problems ... see the Hibernate Visitor pattern recommendation for handling this more elegantly)
+        // or reload as album ...
         if (Registry._NAME_ALBUM_LEVEL_TYPE.equals(level.getLevelType()))
         {
-            adminForm.setPriceSegmentId(level.getPriceSegment().getPriceSegmentId());
+            // reload level as Album
+            StudioAlbum album = (StudioAlbum)levelDao.load(levelId,StudioAlbum.class);
+//            adminForm.setPriceSegmentId(level.getPriceSegment().getPriceSegmentId());
+            // set the product-prices map
+            adminForm.createProductPricesMap(album.getProducts());
             if (level.getAlbumType() != null && level.getAlbumType() instanceof NoTimeAlbum)
             {
                 adminForm.setNoTime(Boolean.TRUE);
             }
+
         }
         adminForm.setPrivateEvent(level.getIsPrivate());
         adminForm.setDescription(level.getDescription());
@@ -706,7 +715,8 @@ public class AdminAction extends MappingDispatchAction
         {
             try
             {
-                GenericLevel genericLevel = ((GenericLevel) Class.forName(Registry.getModelPackageName() + levelType).newInstance());
+                // introspection; create an instance of the given level type to read out parents
+                GenericLevel genericLevel = (GenericLevel) Class.forName(Registry.getModelPackageName() + levelType).newInstance();
                 _logger.debug("genericLevel = " + genericLevel);
                 _logger.debug("genericLevel.getParentClazz() = " + genericLevel.getParentClazz().getName());
                 parents = glDao.listGenericLevel(genericLevel.getParentClazz());
