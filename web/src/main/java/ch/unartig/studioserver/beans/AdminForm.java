@@ -16,6 +16,9 @@
  *
  *************************************************
  * $Log$
+ * Revision 1.3  2007/03/12 18:57:02  alex
+ * product types for albums
+ *
  * Revision 1.2  2007/03/09 23:44:24  alex
  * no message
  *
@@ -52,6 +55,7 @@ package ch.unartig.studioserver.beans;
 import ch.unartig.exceptions.UAPersistenceException;
 import ch.unartig.exceptions.UnartigInvalidArgument;
 import ch.unartig.studioserver.model.PriceSegment;
+import ch.unartig.studioserver.model.Product;
 import ch.unartig.studioserver.persistence.DAOs.PriceSegmentDAO;
 import org.apache.log4j.Logger;
 import org.apache.struts.action.ActionForm;
@@ -60,6 +64,8 @@ import org.apache.struts.upload.FormFile;
 import java.io.Serializable;
 import java.util.Map;
 import java.util.HashMap;
+import java.util.Set;
+import java.util.Iterator;
 
 public class AdminForm extends ActionForm implements Serializable {
     private String navTitle;
@@ -77,7 +83,9 @@ public class AdminForm extends ActionForm implements Serializable {
     private String quickAccess;
     private String albumTypeString;
     private String skyBannerRightAd;
-    /*map that contains the procuct id and the assigned price id*/
+    /**
+     * map that contains the procuct id as Key and the assigned price id as value
+     */
     private Map productPrices = new HashMap();
 
     private Logger _logger = Logger.getLogger(getClass().getName());
@@ -238,8 +246,21 @@ public class AdminForm extends ActionForm implements Serializable {
      * @param key
      * @return
      */
-    public Object getProductPrice(String key){
+    public Object getProductPrice(String key)
+    {
         return productPrices.get(key);
     }
 
+    /**
+     * set up the map for the edited album
+     * @param products
+     */
+    public void createProductPricesMap(Set products)
+    {
+        for (Iterator iterator = products.iterator(); iterator.hasNext();) {
+            Product product = (Product) iterator.next();
+            productPrices.put(product.getProductType().getProductTypeId().toString(),product.getPrice().getPriceId().toString());
+        }
+        _logger.debug("set product-prices map : " + productPrices);
+    }
 }
