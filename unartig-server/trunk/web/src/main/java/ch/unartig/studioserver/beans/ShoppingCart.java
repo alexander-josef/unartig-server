@@ -16,6 +16,9 @@
  *
  *************************************************
  * $Log$
+ * Revision 1.2  2007/03/13 16:55:03  alex
+ * template for properties
+ *
  * Revision 1.1  2007/03/01 18:23:41  alex
  * initial commit maven setup no history
  *
@@ -132,6 +135,7 @@ import ch.unartig.studioserver.Registry;
 import ch.unartig.studioserver.businesslogic.NavigableObject;
 import ch.unartig.studioserver.model.Photo;
 import ch.unartig.studioserver.model.Product;
+import ch.unartig.studioserver.model.Price;
 import ch.unartig.studioserver.persistence.DAOs.PhotoDAO;
 import ch.unartig.studioserver.persistence.DAOs.ProductDAO;
 import org.apache.log4j.Logger;
@@ -159,10 +163,10 @@ public class ShoppingCart extends ActionForm implements Serializable, NavigableO
     /*all items in the cart as a list*/
     private List scItems = new ArrayList();
      /**/
-    private int totalPhotosMinorUnitsCHF;
-    private int totalPhotosMinorUnitsEUR;
-    private int totalPhotosMinorUnitsGBP;
-    private int totalPhotosMinorUnitsSEK;
+    private double totalPhotosCHF;
+    private double totalPhotosEUR;
+    private double totalPhotosGBP;
+    private double totalPhotosSEK;
 //    private int shippingHandlingMinorUnitsCHE = Product._SHIPPING_HANDLING_MINOR_UNITS_CHE_CHF;
 //    private int shippingHandlingMinorUnitsGER = Product._SHIPPING_HANDLING_MINOR_UNITS_GER_EUR;
     /*action after the form has been posted*/
@@ -184,7 +188,6 @@ public class ShoppingCart extends ActionForm implements Serializable, NavigableO
      *
      * @return true if the shopping cart contains only digital products.
      * <p/> --> this is used to select credit card as only valid payment in check out
-     * @throws ch.unartig.exceptions.UAPersistenceException
      */
     public boolean isOnlyDigitalProducts()
     {
@@ -297,12 +300,8 @@ public class ShoppingCart extends ActionForm implements Serializable, NavigableO
         orderedPhotos.put(photo.getPhotoId(), photo);
         for (int i = 0; i < Registry._NUMBER_OF_SC_ITEMS_PER_PHOTO; i++)
         {
-            // todo: consider price segments ....getInitialScItems(i,segment)
-            // give all items an inital product of -1  ?
-            // first item will get quantity of one!  -->  i==0?1:0
-//            ScOrderItem oi = new ScOrderItem(photo.getPhotoId(), new Long(-1), i==0?1:0);
             // first itme will have an standard initial product assigned : (or -1 for the remaining scItems)
-            ScOrderItem oi = new ScOrderItem(photo.getPhotoId(), i==0?Product.getInitialProductIdFor(photo.getAlbum().getPriceSegment()):new Long(-1), i==0?1:0, this);
+            ScOrderItem oi = new ScOrderItem(photo.getPhotoId(), i==0?Product.getInitialProductIdFor(photo): (long) -1, i==0?1:0, this);
             addScOrderItem(oi);
         }
 
@@ -323,49 +322,59 @@ public class ShoppingCart extends ActionForm implements Serializable, NavigableO
      */
     public void updatePrices()
     {
-        // all minor units
-        int totalItemPricesMinorUnitsCHF = 0;
-        int totalItemPricesMinorUnitsEUR = 0;
-        int totalItemPricesMinorUnitsGBP = 0;
-        int totalItemPricesMinorUnitsSEK = 0;
-        for (int i = 0; i < scItems.size(); i++)
-        {
-            ScOrderItem scOrderItem = (ScOrderItem) scItems.get(i);
-            totalItemPricesMinorUnitsCHF += scOrderItem.getItemPriceMinorUnitsCHF();
-            totalItemPricesMinorUnitsEUR += scOrderItem.getItemPriceMinorUnitsEUR();
-            totalItemPricesMinorUnitsGBP += scOrderItem.getItemPriceMinorUnitsGBP();
-            totalItemPricesMinorUnitsSEK += scOrderItem.getItemPriceMinorUnitsSEK();
+        double totalItemPricesCHF = 0;
+        double totalItemPricesEUR = 0;
+        double totalItemPricesGBP = 0;
+        double totalItemPricesSEK = 0;
+        for (Object scItem : scItems) {
+            ScOrderItem scOrderItem = (ScOrderItem) scItem;
+            totalItemPricesCHF += scOrderItem.getItemPriceCHF();
+            totalItemPricesEUR += scOrderItem.getItemPriceEUR();
+            totalItemPricesGBP += scOrderItem.getItemPriceGBP();
+            totalItemPricesSEK += scOrderItem.getItemPriceSEK();
         }
-        setTotalPhotosMinorUnitsCHF(totalItemPricesMinorUnitsCHF);
-        setTotalPhotosMinorUnitsEUR(totalItemPricesMinorUnitsEUR);
-        setTotalPhotosMinorUnitsGBP(totalItemPricesMinorUnitsGBP);
-        setTotalPhotosMinorUnitsSEK(totalItemPricesMinorUnitsSEK);
+        setTotalPhotosCHF(totalItemPricesCHF);
+        setTotalPhotosEUR(totalItemPricesEUR);
+        setTotalPhotosGBP(totalItemPricesGBP);
+        setTotalPhotosSEK(totalItemPricesSEK);
 
     }
 
-    private String getSubtotalPhotosMajorUnits(int totalPhotosMinorUnits)
+
+    /**
+     * used by the view to show formatted subtotal
+     * @return
+     */
+    public String getFormattedSubtotalPhotosCHF()
     {
-        return String.valueOf(totalPhotosMinorUnits / 100);
+        return Price.monetaryAmountFormat.format(totalPhotosCHF);
     }
 
-    public String getSubtotalPhotosMajorUnitsCHF()
+    /**
+     * used by the view to show formatted subtotal
+     * @return
+     */
+    public String getFormattedSubtotalPhotosEUR()
     {
-        return getSubtotalPhotosMajorUnits(totalPhotosMinorUnitsCHF);
+        return Price.monetaryAmountFormat.format(totalPhotosEUR);
     }
 
-    public String getSubtotalPhotosMajorUnitsEUR()
+    /**
+     * used by the view to show formatted subtotal
+     * @return
+     */
+    public String getFormattedSubtotalPhotosGBP()
     {
-        return getSubtotalPhotosMajorUnits(totalPhotosMinorUnitsEUR);
+        return Price.monetaryAmountFormat.format(totalPhotosGBP);
     }
 
-    public String getSubtotalPhotosMajorUnitsGBP()
+    /**
+     * used by the view to show formatted subtotal
+     * @return
+     */
+    public String getFormattedSubtotalPhotosSEK()
     {
-        return getSubtotalPhotosMajorUnits(totalPhotosMinorUnitsGBP);
-    }
-
-    public String getSubtotalPhotosMajorUnitsSEK()
-    {
-        return getSubtotalPhotosMajorUnits(totalPhotosMinorUnitsSEK);
+        return Price.monetaryAmountFormat.format(totalPhotosSEK);
     }
 
     /**
@@ -373,191 +382,68 @@ public class ShoppingCart extends ActionForm implements Serializable, NavigableO
      * @return
      * @throws ch.unartig.exceptions.UnartigInvalidArgument
      */
-    public String getSubtotalPhotosMajorUnits() throws UnartigInvalidArgument
+    public String getFormattedSubtotalPhotos() throws UnartigInvalidArgument
     {
         // Switzerland:
         if (Registry._SWITZERLAND_COUNTRY_CODE.equals(customerCountry))
         {
-            return getSubtotalPhotosMajorUnitsCHF();
+            return getFormattedSubtotalPhotosCHF();
         }
         // Germany
         else if (Registry._GERMANY_COUNTRY_CODE.equals(customerCountry))
         {
-            return getSubtotalPhotosMajorUnitsEUR();
+            return getFormattedSubtotalPhotosEUR();
         }
         throw new UnartigInvalidArgument("Country invalid");
     }
 
 
-
-    private String getSubtotalPhotosMinorUnitsPart(int totalPhotosMinorUnits)
-    {
-        int mup = totalPhotosMinorUnits % 100;
-        if (mup == 0)
-        {
-            return "-";
-        } else
-        {
-            return String.valueOf(mup);
-        }
-    }
-
-
-    public String getSubtotalPhotosMinorUnitsPartCHF()
-    {
-        return getSubtotalPhotosMinorUnitsPart(totalPhotosMinorUnitsCHF);
-    }
-    
-    public String getSubtotalPhotosMinorUnitsPartEUR()
-    {
-        return getSubtotalPhotosMinorUnitsPart(totalPhotosMinorUnitsEUR);
-
-    }
-
-    public String getSubtotalPhotosMinorUnitsPartGBP()
-    {
-        return getSubtotalPhotosMinorUnitsPart(totalPhotosMinorUnitsGBP);
-    }
-
-    public String getSubtotalPhotosMinorUnitsPartSEK()
-    {
-        return getSubtotalPhotosMinorUnitsPart(totalPhotosMinorUnitsSEK);
-    }
-
-
-    /**
-     * called by view to present correct currency for customer
-     * @return
-     * @throws ch.unartig.exceptions.UnartigInvalidArgument
-     */
-    public String getSubtotalPhotosMinorUnitsPart() throws UnartigInvalidArgument
-    {
-        // Switzerland:
-        if (Registry._SWITZERLAND_COUNTRY_CODE.equals(customerCountry))
-        {
-            return getSubtotalPhotosMinorUnitsPartCHF();
-        }
-        // Germany
-        else if (Registry._GERMANY_COUNTRY_CODE.equals(customerCountry))
-        {
-            return getSubtotalPhotosMinorUnitsPartEUR();
-        }
-        throw new UnartigInvalidArgument("Country invalid");
-    }
 
 
 // shipping handling: CHE for shipping to Switzerland in CHF and GER for shipping to Germany in EURO
-
-    /**
-     *
-     * @param shippingHandlingMinorUnits the country dependant minor units for shipping and handling
-     * @return only the major units or '-' if no shipping handling applies
-     */
-    private String getShippingMajorUnits(int shippingHandlingMinorUnits)
-    {
-        return isOnlyDigitalProducts()?"-":String.valueOf(shippingHandlingMinorUnits / 100);
-    }
-
     /**
      * called by view to show correct currency for customer
      * @return
      * @throws ch.unartig.exceptions.UnartigInvalidArgument
      */
-    public String getShippingMajorUnits() throws UnartigInvalidArgument
+    public String getFormattedShippingMajorUnits() throws UnartigInvalidArgument
     {
         if (Registry._SWITZERLAND_COUNTRY_CODE.equals(customerCountry))
         {
-            return getShippingMajorUnitsCHE();
+            return getFormattedShippingCHE();
         }
         else if (Registry._GERMANY_COUNTRY_CODE.equals(customerCountry))
         {
-            return getShippingMajorUnitsGER();
+            return getFormattedShippingGER();
         }
         throw new UnartigInvalidArgument("Country invalid");
     }
 
-    public String getShippingMajorUnitsCHE()
+    public String getFormattedShippingCHE()
     {
-        return getShippingMajorUnits(getShippingHandlingMinorUnitsCHE());
+        return Price.monetaryAmountFormat.format(getShippingHandlingCHE());
     }
-    public String getShippingMajorUnitsGER()
+    public String getFormattedShippingGER()
     {
-        return getShippingMajorUnits(getShippingHandlingMinorUnitsGER());
-    }
-
-    /**
-     * return the major units for shipping handling
-     * @param shippingHandlingMinorUnits the country dependant shipping handling minor units
-     * @return the major units or '-' if no shipping handling applies, digital products
-     */
-    private String getShippingMinorUnitsPart(int shippingHandlingMinorUnits)
-    {
-        int mup = shippingHandlingMinorUnits % 100;
-        if (mup == 0 || isOnlyDigitalProducts())
-        {
-            return "-";
-        } else
-        {
-            return String.valueOf(mup);
-        }
+        return Price.monetaryAmountFormat.format(getShippingHandlingGER());
     }
 
 
-    public String getShippingMinorUnitsPart() throws UnartigInvalidArgument
-    {
-        if (Registry._SWITZERLAND_COUNTRY_CODE.equals(customerCountry))
-        {
-            return getShippingMinorUnitsPartCHE();
-        }
-        else if (Registry._GERMANY_COUNTRY_CODE.equals(customerCountry))
-        {
-            return getShippingMinorUnitsPartGER();
-        }
-        throw new UnartigInvalidArgument("Country invalid");
-    }
-
-    public String getShippingMinorUnitsPartCHE()
-    {
-        return getShippingMinorUnitsPart(getShippingHandlingMinorUnitsCHE());
-    }
-    
-    public String getShippingMinorUnitsPartGER()
-    {
-        return getShippingMinorUnitsPart(getShippingHandlingMinorUnitsGER());
-    }
-
-
-
-
-
-    private String getTotalMajorUnits(int total)
-    {
-//        int total = totalPhotosMinorUnits+shippingHandlingMinorUnits;
-        if (total!=0)
-        {
-            return String.valueOf(total / 100);
-        }
-        else
-        {
-            return "0";
-        }
-
-    }
 
     /**
      * called by confirmation view to present amount in customer's currency
      * @return
      * @throws UnartigInvalidArgument
      */
-    public String getTotalMajorUnits() throws UnartigInvalidArgument
+    public String getFormattedTotal() throws UnartigInvalidArgument
     {
         if (Registry._SWITZERLAND_COUNTRY_CODE.equals(customerCountry))
         {
-            return getTotalMajorUnitsCHE();
+            return getFormattedTotalCHE();
         }
         else if (Registry._GERMANY_COUNTRY_CODE.equals(customerCountry))
         {
-            return getTotalMajorUnitsGER();
+            return getFormattedTotalGER();
         }
         throw new UnartigInvalidArgument("Country invaled");
     }
@@ -566,76 +452,21 @@ public class ShoppingCart extends ActionForm implements Serializable, NavigableO
      * total for orders from Switzerland (shipping handling part is ignored for digital-only orders)
      * @return
      */
-    public String getTotalMajorUnitsCHE()
+    public String getFormattedTotalCHE()
     {
-        int total = totalPhotosMinorUnitsCHF+getShippingHandlingMinorUnitsCHE();
-        return getTotalMajorUnits(total);
+        double total = totalPhotosCHF + getShippingHandlingCHE();
+        return Price.monetaryAmountFormat.format(total);
     }
 
     /**
      * total for orders from germany (shipping handling part is ignored for digital-only orders)
      * @return
      */
-    public String getTotalMajorUnitsGER()
+    public String getFormattedTotalGER()
     {
-        int total = totalPhotosMinorUnitsEUR+getShippingHandlingMinorUnitsGER();
-        return getTotalMajorUnits(total);
+        double total = totalPhotosEUR + getShippingHandlingGER();
+        return Price.monetaryAmountFormat.format(total);
     }
-
-
-
-    private String getTotalMinorUnitsPart(int total)
-    {
-//        int total = totalPhotosMinorUnits+shippingHandlingMinorUnits;
-        int mup = total % 100;
-        if (mup == 0)
-        {
-            return "-";
-        } else
-        {
-            return String.valueOf(mup);
-        }
-    }
-
-    /**
-     * called from confirmation view to show correct amount in customer's currency
-     * @return
-     * @throws ch.unartig.exceptions.UnartigInvalidArgument
-     */
-    public String getTotalMinorUnitsPart() throws UnartigInvalidArgument
-    {
-        if (Registry._SWITZERLAND_COUNTRY_CODE.equals(customerCountry))
-        {
-            return getTotalMinorUnitsPartCHE();
-        }
-        else if (Registry._GERMANY_COUNTRY_CODE.equals(customerCountry))
-        {
-            return getTotalMinorUnitsPartGER();
-        }
-        throw new UnartigInvalidArgument("Country invaled");
-    }
-
-    /**
-     * shippings to Switzerland
-     * @return string
-     */
-    public String getTotalMinorUnitsPartCHE()
-    {
-        // todo: code duplication ...
-        int total = totalPhotosMinorUnitsCHF+getShippingHandlingMinorUnitsCHE();
-        return getTotalMinorUnitsPart(total);
-    }
-
-    /**
-     * Orders from Germany
-     * @return
-     */
-    public String getTotalMinorUnitsPartGER()
-    {
-        int total = totalPhotosMinorUnitsEUR+getShippingHandlingMinorUnitsGER();
-        return getTotalMinorUnitsPart(total);
-    }
-
 
     private void addScOrderItem(ScOrderItem scOrderItem)
     {
@@ -740,44 +571,44 @@ public class ShoppingCart extends ActionForm implements Serializable, NavigableO
 //    }
 
 
-    public int getTotalPhotosMinorUnitsCHF()
+    public double getTotalPhotosCHF()
     {
-        return totalPhotosMinorUnitsCHF;
+        return totalPhotosCHF;
     }
 
-    public void setTotalPhotosMinorUnitsCHF(int totalPhotosMinorUnitsCHF)
+    public void setTotalPhotosCHF(double totalPhotosCHF)
     {
-        this.totalPhotosMinorUnitsCHF = totalPhotosMinorUnitsCHF;
+        this.totalPhotosCHF = totalPhotosCHF;
     }
 
-    public int getTotalPhotosMinorUnitsEUR()
+    public double getTotalPhotosEUR()
     {
-        return totalPhotosMinorUnitsEUR;
+        return totalPhotosEUR;
     }
 
-    public void setTotalPhotosMinorUnitsEUR(int totalPhotosMinorUnitsEUR)
+    public void setTotalPhotosEUR(double totalPhotosEUR)
     {
-        this.totalPhotosMinorUnitsEUR = totalPhotosMinorUnitsEUR;
+        this.totalPhotosEUR = totalPhotosEUR;
     }
 
-    public int getTotalPhotosMinorUnitsGBP()
+    public double getTotalPhotosGBP()
     {
-        return totalPhotosMinorUnitsGBP;
+        return totalPhotosGBP;
     }
 
-    public void setTotalPhotosMinorUnitsGBP(int totalPhotosMinorUnitsGBP)
+    public void setTotalPhotosGBP(double totalPhotosGBP)
     {
-        this.totalPhotosMinorUnitsGBP = totalPhotosMinorUnitsGBP;
+        this.totalPhotosGBP = totalPhotosGBP;
     }
 
-    public int getTotalPhotosMinorUnitsSEK()
+    public double getTotalPhotosSEK()
     {
-        return totalPhotosMinorUnitsSEK;
+        return totalPhotosSEK;
     }
 
-    public void setTotalPhotosMinorUnitsSEK(int totalPhotosMinorUnitsSEK)
+    public void setTotalPhotosSEK(double totalPhotosSEK)
     {
-        this.totalPhotosMinorUnitsSEK = totalPhotosMinorUnitsSEK;
+        this.totalPhotosSEK = totalPhotosSEK;
     }
 
 
@@ -794,20 +625,16 @@ public class ShoppingCart extends ActionForm implements Serializable, NavigableO
         for (int i = 0; i < getScItems().size(); i++)
         {
             ScOrderItem scOrderItem = (ScOrderItem) getScItems().get(i);
+            // if a product has been chosen, update price:
             if (scOrderItem.getProductId().intValue() > 0)
             {
                 scOrderItem.updateItemPrice();
-                // todo update only at the end ??
-//                updatePrices();
                 addProduct(pDao.load(scOrderItem.getProductId()));
                 updated = true;
             } else
             { // no product chosen; make sure the item price is 0
                 scOrderItem.setQuantity(0);
                 scOrderItem.initPrice();
-//                scOrderItem.setProductId(new Long(-1));
-                // todo update only at the end ??
-//                updatePrices();
             }
         }
         updatePrices();
@@ -866,17 +693,17 @@ public class ShoppingCart extends ActionForm implements Serializable, NavigableO
      * return the shipping handling costs minor units for CHE or 0 if only digital products are chosen
      * @return minor units
      */
-    public int getShippingHandlingMinorUnitsCHE()
+    public double getShippingHandlingCHE()
     {
-        return isOnlyDigitalProducts()?0:Product._SHIPPING_HANDLING_MINOR_UNITS_CHE_CHF;
+        return isOnlyDigitalProducts()?0:Product._SHIPPING_HANDLING_CHE_CHF;
     }
 
     /**
      * return the shipping handling costs minor units for Germany or 0 if only digital products are chosen
      * @return minor units
      */
-    public int getShippingHandlingMinorUnitsGER()
+    public double getShippingHandlingGER()
     {
-        return isOnlyDigitalProducts()?0:Product._SHIPPING_HANDLING_MINOR_UNITS_GER_EUR;
+        return isOnlyDigitalProducts()?0:Product._SHIPPING_HANDLING_GER_EUR;
     }
 }

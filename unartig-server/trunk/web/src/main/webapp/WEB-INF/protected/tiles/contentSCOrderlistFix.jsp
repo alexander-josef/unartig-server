@@ -216,7 +216,7 @@
                 <p>${scItem.quantity}</p><!-- how many times the format -->
             </td>
             <td class="price_group">
-                <p class="rightalign">${scItem.priceMajorUnits}.${scItem.priceMinorUnitsPart} &nbsp;${shoppingCart.currency}</p>
+                <p class="rightalign">${scItem.price} &nbsp;${shoppingCart.currency}</p>
             </td>
         </tr>
     </table>
@@ -252,7 +252,7 @@
             <td class="sc_format_secondcol"></td>
             <td class="sc_format_thirdcol"></td>
             <td class="price_group">
-                <p class="rightalign">${shoppingCart.subtotalPhotosMajorUnits}.${shoppingCart.subtotalPhotosMinorUnitsPart} &nbsp;${shoppingCart.currency}</p></td>
+                <p class="rightalign">${shoppingCart.formattedSubtotalPhotos} &nbsp;${shoppingCart.currency}</p></td>
         </tr>
         <tr>
             <td class="sc_format_firstcol">
@@ -262,7 +262,7 @@
             </td>
             <td class="sc_format_secondcol"></td>
             <td class="sc_format_thirdcol"></td>
-            <td class="price_group"><p class="rightalign">${shoppingCart.shippingMajorUnits}.${shoppingCart.shippingMinorUnitsPart} &nbsp;${shoppingCart.currency}</p>
+            <td class="price_group"><p class="rightalign">${shoppingCart.formattedShippingMajorUnits} &nbsp;${shoppingCart.currency}</p>
             </td>
         </tr>
     </table>
@@ -280,7 +280,7 @@
             <td class="sc_format_secondcol"></td>
             <td class="sc_format_thirdcol"></td>
             <td class="price_group"><p class="rightalign">
-                <span>${shoppingCart.totalMajorUnits}.${shoppingCart.totalMinorUnitsPart} &nbsp;${shoppingCart.currency}</span></p></td>
+                <span>${shoppingCart.formattedTotal} &nbsp;${shoppingCart.currency}</span></p></td>
         </tr>
     </table>
 </div>

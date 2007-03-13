@@ -16,6 +16,9 @@
  *
  *************************************************
  * $Log$
+ * Revision 1.3  2007/03/13 16:55:03  alex
+ * template for properties
+ *
  * Revision 1.2  2007/03/09 23:44:24  alex
  * no message
  *
@@ -71,9 +74,7 @@ import ch.unartig.exceptions.UAPersistenceException;
 import ch.unartig.studioserver.persistence.DAOs.ProductTypeDAO;
 import ch.unartig.studioserver.persistence.DAOs.PriceDAO;
 
-import java.text.DecimalFormat;
-import java.text.NumberFormat;
-import java.util.Arrays;
+import java.util.Map;
 
 /**
  * this business class represents a product that is sold to a customer<br>
@@ -85,18 +86,11 @@ import java.util.Arrays;
 public class Product extends GeneratedProduct
 {
 
-    private NumberFormat numberFormat = DecimalFormat.getInstance();
-    // the IDs of digital products. todo find better solution ....
-    private static Long[] digitalProducts = new Long[]{(long) 17, (long) 18, (long) 19, (long) 20};
-    public static final int _SHIPPING_HANDLING_MINOR_UNITS_CHE_CHF = 490;
-    public static final int _SHIPPING_HANDLING_MINOR_UNITS_GER_EUR = 330;
+    public static final double _SHIPPING_HANDLING_CHE_CHF = 4.90;
+    public static final double _SHIPPING_HANDLING_GER_EUR = 3.30;
 
-    // todo: not yet an optimal solution:
-
-    private static Product[] initialProducts;
-    public static final int _INITIAL_PRODUCT_ID_SEG1 = 3;
-    public static final int _INITIAL_PRODUCT_ID_SEG2 = 4;
-
+    // todo array of initial producttypes from highest to lowest priority, first one that exists gets chosen
+    static Long[] preselectedProductTypeIds = {(long) 4, (long) 1, (long) 5};
     static
     {
 
@@ -105,8 +99,6 @@ public class Product extends GeneratedProduct
 
     public Product()
     {
-        numberFormat.setMinimumFractionDigits(2);
-        numberFormat.setMaximumFractionDigits(2);
     }
 
     /**
@@ -127,48 +119,45 @@ public class Product extends GeneratedProduct
 
     /**
      * static method to return the product id for the product that should be shown as a default in the shopping cart for the first product
-     * @param priceSegment price segment for the product
      * @return product ID
      * @throws ch.unartig.exceptions.UnartigInvalidArgument
+     * @param photo
      */
-    public static Long getInitialProductIdFor(PriceSegment priceSegment) throws UnartigInvalidArgument
+    public static Long getInitialProductIdFor(Photo photo) throws UnartigInvalidArgument
     {
-        if (priceSegment.equals(PriceSegment.get_PS3()))
-        { // '10 x 15 cm for CHF 5' - Segment
-            return (long) _INITIAL_PRODUCT_ID_SEG1;
-        }
-        else if (priceSegment.equals(PriceSegment.get_PS5()))
-        { // '10 x 15 cm for CHF 10' - Segment
-            return (long) _INITIAL_PRODUCT_ID_SEG2;
-        }
-        else
-        {
-            throw new UnartigInvalidArgument("can not find an initial product for the given price segment :" + priceSegment);
+        for (Long preselectedProductTypeId : preselectedProductTypeIds) {
+            Map availableProductTypes = photo.getAlbum().getAvailableProductTypes();
+            if (availableProductTypes.containsKey(preselectedProductTypeId)) {
+                return photo.getAlbum().getProductFor(preselectedProductTypeId).getProductId();
+            }
         }
 
+        return (long)-1;
     }
 
+    /**
+     * transitory function to not break the old code
+     * @return true if product is digital product, false otherwise
+     */
     public boolean isDigitalProduct()
     {
-//        System.out.println("this.getProductId() = " + this.getProductId());
-//        System.out.println("digitalProducts = " + digitalProducts);
-        return Arrays.asList(digitalProducts).contains(this.getProductId());
+        return getProductType().getDigitalProduct();
     }
 
     public String getFormattedPriceCHF()
     {
-        return numberFormat.format(getOipsPriceCHF().floatValue() / 100f);
+        return Price.monetaryAmountFormat.format(getPrice().getPriceCHF());
     }
     public String getFormattedPriceEUR()
     {
-        return numberFormat.format(getOipsPriceEUR().floatValue() / 100f);
+        return Price.monetaryAmountFormat.format(getPrice().getPriceEUR());
     }
     public String getFormattedPriceSEK()
     {
-        return numberFormat.format(getOipsPriceSEK().floatValue() / 100f);
+        return Price.monetaryAmountFormat.format(getPrice().getPriceSEK());
     }
     public String getFormattedPriceGBP()
     {
-        return numberFormat.format(getOipsPriceGBP().floatValue() / 100f);
+        return Price.monetaryAmountFormat.format(getPrice().getPriceGBP());
     }
 }

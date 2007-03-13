@@ -3,9 +3,9 @@
   <component name="AppServerSpecificValidatorsManager" />
   <component name="ModuleRootManager" />
   <component name="NewModuleRootManager" inherit-compiler-output="false">
-    <output url="file://C:/Tomcat 5.5/mywebapps/ROOT/WEB-INF/classes" />
+    <output url="file://C:/apache-tomcat-5.5.23/mywebapps/ROOT/WEB-INF/classes" />
     <exclude-output />
-    <exploded url="file://C:/Tomcat 5.5/mywebapps/ROOT" />
+    <exploded url="file://C:/apache-tomcat-5.5.23/mywebapps/ROOT" />
     <exclude-exploded />
     <output-test url="file://$MODULE_DIR$/target/test-classes" />
     <content url="file://$MODULE_DIR$">
@@ -283,11 +283,11 @@
     <orderEntryProperties />
   </component>
   <component name="WebModuleBuildComponent">
-    <setting name="EXPLODED_URL" value="file://C:/Tomcat 5.5/mywebapps/ROOT" />
+    <setting name="EXPLODED_URL" value="file://C:/apache-tomcat-5.5.23/mywebapps/ROOT" />
     <setting name="EXPLODED_ENABLED" value="true" />
     <setting name="JAR_URL" value="file://" />
     <setting name="JAR_ENABLED" value="false" />
-    <setting name="SYNC_EXPLODED_DIR" value="true" />
+    <setting name="SYNC_EXPLODED_DIR" value="false" />
     <setting name="BUILD_MODULE_ON_FRAME_DEACTIVATION" value="false" />
     <setting name="BUILD_EXTERNAL_DEPENDENCIES" value="false" />
     <setting name="RUN_JASPER_VALIDATION" value="true" />

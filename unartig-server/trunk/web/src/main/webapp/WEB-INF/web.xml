@@ -4,14 +4,15 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
     <!-- General description of your web application -->
-    <display-name>Unartig Studio Server 2005</display-name>
+    <display-name>Unartig Server</display-name>
     <description>
-        Platform for viewing and selling photos. (c) unartig AG 2006
+        Platform for viewing and selling photos. (c) unartig AG 2005-2007
     </description>
     <context-param>
         <param-name>webmaster</param-name>
         <param-value>web@unartig.ch</param-value>
     </context-param>
+<!--
 
     <error-page>
         <error-code>500</error-code>
@@ -22,6 +23,7 @@
         <location>/error.html</location>
     </error-page>
 
+-->
     <filter>
         <filter-name>HibernateFilter</filter-name>
         <filter-class>ch.unartig.studioserver.persistence.util.HibernateFilter</filter-class>
