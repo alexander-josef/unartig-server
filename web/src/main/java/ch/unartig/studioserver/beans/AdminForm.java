@@ -16,6 +16,9 @@
  *
  *************************************************
  * $Log$
+ * Revision 1.4  2007/03/13 16:55:03  alex
+ * template for properties
+ *
  * Revision 1.3  2007/03/12 18:57:02  alex
  * product types for albums
  *
@@ -52,20 +55,15 @@
  ****************************************************************/
 package ch.unartig.studioserver.beans;
 
-import ch.unartig.exceptions.UAPersistenceException;
-import ch.unartig.exceptions.UnartigInvalidArgument;
-import ch.unartig.studioserver.model.PriceSegment;
 import ch.unartig.studioserver.model.Product;
-import ch.unartig.studioserver.persistence.DAOs.PriceSegmentDAO;
 import org.apache.log4j.Logger;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.upload.FormFile;
 
 import java.io.Serializable;
-import java.util.Map;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Set;
-import java.util.Iterator;
 
 public class AdminForm extends ActionForm implements Serializable {
     private String navTitle;
@@ -77,7 +75,7 @@ public class AdminForm extends ActionForm implements Serializable {
     private Boolean noTime;
     private FormFile indexPhoto;
     private String levelType;
-    private Long priceSegmentId;
+//    private Long priceSegmentId;
     private String eventDateDisplay;
     private String privateAccessCode;
     private String quickAccess;
@@ -146,13 +144,13 @@ public class AdminForm extends ActionForm implements Serializable {
         this.levelType = levelType;
     }
 
-    public Long getPriceSegmentId() {
-        return priceSegmentId;
-    }
-
-    public void setPriceSegmentId(Long priceSegmentId) {
-        this.priceSegmentId = priceSegmentId;
-    }
+//    public Long getPriceSegmentId() {
+//        return priceSegmentId;
+//    }
+//
+//    public void setPriceSegmentId(Long priceSegmentId) {
+//        this.priceSegmentId = priceSegmentId;
+//    }
 
     public String getEventDateDisplay() {
         return eventDateDisplay;
@@ -194,15 +192,15 @@ public class AdminForm extends ActionForm implements Serializable {
         this.quickAccess = quickAccess;
     }
 
-    public PriceSegment getPriceSegment() throws UnartigInvalidArgument {
-        PriceSegmentDAO psDao = new PriceSegmentDAO();
-        try {
-            return psDao.load(priceSegmentId);
-        } catch (UAPersistenceException e) {
-            _logger.error("Error loading price segment, see stack trace", e);
-            throw new UnartigInvalidArgument("Error loading Price Segment ");
-        }
-    }
+//    public PriceSegment getPriceSegment() throws UnartigInvalidArgument {
+//        PriceSegmentDAO psDao = new PriceSegmentDAO();
+//        try {
+//            return psDao.load(priceSegmentId);
+//        } catch (UAPersistenceException e) {
+//            _logger.error("Error loading price segment, see stack trace", e);
+//            throw new UnartigInvalidArgument("Error loading Price Segment ");
+//        }
+//    }
 
 
     public void setAlbumTypeString(String albumTypeString) {
@@ -257,9 +255,9 @@ public class AdminForm extends ActionForm implements Serializable {
      */
     public void createProductPricesMap(Set products)
     {
-        for (Iterator iterator = products.iterator(); iterator.hasNext();) {
-            Product product = (Product) iterator.next();
-            productPrices.put(product.getProductType().getProductTypeId().toString(),product.getPrice().getPriceId().toString());
+        for (Object product1 : products) {
+            Product product = (Product) product1;
+            productPrices.put(product.getProductType().getProductTypeId().toString(), product.getPrice().getPriceId().toString());
         }
         _logger.debug("set product-prices map : " + productPrices);
     }

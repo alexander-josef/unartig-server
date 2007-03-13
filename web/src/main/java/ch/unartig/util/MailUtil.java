@@ -16,6 +16,9 @@
  *
  *************************************************
  * $Log$
+ * Revision 1.2  2007/03/13 16:55:03  alex
+ * template for properties
+ *
  * Revision 1.1  2007/03/01 18:23:42  alex
  * initial commit maven setup no history
  *
@@ -169,7 +172,7 @@ public class MailUtil
                         .append("\t")
                         .append(createTableDataString(orderItem.getPhoto().getDisplayTitle(), 19))
                         .append("\t")
-                        .append(orderItem.getPriceMajorUnits()).append(".").append(orderItem.getPriceMinorUnitsPart())
+                        .append(orderItem.getFormattedPrice())
                         .append(" ")
                         .append(shoppingCart.getCurrency())
                         .append("\n");
@@ -180,13 +183,13 @@ public class MailUtil
             if (photoOrder != null)
             {
                 // todo this only includes check for germany and switzerland!!!!!!
-                if (shoppingCart.getShippingHandlingMinorUnitsCHE() > 0 || shoppingCart.getShippingHandlingMinorUnitsGER() > 0)
+                if (shoppingCart.getShippingHandlingCHE() > 0 || shoppingCart.getShippingHandlingGER() > 0)
                 {
-                    localizedBody.append(content.getMessage(locale, "shipping") + ": " + shoppingCart.getShippingMajorUnits() + "." + shoppingCart.getShippingMinorUnitsPart() + " " + shoppingCart.getCurrency() + "\n");
+                    localizedBody.append(content.getMessage(locale, "shipping") + ": " + shoppingCart.getFormattedShippingMajorUnits() +  " " + shoppingCart.getCurrency() + "\n");
                 }
                 // todo shipping und handling
                 localizedBody.append(content.getMessage(locale, "email.orderAccepted.body.ccBooked"));
-                localizedBody.append(" " + shoppingCart.getTotalMajorUnits() + "." + shoppingCart.getTotalMinorUnitsPart() + " " + shoppingCart.getCurrency() + "\n");
+                localizedBody.append(" " + shoppingCart.getFormattedTotal()  + " " + shoppingCart.getCurrency() + "\n");
                 localizedBody.append(content.getMessage(locale, "email.orderAccepted.body.ccNoteColorplaza"))
                         .append("\n\n");
             }
@@ -212,7 +215,7 @@ public class MailUtil
      *
      * @param content     the table data entry content
      * @param totalLength in number of chars for the newly created string
-     * @return
+     * @return formatted table data entry
      */
     private static StringBuffer createTableDataString(String content, int totalLength)
     {

@@ -16,6 +16,9 @@
  *
  *************************************************
  * $Log$
+ * Revision 1.3  2007/03/13 16:55:03  alex
+ * template for properties
+ *
  * Revision 1.2  2007/03/09 23:44:24  alex
  * no message
  *
@@ -663,27 +666,6 @@ public class StudioAlbum extends GeneratedStudioAlbum
         this.actionStringPart = actionStringPart;
     }
 
-    /**
-     * create  and return a collection of price/product
-     *
-     * @return Collection of Product s
-     */
-    public Collection getAlbumProducts()
-    {
-
-        ProductDAO productDao = new ProductDAO();
-        List albumProducts;
-        try
-        {
-            albumProducts = productDao.listProducts(getPriceSegment());
-
-        } catch (UAPersistenceException e)
-        {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-            return null;
-        }
-        return albumProducts;
-    }
 
     /**
      * Given the map of productTypeids (key) and the priceids (value) set the collections of products for this album
@@ -692,7 +674,7 @@ public class StudioAlbum extends GeneratedStudioAlbum
      */
     public void setProductPricesMap(Map productPrices) throws UAPersistenceException {
 
-        // todo: make it simpler: create new set with all products and replace complete product set of album ?????
+        // todo: make it simpler: create new set with all products and replace complete product set of album ????? Performance???
         // todo product already exists?
         // product entries per album: only one per productType
         Set productTypeIds = productPrices.keySet();
@@ -738,7 +720,7 @@ public class StudioAlbum extends GeneratedStudioAlbum
      * @param productTypeId The ID of the ProductType
      * @return the product that has the productType identified by the productTypeId or NULL, if no product exists with the given productType
      */
-    private Product getProductFor(Long productTypeId) {
+    public Product getProductFor(Long productTypeId) {
         // make a query or use the collection???
         for (Iterator iterator = getProducts().iterator(); iterator.hasNext();) {
             Product product = (Product) iterator.next();
@@ -754,7 +736,7 @@ public class StudioAlbum extends GeneratedStudioAlbum
      * Return a map containing the productTypeId as key and the productType as Value
      * @return
      */
-    private Map getAvailableProductTypes() {
+    public Map getAvailableProductTypes() {
 
         Map productTypeMap = new HashMap();
         for (Iterator iterator = getProducts().iterator(); iterator.hasNext();) {

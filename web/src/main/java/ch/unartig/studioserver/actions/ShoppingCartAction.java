@@ -16,6 +16,9 @@
  *
  *************************************************
  * $Log$
+ * Revision 1.2  2007/03/13 16:55:03  alex
+ * template for properties
+ *
  * Revision 1.1  2007/03/01 18:23:41  alex
  * initial commit maven setup no history
  *
@@ -145,7 +148,6 @@ import ch.unartig.studioserver.beans.ScOrderItem;
 import ch.unartig.studioserver.beans.ShoppingCart;
 import ch.unartig.studioserver.businesslogic.NavigationHelper;
 import ch.unartig.studioserver.model.Photo;
-import ch.unartig.studioserver.model.PriceSegment;
 import ch.unartig.studioserver.persistence.DAOs.PhotoDAO;
 import ch.unartig.studioserver.persistence.DAOs.ProductDAO;
 import org.apache.commons.beanutils.PropertyUtils;
@@ -247,8 +249,8 @@ public class ShoppingCartAction extends MappingDispatchAction
             NavigationHelper.setBackToAlbumLink(request, shoppingCart);
             // place available products to request; they will be shown on the shopping cart view
             _logger.debug("setting product list");
-            request.setAttribute(Registry._NAME_PRODUCT_LIST3_ATTR, pDao.listProducts(PriceSegment.get_PS3()));
-            request.setAttribute(Registry._NAME_PRODUCT_LIST5_ATTR, pDao.listProducts(PriceSegment.get_PS5()));
+//            request.setAttribute(Registry._NAME_PRODUCT_LIST3_ATTR, pDao.listProducts(PriceSegment.get_PS3()));
+//            request.setAttribute(Registry._NAME_PRODUCT_LIST5_ATTR, pDao.listProducts(PriceSegment.get_PS5()));
         } catch (UAPersistenceException e)
         {
             _logger.info("Could not list product. go to error page");

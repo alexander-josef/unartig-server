@@ -16,6 +16,9 @@
  *
  *************************************************
  * $Log$
+ * Revision 1.4  2007/03/13 16:55:03  alex
+ * template for properties
+ *
  * Revision 1.3  2007/03/12 18:57:02  alex
  * product types for albums
  *
@@ -170,7 +173,6 @@ package ch.unartig.studioserver.actions;
 
 import ch.unartig.exceptions.UAPersistenceException;
 import ch.unartig.exceptions.UnartigException;
-import ch.unartig.exceptions.UnartigInvalidArgument;
 import ch.unartig.studioserver.Registry;
 import ch.unartig.studioserver.beans.AdminForm;
 import ch.unartig.studioserver.beans.ReportBean;
@@ -370,7 +372,6 @@ public class AdminAction extends MappingDispatchAction
         {
             // reload level as Album
             StudioAlbum album = (StudioAlbum)levelDao.load(levelId,StudioAlbum.class);
-//            adminForm.setPriceSegmentId(level.getPriceSegment().getPriceSegmentId());
             // set the product-prices map
             adminForm.createProductPricesMap(album.getProducts());
             if (level.getAlbumType() != null && level.getAlbumType() instanceof NoTimeAlbum)
@@ -654,7 +655,7 @@ public class AdminAction extends MappingDispatchAction
         {
             public void visit(StudioAlbum album) throws UnartigException
             {
-                PriceSegmentDAO psDao = new PriceSegmentDAO();
+//                PriceSegmentDAO psDao = new PriceSegmentDAO();
 //                try
 //                {
 //                    album.setPriceSegment(psDao.load(adminForm.getPriceSegmentId()));
@@ -708,7 +709,6 @@ public class AdminAction extends MappingDispatchAction
     private void prepareAdminAttributes(String levelType, HttpServletRequest request) throws UnartigException
     {
         GenericLevelDAO glDao = new GenericLevelDAO();
-        PriceSegmentDAO psDao = new PriceSegmentDAO();
         ProductTypeDAO ptDao = new ProductTypeDAO();
         List parents;
         if (levelType != null && !"".equals(levelType) && !"Category".equals(levelType))
@@ -740,14 +740,12 @@ public class AdminAction extends MappingDispatchAction
         List categoryList = glDao.listGenericLevel(Category.class);
         List eventGroupList = glDao.listGenericLevel(EventGroup.class);
         List eventList = glDao.listGenericLevel(Event.class);
-        List priceSegmentList = psDao.listPriceSegments();
         List productTypeList = ptDao.listProductTypes();
 
 //        request.setAttribute("levelList", categoryList);
 
         request.setAttribute("eventGroupList", eventGroupList);
         request.setAttribute("eventList", eventList);
-//        request.setAttribute("priceSegmentList", priceSegmentList);
         request.setAttribute("productTypeList", productTypeList);
     }
 
@@ -877,7 +875,6 @@ public class AdminAction extends MappingDispatchAction
     public ActionForward newLevel(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws UnartigException, ParseException
     {
         GenericLevelDAO glDao = new GenericLevelDAO();
-        PriceSegmentDAO psDao = new PriceSegmentDAO();
         AdminForm adminForm = (AdminForm) form;
         GenericLevel parentLevel;
         final String navTitle = adminForm.getNavTitle();

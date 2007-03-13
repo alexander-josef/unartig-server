@@ -7,8 +7,10 @@
 <%-- don't use this line ... will result in a jsp exception in case the album bean ist not in the session:
 <jsp:useBean id="albumBean" type="ch.unartig.studioserver.beans.AbstractAlbumBean" scope="session"/>
 --%>
-<jsp:useBean id="products3" type="java.util.List" scope="request"/>
-<jsp:useBean id="products5" type="java.util.List" scope="request"/>
+
+
+<%--<jsp:useBean id="products3" type="java.util.List" scope="request"/>--%>
+<%--<jsp:useBean id="products5" type="java.util.List" scope="request"/>--%>
 <html:xhtml/>
 
 <div class="contentW rightalign padding19bottom bottomBorder">
@@ -87,6 +89,7 @@ todo: beim aendern eines photos weit unten in der shoppingcartliste wird immer w
         <c:if test="${scItemIndex % 4 == 0}">
             <%-- create page variable 'photo' --%>
             <bean:define id="photo" name="shoppingCart" property="photoMapped(${scItem.photoId})" toScope="page"/>
+            <bean:define id="album" name="photo" property="album" toScope="page"/>
 
 
             <div class="contentWplus rightalign padding19both bottomBorder">
@@ -127,20 +130,20 @@ todo: beim aendern eines photos weit unten in der shoppingcartliste wird immer w
                                 todo : currently the product (which includes the price !) gets selected here!! move this logic to business class!!
                             --%>
                         <html:select name="scItem" property="productId" indexed="true" styleClass="sc_format_select" onchange="postSimpleForm('update')">
-                            <c:if test="${photo.album.priceSegment.priceSegmentId == 1}">
+                            <%--<c:if test="${photo.album.priceSegment.priceSegmentId == 1}">--%>
                                 <%-- 3-er preisliste --%>
                                 <html:option value="-1">
                                     <bean:message bundle="BUTTONS" key="product.choose"/>
                                 </html:option>
-                                <html:options collection="products3" labelProperty="productName" property="productId"/>
-                            </c:if>
-                            <c:if test="${photo.album.priceSegment.priceSegmentId == 2}">
+                                <html:optionsCollection name="album" property="products" label="productType.name" value="productId"/>
+                            <%--</c:if>--%>
+                            <%--<c:if test="${photo.album.priceSegment.priceSegmentId == 2}">--%>
                                 <%-- 5-er preisliste --%>
-                                <html:option value="-1">
-                                    <bean:message bundle="BUTTONS" key="product.choose"/>
-                                </html:option>
-                                <html:options collection="products5" labelProperty="productName" property="productId"/>
-                            </c:if>
+                                <%--<html:option value="-1">--%>
+                                    <%--<bean:message bundle="BUTTONS" key="product.choose"/>--%>
+                                <%--</html:option>--%>
+                                <%--<html:options collection="products5" labelProperty="productName" property="productId"/>--%>
+                            <%--</c:if>--%>
                         </html:select>
                         <!--question mark for digital products-->
                         <c:if test="${scItem.product.digitalProduct}">
@@ -159,10 +162,12 @@ todo: beim aendern eines photos weit unten in der shoppingcartliste wird immer w
                         </c:if>
                     </td>
                     <td class="sc_format_fourthcol">
-                        <p class="rightalign">${scItem.priceMajorUnitsCHF}.${scItem.priceMinorUnitsPartCHF}</p>
+                        <%--<p class="rightalign">${scItem.priceMajorUnitsCHF}.${scItem.priceMinorUnitsPartCHF}</p>--%>
+                        <p class="rightalign">${scItem.formattedItemPriceCHF}</p>
                     </td>
                     <td>
-                        <p class="rightalign">${scItem.priceMajorUnitsEUR}.${scItem.priceMinorUnitsPartEUR}</p>
+                        <%--<p class="rightalign">${scItem.priceMajorUnitsEUR}.${scItem.priceMinorUnitsPartEUR}</p>--%>
+                        <p class="rightalign">${scItem.formattedItemPriceEUR}</p>
                     </td>
                 </tr>
             </table>
@@ -211,10 +216,10 @@ todo: beim aendern eines photos weit unten in der shoppingcartliste wird immer w
                 <td class="sc_format_secondcol"></td>
                 <td class="sc_format_thirdcol"></td>
                 <td class="sc_format_fourthcol">
-                    <p class="rightalign">${shoppingCart.subtotalPhotosMajorUnitsCHF}.${shoppingCart.subtotalPhotosMinorUnitsPartCHF}</p>
+                    <p class="rightalign">${shoppingCart.formattedSubtotalPhotosCHF}</p>
                 </td>
                 <td>
-                    <p class="rightalign">${shoppingCart.subtotalPhotosMajorUnitsEUR}.${shoppingCart.subtotalPhotosMinorUnitsPartEUR}</p>
+                    <p class="rightalign">${shoppingCart.formattedSubtotalPhotosEUR}</p>
                 </td>
 
             </tr>
@@ -227,10 +232,10 @@ todo: beim aendern eines photos weit unten in der shoppingcartliste wird immer w
                 <td class="sc_format_secondcol"></td>
                 <td class="sc_format_thirdcol"></td>
                 <td class="sc_format_fourthcol">
-                    <p class="rightalign">${shoppingCart.shippingMajorUnitsCHE}.${shoppingCart.shippingMinorUnitsPartCHE}</p>
+                    <p class="rightalign">${shoppingCart.formattedShippingCHE}</p>
                 </td>
                 <td>
-                    <p class="rightalign">${shoppingCart.shippingMajorUnitsGER}.${shoppingCart.shippingMinorUnitsPartGER}</p>
+                    <p class="rightalign">${shoppingCart.formattedShippingGER}</p>
                 </td>
             </tr>
             <tr>
@@ -246,9 +251,9 @@ todo: beim aendern eines photos weit unten in der shoppingcartliste wird immer w
                 <td class="sc_format_secondcol"></td>
                 <td class="sc_format_thirdcol"></td>
                 <td class="sc_format_fourthcol"><p class="rightalign">
-                    <span>${shoppingCart.totalMajorUnitsCHE}.${shoppingCart.totalMinorUnitsPartCHE}</span></p></td>
+                    <span>${shoppingCart.formattedTotalCHE}</span></p></td>
                 <td><p class="rightalign">
-                    <span>${shoppingCart.totalMajorUnitsGER}.${shoppingCart.totalMinorUnitsPartGER}</span></p></td>
+                    <span>${shoppingCart.formattedTotalGER}</span></p></td>
             </tr>
         </table>
 

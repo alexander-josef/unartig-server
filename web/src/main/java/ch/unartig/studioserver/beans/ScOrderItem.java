@@ -16,6 +16,9 @@
  *
  *************************************************
  * $Log$
+ * Revision 1.2  2007/03/13 16:55:03  alex
+ * template for properties
+ *
  * Revision 1.1  2007/03/01 18:23:41  alex
  * initial commit maven setup no history
  *
@@ -69,6 +72,7 @@ import ch.unartig.exceptions.UnartigInvalidArgument;
 import ch.unartig.studioserver.Registry;
 import ch.unartig.studioserver.model.Photo;
 import ch.unartig.studioserver.model.Product;
+import ch.unartig.studioserver.model.Price;
 import ch.unartig.studioserver.persistence.DAOs.PhotoDAO;
 import ch.unartig.studioserver.persistence.DAOs.ProductDAO;
 import org.apache.log4j.Logger;
@@ -82,39 +86,37 @@ import org.apache.log4j.Logger;
  * - quantity: how many of that product and photo
  * - item price: quantity x productprice
  */
-public class ScOrderItem
-{
+public class ScOrderItem {
     // todo: the minor units need to  be modula 100 for the jsp???
     // todo: shipping handling for Germany
     // todo: calculations Euros .....
 
     private Long photoId;
-    /* is -1 if no product has been seletec*/
+    /* is -1 if no product has been selected*/
     private Long productId;
     private int quantity;
     /*back reference to shopping cart*/
     private ShoppingCart shoppingCart;
     /*item price, example: 0.60*/
-    private int itemPriceMinorUnitsCHF;
-    private int itemPriceMinorUnitsEUR;
-    private int itemPriceMinorUnitsGBP;
-    private int itemPriceMinorUnitsSEK;
+    private double itemPriceCHF;
+    private double itemPriceEUR;
+    private double itemPriceGBP;
+    private double itemPriceSEK;
 
     Logger _logger = Logger.getLogger(getClass().getName());
 
-    public ScOrderItem()
-    {
+    public ScOrderItem() {
     }
 
     /**
      * constructor
+     *
      * @param photoId
-     * @param productId id from view page. can be <1 if no product has been selected
+     * @param productId    id from view page. can be <1 if no product has been selected
      * @param amount
      * @param shoppingCart
      */
-    public ScOrderItem(Long photoId, Long productId, int amount, ShoppingCart shoppingCart)
-    {
+    public ScOrderItem(Long photoId, Long productId, int amount, ShoppingCart shoppingCart) {
         this.photoId = photoId;
         this.productId = productId;
         this.quantity = amount;
@@ -123,212 +125,106 @@ public class ScOrderItem
     }
 
     /**
-     * itemPriceMinorUnits: quantity x productprice
-     * this needs to be called in order to calculate the correct prices
+     * itemPrice: quantity x productprice
+     * this needs to be called every time a photo has been updated in order to calculate the correct prices
+     *
      * @throws ch.unartig.exceptions.UAPersistenceException
+     *
      */
-    public void updateItemPrice() throws UAPersistenceException
-    {
+    public void updateItemPrice() throws UAPersistenceException {
         ProductDAO pDao = new ProductDAO();
         Product product = pDao.load(productId);
 
-        setItemPriceMinorUnitsCHF(getQuantity()*product.getOipsPriceCHF().intValue());
-        setItemPriceMinorUnitsEUR(getQuantity()*product.getOipsPriceEUR().intValue());
-        setItemPriceMinorUnitsGBP(getQuantity()*product.getOipsPriceGBP().intValue());
-        setItemPriceMinorUnitsSEK(getQuantity()*product.getOipsPriceSEK().intValue());
+        _logger.debug("updating item price for product ["+product+"] with quantity ["+getQuantity()+"]");
+        itemPriceCHF = product.getPrice().getPriceCHF().doubleValue() * getQuantity();
+        itemPriceEUR = product.getPrice().getPriceEUR().doubleValue() * getQuantity();
     }
-
-    public String getPriceMajorUnits() throws UnartigInvalidArgument
-    {
-        return getPriceMajorUnits(getMinorUnitsCustomerCurrency());
-    }
-
-    private String getPriceMajorUnits(int minorUnits)
-    {
-        return String.valueOf( minorUnits /100);
-    }
-
 
     /**
-     * return the major units in CHF
+     * called to return formatted price for view
      * @return
+     * @throws UnartigInvalidArgument
      */
-    public String getPriceMajorUnitsCHF()
+    public String getFormattedPrice() throws UnartigInvalidArgument
     {
-        return getPriceMajorUnits(itemPriceMinorUnitsCHF);
+        return Price.monetaryAmountFormat.format(getPriceCustomerCurrency());
     }
 
-    /**
-     * return the major units in EUR
-     * @return 
-     */
-    public String getPriceMajorUnitsEUR()
-    {
-        return getPriceMajorUnits(itemPriceMinorUnitsEUR);
-    }
-
-
-    /**
-     *
-     * @return
-     */
-    public String getPriceMinorUnitsPartCHF()
-    {
-        return getPriceMinorUnitsPart(itemPriceMinorUnitsCHF);
-    }
-
-    /**
-     *
-     * @return 
-     */
-    public String getPriceMinorUnitsPartEUR()
-    {
-        return getPriceMinorUnitsPart(itemPriceMinorUnitsEUR);
-    }
 
     /**
      * this is called from the view after the the address has been entered. it shows the relevent amount in the correct currency
-     * @return
-     * @throws ch.unartig.exceptions.UnartigInvalidArgument
+     *
+     * @return the price as formatted string
+     * @throws ch.unartig.exceptions.UnartigInvalidArgument in case customer currency not available
      */
-    public String getPriceMinorUnitsPart() throws UnartigInvalidArgument
-    {
-        return getPriceMinorUnitsPart(getMinorUnitsCustomerCurrency());
+    public String getPrice() throws UnartigInvalidArgument {
+        return Price.monetaryAmountFormat.format(getPriceCustomerCurrency());
     }
+
 
     /**
      * check the shopping cart to return the correct currency for the customer
      * (customer already filled out form)
-     * @return amount in correct currency
-     * @throws ch.unartig.exceptions.UnartigInvalidArgument if custumer country not available
+     *
+     * @return amount in correct currency as double
+     * @throws ch.unartig.exceptions.UnartigInvalidArgument
+     *          if custumer country not available
      */
-    private int getMinorUnitsCustomerCurrency() throws UnartigInvalidArgument
-    {
+    private double getPriceCustomerCurrency() throws UnartigInvalidArgument {
         // check that the country is available
-        if (shoppingCart==null || shoppingCart.getCustomerCountry()==null)
-        {
-            throw new UnartigInvalidArgument("Customer Country not available") ;
+        if (shoppingCart == null || shoppingCart.getCustomerCountry() == null) {
+            throw new UnartigInvalidArgument("Customer Country not available");
         }
 
-        if (Registry._SWITZERLAND_COUNTRY_CODE.equals(shoppingCart.getCustomerCountry()))
-        {
-            return itemPriceMinorUnitsCHF;
-        } else if (Registry._GERMANY_COUNTRY_CODE.equals(shoppingCart.getCustomerCountry()))
-        {
-            return itemPriceMinorUnitsEUR;
+        if (Registry._SWITZERLAND_COUNTRY_CODE.equals(shoppingCart.getCustomerCountry())) {
+            return itemPriceCHF;
+        } else if (Registry._GERMANY_COUNTRY_CODE.equals(shoppingCart.getCustomerCountry())) {
+            return itemPriceEUR;
         }
-        throw new UnartigInvalidArgument("Unknown Country") ;
+        throw new UnartigInvalidArgument("Unknown Country");
     }
 
 
-    /**
-     * calculate the minor units
-     * @param itemPriceMinorUnits the price in minor units for this item
-     * @return
-     */
-    private String getPriceMinorUnitsPart(int itemPriceMinorUnits)
-    {
-        int mup = itemPriceMinorUnits % 100;
-        if (mup ==0)
-        {
-            return "-";
-        }
-        else
-        {
-            return String.valueOf(mup);
-        }
-    }
 
-
-    public Long getPhotoId()
-    {
+    public Long getPhotoId() {
         return photoId;
     }
 
-    public void setPhotoId(Long photoId)
-    {
+    public void setPhotoId(Long photoId) {
         this.photoId = photoId;
     }
 
-    public Long getProductId()
-    {
+    public Long getProductId() {
         return productId;
     }
 
-    public void setProductId(Long productId)
-    {
+    public void setProductId(Long productId) {
         this.productId = productId;
     }
 
     /**
-     *
      * @return the order item quantity or 1 if the product is digital
      */
-    public int getQuantity()
-    {
-        // todo set to 1 if product is digital
-        return isDigitalOrderItem()?1:quantity;
+    public int getQuantity() {
+        // set to 1 if product is digital
+        return isDigitalOrderItem() ? 1 : quantity;
 //        return quantity;
     }
 
-    public void setQuantity(int quantity)
-    {
+    public void setQuantity(int quantity) {
         this.quantity = quantity;
-    }
-
-    public int getItemPriceMinorUnitsCHF()
-    {
-        return itemPriceMinorUnitsCHF;
-    }
-
-    public void setItemPriceMinorUnitsCHF(int itemPriceMinorUnitsCHF)
-    {
-        this.itemPriceMinorUnitsCHF = itemPriceMinorUnitsCHF;
-    }
-
-
-    public int getItemPriceMinorUnitsEUR()
-    {
-        return itemPriceMinorUnitsEUR;
-    }
-
-    public void setItemPriceMinorUnitsEUR(int itemPriceMinorUnitsEUR)
-    {
-        this.itemPriceMinorUnitsEUR = itemPriceMinorUnitsEUR;
-    }
-
-    public int getItemPriceMinorUnitsGBP()
-    {
-        return itemPriceMinorUnitsGBP;
-    }
-
-    public void setItemPriceMinorUnitsGBP(int itemPriceMinorUnitsGBP)
-    {
-        this.itemPriceMinorUnitsGBP = itemPriceMinorUnitsGBP;
-    }
-
-    public int getItemPriceMinorUnitsSEK()
-    {
-        return itemPriceMinorUnitsSEK;
-    }
-
-    public void setItemPriceMinorUnitsSEK(int itemPriceMinorUnitsSEK)
-    {
-        this.itemPriceMinorUnitsSEK = itemPriceMinorUnitsSEK;
     }
 
     /**
      * convenience getter to get a photo object from the photoId
+     *
      * @return either the Photo object or null if nothing was found
      */
-    public Photo getPhoto()
-    {
+    public Photo getPhoto() {
         PhotoDAO phDao = new PhotoDAO();
-        try
-        {
+        try {
             return phDao.load(photoId);  //To change body of created methods use File | Settings | File Templates.
-        } catch (UAPersistenceException e)
-        {
+        } catch (UAPersistenceException e) {
             _logger.error("Cannot load Photo from given photoId : " + photoId + ";returning null");
             return null;
         }
@@ -337,19 +233,16 @@ public class ScOrderItem
     /**
      * convenience getter to get a Product object from the productId
      * <p> order item can have productID of -1 ...
+     *
      * @return either the Photo object or null if no product exists for this item
      */
-    public Product getProduct()
-    {
+    public Product getProduct() {
         Product retVal = null;
         ProductDAO pDao = new ProductDAO();
-        if (productId.intValue()>0)
-        {
-            try
-        {
-            return pDao.load(productId);
-            } catch (UAPersistenceException e)
-            {
+        if (productId.intValue() > 0) {
+            try {
+                return pDao.load(productId);
+            } catch (UAPersistenceException e) {
                 _logger.error("Cannot load Product from given productId : " + productId + ";returning null");
             }
         }
@@ -358,37 +251,79 @@ public class ScOrderItem
 
     /**
      * convenience getter; returns true if the shopping cart item is a digital product
+     *
      * @return
      */
-    public boolean isDigitalOrderItem()
-    {
+    public boolean isDigitalOrderItem() {
         return getProduct() != null && getProduct().isDigitalProduct();
     }
 
 
-    public String toString()
-    {
-        return "ScOrderItem{" + "photoId=" + photoId + ", productId=" + productId + ", quantity=" + quantity + ", itemPriceMinorUnitsCHF=" + itemPriceMinorUnitsCHF + '}';
+    public String toString() {
+        return "ScOrderItem{" +
+                "photoId=" + photoId +
+                ", productId=" + productId +
+                ", quantity=" + quantity +
+                ", shoppingCart=" + shoppingCart +
+                ", itemPriceCHF=" + itemPriceCHF +
+                ", itemPriceEUR=" + itemPriceEUR +
+                ", itemPriceGBP=" + itemPriceGBP +
+                ", itemPriceSEK=" + itemPriceSEK +
+                '}';
     }
 
     /**
-     *
      * @return true if the product of this item is a digital product
      */
-    public boolean isDigital()
-    {
+    public boolean isDigital() {
         return getProduct().isDigitalProduct();
     }
 
     /**
      * set prices for all currencies to 0
      */
-    public void initPrice()
-    {
-        setItemPriceMinorUnitsCHF(0);
-        setItemPriceMinorUnitsEUR(0);
-        setItemPriceMinorUnitsGBP(0);
-        setItemPriceMinorUnitsSEK(0);
+    public void initPrice() {
+//        setItemPriceMinorUnitsCHF(0);
+//        setItemPriceMinorUnitsEUR(0);
+//        setItemPriceMinorUnitsGBP(0);
+//        setItemPriceMinorUnitsSEK(0);
+        itemPriceCHF = 0;
+        itemPriceEUR = 0;
+        itemPriceGBP = 0;
+        itemPriceSEK = 0;
 
+
+    }
+
+    public double getItemPriceCHF() {
+        return itemPriceCHF;
+    }
+
+    public double getItemPriceEUR() {
+        return itemPriceEUR;
+    }
+
+    public double getItemPriceGBP() {
+        return itemPriceGBP;
+    }
+
+    public double getItemPriceSEK() {
+        return itemPriceSEK;
+    }
+
+    public String getFormattedItemPriceCHF() {
+        return Price.monetaryAmountFormat.format(itemPriceCHF);
+    }
+
+    public String getFormattedItemPriceEUR() {
+        return Price.monetaryAmountFormat.format(itemPriceEUR);
+    }
+
+    public String getFormattedItemPriceGBP() {
+        return Price.monetaryAmountFormat.format(itemPriceGBP);
+    }
+
+    public String getFormattedItemPriceSEK() {
+        return Price.monetaryAmountFormat.format(itemPriceSEK);
     }
 }

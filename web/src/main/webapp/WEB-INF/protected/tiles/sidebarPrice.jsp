@@ -20,11 +20,10 @@
             <td><h3>Euro</h3></td>
         </tr>
 
-        <c:forEach items="${albumBean.album.albumProducts}" var="product" varStatus="forEachStatus">
-            <!--todo reihen einfaerben-->
+        <c:forEach items="${albumBean.album.products}" var="product" varStatus="forEachStatus">
              <c:if test="${product.digitalProduct}">
                  <tr class="evenOddRow${forEachStatus.index%2}">
-                     <td class="priceListFirstRow"><p>${product.productName}</p></td>
+                     <td class="priceListFirstRow"><p>${product.productType.name}</p></td>
                      <td class="priceListSecondRow"><p>${product.formattedPriceCHF}</p></td>
                      <td><p>${product.formattedPriceEUR}</p></td>
                  </tr>
@@ -47,10 +46,10 @@
         </tr>
         
 <!--todo : refactor the getAlbumProducts in many methods: one for each product category-->
-        <c:forEach items="${albumBean.album.albumProducts}" var="product" varStatus="forEachStatus">
+        <c:forEach items="${albumBean.album.products}" var="product" varStatus="forEachStatus">
             <c:if test="${!product.digitalProduct}">
                 <tr class="evenOddRow${forEachStatus.index%2}">
-                    <td><p>${product.productName}</p></td>
+                    <td><p>${product.productType.name}</p></td>
                     <td><p>${product.formattedPriceCHF}</p></td>
                     <td><p>${product.formattedPriceEUR}</p></td>
                 </tr>
