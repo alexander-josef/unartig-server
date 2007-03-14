@@ -20,6 +20,7 @@ package ch.unartig.studioserver.model;
 
 /**
  * Information for the Segmentation of Prices
+ * @deprecated will be removed
  */
 public class PriceSegment extends GeneratedPriceSegment
 {

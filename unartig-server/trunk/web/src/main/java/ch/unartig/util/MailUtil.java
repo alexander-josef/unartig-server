@@ -16,6 +16,9 @@
  *
  *************************************************
  * $Log$
+ * Revision 1.3  2007/03/14 02:41:01  alex
+ * initial checkin
+ *
  * Revision 1.2  2007/03/13 16:55:03  alex
  * template for properties
  *
@@ -168,7 +171,7 @@ public class MailUtil
                 localizedBody
                         .append(createTableDataString(String.valueOf(orderItem.getQuantity()), 9))
                         .append("\t")
-                        .append(createTableDataString(orderItem.getProduct().getProductName(), 17))
+                        .append(createTableDataString(orderItem.getProduct().getProductType().getName(), 17))
                         .append("\t")
                         .append(createTableDataString(orderItem.getPhoto().getDisplayTitle(), 19))
                         .append("\t")
@@ -185,7 +188,7 @@ public class MailUtil
                 // todo this only includes check for germany and switzerland!!!!!!
                 if (shoppingCart.getShippingHandlingCHE() > 0 || shoppingCart.getShippingHandlingGER() > 0)
                 {
-                    localizedBody.append(content.getMessage(locale, "shipping") + ": " + shoppingCart.getFormattedShippingMajorUnits() +  " " + shoppingCart.getCurrency() + "\n");
+                    localizedBody.append(content.getMessage(locale, "shipping") + ": " + shoppingCart.getFormattedShippingPrice() +  " " + shoppingCart.getCurrency() + "\n");
                 }
                 // todo shipping und handling
                 localizedBody.append(content.getMessage(locale, "email.orderAccepted.body.ccBooked"));

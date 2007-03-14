@@ -16,6 +16,9 @@
  *
  *************************************************
  * $Log$
+ * Revision 1.2  2007/03/14 02:41:02  alex
+ * initial checkin
+ *
  * Revision 1.1  2007/03/13 23:24:06  alex
  * initial checkin
  *
@@ -42,7 +45,7 @@ public class OipsPidMapper implements ProductMapperIF {
     private OipsPidMapper() {
     }
 
-    public static OipsPidMapper createOipsPidMapper() {
+    public static OipsPidMapper getInstance() {
         if (instance==null)
         {
             instance = new OipsPidMapper();
@@ -75,8 +78,6 @@ public class OipsPidMapper implements ProductMapperIF {
 
     /**
      * @see ch.unartig.studioserver.businesslogic.ProductMapperIF
-     * @param product
-     * @return
      */
     public String map(Product product) {
 

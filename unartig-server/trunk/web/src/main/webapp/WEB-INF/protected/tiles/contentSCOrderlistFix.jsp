@@ -210,7 +210,7 @@
     <table class="sc_order_list rightalign">
         <tr>
             <td class="sc_format_secondcol">
-                <p>${product.productName}</p><!-- selected format-->
+                <p>${product.productType.name}</p><!-- selected format/product Type-->
             </td>
             <td class="sc_format_thirdcol">
                 <p>${scItem.quantity}</p><!-- how many times the format -->
@@ -262,7 +262,7 @@
             </td>
             <td class="sc_format_secondcol"></td>
             <td class="sc_format_thirdcol"></td>
-            <td class="price_group"><p class="rightalign">${shoppingCart.formattedShippingMajorUnits} &nbsp;${shoppingCart.currency}</p>
+            <td class="price_group"><p class="rightalign">${shoppingCart.formattedShippingPrice} &nbsp;${shoppingCart.currency}</p>
             </td>
         </tr>
     </table>
