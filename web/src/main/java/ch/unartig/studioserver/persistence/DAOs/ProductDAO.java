@@ -16,6 +16,9 @@
  *
  *************************************************
  * $Log$
+ * Revision 1.3  2007/03/14 03:18:36  alex
+ * no more price segment
+ *
  * Revision 1.2  2007/03/12 19:43:52  alex
  * product types for albums
  *
@@ -52,13 +55,10 @@
 package ch.unartig.studioserver.persistence.DAOs;
 
 import ch.unartig.exceptions.UAPersistenceException;
-//import ch.unartig.studioserver.model.PriceSegment;
 import ch.unartig.studioserver.model.Product;
-import ch.unartig.studioserver.model.StudioAlbum;
 import ch.unartig.studioserver.persistence.util.HibernateUtil;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
-import org.hibernate.criterion.Expression;
 import org.hibernate.criterion.Order;
 
 import java.util.List;

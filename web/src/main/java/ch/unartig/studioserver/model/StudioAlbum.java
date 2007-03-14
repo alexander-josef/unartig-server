@@ -16,6 +16,9 @@
  *
  *************************************************
  * $Log$
+ * Revision 1.5  2007/03/14 03:18:36  alex
+ * no more price segment
+ *
  * Revision 1.4  2007/03/14 02:41:01  alex
  * initial checkin
  *
@@ -224,11 +227,10 @@ public class StudioAlbum extends GeneratedStudioAlbum
      * @param albumAdvertisments
      * @param albumTypeString
      * @param event
-     * @param priceSegment
      * @param photos
      * @param products
      */
-    public StudioAlbum(String navTitle, String longTitle, String description, String quickAccess, Boolean aPrivate, boolean publish, String privateAccessCode, Set albumAdvertisments, String albumTypeString, Event event, PriceSegment priceSegment, Set photos, Set products) {
+    public StudioAlbum(String navTitle, String longTitle, String description, String quickAccess, Boolean aPrivate, boolean publish, String privateAccessCode, Set albumAdvertisments, String albumTypeString, Event event, Set photos, Set products) {
     }
 
     /**

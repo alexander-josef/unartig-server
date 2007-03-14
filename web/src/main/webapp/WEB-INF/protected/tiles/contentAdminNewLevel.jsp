@@ -72,14 +72,6 @@
                     <td></td>
                 </tr>
                 <tr>
-                    <th><p>PriceSegment</p></th>
-                    <td><html:select property="priceSegmentId">
-                        <%--<html:select property="categoryId">--%>
-                        <html:options labelProperty="priceSegmentName" collection="priceSegmentList" property="priceSegmentId"/>
-                    </html:select></td>
-                    <td><p>( Only for album )</p></td>
-                </tr>
-                <tr>
                     <th><p>Navigation Title</p></th>
                     <td>
                         <html:text styleClass="navTitle" maxlength="30" size="40" property="navTitle" value=""/></td>

@@ -16,6 +16,9 @@
  *
  *************************************************
  * $Log$
+ * Revision 1.3  2007/03/14 03:18:36  alex
+ * no more price segment
+ *
  * Revision 1.2  2007/03/13 16:55:03  alex
  * template for properties
  *
@@ -249,8 +252,6 @@ public class ShoppingCartAction extends MappingDispatchAction
             NavigationHelper.setBackToAlbumLink(request, shoppingCart);
             // place available products to request; they will be shown on the shopping cart view
             _logger.debug("setting product list");
-//            request.setAttribute(Registry._NAME_PRODUCT_LIST3_ATTR, pDao.listProducts(PriceSegment.get_PS3()));
-//            request.setAttribute(Registry._NAME_PRODUCT_LIST5_ATTR, pDao.listProducts(PriceSegment.get_PS5()));
         } catch (UAPersistenceException e)
         {
             _logger.info("Could not list product. go to error page");
