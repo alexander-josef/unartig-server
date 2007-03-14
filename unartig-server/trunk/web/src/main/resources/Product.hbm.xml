@@ -112,16 +112,6 @@
             <meta attribute="use-in-tostring">true</meta>
         </property>
 
-        <!--deprecate price segments-->
-        <many-to-one
-                name="priceSegment"
-                class="ch.unartig.studioserver.model.PriceSegment"
-                lazy="false"
-                not-null="false"
-                >
-            <meta attribute="use-in-tostring">true</meta>
-            <column name="priceSegmentId" index="Product_PriceSegement_INDEX"/>
-        </many-to-one>
 
         <many-to-one
                 name="price"

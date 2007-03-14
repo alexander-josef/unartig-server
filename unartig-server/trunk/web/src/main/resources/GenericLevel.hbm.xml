@@ -188,17 +188,6 @@
                 <column name="eventId" index="GenericLevel_Event_INDEX"/>
             </many-to-one>
 
-            <!--deprecated, to be removed-->
-            <many-to-one
-                    name="priceSegment"
-                    class="ch.unartig.studioserver.model.PriceSegment"
-                    lazy="false"
-                    not-null="true"
-                    >
-                <meta attribute="use-in-tostring">true</meta>
-                <column name="priceSegmentId" index="GenericLevel_priceSegment_INDEX"/>
-            </many-to-one>
-
             <set name="photos"
                  lazy="true"
                  cascade="all-delete-orphan"

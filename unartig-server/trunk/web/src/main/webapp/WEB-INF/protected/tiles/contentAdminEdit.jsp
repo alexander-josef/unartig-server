@@ -69,17 +69,6 @@
                         <td></td>
                     </tr>
                 </c:if>
-                <!--Price Segment only for album-->
-                <%--<c:if test="${level.albumLevel}">--%>
-                    <!--<tr>-->
-                        <!--<th><p>PriceSegment</p></th>-->
-                        <!--<td>-->
-                            <%--<html:select property="priceSegmentId">--%>
-                                <%--<html:options labelProperty="priceSegmentName" collection="priceSegmentList" property="priceSegmentId"/>--%>
-                            <%--</html:select></td>--%>
-                        <!--<td><p>( Only for album )</p></td>-->
-                    <!--</tr>-->
-                <%--</c:if>--%>
                 <tr>
                     <th><p>Navigation Title</p></th>
                     <td>

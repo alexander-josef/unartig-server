@@ -16,6 +16,9 @@
  *
  *************************************************
  * $Log$
+ * Revision 1.4  2007/03/14 03:18:36  alex
+ * no more price segment
+ *
  * Revision 1.3  2007/03/14 02:41:01  alex
  * initial checkin
  *
@@ -414,11 +417,6 @@ public abstract class GenericLevel extends GeneratedGenericLevel implements Comp
 
     public abstract String getEventDateDisplay();
 
-//    public void setPriceSegment(PriceSegment priceSegment)
-//    {
-//         do nothing
-//    }
-
     public void setEventDate(Date eventDate)
     {
         // default implementation. do nothing
@@ -448,11 +446,6 @@ public abstract class GenericLevel extends GeneratedGenericLevel implements Comp
      * @return the album type
      */
     public AlbumType getAlbumType()
-    {
-        return null;
-    }
-
-    public PriceSegment getPriceSegment()
     {
         return null;
     }

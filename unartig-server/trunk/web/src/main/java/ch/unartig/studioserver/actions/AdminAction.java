@@ -16,6 +16,9 @@
  *
  *************************************************
  * $Log$
+ * Revision 1.6  2007/03/14 03:18:36  alex
+ * no more price segment
+ *
  * Revision 1.5  2007/03/14 02:41:02  alex
  * initial checkin
  *
@@ -585,9 +588,9 @@ public class AdminAction extends MappingDispatchAction
         level.setNavTitle(adminForm.getNavTitle());
         level.setQuickAccess(adminForm.getQuickAccess());
 
-        GenericLevelVisitor setPriceSegmentVisitor = getPriceSegmentVisitor(adminForm);
+//        GenericLevelVisitor setPriceSegmentVisitor = getPriceSegmentVisitor(adminForm);
 
-        level.accept(setPriceSegmentVisitor);
+//        level.accept(setPriceSegmentVisitor);
         level.setPrivateAccessCode(adminForm.getPrivateAccessCode());
         HibernateUtil.beginTransaction();
 

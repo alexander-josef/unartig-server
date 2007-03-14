@@ -16,6 +16,9 @@
  *
  *************************************************
  * $Log$
+ * Revision 1.5  2007/03/14 03:18:36  alex
+ * no more price segment
+ *
  * Revision 1.4  2007/03/13 16:55:03  alex
  * template for properties
  *
@@ -144,14 +147,6 @@ public class AdminForm extends ActionForm implements Serializable {
         this.levelType = levelType;
     }
 
-//    public Long getPriceSegmentId() {
-//        return priceSegmentId;
-//    }
-//
-//    public void setPriceSegmentId(Long priceSegmentId) {
-//        this.priceSegmentId = priceSegmentId;
-//    }
-
     public String getEventDateDisplay() {
         return eventDateDisplay;
     }
@@ -191,17 +186,6 @@ public class AdminForm extends ActionForm implements Serializable {
     public void setQuickAccess(String quickAccess) {
         this.quickAccess = quickAccess;
     }
-
-//    public PriceSegment getPriceSegment() throws UnartigInvalidArgument {
-//        PriceSegmentDAO psDao = new PriceSegmentDAO();
-//        try {
-//            return psDao.load(priceSegmentId);
-//        } catch (UAPersistenceException e) {
-//            _logger.error("Error loading price segment, see stack trace", e);
-//            throw new UnartigInvalidArgument("Error loading Price Segment ");
-//        }
-//    }
-
 
     public void setAlbumTypeString(String albumTypeString) {
         this.albumTypeString = albumTypeString;
