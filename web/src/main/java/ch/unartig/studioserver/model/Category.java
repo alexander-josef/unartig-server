@@ -16,6 +16,9 @@
  *
  *************************************************
  * $Log$
+ * Revision 1.2  2007/03/14 02:41:01  alex
+ * initial checkin
+ *
  * Revision 1.1  2007/03/01 18:23:41  alex
  * initial commit maven setup no history
  *
@@ -117,6 +120,8 @@ import java.util.List;
 import java.util.Iterator;
 
 
+/**
+ */
 public class Category extends GeneratedCategory
 {
     Logger _logger = Logger.getLogger(getClass().getName());

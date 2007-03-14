@@ -16,6 +16,9 @@
  *
  *************************************************
  * $Log$
+ * Revision 1.2  2007/03/14 02:41:01  alex
+ * initial checkin
+ *
  * Revision 1.1  2007/03/01 18:23:41  alex
  * initial commit maven setup no history
  *
@@ -113,6 +116,7 @@ import ch.unartig.exceptions.CreditCardException;
 import ch.unartig.exceptions.UnartigException;
 import ch.unartig.exceptions.UnartigInvalidArgument;
 import ch.unartig.studioserver.Registry;
+import ch.unartig.studioserver.colorplaza.OipsPidMapper;
 import ch.unartig.studioserver.model.*;
 import ch.unartig.studioserver.persistence.DAOs.CustomerDAO;
 import ch.unartig.studioserver.persistence.DAOs.OrderDAO;
@@ -121,6 +125,7 @@ import ch.unartig.util.XmlHelper;
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.HttpStatus;
 import org.apache.commons.httpclient.NameValuePair;
+import org.apache.commons.httpclient.HttpConnection;
 import org.apache.commons.httpclient.methods.MultipartPostMethod;
 import org.apache.commons.httpclient.methods.PostMethod;
 import org.apache.log4j.Logger;
@@ -303,7 +308,7 @@ public class CoplaPhotoOrder implements PhotoOrderIF
                     registerCustomerWithOips();
                 }
                 startOrder();
-                addPrintOrderItems();
+                addOrderItems();
                 if (ccDetail != null)
                 {
                     // credit card payment
@@ -514,7 +519,7 @@ public class CoplaPhotoOrder implements PhotoOrderIF
      */
     private void setPaymentMethod()
     {
-        // this seems to be optional if the payment mehtod is set in addPrintOrderItems
+        // this seems to be optional if the payment mehtod is set in addOrderItems
     }
 
     /**
@@ -724,7 +729,7 @@ public class CoplaPhotoOrder implements PhotoOrderIF
      *
      * @throws org.jdom.JDOMException
      */
-    private void addPrintOrderItems() throws IOException, JDOMException, UnartigException
+    private void addOrderItems() throws IOException, JDOMException, UnartigException
     {
         HttpClient httpClient = new HttpClient();
         String command = "AddOrderItems.cpl";
@@ -749,15 +754,14 @@ public class CoplaPhotoOrder implements PhotoOrderIF
             { // print product; stanard treatment
                 _logger.info("non-digital product");
                 _logger.info("using color-correction ('1' equals true)? : " + Registry.getOipsColorcorrection());
-                post.addParameter("pid" + imageCount, isDemoOrder() ? _OIPS_PID_DEMO : orderItem.getProduct().getOipsPid());
+                post.addParameter("pid" + imageCount, isDemoOrder() ? _OIPS_PID_DEMO : OipsPidMapper.getInstance().map(orderItem.getProduct()));
                 post.addParameter("qty" + imageCount, String.valueOf(orderItem.getQuantity()));
                 post.addParameter("img" + imageCount, oipsEncoder(orderItem.getPhoto().getDisplayTitle()));
             } else if (orderItem.getProduct().isDigitalProduct())
             {
                 _logger.info("digital product!");
                 /*we can use the field oipsPID; it will always be the same pid though*/
-                post.addParameter("pid" + imageCount, isDemoOrder() ? _OIPS_PID_DEMO : orderItem.getProduct().getOipsPid());
-                /*quantity equals minor unit price  --> the digital oips product has a price of exactly 1 minor unit*/
+                post.addParameter("pid" + imageCount, isDemoOrder() ? _OIPS_PID_DEMO : OipsPidMapper.getInstance().map(orderItem.getProduct()));
                 int quantity = getDigitalProductPrice(orderItem.getProduct());
                 post.addParameter("qty" + imageCount, String.valueOf(quantity));
                 post.addParameter("img" + imageCount, oipsEncoder(orderItem.getPhoto().getDisplayTitle()));
@@ -774,6 +778,8 @@ public class CoplaPhotoOrder implements PhotoOrderIF
         try
         {
             // execute method and handle any error responses.
+            // increase standard timeout of 5000 ms
+            httpClient.setConnectionTimeout(10000);
             responseCode = httpClient.executeMethod(post);
             _logger.debug("responseCode = " + responseCode);
             in = post.getResponseBodyAsStream();
@@ -820,10 +826,12 @@ public class CoplaPhotoOrder implements PhotoOrderIF
         String country = order.getCustomer().getCountry();
         if (Registry._SWITZERLAND_COUNTRY_CODE.equals(country))
         {
-            return product.getOipsPriceCHF().intValue();
+            // todo validate!!
+            return product.getPrice().getPriceCHF().intValue()*100;
         } else if (Registry._GERMANY_COUNTRY_CODE.equals(country))
         {
-            return product.getOipsPriceEUR().intValue();
+            // todo validate!!
+            return product.getPrice().getPriceEUR().intValue()*100;
         } else
         {
             throw new UnartigInvalidArgument("Country not available for digital product");

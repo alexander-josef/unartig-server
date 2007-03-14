@@ -16,6 +16,9 @@
  *
  *************************************************
  * $Log$
+ * Revision 1.4  2007/03/14 02:41:01  alex
+ * initial checkin
+ *
  * Revision 1.3  2007/03/13 16:55:03  alex
  * template for properties
  *
@@ -81,7 +84,6 @@ import java.util.Map;
  * a product consists of a format (or 'fun' article like mousemat) and a price<br>
  * there will be more than one product for the same format if this format is sold for different prices<br>
  * todo: add product with a boolean flag for the initial product to be shown in a shoppping cart
- * todo: product should be the combination of a photo and a format.
  */
 public class Product extends GeneratedProduct
 {
@@ -91,11 +93,6 @@ public class Product extends GeneratedProduct
 
     // todo array of initial producttypes from highest to lowest priority, first one that exists gets chosen
     static Long[] preselectedProductTypeIds = {(long) 4, (long) 1, (long) 5};
-    static
-    {
-
-    }
-
 
     public Product()
     {

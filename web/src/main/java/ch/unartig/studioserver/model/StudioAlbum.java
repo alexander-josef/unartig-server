@@ -16,6 +16,9 @@
  *
  *************************************************
  * $Log$
+ * Revision 1.4  2007/03/14 02:41:01  alex
+ * initial checkin
+ *
  * Revision 1.3  2007/03/13 16:55:03  alex
  * template for properties
  *
@@ -207,6 +210,25 @@ public class StudioAlbum extends GeneratedStudioAlbum
      */
     public StudioAlbum()
     {
+    }
+
+    /**
+     * Full Constructor
+     * @param navTitle
+     * @param longTitle
+     * @param description
+     * @param quickAccess
+     * @param aPrivate
+     * @param publish
+     * @param privateAccessCode
+     * @param albumAdvertisments
+     * @param albumTypeString
+     * @param event
+     * @param priceSegment
+     * @param photos
+     * @param products
+     */
+    public StudioAlbum(String navTitle, String longTitle, String description, String quickAccess, Boolean aPrivate, boolean publish, String privateAccessCode, Set albumAdvertisments, String albumTypeString, Event event, PriceSegment priceSegment, Set photos, Set products) {
     }
 
     /**

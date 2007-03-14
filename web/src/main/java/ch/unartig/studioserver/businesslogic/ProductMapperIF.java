@@ -16,6 +16,9 @@
 *
 *************************************************
 * $Log$
+* Revision 1.2  2007/03/14 02:41:01  alex
+* initial checkin
+*
 * Revision 1.1  2007/03/13 23:22:44  alex
 * initial checkin
 *
@@ -32,8 +35,9 @@ public interface ProductMapperIF {
 
     /**
      * Given a Product, map the product to the customID
-     * @param product
+     * @param product the unartig product that needs an external ID mapped
      * @return the string that identifies the mapped product
      */
     public String map(Product product);
+
 }

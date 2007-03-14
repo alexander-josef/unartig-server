@@ -16,6 +16,9 @@
  *
  *************************************************
  * $Log$
+ * Revision 1.3  2007/03/14 02:41:01  alex
+ * initial checkin
+ *
  * Revision 1.2  2007/03/13 16:55:03  alex
  * template for properties
  *
@@ -406,7 +409,7 @@ public class ShoppingCart extends ActionForm implements Serializable, NavigableO
      * @return
      * @throws ch.unartig.exceptions.UnartigInvalidArgument
      */
-    public String getFormattedShippingMajorUnits() throws UnartigInvalidArgument
+    public String getFormattedShippingPrice() throws UnartigInvalidArgument
     {
         if (Registry._SWITZERLAND_COUNTRY_CODE.equals(customerCountry))
         {

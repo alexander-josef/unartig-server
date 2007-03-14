@@ -16,6 +16,9 @@
  *
  *************************************************
  * $Log$
+ * Revision 1.2  2007/03/14 02:41:01  alex
+ * initial checkin
+ *
  * Revision 1.1  2007/03/01 18:23:41  alex
  * initial commit maven setup no history
  *
@@ -104,6 +107,9 @@ public class Event extends GeneratedEvent
 
     public Event()
     {
+    }
+
+    public Event(String navTitle, String longTitle, String description, String quickAccess, Boolean aPrivate, boolean publish, String privateAccessCode, Set albumAdvertisments, Date eventDate, EventGroup eventGroup, Set studios) {
     }
 
     public void accept(GenericLevelVisitor visitor)

@@ -62,7 +62,7 @@
 <!-- will this level be accessible? (currently in use for albums)-->
         <property
                 name="publish"
-                type="boolean"
+                type="java.lang.Boolean"
                 >
             <meta attribute="use-in-tostring">true</meta>
         </property>

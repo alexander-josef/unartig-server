@@ -16,6 +16,9 @@
  *
  *************************************************
  * $Log$
+ * Revision 1.5  2007/03/14 02:41:02  alex
+ * initial checkin
+ *
  * Revision 1.4  2007/03/13 16:55:03  alex
  * template for properties
  *
@@ -311,7 +314,7 @@ public class AdminAction extends MappingDispatchAction
             GenericLevel level = levelDao.load(levelId);
 
             // need to check for null: newly created albums have a null value for getPublish
-            if (level.getPublish()!=null && level.getPublish().booleanValue())
+            if (level.getPublish()!=null && level.getPublish())
             {
                 level.setPublish(Boolean.FALSE);
             } else

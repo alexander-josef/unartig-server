@@ -16,6 +16,9 @@
  *
  *************************************************
  * $Log$
+ * Revision 1.3  2007/03/14 02:41:01  alex
+ * initial checkin
+ *
  * Revision 1.2  2007/03/12 18:57:02  alex
  * product types for albums
  *
@@ -150,6 +153,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 /**
  *
@@ -160,6 +164,9 @@ public abstract class GenericLevel extends GeneratedGenericLevel implements Comp
 
     public GenericLevel()
     {
+    }
+
+    public GenericLevel(String navTitle, String longTitle, String description, String quickAccess, Boolean aPrivate, boolean publish, String privateAccessCode, Set albumAdvertisments) {
     }
 
     public void accept(GenericLevelVisitor visitor)
@@ -337,7 +344,7 @@ public abstract class GenericLevel extends GeneratedGenericLevel implements Comp
     public int getNumberOfPhotos() throws UnartigException
     {
         System.out.println("getPublish() = " + getPublish());
-        if (getPublish()==null || !getPublish().booleanValue())
+        if (getPublish()==null || !getPublish())
         {
             System.out.println("GenericLevel.getNumberOfPhotos returning 0");
             return 0;
