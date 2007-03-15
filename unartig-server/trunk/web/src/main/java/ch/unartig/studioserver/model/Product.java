@@ -16,6 +16,9 @@
  *
  *************************************************
  * $Log$
+ * Revision 1.5  2007/03/15 21:45:27  alex
+ * no more price segment
+ *
  * Revision 1.4  2007/03/14 02:41:01  alex
  * initial checkin
  *
@@ -91,7 +94,7 @@ public class Product extends GeneratedProduct
     public static final double _SHIPPING_HANDLING_CHE_CHF = 4.90;
     public static final double _SHIPPING_HANDLING_GER_EUR = 3.30;
 
-    // todo array of initial producttypes from highest to lowest priority, first one that exists gets chosen
+    // array of initial producttypes from highest to lowest priority, first one that exists gets chosen
     static Long[] preselectedProductTypeIds = {(long) 4, (long) 1, (long) 5};
 
     public Product()
