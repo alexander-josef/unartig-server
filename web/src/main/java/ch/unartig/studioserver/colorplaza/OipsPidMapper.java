@@ -16,6 +16,9 @@
  *
  *************************************************
  * $Log$
+ * Revision 1.3  2007/03/15 21:45:27  alex
+ * no more price segment
+ *
  * Revision 1.2  2007/03/14 02:41:02  alex
  * initial checkin
  *
@@ -38,7 +41,7 @@ public class OipsPidMapper implements ProductMapperIF {
      * 2-dimensional arrays for producttype-price-oipspid mapping<br/>
      * [ProductTypeId][PriceId]
      */
-    String[][] productPricesOipsid;
+    String[][] productPricesOipsid = new String[30][30];
 
 
 

@@ -469,7 +469,7 @@ nicht gebraucht:
     </definition>
 
     <definition name=".unartigOrderAdmin" extends=".unartigEditLevel">
-        <put name="htmlTitle" type="string"><![CDATA[unartig studio -- admin customer]]></put>
+        <put name="htmlTitle" type="string"><![CDATA[unartig studio -- edit level]]></put>
         <put name="pageName" value="/WEB-INF/protected/tiles/pageNameAdminOrder.jsp"/>
         <put name="content" value="/WEB-INF/protected/tiles/contentAdminOrder.jsp"/>
     </definition>

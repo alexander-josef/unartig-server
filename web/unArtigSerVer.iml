@@ -15,6 +15,8 @@
       <sourceFolder url="file://$MODULE_DIR$/src/test/resources" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/target/hibernate3/generated-sources" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/target/classes" />
+      <excludeFolder url="file://$MODULE_DIR$/target/unArtigSerVer-1.0-SNAPSHOT" />
+      <excludeFolder url="file://$MODULE_DIR$/target/unArtigSerVer-3.0-SNAPSHOT" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

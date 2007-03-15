@@ -6,8 +6,8 @@
     <packaging>
         war
     </packaging>
-    <version>1.0-SNAPSHOT</version>
-    <name>unArtig Maven WEB Test</name>
+    <version>3.0-SNAPSHOT</version>
+    <name>unArtig Server</name>
     <url>http://server.unartig.ch</url>
 
     <dependencies>
@@ -120,17 +120,34 @@
 
 
                 <configuration>
+
+                    <!--<components>-->
+                        <!--<component>-->
+                            <!--<name>hbm2ddl</name>-->
+                            <!--<implementation>jdbcconfiguration</implementation>-->
+                        <!--</component>-->
+                    <!--</components>-->
+
+                    <componentProperties>
+                        <export>false</export>
+                        <format>true</format>
+                        <outputfilename>schema-${project.version}.sql</outputfilename>
+                        <propertyfile>/src/main/resources/hibernate.postgresql.properties</propertyfile>
+                    </componentProperties>
+
                     <hibernate>
+                        <propertyfile>/src/main/resources/hibernate.postgresql.properties</propertyfile>
                         <configurationFile>/src/main/resources/hibernate.cfg.xml</configurationFile>
                     </hibernate>
+
                     <!--<outputDirectory>-->
-                        <!--<hbm2cfgxml>src/main/resources</hbm2cfgxml>-->
+                    <!--<hbm2cfgxml>src/main/resources</hbm2cfgxml>-->
                     <!--</outputDirectory>-->
                     <!--<jdk5>true</jdk5>-->
                 </configuration>
 
             </plugin>
-            
+
             <plugin>
                 <groupId>org.codehaus.cargo</groupId>
                 <artifactId>cargo-maven2-plugin</artifactId>
@@ -199,35 +216,33 @@
         </profiles>
     -->
 
-    <!--
 
-        <repositories>
-            <repository>
-                <id>Codehaus Snapshots</id>
-                <url>http://snapshots.repository.codehaus.org/</url>
-                <snapshots>
-                    <enabled>true</enabled>
-                </snapshots>
-                <releases>
-                    <enabled>false</enabled>
-                </releases>
-            </repository>
-        </repositories>
+    <repositories>
+        <repository>
+            <id>Codehaus Snapshots</id>
+            <url>http://snapshots.repository.codehaus.org/</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+        </repository>
+    </repositories>
 
 
-        <pluginRepositories>
-            <pluginRepository>
-                <id>Codehaus Snapshots</id>
-                <url>http://snapshots.repository.codehaus.org/</url>
-                <snapshots>
-                    <enabled>true</enabled>
-                </snapshots>
-                <releases>
-                    <enabled>false</enabled>
-                </releases>
-            </pluginRepository>
-        </pluginRepositories>
-    -->
+    <pluginRepositories>
+        <pluginRepository>
+            <id>Codehaus Snapshots</id>
+            <url>http://snapshots.repository.codehaus.org/</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+        </pluginRepository>
+    </pluginRepositories>
 
 
 </project>

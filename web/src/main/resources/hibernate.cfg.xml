@@ -17,7 +17,7 @@
 
     <session-factory>
 
-        <property name="connection.datasource">java:comp/env/unartig.datasources.postgresql</property>
+        <property name="connection.datasource">java:comp/env/jdbc/unartig</property>
         <property name="dialect">org.hibernate.dialect.PostgreSQLDialect</property>
 
         <property name="show_sql">${hibernate.showSQL}</property>
@@ -57,7 +57,9 @@
         <!--r2.6-->
         <mapping resource="Price.hbm.xml"/>
         <mapping resource="ProductType.hbm.xml"/>
-
+        <!--r3.0-->
+        <mapping resource="UserRole.hbm.xml"/>
+        <mapping resource="UserProfile.hbm.xml"/>
 
     </session-factory>
 

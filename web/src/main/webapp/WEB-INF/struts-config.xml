@@ -410,6 +410,7 @@
             <forward name="singleAlbumUploadPage" path=".unartigUpload"/>
         </action>
 
+        <!-- trigger an order on the admin page -->
         <action path="/admin/orderAdmin" type="ch.unartig.studioserver.actions.AdminAction" scope="request"
                 parameter="triggerOrder"
                 name="adminForm"

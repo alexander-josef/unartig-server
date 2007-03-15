@@ -4,7 +4,6 @@
 <jsp:useBean id="eventGroupList" type="java.util.List" scope="request"/>
 <jsp:useBean id="eventList" type="java.util.List" scope="request"/>
 <jsp:useBean id="parentList" type="java.util.List" scope="request"/>
-<jsp:useBean id="priceSegmentList" type="java.util.List" scope="request"/>
 
 
 <html:xhtml/>
