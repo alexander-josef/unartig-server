@@ -16,6 +16,9 @@
  *
  *************************************************
  * $Log$
+ * Revision 1.2  2007/03/19 20:49:42  alex
+ * adding method to stop timer
+ *
  * Revision 1.1  2007/03/01 18:23:41  alex
  * initial commit maven setup no history
  *
@@ -99,6 +102,7 @@ public class UnartigActionServlet extends ActionServlet
      */
     public void init() throws ServletException
     {
+        super.init();
         logger.debug("@@ init unartig action servlet  WITH   STRUTS");
         logger.debug("Calling init on Registry");
         Registry.init(getServletConfig());
@@ -132,7 +136,6 @@ public class UnartigActionServlet extends ActionServlet
         }
 
 
-        super.init();
     }
 
     public void doGet(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws IOException, ServletException
@@ -148,5 +151,16 @@ public class UnartigActionServlet extends ActionServlet
         // todo remove debug
 //        new Throwable().printStackTrace();
         super.doPost(httpServletRequest, httpServletResponse);
+    }
+
+
+    public void destroy() {
+        logger.info("destroying unartig action servlet!");
+        logger.info("Going to stop order service ......");
+        PhotoOrderService.getInstance().stopService();
+        logger.info("..... Order Service stopped!");
+        logger.info("calling destroy on struts action servlet ....");
+
+        super.destroy();
     }
 }
