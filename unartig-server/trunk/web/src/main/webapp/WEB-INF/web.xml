@@ -12,18 +12,45 @@
         <param-name>webmaster</param-name>
         <param-value>web@unartig.ch</param-value>
     </context-param>
-<!--
+    <!--
 
-    <error-page>
-        <error-code>500</error-code>
-        <location>/error.html</location>
-    </error-page>
-    <error-page>
-        <error-code>404</error-code>
-        <location>/error.html</location>
-    </error-page>
+        <error-page>
+            <error-code>500</error-code>
+            <location>/error.html</location>
+        </error-page>
+        <error-page>
+            <error-code>404</error-code>
+            <location>/error.html</location>
+        </error-page>
 
--->
+    -->
+    <filter>
+        <filter-name>Security Filter</filter-name>
+        <filter-class>org.securityfilter.filter.SecurityFilter</filter-class>
+        <init-param>
+            <description>Configuration file location (this is the default value)</description>
+            <param-name>config</param-name>
+            <param-value>/WEB-INF/securityfilter-config.xml</param-value>
+        </init-param>
+        <init-param>
+            <description>Validate config file if set to true</description>
+            <param-name>validate</param-name>
+            <param-value>true</param-value>
+        </init-param>
+        <!--
+              <init-param>
+                 <param-name>loginSubmitPattern</param-name>
+                 <param-value>/logMeIn</param-value>
+                 <description>
+                    As an example a login form can define "logMeIn" as it action in place of the standard
+                    "j_security_check" which is a special flag user by app servers for container managed security.
+                 </description>
+              </init-param>
+        -->
+    </filter>
+
+    <!-- map all requests to the SecurityFilter, control what it does with configuration settings -->
+
     <filter>
         <filter-name>HibernateFilter</filter-name>
         <filter-class>ch.unartig.studioserver.persistence.util.HibernateFilter</filter-class>
@@ -33,6 +60,10 @@
         <filter-class>ch.unartig.controller.UTF8EncodingFilter</filter-class>
     </filter>
 
+    <filter-mapping>
+        <filter-name>Security Filter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
     <filter-mapping>
         <filter-name>HibernateFilter</filter-name>
         <url-pattern>*.html</url-pattern>
@@ -86,6 +117,8 @@
         <!--default session time-out 30 minutes. enter time-out in minutes-->
         <session-timeout>30</session-timeout>
     </session-config>
+<!--
+
     <security-constraint>
         <web-resource-collection>
             <web-resource-name>unartig admin application</web-resource-name>
@@ -100,35 +133,36 @@
         </web-resource-collection>
         <auth-constraint>
             <role-name>unartigadmin</role-name>
+            --><!--test--><!--
+            <role-name>tomcat</role-name>
         </auth-constraint>
     </security-constraint>
 
-<!--
+    --><!-- Default login configuration uses form-based authentication --><!--
+    <login-config>
+        <auth-method>FORM</auth-method>
+        <realm-name>Example Form-Based Authentication Area</realm-name>
+        <form-login-config>
+            --><!--/Login.html--><!--
+            --><!--<form-login-page>/Login.html</form-login-page>--><!--
+            <form-login-page>/WEB-INF/protected/security/login.jsp</form-login-page>
+            <form-error-page>/WEB-INF/protected/security/error.jsp</form-error-page>
+        </form-login-config>
+    </login-config>
 
-    <security-constraint>
-        <web-resource-collection>
-            <web-resource-name>Restricted Access</web-resource-name>
-            <url-pattern>/private/*</url-pattern>
-            <http-method>GET</http-method>
-            <http-method>POST</http-method>
-            <http-method>PUT</http-method>
-            <http-method>DELETE</http-method>
-            <http-method>HEAD</http-method>
-            <http-method>OPTIONS</http-method>
-            <http-method>TRACE</http-method>
-        </web-resource-collection>
-        <auth-constraint>
-            <role-name>privateAccess</role-name>
-        </auth-constraint>
-    </security-constraint>
--->
-
+    <security-role>
+        <description>test</description>
+        <role-name>tomcat</role-name>
+    </security-role>
     <security-role>
         <description>admin for the unartig application</description>
         <role-name>unartigadmin</role-name>
     </security-role>
-    <login-config>
-        <auth-method>DIGEST</auth-method>
-    </login-config>
+
+
+ -->
+    <!--<login-config>-->
+    <!--<auth-method>DIGEST</auth-method>-->
+    <!--</login-config>-->
 
 </web-app>
