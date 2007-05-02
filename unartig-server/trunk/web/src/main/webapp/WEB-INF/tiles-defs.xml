@@ -268,6 +268,7 @@
         <put name="content1" value="/WEB-INF/protected/tiles/contentSCOrderlistFix.jsp"/>
     </definition>
 
+    <!-- order confirmation with opt-out option for newsletter etc. -->
     <definition name=".unartigShoppingCartConfirmOUT" extends=".unartigShoppingCartLogin">
         <put name="htmlTitle" type="string"><![CDATA[unartig studio -- best&auml;tigung der bestellung]]></put>
         <put name="sidebar1" value="/WEB-INF/protected/tiles/sidebarSCConfirm.jsp"/>
@@ -293,9 +294,12 @@
     <definition name=".unartigLogin" extends=".unartigHome">
         <put name="htmlTitle" type="string"><![CDATA[unartig studio -- login]]></put>
         <put name="sidebar1" value="/WEB-INF/protected/tiles/sidebarTree.jsp"/>
+        <!--<put name="sidebar1" value="/WEB-INF/protected/tiles/sidebarLogin.jsp"/>-->
+        <put name="sidebar2" value="/WEB-INF/protected/tiles/Empty.jsp"/>
         <put name="content1" value="/WEB-INF/protected/tiles/contentLoginForm.jsp"/>
         <put name="content2" value="/WEB-INF/protected/tiles/TopMessage.jsp"/>
     </definition>
+    
 
     <definition name=".unartigLoginNoLoginPass" extends=".unartigLogin">
         <put name="htmlTitle" type="string"><![CDATA[unartig studio -- passwort vergessen]]></put>
@@ -427,15 +431,6 @@ nicht gebraucht:
         <put name="pageName" value="/WEB-INF/protected/tiles/pageNameWideAccount.jsp"/>
         <put name="navigationline" value="/WEB-INF/protected/tiles/navigationlineAccountDisplay.jsp"/>
         <put name="content" value="/WEB-INF/protected/tiles/contentDisplay.jsp"/>
-    </definition>
-
-    <!--ADMIN-->
-    <definition name=".unartigLogin" extends=".unartigHome">
-        <put name="htmlTitle" type="string"><![CDATA[unartig studio -- login]]></put>
-        <put name="sidebar1" value="/WEB-INF/protected/tiles/sidebarLogin.jsp"/>
-        <put name="sidebar2" value="/WEB-INF/protected/tiles/Empty.jsp"/>
-        <put name="content1" value="/WEB-INF/protected/tiles/contentLoginForm.jsp"/>
-        <put name="content2" value="/WEB-INF/protected/tiles/TopMessage.jsp"/>
     </definition>
 
 

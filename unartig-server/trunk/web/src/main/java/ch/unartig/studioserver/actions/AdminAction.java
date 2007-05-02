@@ -16,6 +16,9 @@
  *
  *************************************************
  * $Log$
+ * Revision 1.7  2007/05/02 09:19:22  alex
+ * changes
+ *
  * Revision 1.6  2007/03/14 03:18:36  alex
  * no more price segment
  *
@@ -743,7 +746,6 @@ public class AdminAction extends MappingDispatchAction
 
         request.setAttribute("parentList", parents);
 
-        List categoryList = glDao.listGenericLevel(Category.class);
         List eventGroupList = glDao.listGenericLevel(EventGroup.class);
         List eventList = glDao.listGenericLevel(Event.class);
         List productTypeList = ptDao.listProductTypes();

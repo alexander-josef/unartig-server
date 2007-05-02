@@ -21,7 +21,7 @@
                         <bean:message bundle="CONTENT" key="email.your"/>
                     </p></td>
                     <td>
-                        <input type="text" name="j_username">
+                        <input type="text" name="j_username" value="<%=request.getRemoteUser()%>"/>
                     </td>
                     <td></td>
                 </tr>
@@ -33,6 +33,18 @@
                     </td>
                     <td>
                         <input type="password" name="j_password">
+                    </td>
+                    <td>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>
+                            <bean:message bundle="CONTENT" key="rememberme"/>
+                        </p>
+                    </td>
+                    <td>
+                        <input type="checkbox" name="j_rememberme" value="true">
                     </td>
                     <td>
                         <input type="image" class="leftalign" src="/images/button/login.gif" alt="login"/>
