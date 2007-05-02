@@ -240,7 +240,7 @@
     <table class="sc_table_description">
         <tr>
             <td class="sc_table_description_head" colspan="4">
-                <p><span><bean:message bundle="CONTENT" key="price.subtotal"/></span>&nbsp;(CHFr.)</p>
+                <p><span><bean:message bundle="CONTENT" key="price.subtotal"/></span></p>
             </td>
         </tr>
         <tr>

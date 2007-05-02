@@ -62,6 +62,7 @@
     </div>
 
     <div id="footer">
+        <%-- todo use tile--%>
         <ul id="footerlinks-access">
             <li><a href="/index.html">Home</a>|</li>
             <li><a href="/About.html"><bean:message bundle="CONTENT" key="link.about"/></a>|</li>

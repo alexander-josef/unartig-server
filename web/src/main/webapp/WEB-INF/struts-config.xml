@@ -233,7 +233,6 @@
         <forward name="toCartSuccess" path="/toShoppingCart.html" redirect="true"/>
         <forward name="databaseError" path=".unartigError1"/>
         <forward name="error" path=".unartigError1"/>
-
     </global-forwards>
 
 
@@ -283,6 +282,7 @@
         <!--<action path="/ShoppingCartConfirmIN" forward=".unartigShoppingCartConfirmIN"></action>-->
         <!--login, account et.c-->
         <action path="/Login" forward=".unartigLogin"></action>
+        <action path="/loginError" forward="/WEB-INF/protected/security/error.jsp"></action>
         <!--<action path="/LoginNoLoginPass" forward=".unartigLoginNoLoginPass"></action>-->
         <!--<action path="/Register" forward=".unartigRegister"></action>-->
         <!--<action path="/RegisterError" forward=".unartigRegisterError"></action>-->
