@@ -16,6 +16,9 @@
  *
  *************************************************
  * $Log$
+ * Revision 1.2  2007/05/12 09:02:34  alex
+ * diverse changes
+ *
  * Revision 1.1  2007/03/01 18:23:41  alex
  * initial commit maven setup no history
  *
@@ -77,6 +80,12 @@ public class Uploader extends Thread
         }
     }
 
+    /**
+     *
+     * @throws IOException
+     * @throws UnartigException
+     * @throws UAPersistenceException
+     */
     private void doImport() throws IOException, UnartigException, UAPersistenceException
     {
         GenericLevelDAO glDao = new GenericLevelDAO();
@@ -90,7 +99,7 @@ public class Uploader extends Thread
         // null?
         if (processImages != null)
         {
-            album.registerPhotos(processImages.booleanValue());
+            album.registerPhotos(processImages);
         } else
         {
             throw new UnartigException("cannot import ... null");

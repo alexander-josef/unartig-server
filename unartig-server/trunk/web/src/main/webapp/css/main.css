@@ -427,6 +427,7 @@ ul#shopping_cart_menu ul li .link_active {
     color: rgb( 120, 120, 120 )
 }
 
+/* Solution for alternating table row colors : (re-use this!)*/
 .evenOddRow0  {
     background-color:#9a9a9a;
 }

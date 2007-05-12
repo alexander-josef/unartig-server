@@ -43,7 +43,7 @@
             </td>
             <td><h3>SFr.</h3></td>
             <td><h3>Euro</h3></td>
-        </tr>
+        </tr>   
         
 <!--todo : refactor the getAlbumProducts in many methods: one for each product category-->
         <c:forEach items="${albumBean.album.products}" var="product" varStatus="forEachStatus">

@@ -16,6 +16,9 @@
  *
  *************************************************
  * $Log$
+ * Revision 1.2  2007/05/12 09:02:34  alex
+ * diverse changes
+ *
  * Revision 1.1  2007/03/01 18:23:41  alex
  * initial commit maven setup no history
  *
@@ -148,9 +151,15 @@ public class SportsAlbumMapper
                 mappingLine = bufMappingStream.readLine();
                 _logger.debug("mappingLine = " + mappingLine);
                 parts = mappingLine.split("\t");
-                _logger.debug("parts[0] = " + parts[0]);
-                _logger.debug("parts[1] = " + parts[1]);
-                mapLine(parts[0].trim(), parts[1].trim());
+                if (parts.length > 1)
+                {
+                    _logger.debug("parts[0] = " + parts[0]);
+                    _logger.debug("parts[1] = " + parts[1]);
+                    mapLine(parts[0].trim(), parts[1].trim());
+                } else
+                {
+                    _logger.debug("ignoring line : " + mappingLine);
+                }
             }
         } catch (IOException e)
         {
@@ -176,6 +185,7 @@ public class SportsAlbumMapper
         try
         {
             HibernateUtil.beginTransaction();
+            // todo what if 2 photos with identical filenames?
             Photo photo = photoDao.findPhoto(album, photoFilename);
             if (photo == null)
             {
@@ -198,11 +208,13 @@ public class SportsAlbumMapper
 
     /**
      * map line for finish or start time mapping
+     * PhotoSubject
      *
      * @param etappe
      * @param startNumber
      * @param timeString
      * @param name
+     * @throws ch.unartig.exceptions.UAPersistenceException
      */
     private void mapLine(String etappe, String startNumber, String timeString, String name) throws UAPersistenceException
     {
@@ -380,6 +392,7 @@ public class SportsAlbumMapper
      * @param startNumber
      * @param album
      * @return PhotoSubject
+     * @throws ch.unartig.exceptions.UAPersistenceException
      */
     private PhotoSubject createNewSubject(String startNumber, StudioAlbum album) throws UAPersistenceException
     {
@@ -413,7 +426,6 @@ public class SportsAlbumMapper
 
     private PhotoSubject createPhotoSubject() throws UAPersistenceException
     {
-        // todo: this subject needs to be saved first .... use own transaction for this?
         PhotoSubjectDAO subjDao = new PhotoSubjectDAO();
         PhotoSubject retVal = new PhotoSubject();
         HibernateUtil.beginTransaction();

@@ -15,7 +15,7 @@
         <html:hidden property="levelId" value="${level.genericLevelId}"/>
         <html:hidden property="albumLevel" value="${level.albumLevel}"/>
 
-        <html:hidden property="page" value="0"></html:hidden>
+        <html:hidden property="page" value="0"/>
         <fieldset class="forms">
             <div class="sidebarContent">
                 <h3>Startnummer</h3>

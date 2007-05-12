@@ -16,6 +16,9 @@
  *
  *************************************************
  * $Log$
+ * Revision 1.2  2007/05/12 09:02:34  alex
+ * diverse changes
+ *
  * Revision 1.1  2007/03/01 18:23:42  alex
  * initial commit maven setup no history
  *
@@ -715,6 +718,7 @@ Note: if you list each property explicitly, you must include all properties of t
      * @param album
      * @param filename
      * @return Photo or null
+     * @throws ch.unartig.exceptions.UAPersistenceException
      */
     public Photo findPhoto(StudioAlbum album, String filename) throws UAPersistenceException
     {
