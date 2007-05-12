@@ -50,7 +50,9 @@
             <table id="register_field">
                 <tr>
                     <td><p><bean:message bundle="CONTENT" key="name.contact"/></p></td>
-                    <td><html:text property="sender" styleClass="kontaktfeld" size="28"/></td>
+                    <td>
+                        <html:text property="sender" styleClass="kontaktfeld" size="28"/>
+                    </td>
                     <td></td>
                 </tr>
                 <tr>

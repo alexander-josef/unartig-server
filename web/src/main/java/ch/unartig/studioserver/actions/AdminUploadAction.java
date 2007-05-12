@@ -16,6 +16,9 @@
  *
  *************************************************
  * $Log$
+ * Revision 1.2  2007/05/12 09:02:34  alex
+ * diverse changes
+ *
  * Revision 1.1  2007/03/01 18:23:41  alex
  * initial commit maven setup no history
  *
@@ -106,6 +109,7 @@ public class AdminUploadAction extends MappingDispatchAction
      * @return
      * @throws IOException
      *
+     * @throws ch.unartig.exceptions.UnartigImagingException
      */
     public ActionForward importDirectory(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws UnartigException, IOException, UnartigImagingException
     {
