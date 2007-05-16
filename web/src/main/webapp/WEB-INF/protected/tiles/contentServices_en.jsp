@@ -11,7 +11,6 @@
     <div class="rightalign">
         <ul>
             <li><a><img src="/images/studio-in-action.jpg" alt=""></a></li>
-            <li><a><img src="/images/datacentre.jpg" alt=""></a></li>
             <li><a><img src="/images/colorplaza-print.jpg" alt=""></a></li>
             <li><a><img src="/images/colorplaza-poster.jpg" alt=""></a></li>
         </ul>
