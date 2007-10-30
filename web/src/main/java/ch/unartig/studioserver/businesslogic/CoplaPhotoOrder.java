@@ -222,7 +222,8 @@ public class CoplaPhotoOrder implements PhotoOrderIF
     static
     {
         _SEID_MAP.put(Registry._SWITZERLAND_COUNTRY_CODE, "2700"); // serviceId for Switzerland
-        _SEID_MAP.put(Registry._GERMANY_COUNTRY_CODE, "2712"); // serviceid for Germany
+        _SEID_MAP.put(Registry._GERMANY_COUNTRY_CODE, "2702"); // serviceid for Germany
+//        _SEID_MAP.put(Registry._AUSTRIA_COUNTRY_CODE, "2712"); // serviceid for international service
         _SEID_MAP.put("DEMO", "90000"); // serviceid for DEMO session
     }
 
