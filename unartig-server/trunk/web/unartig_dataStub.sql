@@ -13,7 +13,7 @@ INSERT INTO PriceSegments (priceSegmentId, priceSegmentName) VALUES (2, '10x15 f
 insert into PriceSegments (pricesegmentId,priceSegmentName) values (99,'unused');
 
 --
--- Set up category "Festliche Anlaesse"
+-- Set up category "Festliche Anlaesse", Sportliche Anlaesse
 --
 INSERT INTO GenericLevels (genericlevelid, hierarchy_level,navtitle,longtitle,description) VALUES (1, 'CATEGORY','fest_anlaesse','Festliche Anlässe','Bälle und andere festliche Anlässe');
 INSERT INTO GenericLevels (genericlevelid, hierarchy_level,navtitle,longtitle,description) VALUES (2, 'CATEGORY','sport_anlaesse','Sportliche Anlässe','Sportliche Anlässe');
