@@ -118,7 +118,7 @@ INSERT INTO prices2producttypes (producttypeid, priceid) VALUES (8, 23);
 INSERT INTO prices2producttypes (producttypeid, priceid) VALUES (9, 6);
 INSERT INTO prices2producttypes (producttypeid, priceid) VALUES (9, 15);
 INSERT INTO prices2producttypes (producttypeid, priceid) VALUES (9, 24);
-INSERT INTO prices2producttypes (producttypeid, priceid) VALUES (10, 7);
+INSERT INTO prices2producttypes (producttypeid, priceid) VALUES (10, 7); -- poster 50 x 75 for CHF 
 INSERT INTO prices2producttypes (producttypeid, priceid) VALUES (10, 16);
 INSERT INTO prices2producttypes (producttypeid, priceid) VALUES (10, 25);
 INSERT INTO prices2producttypes (producttypeid, priceid) VALUES (12, 9);

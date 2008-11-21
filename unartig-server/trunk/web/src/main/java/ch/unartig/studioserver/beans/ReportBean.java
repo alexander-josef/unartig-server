@@ -87,18 +87,6 @@ public class ReportBean
         //
     }
 
-    /**
-     * return an instance of the report bean that has the consolidated album sales view over all time set
-     *
-     * @return
-     * @throws UAPersistenceException
-     */
-    public static ReportBean prepareConsSalesPerAlbum() throws UAPersistenceException
-    {
-        ReportBean instance = new ReportBean();
-        instance.setConsSalesPerAlbum(new ReportDAO().listConsSalesPerAlbum());
-        return instance;
-    }
 
     /**
      * @param startDate
