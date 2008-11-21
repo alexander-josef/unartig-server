@@ -114,6 +114,7 @@ public class OipsPidMapper implements ProductMapperIF {
         productPricesOipsid[12][27]= new String[] {"6116","0"};
 
 //      mapping for old unartig legacy digital products:
+        // they don't appear when configuring new products for an album (they are not listed in prices2producttypes)
         productPricesOipsid[2][30]= new String[] {"998","2.7"};
         productPricesOipsid[3][31]= new String[] {"998","26.91"};
 
