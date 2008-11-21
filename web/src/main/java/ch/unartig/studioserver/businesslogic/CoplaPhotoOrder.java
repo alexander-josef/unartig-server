@@ -756,14 +756,14 @@ public class CoplaPhotoOrder implements PhotoOrderIF
             { // print product; stanard treatment
                 _logger.info("non-digital product");
                 _logger.info("using color-correction ('1' equals true)? : " + Registry.getOipsColorcorrection());
-                post.addParameter("pid" + imageCount, isDemoOrder() ? _OIPS_PID_DEMO : OipsPidMapper.getInstance().map(orderItem.getProduct()));
+                post.addParameter("pid" + imageCount, isDemoOrder() ? _OIPS_PID_DEMO : OipsPidMapper.getInstance().getMappedProductId(orderItem.getProduct()));
                 post.addParameter("qty" + imageCount, String.valueOf(orderItem.getQuantity()));
                 post.addParameter("img" + imageCount, oipsEncoder(orderItem.getPhoto().getDisplayTitle()));
             } else if (orderItem.getProduct().isDigitalProduct())
             {
                 _logger.info("digital product!");
                 /*we can use the field oipsPID; it will always be the same pid though*/
-                post.addParameter("pid" + imageCount, isDemoOrder() ? _OIPS_PID_DEMO : OipsPidMapper.getInstance().map(orderItem.getProduct()));
+                post.addParameter("pid" + imageCount, isDemoOrder() ? _OIPS_PID_DEMO : OipsPidMapper.getInstance().getMappedProductId(orderItem.getProduct()));
                 int quantity = getDigitalProductPrice(orderItem.getProduct());
                 post.addParameter("qty" + imageCount, String.valueOf(quantity));
                 post.addParameter("img" + imageCount, oipsEncoder(orderItem.getPhoto().getDisplayTitle()));
