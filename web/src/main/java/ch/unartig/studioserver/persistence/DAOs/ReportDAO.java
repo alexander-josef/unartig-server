@@ -38,7 +38,6 @@
 package ch.unartig.studioserver.persistence.DAOs;
 
 import ch.unartig.exceptions.UAPersistenceException;
-import ch.unartig.studioserver.model.ReportConsSalesPerAlbum;
 import ch.unartig.studioserver.model.ReportProductSales;
 import ch.unartig.studioserver.persistence.util.HibernateUtil;
 import org.apache.log4j.Logger;
@@ -71,13 +70,6 @@ public class ReportDAO
 
     }
 
-    public List listConsSalesPerAlbum() throws UAPersistenceException
-    {
-        Criteria c = HibernateUtil.currentSession()
-                .createCriteria(ReportConsSalesPerAlbum.class)
-                .addOrder(Order.asc("eventName"));
-        return c.list();
-    }
 
     /**
      * return a report by dates. uses a query as follows:

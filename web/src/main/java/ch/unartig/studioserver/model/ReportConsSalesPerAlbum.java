@@ -35,6 +35,7 @@ package ch.unartig.studioserver.model;
  * this model class is based on a view;
  * all product sales shall be reported in a consolidated overview plus the most important calculations are added for the sales of each album;
  * each *album* is listed on one line
+ * todo check for usage or delete
  */
 public class ReportConsSalesPerAlbum extends GeneratedReportConsSalesPerAlbum
 {

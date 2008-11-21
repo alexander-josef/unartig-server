@@ -161,7 +161,6 @@
             <subclass
                     name="ch.unartig.studioserver.model.SportsEvent"
                     discriminator-value="SPORTSEVENT"
-                    extends="ch.unartig.studioserver.model.Event"
                     >
                 <meta attribute="scope-class" inherit="false">public abstract</meta>
                 <meta attribute="generated-class" inherit="false">ch.unartig.studioserver.model.GeneratedSportsEvent</meta>

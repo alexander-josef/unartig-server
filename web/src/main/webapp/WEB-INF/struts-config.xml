@@ -781,8 +781,8 @@
         <!-- Set Module-awareness to true -->
         <set-property property="moduleAware" value="true"/>
 
-        <set-property property="httpPort" value="80"/>
-        <set-property property="httpsPort" value="443"/>
+        <set-property property="httpPort" value="8080"/>
+        <set-property property="httpsPort" value="8443"/>
         <set-property property="enable" value="true"/>
         <set-property property="addSession" value="true"/>
     </plug-in>
