@@ -206,6 +206,7 @@ public class CoplaPhotoOrder implements PhotoOrderIF
     private int errorCode;
     private static final int _DELIVERY_ID_NO_SHIPPING_HANDLING = 8;
     private boolean simulateOrderOnly;
+    private static final int HTTP_CONNECTION_TIMEOUT_IN_MILLISECONDS = 10000;
 
     /**
      * private constructor only to be used with main method
@@ -719,7 +720,7 @@ public class CoplaPhotoOrder implements PhotoOrderIF
     }
 
     /**
-     * add  order items for this order. can be called many times
+     * Add  order items for this order. can be called many times
      * request must be POST method<br/>
      * calc =1: return a product summary<br/>
      * payid = 4: Invoice (Switzerland only, probably !!!
@@ -780,7 +781,7 @@ public class CoplaPhotoOrder implements PhotoOrderIF
         {
             // execute method and handle any error responses.
             // increase standard timeout of 5000 ms
-            httpClient.setConnectionTimeout(10000);
+            httpClient.setConnectionTimeout(HTTP_CONNECTION_TIMEOUT_IN_MILLISECONDS);
             responseCode = httpClient.executeMethod(post);
             _logger.debug("responseCode = " + responseCode);
             in = post.getResponseBodyAsStream();
@@ -812,7 +813,7 @@ public class CoplaPhotoOrder implements PhotoOrderIF
     }
 
     /**
-     * return the price of a digital prodoct as it is stored in the product db
+     * Return the price of a digital prodoct as it is stored in the product db
      * <p> the price will be in minor units. Example:
      * <p> Digital Negative costs 20 CHF.
      * <p> return value will be 2000

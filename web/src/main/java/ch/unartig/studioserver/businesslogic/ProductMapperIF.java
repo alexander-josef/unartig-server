@@ -16,16 +16,16 @@
 *
 *************************************************
 * $Log$
-* Revision 1.2  2007/03/14 02:41:01  alex
-* initial checkin
-*
-* Revision 1.1  2007/03/13 23:22:44  alex
-* initial checkin
 *
 ****************************************************************/
 package ch.unartig.studioserver.businesslogic;
 
+import ch.unartig.exceptions.UnartigException;
+import ch.unartig.studioserver.model.Price;
 import ch.unartig.studioserver.model.Product;
+import ch.unartig.studioserver.model.ProductType;
+
+import java.math.BigDecimal;
 
 
 /**
@@ -38,6 +38,20 @@ public interface ProductMapperIF {
      * @param product the unartig product that needs an external ID mapped
      * @return the string that identifies the mapped product
      */
-    public String map(Product product);
+    public String getMappedProductId(Product product);
+
+
+    public String getMappedProductId(Long productTypeId,Long priceId);
+
+
+    /**
+     *
+     * @param product product object
+     * @return The Amount that goes to unartig from this product after costs from a partner for  production, shipping, invoicing etc. have been deducted.
+     * @throws UnartigException In case a mapping error occurs.
+     */
+    public BigDecimal getUnartigEarnings(Product product) throws UnartigException;
+    public BigDecimal getUnartigEarnings(ProductType productType, Price price) throws UnartigException;
+    public BigDecimal getUnartigEarnings(Long productTypeId, Long priceId) throws UnartigException;
 
 }
