@@ -13,12 +13,12 @@
 
     <div id="popup">
 
-        <h3>You can now order your pictures as digital files!</h3>
+        <h3>You can order your pictures as digital files!</h3>
 
         <p>Customers often asked for a donwload service to purchase pictures from our website. In response we extended
-            our product list by two new digital products.<br/>
+            our product list by two digital products.<br/>
             You can now not only purchase prints but also the digital files of your pictures.
-            After placing an order for a digital product you receive an E-Mail containing a link for downloading the
+            After placing an order for a digital product you receive an email containing a link for downloading the
             file. The link will be active for 7 days within which you have access to the ordered files.</p>
             <br/>
             =========================== new products ===========================

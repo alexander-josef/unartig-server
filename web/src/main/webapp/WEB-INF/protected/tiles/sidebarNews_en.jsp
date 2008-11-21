@@ -13,7 +13,7 @@
 </div>--%>
 <div class="sidebarElement">
     <h3 class="sidebarContent">New products!</h3>
-    <p class="sidebarContent"><span>You can now order your pictures as digital files.</span></p>
+    <p class="sidebarContent"><span>You can also download your pictures as digital files.</span></p>
     <p class="sidebarContent"><html:link action="/newProduct-en" onclick="PriceList=window.open('/newProduct-en.html','Preisliste','toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=no,resizable=no,width=600px,height=600px,left=200px,top=100px'); PriceList.focus(); return false;">
         <img src="/images/button/new-products-en.gif" alt="neue Produkte"/>
     </html:link>
