@@ -135,7 +135,7 @@ todo: beim aendern eines photos weit unten in der shoppingcartliste wird immer w
                                 <html:option value="-1">
                                     <bean:message bundle="BUTTONS" key="product.choose"/>
                                 </html:option>
-                                <html:optionsCollection name="album" property="products" label="productType.name" value="productId"/>
+                                <html:optionsCollection name="album" property="activeProducts" label="productType.name" value="productId"/>
                             <%--</c:if>--%>
                             <%--<c:if test="${photo.album.priceSegment.priceSegmentId == 2}">--%>
                                 <%-- 5-er preisliste --%>
