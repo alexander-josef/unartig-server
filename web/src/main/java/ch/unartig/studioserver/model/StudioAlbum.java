@@ -757,17 +757,36 @@ public class StudioAlbum extends GeneratedStudioAlbum
     }
 
     /**
-     * Return a map containing the productTypeId as key and the productType as Value
-     * @return
+     * Return a map containing the productTypeId as key and the productType as Value.
+     *
+     * @return All products that are not set to inactive
      */
     public Map getAvailableProductTypes() {
 
         Map productTypeMap = new HashMap();
-        for (Iterator iterator = getProducts().iterator(); iterator.hasNext();) {
-            Product product = (Product) iterator.next();
+        for (Object o : getProducts()) {
+            Product product = (Product) o;
             ProductType productType = product.getProductType();
-            productTypeMap.put(productType.getProductTypeId(),productType);
+            productTypeMap.put(productType.getProductTypeId(), productType);
         }
         return productTypeMap;
     }
+
+    /**
+     * Only products that are not flagged for inactive shall be shown in the product information or shopping cart.
+     * @return Active products (products that don't have the inactvie flag)
+     */
+    public Set getActiveProducts()
+    {
+        Set<Product> activeProducts = new HashSet<Product>();
+        Set allProductsForAlbum = getProducts();
+        for (Object anAllProductsForAlbum : allProductsForAlbum) {
+            Product product = (Product) anAllProductsForAlbum;
+            if (product.getInactive() !=null && !product.getInactive()) {
+                activeProducts.add(product);
+            }
+        }
+        return activeProducts;
+    }
+    
 }
