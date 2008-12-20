@@ -222,7 +222,7 @@
         <li><a href="/Contact.html">Kontakt</a>|</li>
 
         <li><a href="/FAQ.html">FAQ</a>|</li>
-        <li><a href="/Copyright.html">&copy; unartig AG 2009</a>|</li>
+        <li><a href="/Copyright.html">&copy; unartig AG 2005-2009</a>|</li>
         <li><a href="/Privacy.html">DATENSCHUTZ</a>|</li>
         <li><a href="/AGB.html">ALLGEMEINE GESCHÄFTSBESTIMMUNGEN</a>|</li>
 

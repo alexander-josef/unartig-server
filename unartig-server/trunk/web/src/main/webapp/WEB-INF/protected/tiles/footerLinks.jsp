@@ -3,7 +3,7 @@
 <html:xhtml/>
 
 <%--<ul id="footerlinks">
-    <li><a href="/Copyright.html">&copy; unartig AG 2009</a></li>
+    <li><a href="/Copyright.html">&copy; unartig AG 2005-2009</a></li>
     <li><a href="/Privacy.html"><bean:message bundle="CONTENT" key="link.privacy"  /></a></li>
     <li><a href="/AGB.html"><bean:message bundle="CONTENT" key="link.agb"  /></a></li>
 </ul>--%>
