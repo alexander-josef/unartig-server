@@ -40,24 +40,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" readonly="true" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/protected/unartignewProduct-en.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/protected/unartignewProduct-en.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/protected/layout/layoutNoBanner.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/protected/layout/layoutNoBanner.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/protected/layout/layoutNoBannerSC.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/protected/layout/layoutNoBannerSC.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/unArtigSerVer.iws" afterPath="$PROJECT_DIR$/unArtigSerVer.iws" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/protected/downloadExample.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/protected/downloadExample.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/protected/layout/layoutBannerAlbum.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/protected/layout/layoutBannerAlbum.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ch/unartig/studioserver/model/StudioAlbum.java" afterPath="$PROJECT_DIR$/src/main/java/ch/unartig/studioserver/model/StudioAlbum.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/error.html" afterPath="$PROJECT_DIR$/src/main/webapp/error.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/protected/unartignewProduct-fr.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/protected/unartignewProduct-fr.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/protected/layout/layoutBanner.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/protected/layout/layoutBanner.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/protected/layout/layoutNoBanner.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/protected/layout/layoutNoBanner.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/protected/layout/layoutNoBannerAlbum.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/protected/layout/layoutNoBannerAlbum.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/protected/tiles/htmlHeadStandard.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/protected/tiles/htmlHeadStandard.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/protected/unartignewProduct-de.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/protected/unartignewProduct-de.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/unArtigSerVer.ipr" afterPath="$PROJECT_DIR$/unArtigSerVer.ipr" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/protected/unartigExplainPrint.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/protected/unartigExplainPrint.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/protected/unartigExplainDigital.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/protected/unartigExplainDigital.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/protected/layout/layoutBannerAlbum.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/protected/layout/layoutBannerAlbum.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/protected/tiles/footerLinks.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/protected/tiles/footerLinks.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/maintenance.htm" afterPath="$PROJECT_DIR$/src/main/webapp/maintenance.htm" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/protected/layout/layoutBanner.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/protected/layout/layoutBanner.jsp" />
     </list>
     <ignored path="unArtigSerVer.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -286,7 +276,7 @@
       <file leaf-file-name="layoutBanner.jsp" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/protected/layout/layoutBanner.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="70" column="42" selection-start="2784" selection-end="2784" vertical-scroll-proportion="-3.1052632">
+            <state line="70" column="42" selection-start="2784" selection-end="2784" vertical-scroll-proportion="-7.3157897">
               <folding />
             </state>
           </provider>
@@ -295,7 +285,7 @@
       <file leaf-file-name="layoutBannerAlbum.jsp" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/protected/layout/layoutBannerAlbum.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="54" column="42" selection-start="2340" selection-end="2340" vertical-scroll-proportion="-7.6842103">
+            <state line="54" column="42" selection-start="2340" selection-end="2340" vertical-scroll-proportion="-7.3157897">
               <folding />
             </state>
           </provider>
@@ -304,7 +294,7 @@
       <file leaf-file-name="layoutNoBanner.jsp" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/protected/layout/layoutNoBanner.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="50" column="42" selection-start="2227" selection-end="2227" vertical-scroll-proportion="-12.315789">
+            <state line="50" column="42" selection-start="2227" selection-end="2227" vertical-scroll-proportion="-11.315789">
               <folding />
             </state>
           </provider>
@@ -313,7 +303,7 @@
       <file leaf-file-name="layoutNoBannerAlbum.jsp" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/protected/layout/layoutNoBannerAlbum.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="58" column="42" selection-start="2389" selection-end="2389" vertical-scroll-proportion="-11.684211">
+            <state line="58" column="42" selection-start="2389" selection-end="2389" vertical-scroll-proportion="-10.684211">
               <folding />
             </state>
           </provider>
@@ -322,7 +312,7 @@
       <file leaf-file-name="layoutNoBannerSC.jsp" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/protected/layout/layoutNoBannerSC.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="52" column="42" selection-start="2279" selection-end="2279" vertical-scroll-proportion="-12.315789">
+            <state line="52" column="42" selection-start="2279" selection-end="2279" vertical-scroll-proportion="-11.315789">
               <folding />
             </state>
           </provider>
@@ -726,7 +716,7 @@
       <window_info id="Find" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32786885" sideWeight="0.5" order="2" side_tool="false" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32997844" sideWeight="0.6726027" order="3" side_tool="false" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="7" side_tool="false" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.66798943" sideWeight="0.5" order="22" side_tool="false" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.6666667" sideWeight="0.5" order="22" side_tool="false" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.66402113" sideWeight="0.5" order="15" side_tool="false" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" />
@@ -787,7 +777,7 @@
     <option name="PERFORM_CHECKOUT_IN_BACKGROUND" value="true" />
     <option name="PERFORM_ADD_REMOVE_IN_BACKGROUND" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="updating contact information. using aj's cell phone" />
+    <option name="LAST_COMMIT_MESSAGE" value="updating copyright information to new year" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="REFORMAT_BEFORE_FILE_COMMIT" value="false" />
@@ -806,6 +796,7 @@
     <MESSAGE value="legacy products adjustments: introduce 'inactive' column for products that shall not be offered anymore (but needed when doing the reports over the orderitems)" />
     <MESSAGE value="adjust table name 'customer' to 'customers' to follow the conventions" />
     <MESSAGE value="updating contact information. using aj's cell phone" />
+    <MESSAGE value="updating copyright information to new year" />
   </component>
   <component name="VssConfiguration">
     <option name="CLIENT_PATH" value="" />
@@ -940,35 +931,35 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/protected/layout/layoutBanner.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="70" column="42" selection-start="2784" selection-end="2784" vertical-scroll-proportion="-3.1052632">
+        <state line="70" column="42" selection-start="2784" selection-end="2784" vertical-scroll-proportion="-7.3157897">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/protected/layout/layoutBannerAlbum.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="54" column="42" selection-start="2340" selection-end="2340" vertical-scroll-proportion="-7.6842103">
+        <state line="54" column="42" selection-start="2340" selection-end="2340" vertical-scroll-proportion="-7.3157897">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/protected/layout/layoutNoBanner.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="50" column="42" selection-start="2227" selection-end="2227" vertical-scroll-proportion="-12.315789">
+        <state line="50" column="42" selection-start="2227" selection-end="2227" vertical-scroll-proportion="-11.315789">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/protected/layout/layoutNoBannerAlbum.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="58" column="42" selection-start="2389" selection-end="2389" vertical-scroll-proportion="-11.684211">
+        <state line="58" column="42" selection-start="2389" selection-end="2389" vertical-scroll-proportion="-10.684211">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/protected/layout/layoutNoBannerSC.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="52" column="42" selection-start="2279" selection-end="2279" vertical-scroll-proportion="-12.315789">
+        <state line="52" column="42" selection-start="2279" selection-end="2279" vertical-scroll-proportion="-11.315789">
           <folding />
         </state>
       </provider>
