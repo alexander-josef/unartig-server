@@ -4,7 +4,7 @@
 <html:xhtml/>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 <%-- todo: language depending keywords --%>
-<meta name="author" content="unartig --www.unartig.ch--; (c)2005-2006"/>
+<meta name="author" content="unartig --www.unartig.ch--; (c)2005-2009"/>
 <meta name="keywords" content="unartig, foto, fotos, photo, photos, online-album, bestellen, album, service, anlass, ball, event, photography, eth, polyball"/>
 <link href="/css/tree.css" rel="stylesheet" type="text/css"/>
 <link href="/css/main.css" rel="stylesheet" type="text/css"/>

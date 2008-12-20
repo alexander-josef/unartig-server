@@ -52,7 +52,7 @@
             <li><a href="/About.html"><bean:message bundle="CONTENT" key="link.about"/></a>|</li>
             <li><a href="/Contact.html"><bean:message bundle="CONTENT" key="link.contact"/></a>|</li>
             <li><a href="/FAQ.html"><bean:message bundle="CONTENT" key="link.faq"/></a>|</li>
-            <li><a href="/Copyright.html">&copy; unartig AG 2006</a>|</li>
+            <li><a href="/Copyright.html">&copy; unartig AG 2009</a>|</li>
             <li><a href="/Privacy.html"><bean:message bundle="CONTENT" key="link.privacy"  /></a>|</li>
             <li><a href="/AGB.html"><bean:message bundle="CONTENT" key="link.agb"  /></a>|</li>
             <li><a href="/setLocale.html?language=de">DE</a>|</li>
