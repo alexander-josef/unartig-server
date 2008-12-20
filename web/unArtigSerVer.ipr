@@ -369,20 +369,6 @@
         <entry key="$PROJECT_DIR$">
           <value>
             <SvnBranchConfiguration>
-              <option name="branchMap">
-                <map>
-                  <entry key="svn+ssh://svn.unartig.ch/opt/svn/repos/unartig-server/branches">
-                    <value>
-                      <list />
-                    </value>
-                  </entry>
-                  <entry key="svn+ssh://svn.unartig.ch/opt/svn/repos/unartig-server/tags">
-                    <value>
-                      <list />
-                    </value>
-                  </entry>
-                </map>
-              </option>
               <option name="branchUrls">
                 <list>
                   <option value="svn+ssh://svn.unartig.ch/opt/svn/repos/unartig-server/branches" />

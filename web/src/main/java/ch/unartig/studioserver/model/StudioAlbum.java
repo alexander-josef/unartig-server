@@ -782,7 +782,7 @@ public class StudioAlbum extends GeneratedStudioAlbum
         Set allProductsForAlbum = getProducts();
         for (Object anAllProductsForAlbum : allProductsForAlbum) {
             Product product = (Product) anAllProductsForAlbum;
-            if (product.getInactive() !=null && !product.getInactive()) {
+            if (product.getInactive() ==null || !product.getInactive()) { // either null or NOT inactive
                 activeProducts.add(product);
             }
         }
