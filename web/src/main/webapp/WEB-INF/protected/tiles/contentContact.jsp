@@ -34,7 +34,7 @@
         unartig AG<br/>
 
         Clausiusstrasse 34, 8006 Zürich<br/>
-        Tel +41 44 251 0009, Fax +41 44 251 05 02<br/>
+        Tel +41 (0)79 600 3561<br/>
         <img src="/images/Email_unartig.gif" alt="E-Mail unartig Kundendienst"/>
     </p>
 
