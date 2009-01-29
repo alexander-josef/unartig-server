@@ -223,7 +223,6 @@ public final class Registry
     public static float _imageQuality = _IMAGE_QUALITY_STANDARD;
     public static float _ImageSharpFactor = _SHARP_FACTOR_STANDARD;
 
-    public static long oipsOrderPeriod;
 
     public static final String _STRATEGY_IMPL_PACKAGE = "ch.unartig.studioserver.businesslogic.";
     public static final String _POPULATOR_STRATEGY_SUFFIX = "PopulatorImpl";
@@ -344,12 +343,6 @@ public final class Registry
         setSimulateOrderOnly("true".equals(appSettings.getMessage("simulateOrderOnly")));
         _logger.info("***** simulate order only flag= " + appSettings.getMessage("simulateOrderOnly"));
 
-
-        String oipsOrderPeriod = appSettings.getMessage("oipsOrderPeriod");
-        if (oipsOrderPeriod != null && Long.parseLong(oipsOrderPeriod) > 0)
-        {
-            setOipsOrderPeriod(Long.parseLong(oipsOrderPeriod));
-        }
 
         _logger.debug("getMessage oipsColorcorrection: "  +appSettings.getMessage("oipsColorcorrection"));
         String oipsColorcorrection = appSettings.getMessage("oipsColorcorrection");
@@ -504,15 +497,6 @@ public final class Registry
         Registry.demoOrderMode = demoOrderMode;
     }
 
-    public static long getOipsOrderPeriod()
-    {
-        return oipsOrderPeriod;
-    }
-
-    public static void setOipsOrderPeriod(long oipsOrderPeriod)
-    {
-        Registry.oipsOrderPeriod = oipsOrderPeriod;
-    }
 
     public static String getOipsColorcorrection()
     {
