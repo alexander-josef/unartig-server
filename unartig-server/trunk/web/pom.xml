@@ -60,7 +60,7 @@
             <artifactId>bsh</artifactId>
             <version>2.0b4</version>
         </dependency>
-        
+
 
         <dependency>
             <groupId>securityfilter</groupId>
@@ -116,7 +116,7 @@
             <artifactId>commons-beanutils</artifactId>
             <version>1.7.0</version>
         </dependency>
-        
+
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
@@ -163,9 +163,14 @@
     <build>
         <finalName>ROOT</finalName>
 
+        <!--<filters>-->
+        <!--<filter>src/main/filters/customSettings.properties</filter>-->
+        <!--</filters>-->
+
         <filters>
-            <filter>src/main/filters/customSettings.properties</filter>
+            <filter>src/main/filters/${appConfigFilterFile}</filter>
         </filters>
+
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
@@ -258,29 +263,31 @@
     </build>
 
 
-    <!--
-        <profiles>
-            <profile>
-                <id>jboss4x</id>
-                <activation>
-                    <activeByDefault>true</activeByDefault>
-                </activation>
-                <properties>
-                    <containerId>jboss4x</containerId>
-                    <url>http://ovh.dl.sourceforge.net/sourceforge/jboss/jboss4.0.2.zip</url>
-                </properties>
-            </profile>
-            <profile>
-                <id>tomcat5x</id>
-                <properties>
-                    <containerId>tomcat5x</containerId>
-                    <url>http://www.apache.org/dist/jakarta/tomcat-5/v5.0.30/bin/
-                        jakarta-tomcat-5.0.30.zip
-                    </url>
-                </properties>
-            </profile>
-        </profiles>
-    -->
+    <profiles>
+
+        <profile>
+            <id>prod</id>
+            <properties>
+                <appConfigFilterFile>prod.properties</appConfigFilterFile>
+            </properties>
+        </profile>
+
+
+        <profile>
+            <id>dev-local</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <tomcatUsername>admin</tomcatUsername>
+                <tomcatPassword></tomcatPassword>
+                <appConfigFilterFile>customSettings.properties</appConfigFilterFile>
+            </properties>
+
+
+        </profile>
+
+    </profiles>
 
 
     <repositories>
