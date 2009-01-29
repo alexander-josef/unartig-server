@@ -138,23 +138,6 @@ public class ReportDAO
         retVal = HibernateUtil.find(query, params);
         return retVal;
 
-/*
-        query = "select new ch.unartig.studioserver.model.ReportConsSalesPerAlbum( report.eventName,report.albumName, report.albumId, " +
-                "   sum(prod10_er), " +
-                "   sum(prod11_er)," +
-                "   sum(prod13_er)," +
-                "   sum(prod20_er)," +
-                "   sum(prod30x45)," +
-                "   sum(prod40x60)," +
-                "   sum(prod50x75)," +
-                "   sum(prodMousepad), " +
-                "   (sum(prod10_er) + sum(prod11_er) + sum(prod13_er) + sum(prod20_er) + sum(prod30x45) + sum(prod40x60) + sum(prod50x75) + sum(prodMousepad))," + // Total Photos
-                "   count(totalPhotosOrdered) ," + // Total Best Per Album
-                "   sum(TOTAL_CHF)," + // Total CHF per Album
-                "   (sum(prod10_er) + sum(prod11_er) + sum(prod13_er) + sum(prod20_er) + sum(prod30x45) + sum(prod40x60) + sum(prod50x75) + sum(prodMousepad)) / count(`TOTAL_Best.`), " +
-                "   sum(TOTAL_CHF) / count(`TOTAL_Best.`)  ) " +
-                "from ReportConsSalesPerAlbumDate report ";
-*/
 
     }
 
