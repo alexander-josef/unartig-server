@@ -308,7 +308,7 @@ public abstract class GenericLevel extends GeneratedGenericLevel implements Comp
 
     private String getLevelDataPath()
     {
-        return Registry.getDataPath() + getGenericLevelId().toString() + "/";
+        return new File(Registry.getDataPath(),getGenericLevelId().toString()).getPath();
     }
 
     /**

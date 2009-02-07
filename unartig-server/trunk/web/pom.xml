@@ -271,6 +271,12 @@
                 <appConfigFilterFile>prod.properties</appConfigFilterFile>
             </properties>
         </profile>
+        <profile>
+            <id>mac-local</id>
+            <properties>
+                <appConfigFilterFile>mac-local.properties</appConfigFilterFile>
+            </properties>
+        </profile>
 
 
         <profile>

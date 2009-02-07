@@ -3,7 +3,7 @@
               auth="Container"
               type="javax.sql.DataSource"
               driverClassName="org.postgresql.Driver"
-              url="jdbc:postgresql://localhost:5432/repli-unartig"
+              url="jdbc:postgresql://localhost:5432/unartig"
               username="unartig"
               password="unartig"
               maxActive="50"

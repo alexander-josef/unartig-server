@@ -59,7 +59,7 @@ ALTER TABLE prices2producttypes OWNER TO unartig;
 -- productType
 --
 INSERT INTO producttypes (producttypeid, name, description, digitalproduct) VALUES (2, 'digifoto 400 x 600', 'digital foto for download 400 by 600 pixels', true);
-INSERT INTO producttypes (producttypeid, name, description, digitalproduct) VALUES (3, 'Hochaufgelöst', 'digital foto file for download in the native resolution', true);
+INSERT INTO producttypes (producttypeid, name, description, digitalproduct) VALUES (3, 'Hochaufgel√∂st', 'digital foto file for download in the native resolution', true);
 INSERT INTO producttypes (producttypeid, name, description, digitalproduct) VALUES (4, '10x15cm Abzug', 'paper print 10 x 15 cm provided by colorplaza', false);
 INSERT INTO producttypes (producttypeid, name, description, digitalproduct) VALUES (5, '11x17cm Abzug', 'paper print 11 x 17 cm  provided by colorplaza', false);
 INSERT INTO producttypes (producttypeid, name, description, digitalproduct) VALUES (6, '13x19cm Abzug', 'paper print 13 x 19 cm provided by colorplaza', false);
