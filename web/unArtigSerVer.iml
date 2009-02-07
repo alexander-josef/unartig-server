@@ -211,6 +211,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="hibernate3" level="project" />
     <orderEntry type="library" exported="" name="Maven: org.zkoss.zk:zhtml:3.0.0" level="project" />
     <orderEntry type="library" exported="" name="Maven: org.zkoss.common:zcommon:3.0.0" level="project" />
     <orderEntry type="library" exported="" name="Maven: commons-fileupload:commons-fileupload:1.1.1" level="project" />
@@ -251,7 +252,6 @@
     <orderEntry type="library" exported="" name="Maven: cglib:cglib:2.1_3" level="project" />
     <orderEntry type="library" exported="" name="Maven: asm:asm:1.5.3" level="project" />
     <orderEntry type="library" exported="" name="Maven: xalan:xalan:2.5.1" level="project" />
-    <orderEntry type="library" name="hibernate3" level="project" />
   </component>
 </module>
 

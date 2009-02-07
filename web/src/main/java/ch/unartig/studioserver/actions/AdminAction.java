@@ -199,6 +199,7 @@ import org.apache.struts.upload.FormFile;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.File;
 import java.lang.reflect.InvocationTargetException;
 import java.text.ParseException;
 import java.util.*;
@@ -988,7 +989,8 @@ public class AdminAction extends MappingDispatchAction
     }
 
     /**
-     * takes the FormFile from the admin form and writes the index photo file to the appropriate location
+     * When a new level is created, a new index Photo File needs to be written.
+     * Takes the FormFile from the admin form and writes the index photo file to the appropriate location
      *
      * @param adminForm
      * @param newLevel
@@ -997,7 +999,7 @@ public class AdminAction extends MappingDispatchAction
     private void writeIndexPhotoFile(AdminForm adminForm, GenericLevel newLevel) throws UnartigException
     {
         final FormFile indexPhoto = adminForm.getIndexPhoto();
-        String nameIndexPhoto = Registry.getDataPath() + newLevel.getGenericLevelId() + "/" + Registry._LEVEL_INDEX_IMAGE_NAME;
+        File nameIndexPhoto = new File(Registry.getDataPath(), newLevel.getGenericLevelId() + "/" + Registry._LEVEL_INDEX_IMAGE_NAME);
         try
         {
             FileUtils.copyFile(indexPhoto.getInputStream(), nameIndexPhoto);
