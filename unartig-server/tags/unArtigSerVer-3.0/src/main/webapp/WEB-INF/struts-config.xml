@@ -1,0 +1,801 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!DOCTYPE struts-config PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
+        "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+
+<struts-config>
+
+    <!-- ================================================ Form Bean Definitions -->
+
+    <form-beans>
+        <form-bean
+                name="adminForm"
+                type="ch.unartig.studioserver.beans.AdminForm"/>
+
+        <form-bean
+                name="checkOutForm"
+                type="ch.unartig.studioserver.beans.CheckOutForm"/>
+
+        <!--
+                <form-bean
+                        name="navBean"
+                        type="org.apache.struts.action.DynaActionForm"
+                        >
+                    <form-property
+                            name="navTitle"
+                            type="java.lang.String"
+                            />
+                    <form-property
+                            name="longTitle"
+                            type="java.lang.String"
+                            />
+                    <form-property
+                            name="description"
+                            type="java.lang.String"
+                            />
+                    <form-property
+                            name="categoryId"
+                            type="java.lang.Long"
+                            />
+                    <form-property
+                            name="eventGroupId"
+                            type="java.lang.Long"
+                            />
+                    <form-property
+                            name="eventId"
+                            type="java.lang.Long"
+                            />
+                    <form-property
+                            name="isPrivate"
+                            type="java.lang.Boolean"
+                            />
+                </form-bean>
+        -->
+
+        <form-bean
+                name="localeBean"
+                type="org.apache.struts.action.DynaActionForm"
+                >
+            <form-property
+                    name="language"
+                    type="java.lang.String"
+                    />
+            <form-property
+                    name="country"
+                    type="java.lang.String"
+                    />
+        </form-bean>
+
+        <form-bean
+                name="authorizeForm"
+                type="org.apache.struts.action.DynaActionForm"
+                >
+            <form-property
+                    name="accessKey"
+                    type="java.lang.String"
+                    />
+        </form-bean>
+
+        <form-bean
+                name="customerServiceMessage"
+                type="org.apache.struts.validator.DynaValidatorForm"
+                >
+            <form-property
+                    name="sender"
+                    type="java.lang.String"
+                    />
+            <form-property
+                    name="fromAddress"
+                    type="java.lang.String"
+                    />
+            <form-property
+                    name="contactPhone"
+                    type="java.lang.String"
+                    />
+            <form-property
+                    name="subject"
+                    type="java.lang.String"
+                    />
+            <form-property
+                    name="message"
+                    type="java.lang.String"
+                    />
+        </form-bean>
+
+        <form-bean
+                name="removePhotoBean"
+                type="org.apache.struts.action.DynaActionForm"
+                >
+            <form-property
+                    name="orderedPhotoId"
+                    type="java.lang.Long"
+                    />
+        </form-bean>
+
+        <form-bean
+                name="optOutForm"
+                type="org.apache.struts.action.DynaActionForm"
+                >
+            <form-property
+                    name="noUnartigAccount"
+                    type="java.lang.Boolean"
+                    />
+            <form-property
+                    name="noCoplaEmails"
+                    type="java.lang.Boolean"
+                    />
+        </form-bean>
+
+        <form-bean
+                name="importDirBean"
+                type="org.apache.struts.action.DynaActionForm"
+                >
+            <form-property
+                    name="imagePath"
+                    type="java.lang.String"
+                    />
+            <form-property
+                    name="albumId"
+                    type="java.lang.Long"
+                    />
+            <form-property
+                    name="processImages"
+                    type="java.lang.Boolean"
+                    />
+        </form-bean>
+
+        <form-bean
+                name="reportForm"
+                type="org.apache.struts.action.DynaActionForm"
+                >
+            <form-property
+                    name="startDate"
+                    type="java.lang.String"
+                    />
+            <form-property
+                    name="endDate"
+                    type="java.lang.String"
+                    />
+           <form-property
+                    name="exportToExcel"
+                    type="java.lang.Boolean"
+                    />
+        </form-bean>
+
+        <form-bean name="displayForm" type="org.apache.struts.action.DynaActionForm">
+            <form-property name="page" type="java.lang.String"/>
+            <form-property name="albumId" type="java.lang.String"/>
+        </form-bean>
+
+        <form-bean name="albumForm" type="org.apache.struts.action.DynaActionForm">
+            <form-property name="hour" type="java.lang.Integer"/>
+            <form-property name="minutes" type="java.lang.String"/>
+            <form-property name="type" type="java.lang.String"/>
+            <form-property name="page" type="java.lang.String"/>
+        </form-bean>
+        <!--new form for sola 06-->
+        <form-bean name="sportsAlbumForm" type="org.apache.struts.action.DynaActionForm">
+            <form-property name="startNumber" type="java.lang.String"/>
+            <form-property name="etappe" type="java.lang.String"/>
+            <form-property name="page" type="java.lang.String"/>
+            <form-property name="callingLevel" type="java.lang.String"/>
+            <form-property name="albumLevel" type="java.lang.String"/>
+            <form-property name="eventAlbum" type="java.lang.Boolean" initial="false"/>
+            <form-property name="levelId" type="java.lang.String"/>
+        </form-bean>
+
+        <form-bean name="sportsAlbumMappingForm" type="org.apache.struts.action.DynaActionForm">
+            <form-property name="mappingFile" type="org.apache.struts.upload.FormFile"/>
+            <form-property name="sportsAlbumId" type="java.lang.Long"/>
+            <form-property name="photopointFinishDifference" type="java.lang.String"/>
+            <form-property name="photopointTolerance" type="java.lang.String"/>
+            <form-property name="photopointLocation" type="java.lang.String"/>
+        </form-bean>
+
+        <form-bean
+                name="shoppingCart"
+                type="ch.unartig.studioserver.beans.ShoppingCart"
+                >
+        </form-bean>
+    </form-beans>
+
+
+    <!-- ========================================= Global Exception Definitions -->
+
+    <global-exceptions>
+        <!-- sample exception handler
+        <exception
+            key="expired.password"
+            type="app.ExpiredPasswordException"
+            path="/changePassword.jsp"/>
+        end sample -->
+        <exception
+                key="errors.order.noShoppingCart"
+                type="ch.unartig.exceptions.UnartigSessionExpiredException"
+                path="/index.html"/>
+
+
+        <!--<exception type="java.lang.Exception" key="errors.unknown"   path=".unartigError1"/>-->
+        <!--<exception-->
+        <!--key="error.order.noShoppingCart"-->
+        <!--type="java.lang.Exception"-->
+        <!--path="/Error1.html"/>-->
+    </global-exceptions>
+
+
+    <!-- =========================================== Global Forward Definitions -->
+
+    <global-forwards>
+        <forward name="showAdminPage" path="/admin/admin.html" redirect="true"/>
+        <forward name="showNewAdminPage" path="/admin/over.html" redirect="true"/>
+        <forward name="showSingleAlbumUpload" path="/admin/upload.html"/>
+        <forward name="toCartSuccess" path="/toShoppingCart.html" redirect="true"/>
+        <forward name="databaseError" path=".unartigError1"/>
+        <forward name="error" path=".unartigError1"/>
+    </global-forwards>
+
+
+    <!-- =========================================== Action Mapping Definitions -->
+
+    <action-mappings type="org.apache.struts.config.SecureActionConfig">
+
+        <action path="/index" forward=".unartigHome">
+            <!--<set-property property="secure" value="false"/>-->
+        </action>
+
+
+        <!--todo: remove unused action links-->
+        <!--forwards will be called from 'real' actions-->
+
+        <!--Unartig Links -->
+
+
+        <action path="/About" forward=".unartigAbout"></action>
+        <action path="/Services" forward=".unartigServices"></action>
+        <action path="/Firm" forward=".unartigFirm"></action>
+        <action path="/Copyright" forward=".unartigCopyright"></action>
+        <action path="/Privacy" forward=".unartigPrivacy"></action>
+        <!--example for ssl redirection:-->
+        <action path="/AGB" forward=".unartigAGB">
+        </action>
+        <action path="/Partners" forward=".unartigPartners"></action>
+        <!--<action path="/Contact" forward="/temp_contact.jsp"></action>-->
+        <action path="/Contact" forward=".unartigContact"></action>
+        <action path="/PriceList" forward=".unartigPriceList"></action>
+        <action path="/FAQ" forward=".unartigFAQ"></action>
+        <!--find and order pictures-->
+        <!--<action path="/Overview" forward=".unartigOverview"></action>-->
+        <action path="/protectedAccess" forward=".unartigProtectedAccess"></action>
+        <!--<action path="/Album" forward=".unartigAlbum"></action>-->
+        <action path="/sportAlbum" forward=".unartigSportAlbum"></action>
+        <!--<action path="/Display" forward=".unartigDisplay"></action>-->
+        <!--<action path="/InShoppingCart" forward=".unartigInShoppingCart"></action>-->
+        <!--<action path="/ShoppingCartOver" forward=".unartigShoppingCartOver"></action>-->
+        <!--<action path="/ShoppingCartLogin" forward=".unartigShoppingCartLogin"></action>-->
+        <!--<action path="/ShoppingCartLoginNoLoginPass" forward=".unartigShoppingCartLoginNoLoginPass"></action>-->
+        <!--<action path="/ShoppingCartBilling" forward=".unartigShoppingCartBilling"></action>-->
+        <!--<action path="/ShoppingCartAddress" forward=".unartigShoppingCartAddress"></action>-->
+        <!--<action path="/ShoppingCartOrder" forward=".unartigShoppingCartOrder"></action>-->
+        <!--<action path="/ShoppingCartConfirmOUT" forward=".unartigShoppingCartConfirmOUT"></action>-->
+        <!--<action path="/ShoppingCartConfirmRegister" forward=".unartigShoppingCartConfirmRegister"></action>-->
+        <!--<action path="/ShoppingCartConfirmIN" forward=".unartigShoppingCartConfirmIN"></action>-->
+        <!--login, account et.c-->
+        <action path="/Login" forward=".unartigLogin"></action>
+        <action path="/loginError" forward="/WEB-INF/protected/security/error.jsp"></action>
+        <!--<action path="/LoginNoLoginPass" forward=".unartigLoginNoLoginPass"></action>-->
+        <!--<action path="/Register" forward=".unartigRegister"></action>-->
+        <!--<action path="/RegisterError" forward=".unartigRegisterError"></action>-->
+        <!--<action path="/Account" forward=".unartigAccount"></action>-->
+        <!--<action path="/AccountPers" forward=".unartigAccountPers"></action>-->
+        <!--<action path="/AccountEditEmail" forward=".unartigAccountEditEmail"></action>-->
+        <!--<action path="/AccountEditLoginPass" forward=".unartigAccountEditLoginPass"></action>-->
+        <!--<action path="/AccountEditAddressBill" forward=".unartigAccountEditAddressBill"></action>-->
+        <!--<action path="/AccountEditAddressMail" forward=".unartigAccountEditAddressMail"></action>-->
+        <!--<action path="/AccountEditBilling" forward=".unartigAccountEditBilling"></action>-->
+        <!--<action path="/AccountSet" forward=".unartigAccountSet"></action>-->
+        <!--<action path="/AccountAlbum" forward=".unartigAccountAlbum"></action>-->
+        <!--<action path="/AccountAlbumDelete" forward=".unartigAccountAlbumDelete"></action>-->
+        <!--<action path="/AccountDisplay" forward=".unartigAccountDisplay"></action>-->
+        <action path="/explainDigital" forward=".unartigExplainDigital"></action>
+        <action path="/explainPrint" forward=".unartigExplainPrint"></action>
+        <action path="/newProduct-de" forward="/WEB-INF/protected/unartignewProduct-de.jsp"></action>
+        <action path="/newProduct-en" forward="/WEB-INF/protected/unartignewProduct-en.jsp"></action>
+        <action path="/newProduct-fr" forward="/WEB-INF/protected/unartignewProduct-fr.jsp"></action>
+        <!--example of download page as documentation-->
+        <action path="/downloadExample" forward="/WEB-INF/protected/downloadExample.jsp"></action>
+        <!--<action path="/AccountHistory" forward=".unartigAccountHistory"></action>-->
+        <!--<action path="/AccountDelete" forward=".unartigAccountDelete"></action>-->
+        <!--fatal error pages-->
+        <action path="/Error1" forward=".unartigError1"></action>
+        <action path="/error" forward=".unartigError1"></action>
+        <!-- photographers -->
+        <action path="/Photographers" forward=".unartigPhotographers"></action>
+        <action path="/PhotographerMore" forward=".unartigPhotographerMore"></action>
+        <action path="/unartigPortfolio" forward=".unartigPortfolio"></action>
+        <!-- ///////////////////////////////////////// -->
+        <!-- PERMA LINKS                               -->
+        <!-- ///////////////////////////////////////// -->
+        <action path="/sola/impressionen"
+                forward="/sportsAlbum/161/Impressionen.html?page=1&amp;startNumber=&amp;etappe=161"/>
+        <action path="/sola/aktuell" forward="/sportsOverview/160/2006/show.html"/>
+
+        <!-- ///////////////////////////////////////// -->
+        <!--ADMIN action mappings; used for enter events, upload photos etc-->
+        <!-- ///////////////////////////////////////// -->
+        <action path="/admin/oldindex" forward="/WEB-INF/protected/admin/index.jsp"></action>
+
+        <!-- new-->
+        <action path="/admin/index" forward="/admin/over.html"/>
+
+        <action path="/admin/over" type="ch.unartig.studioserver.actions.AdminAction" scope="request"
+                parameter="getOverview"
+                name="adminForm"
+                roles="unartigadmin">
+            <forward name="levelOverview" path=".unartigAdminOver"/>
+        </action>
+
+         <action path="/admin/toggleAlbumPublishStatus" type="ch.unartig.studioserver.actions.AdminAction" scope="request"
+                parameter="toggleAlbumPublishStatus"
+                name="adminForm"
+                roles="unartigadmin">
+            <forward name="levelOverview" path="/admin/over.html" redirect="true"/>
+        </action>
+
+        <action path="/admin/startnumberMapping" type="ch.unartig.studioserver.actions.AdminAction"
+                scope="request"
+                parameter="startnumberMapping"
+                name="sportsAlbumMappingForm"
+                roles="unartigadmin">
+            <forward name="success" path="/admin/over.html"/>
+        </action>
+
+        <action path="/admin/finishtimeMapping" type="ch.unartig.studioserver.actions.AdminAction"
+                scope="request"
+                parameter="finishtimeMapping"
+                name="sportsAlbumMappingForm"
+                roles="unartigadmin">
+            <forward name="success" path=".unartigAdminOver"/>
+        </action>
+
+        <action path="/admin/deleteFinishtimeMappings" type="ch.unartig.studioserver.actions.AdminAction"
+                scope="request"
+                parameter="deleteFinishtimeMappings"
+                name="sportsAlbumMappingForm"
+                roles="unartigadmin">
+            <forward name="success" path=".unartigAdminOver"/>
+        </action>
+
+        <!--TEST TEST TEST-->
+                <action path="/admin/testTest" type="ch.unartig.studioserver.actions.AdminAction" scope="request"
+                        parameter="testTest"
+                        roles="unartigadmin">
+                    <forward name="success" path="/admin/over.html"/>
+                </action>
+        <!--TEST TEST TEST-->
+
+        <!--calls the page to enter a new level-->
+        <action path="/admin/levels" type="ch.unartig.studioserver.actions.AdminAction" scope="request"
+                parameter="levels"
+                name="adminForm"
+                roles="unartigadmin">
+            <forward name="adminResult" path=".unartigNewLevel"/>
+        </action>
+
+        <action path="/admin/editLevel" type="ch.unartig.studioserver.actions.AdminAction" scope="request"
+                parameter="editLevel"
+                name="adminForm"
+                roles="unartigadmin">
+            <forward name="success" path=".unartigEditLevel"/>
+        </action>
+
+        <action path="/admin/deleteLevel" type="ch.unartig.studioserver.actions.AdminAction" scope="request"
+                parameter="deleteLevel"
+                name="adminForm"
+                roles="unartigadmin">
+            <forward name="success" path="/admin/over.html" redirect="true"/>
+        </action>
+
+        <action path="/admin/updateLevel" type="ch.unartig.studioserver.actions.AdminAction" scope="request"
+                parameter="updateLevel"
+                name="adminForm"
+                roles="unartigadmin">
+            <forward name="success" path="/admin/editLevel.html" redirect="true"/>
+        </action>
+
+        <!-- input mask to either upload high-res files as zip, process and import in db OR to import a directory with high res pics on the server  -->
+        <action path="/admin/uploadAlbum" type="ch.unartig.studioserver.actions.AdminUploadAction" scope="request"
+                parameter="getSingleAlbumUploadPage"
+                roles="unartigadmin">
+            <forward name="singleAlbumUploadPage" path=".unartigUpload"/>
+        </action>
+
+        <!-- trigger an order on the admin page -->
+        <action path="/admin/orderAdmin" type="ch.unartig.studioserver.actions.AdminAction" scope="request"
+                parameter="triggerOrder"
+                name="adminForm"
+                roles="unartigadmin">
+            <forward name="customerAdmin" path=".unartigOrderAdmin"/>
+        </action>
+        <!-- new-->
+
+        <!--<action path="/admin/admin" type="ch.unartig.studioserver.actions.AdminAction" scope="request"-->
+        <!--parameter="levels"-->
+        <!--name="adminForm"-->
+        <!--roles="unartigadmin">-->
+        <!--<forward name="adminResult" path="/WEB-INF/protected/admin/index.jsp"/>-->
+        <!--</action>-->
+
+        <action path="/admin/newCategory" type="ch.unartig.studioserver.actions.AdminAction" scope="request"
+                parameter="newCategory"
+                name="adminForm"
+                roles="unartigadmin">
+            <forward name="success" path="/admin/over.html" redirect="true"/>
+        </action>
+
+        <action path="/admin/newLevel" type="ch.unartig.studioserver.actions.AdminAction" scope="request"
+                parameter="newLevel"
+                name="adminForm"
+                roles="unartigadmin"/>
+
+        <action path="/admin/upload" type="ch.unartig.studioserver.actions.AdminUploadAction" scope="request"
+                parameter="getSingleAlbumUploadPage"
+                roles="unartigadmin">
+            <forward name="singleAlbumUploadPage" path="/WEB-INF/protected/admin/singleAlbumUpload.jsp"/>
+        </action>
+
+        <action path="/admin/uploadSingleAlbum" scope="request" type="ch.unartig.studioserver.actions.AdminUploadAction"
+                parameter="uploadSingleAlbum"
+                roles="unartigadmin">
+            <forward name="showSingleAlbumUpload" path="/admin/uploadAlbum.html" redirect="true"/>
+        </action>
+        <!--  -->
+        <action path="/admin/importDirectory" scope="request" type="ch.unartig.studioserver.actions.AdminUploadAction"
+                name="importDirBean"
+                parameter="importDirectory"
+                roles="unartigadmin">
+            <forward name="showSingleAlbumUpload" path="/admin/uploadAlbum.html" redirect="true"/>
+        </action>
+
+        <action path="/generateNavTree" type="ch.unartig.studioserver.actions.AdminAction" scope="request"
+                parameter="generateNavTree">
+            <forward name="navTree" path="/upload_page/test.jsp"/>
+        </action>
+
+        <action path="/admin/triggerOrder" type="ch.unartig.studioserver.actions.AdminAction" scope="request"
+                parameter="triggerOrder">
+        </action>
+
+
+        <!--Page, albun and overview actions-->
+        <action path="/album/**" type="ch.unartig.studioserver.actions.AlbumAction"
+                scope="session"
+                parameter="{1}"
+                name="albumForm">
+            <forward name="index" path="/index.html"/>
+            <forward name="album" path=".unartigAlbum"/>
+            <forward name="error" path=".unartigError1"/>
+        </action>
+
+        <!--new album type for sola 06-->
+        <action path="/sportsAlbum/**" type="ch.unartig.studioserver.actions.SportsAlbumAction"
+                scope="session"
+                parameter="{1}"
+                name="sportsAlbumForm">
+            <forward name="index" path="/index.html"/>
+            <forward name="error" path=".unartigError1"/>
+            <forward name="album" path=".unartigSportsAlbum"/>
+        </action>
+
+
+        <action path="/display/**" type="ch.unartig.studioserver.actions.DisplayAction"
+                scope="request"
+                parameter="{1}"
+                name="displayForm">
+            <forward name="albumFallback" path="/index.html"/>
+            <forward name="display" path=".unartigDisplay"/>
+        </action>
+        <action path="/overview/**" type="ch.unartig.studioserver.actions.OverviewAction"
+                scope="request"
+                parameter="{1}">
+            <forward name="overviewFallback" path="/index.html"/>
+            <forward name="overview" path=".unartigOverview" redirect="true"/>
+        </action>
+
+        <!--new overview for SOLA -->
+        <action path="/sportsOverview/**" type="ch.unartig.studioserver.actions.SportsOverviewAction"
+                scope="session"
+                parameter="{1}"
+                name="sportsAlbumForm"
+                >
+            <forward name="overviewFallback" path="/index.html"/>
+            <forward name="overview" path=".unartigSportsOverview" redirect="true"/>
+        </action>
+
+
+        <!--for private levels:-->
+        <action path="/private/overview/**" scope="request" type="ch.unartig.studioserver.actions.PrivateAction"
+                parameter="{1}">
+            <forward name="overviewFallback" path="/index.html"/>
+            <forward name="success" path=".unartigProtectedAccess"/>
+        </action>
+
+        <action path="/private/authorize" type="ch.unartig.studioserver.actions.PrivateAuthorizeAction" scope="session"
+                parameter="levels"
+                name="authorizeForm"
+                >
+            <forward name="success" path=".unartigNewLevel"/>
+            <forward name="notAuthorized" path=".unartigProtectedAccess"/>
+        </action>
+
+
+        <!--set user-chosen locale:-->
+        <action path="/setLocale" scope="request" type="ch.unartig.studioserver.actions.UnartigLocaleAction"
+                name="localeBean">
+            <!--        <exception key="" type=""/>-->
+        </action>
+
+        <!--Shopping Cart-->
+        <action path="/placeInCart" type="ch.unartig.studioserver.actions.ShoppingCartAction"
+                parameter="placeInCart">
+            <forward name="inCartSuccess" path=".unartigInShoppingCart"/>
+        </action>
+        <action path="/toShoppingCart" type="ch.unartig.studioserver.actions.ShoppingCartAction"
+                parameter="toShoppingCart">
+            <set-property property="secure" value="false"/>
+            <forward name="shoppingCartPage" path=".unartigShoppingCartOver"/>
+            <forward name="databaseError" path=".unartigError1"/>
+        </action>
+        <action path="/removeFromCart" type="ch.unartig.studioserver.actions.ShoppingCartAction"
+                name="removePhotoBean"
+                parameter="removeFromCart">
+            <forward name="sessionExpired" path=".unartigError1"/>
+            <forward name="error" path=".unartigError1"/>
+        </action>
+        <action path="/updateShoppingCart" type="ch.unartig.studioserver.actions.ShoppingCartAction"
+                parameter="updateShoppingCart"
+                name="shoppingCart"
+                scope="session">
+            <forward name="shoppingCartPage" path=".unartigShoppingCartOver"/>
+            <forward name="checkOut" path="/startCheckOut.html" redirect="true"/>
+        </action>
+
+
+        <!--Check-Out-->
+        <action path="/startCheckOut" type="ch.unartig.studioserver.actions.CheckOutAction"
+                parameter="startCheckOut"
+                name="shoppingCart"
+                scope="session">
+            <set-property property="secure" value="true"/>
+            <forward name="toLogin" path="/coWizard_page1.html" redirect="true"/>
+            <forward name="backToCart" path="/toShoppingCart.html"/>
+            <forward name="error" path=".unartigError1"/>
+            <forward name="sessionExpired" path=".unartigError1"/>
+            <forward name="toEnterAddress" path="/coWizard_page2.html" redirect="true"/>
+        </action>
+        <!--todo: check session for validation errors and place in scope for the next request: -->
+        <action path="/coWizard_page1" forward=".unartigShoppingCartLogin"></action>
+
+        <action path="/checkOutAddress" type="ch.unartig.studioserver.actions.CheckOutAction"
+                parameter="checkOutAddress"
+                scope="session"
+                input="coError"
+                name="checkOutForm">
+            <set-property property="secure" value="true"/>
+            <forward name="toEnterAddress" path="/coWizard_page2.html" redirect="true"/>
+            <forward name="coError" path="/coWizard_page1_error.html"/>
+        </action>
+        <action path="/coWizard_page2" forward=".unartigShoppingCartAddress"></action>
+        <!--<action path="/coWizard_page1_error" forward=".unartigShoppingCartLogin" ></action>-->
+
+        <!--******** validation error treatment ********-->
+        <action path="/coWizard_page1_error" type="ch.unartig.studioserver.actions.CheckOutAction"
+                parameter="checkOutError">
+            <forward name="errorpage" path="/coWizard_page1_error_page.html" redirect="true"/>
+        </action>
+        <action path="/coWizard_page1_error_page" forward=".unartigShoppingCartLogin"></action>
+        <!--****************-->
+
+        <action path="/checkOutStoreAddress" type="ch.unartig.studioserver.actions.CheckOutAction"
+                parameter="checkOutStoreAddress"
+                name="checkOutForm"
+                scope="session"
+                input="coError"
+                >
+            <set-property property="secure" value="true"/>
+            <forward name="toBilling" path="/coWizard_page3.html" redirect="true"/>
+            <forward name="coError" path="/coWizard_page2_error.html"/>
+        </action>
+        <!--todo: use action, not just forward, check for necessary session attributes or show error page; currently an uncontrolled error occurs if session has epired on user is in shopping cart-->
+        <action path="/coWizard_page3" forward=".unartigShoppingCartBilling"></action>
+
+        <!--******** validation error treatment ********-->
+        <action path="/coWizard_page2_error" type="ch.unartig.studioserver.actions.CheckOutAction"
+                parameter="checkOutError">
+            <forward name="errorpage" path="/coWizard_page2_error_page.html" redirect="true"/>
+        </action>
+        <action path="/coWizard_page2_error_page" forward=".unartigShoppingCartAddress"></action>
+        <!--****************-->
+
+<!--After billing method:-->
+        <action path="/checkOutOverview" type="ch.unartig.studioserver.actions.CheckOutAction"
+                parameter="checkOutOverview"
+                name="checkOutForm"
+                scope="session"
+                input="coError"
+                >
+            <set-property property="secure" value="true"/>
+            <!--todo: better sessionExpired page-->
+            <forward name="sessionExpired" path=".unartigError1"/>
+            <forward name="checkOutOverviewSuccess" path="/coWizard_page4.html" redirect="true"/>
+
+
+
+            <forward name="coError" path=".unartigShoppingCartBilling"/>
+            <!--no redirection: (for testing)-->
+            <!--<forward name="coError" path="/coWizard_page3_error.html"/>-->
+
+        </action>
+        <!--check session also with get pages!-->
+        <action path="/coWizard_page4" type="ch.unartig.studioserver.actions.CheckOutAction"
+                parameter="checkSession"
+                >
+            <forward name="success" path=".unartigShoppingCartOrder"/>
+        </action>
+
+        <!--******** validation error treatment ********-->
+        <action path="/coWizard_page3_error" type="ch.unartig.studioserver.actions.CheckOutAction"
+                parameter="checkOutError">
+            <forward name="errorpage" path="/coWizard_page3_error_page.html" redirect="true"/>
+        </action>
+        <action path="/coWizard_page3_error_page" forward=".unartigShoppingCartBilling"></action>
+        <!--****************-->
+
+
+        <action path="/checkOutConfirm" type="ch.unartig.studioserver.actions.CheckOutAction"
+                parameter="checkOutConfirm"
+                name="checkOutForm"
+                scope="session"
+                input="coError"
+                >
+            <set-property property="secure" value="true"/>
+            <forward name="sessionExpired" path=".unartigError1"/>
+            <!--not logged in (standard forward !)-->
+            <forward name="checkOutConfirmOut" path="/coWizard_page5.html" redirect="true"/>
+            <!--credit card issue-->
+            <forward name="checkOutCcException" path="/coWizard_page3.html" redirect="true"/>
+            <!--logged in-->
+            <forward name="checkOutConfirmIn" path=".unartigShoppingCartConfirmIN"/>
+            <!--not logged in but obviously registered-->
+            <forward name="checkOutConfirmRegister" path=".unartigShoppingCartConfirmRegister"/>
+            <forward name="coError" path="/coWizard_page4_error.html"/>
+        </action>
+        <action path="/coWizard_page5" forward=".unartigShoppingCartConfirmOUT">
+            <set-property property="secure" value="false"/>
+        </action>
+
+        <!--******** validation error treatment ********-->
+        <action path="/coWizard_page4_error" type="ch.unartig.studioserver.actions.CheckOutAction"
+                parameter="checkOutError">
+            <forward name="errorpage" path="/coWizard_page4_error_page.html" redirect="true"/>
+        </action>
+        <action path="/coWizard_page4_error_page" forward=".unartigShoppingCartOrder"></action>
+        <!--****************-->
+
+        <!--Done Check-out-->
+
+
+        <!--User Actions NOT USED YET-->
+<!--
+        <action path="/login" type="ch.unartig.studioserver.actions.UserAction"
+                parameter="login">
+            <forward name="toEnterAddress" path=".unartigShoppingCartAddress"/>
+        </action>
+-->
+        <!--User Actions NOT USED YET-->
+
+        <action path="/accountOptOut" type="ch.unartig.studioserver.actions.UserAction"
+                parameter="accountOptOut"
+                name="optOutForm">
+            <forward name="home" path="/index.html" redirect="true"/>
+        </action>
+
+        <!--Customer Service-->
+        <action path="/sendCustomerServiceMessage" type="ch.unartig.studioserver.actions.CustomerServiceAction"
+                parameter="sendMessage"
+                name="customerServiceMessage"
+                input="contactError"
+                >
+            <!--<forward name="toContactPage" path="/temp_contact.jsp"/>-->
+            <!--use redirect to prohibit resending of message-->
+            <forward name="toContactPage" path="/SendMessageReply.html" redirect="true"/>
+            <forward name="contactError" path="/contactErrorAction.html"/>
+        </action>
+        <!--answer that will be redirected:-->
+        <action path="/SendMessageReply" forward=".unartigContact"></action>
+
+        <!--******** validation error treatment ********-->
+        <action path="/contactErrorAction" type="ch.unartig.studioserver.actions.CheckOutAction"
+                parameter="checkOutError">
+            <forward name="errorpage" path="/contact_error_page.html" redirect="true"/>
+        </action>
+        <action path="/contact_error_page" forward=".unartigContact"></action>
+        <!--****************-->
+
+
+        <!--download ordered photos-->
+        <action path="/order/*/download" type="ch.unartig.studioserver.actions.DownloadOrderAction"
+                parameter="{1}">
+            <set-property property="secure" value="false"/>
+            <forward name="success" path=".orderDownload"/>
+        </action>
+
+        <!-- ///////////////////////////////////////// -->
+        <!--REPORTS action mappings; -->
+        <!-- ///////////////////////////////////////// -->
+        <action path="/admin/reportProductSales" type="ch.unartig.studioserver.actions.AdminAction"
+                scope="request"
+                parameter="reportProductSales"
+                name="reportForm"
+                roles="unartigadmin">
+            <forward name="success" path=".reportSalesByAlbum"/>
+        </action>
+
+    </action-mappings>
+
+
+
+
+    <!-- ============================================= Controller Configuration  (use utf-8 as character encoding)-->
+
+<!--
+    <controller
+            processorClass="org.apache.struts.tiles.TilesRequestProcessor"
+            nocache="true"
+            contentType="text/html;charset=UTF-8"
+            inputForward="true"/>
+-->
+
+    <controller
+            processorClass="org.apache.struts.action.SecureTilesRequestProcessor"
+            nocache="true"
+            contentType="text/html;charset=UTF-8"
+            inputForward="true"/>
+
+    <!-- ======================================== Message Resources Definitions -->
+    <!--todo: change null-attribute to true for production -->
+    <!--use this as example:-->
+    <!--<message-resources parameter="ch.unartig.studioserver.resources.application" null="true"/>-->
+    <message-resources parameter="ch.unartig.studioserver.resources.appSettings" null="false" key="APPSETTINGS"/>
+    <message-resources parameter="ch.unartig.studioserver.resources.buttonsText" null="false" key="BUTTONS"/>
+    <message-resources parameter="ch.unartig.studioserver.resources.contentText" null="false" key="CONTENT"/>
+    <message-resources parameter="ch.unartig.studioserver.resources.images" null="false" key="IMAGES"/>
+    <message-resources parameter="ch.unartig.studioserver.resources.errorText" null="false" key="ERROR"/>
+    <!-- ======================================== -->
+
+
+    <plug-in className="org.apache.struts.tiles.SecureTilesPlugin">
+
+        <!-- Path to XML definition file -->
+        <set-property property="definitions-config" value="/WEB-INF/tiles-defs.xml"/>
+        <!-- Set Module-awareness to true -->
+        <set-property property="moduleAware" value="true"/>
+
+        <set-property property="httpPort" value="8080"/>
+        <set-property property="httpsPort" value="8443"/>
+        <set-property property="enable" value="true"/>
+        <set-property property="addSession" value="true"/>
+    </plug-in>
+
+
+    <!-- =================================================== Validator plugin -->
+
+    <plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+        <set-property
+                property="pathnames"
+                value="/WEB-INF/validator-rules.xml,/WEB-INF/validation.xml"/>
+    </plug-in>
+
+
+
+</struts-config>
