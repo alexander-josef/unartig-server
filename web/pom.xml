@@ -332,4 +332,30 @@
     </pluginRepositories>
 
 
+    <scm>
+        <!-- not sure if the connection should be given with or without username.
+             if username is given, person who makes release may need to adjust pom first.
+         -->
+        <connection>scm:svn:svn+ssh://svn.unartig.ch/opt/svn/repos/unartig-server/trunk/web</connection>
+        <developerConnection>scm:svn:svn+ssh://svn.unartig.ch/opt/svn/repos/unartig-server/trunk/web
+        </developerConnection>
+        <!--<url>svn+ssh://svn.unartig.ch/opt/svn/repos/sportrait-server/trunk</url>-->
+    </scm>
+
+    <distributionManagement>
+        <!-- use the following if you're not using a snapshot version. -->
+        <repository>
+            <id>ssh-repo</id>
+            <name>unartig m2 repo</name>
+            <url>scp://alex@svn.unartig.ch/opt/maven2/repo</url>
+        </repository>
+        <!-- use the following if you ARE using a snapshot version . -->
+        <snapshotRepository>
+            <id>ssh-repo</id>
+            <name>unartig m2 snapshot repo</name>
+            <url>scp://alex@svn.unartig.ch/opt/maven2/repo</url>
+        </snapshotRepository>
+    </distributionManagement>
+    
+
 </project>
