@@ -1,3 +1,4 @@
+<%@ page import="ch.unartig.studioserver.Registry" %>
 <%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
 <%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
 <%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
@@ -8,6 +9,8 @@
 <html:xhtml/>
 You are logged in as remote user <b><%= request.getRemoteUser() %></b>
 in session <b><%= session.getId() %></b><br><br>
+
+<p style="color:red"><%=Registry.getBuildNumber()%></p>
 
 <%
   if (request.getUserPrincipal() != null) {

@@ -200,6 +200,8 @@ public final class Registry
     public static String frontendDirectory = "";
     private static String dataPath = "C:/Tomcat 5.5/mywebapps/ROOT/DATA/";
     private static String webPhotoRoot = "/DATA/";
+    private static String buildNumber;
+
     public static String jsDirectory = "js/";
     public static String jsTreeDirectory = "js/tree/";
     /*the tree items file name without the language dependant suffix*/
@@ -297,7 +299,7 @@ public final class Registry
     public static final String _SWITZERLAND_COUNTRY_CODE = "CHE";
     public static final String _GERMANY_COUNTRY_CODE = "DEU";
     public static final String _CURRENCY_SWISS_FRANCS = "SFr.";
-    public static final String _CURRENCY_EURO = "€";
+    public static final String _CURRENCY_EURO = "ï¿½";
     public static final int _ORDER_DOWNLOADS_VALID_DAYS = 7;
     public static final String _AD_BANNER_RIGHT_POSITION = "right";
 
@@ -342,6 +344,7 @@ public final class Registry
         _logger.info("***** demo order flag = " + appSettings.getMessage("demoOrder"));
         setSimulateOrderOnly("true".equals(appSettings.getMessage("simulateOrderOnly")));
         _logger.info("***** simulate order only flag= " + appSettings.getMessage("simulateOrderOnly"));
+        setBuildNumber(appSettings.getMessage("application.name")+"-" +  appSettings.getMessage("application.version")+ "r-" + appSettings.getMessage("application.buildNumber"));
 
 
         _logger.debug("getMessage oipsColorcorrection: "  +appSettings.getMessage("oipsColorcorrection"));
@@ -525,5 +528,13 @@ public final class Registry
     public static String getOrderConfirmationFromAddress()
     {
         return orderConfirmationFromAddress;
+    }
+
+    public static String getBuildNumber() {
+        return buildNumber;
+    }
+
+    public static void setBuildNumber(String buildNumber) {
+        Registry.buildNumber = buildNumber;
     }
 }

@@ -1,6 +1,16 @@
 ##
 ## (todo explain the properties, only default values where useful)
 ##
+
+
+#
+# Server Settings
+server.httpPort=8080
+server.httpsPort=443
+server.enableSsl=true
+
+
+
 appSettings.frontendDir=
 #appSettings.frontendDir=C:/apache-tomcat-5.5.23/mywebapps/ROOT
 appSettings.dataDir=
