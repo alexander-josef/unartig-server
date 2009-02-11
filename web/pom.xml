@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>ch.unartig.server</groupId>
     <artifactId>unArtigSerVer</artifactId>
@@ -170,12 +171,23 @@
             <filter>src/main/filters/${appConfigFilterFile}</filter>
         </filters>
 
+        <!-- enable filtering, but exclude the images-->
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
                 <filtering>true</filtering>
+                <excludes>
+                    <exclude>images/**</exclude>
+                </excludes>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>images/**</include>
+                </includes>
             </resource>
         </resources>
+
 
         <plugins>
             <plugin>
@@ -218,31 +230,53 @@
 
             </plugin>
 
+
+            <!--build system with teamCity has no svn ... until then : -->
+
             <plugin>
-                <groupId>org.codehaus.cargo</groupId>
-                <artifactId>cargo-maven2-plugin</artifactId>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>buildnumber-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>create</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <!-- todo configure in profiles; live should update-->
                 <configuration>
-                    <container>
-                        <containerId>${containerId}</containerId>
-                        <zipUrlInstaller>
-                            <url>${url}</url>
-                            <installDir>${installDir}</installDir>
-                        </zipUrlInstaller>
-                    </container>
-                    <configuration>
-                        <properties>
-                            <cargo.servlet.port>8280</cargo.servlet.port>
-                        </properties>
-                    </configuration>
+                    <doCheck>false</doCheck>
+                    <doUpdate>false</doUpdate>
+                    <!--<format>{0,date,yyyy-MM-dd HH:mm:ss} SVN-Revision {1}</format>-->
+                    <!--<items>-->
+                        <!--<item>timestamp</item>-->
+                        <!--<item>scmVersion</item>-->
+                    <!--</items>-->
                 </configuration>
             </plugin>
+
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
                 <configuration>
-                    <warName>ROOT</warName>
+                    <webResources>
+                        <!--configuration of filtered resources in webapp/WEB-INF:
+                            * include the struts config file for the ssl property filtering
+                        -->
+                        <resource>
+                            <directory>src/main/webapp</directory>
+                            <filtering>true</filtering>
+                            <includes>
+                                <include>WEB-INF/struts-config.xml</include>
+                            </includes>
+                        </resource>
+                    </webResources>
                 </configuration>
             </plugin>
+
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -285,7 +319,7 @@
             </activation>
             <properties>
                 <tomcatUsername>admin</tomcatUsername>
-                <tomcatPassword />
+                <tomcatPassword/>
                 <appConfigFilterFile>customSettings.properties</appConfigFilterFile>
             </properties>
 
@@ -336,7 +370,8 @@
              if username is given, person who makes release may need to adjust pom first.
          -->
         <connection>scm:svn:svn+ssh://alex@svn.unartig.ch/opt/svn/repos/unartig-server/trunk/web</connection>
-        <developerConnection>scm:svn:svn+ssh://alex@svn.unartig.ch/opt/svn/repos/unartig-server/trunk/web</developerConnection>
+        <developerConnection>scm:svn:svn+ssh://alex@svn.unartig.ch/opt/svn/repos/unartig-server/trunk/web
+        </developerConnection>
         <!--<url>svn+ssh://svn.unartig.ch/opt/svn/repos/sportrait-server/trunk</url>-->
     </scm>
 
@@ -345,13 +380,13 @@
         <repository>
             <id>ssh-repo</id>
             <name>unartig m2 repo</name>
-            <url>scp://alex@svn.unartig.ch/opt/maven2/repo</url>
+            <url>scp://svn.unartig.ch/opt/maven2/repo</url>
         </repository>
         <!-- use the following if you ARE using a snapshot version . -->
         <snapshotRepository>
             <id>ssh-repo</id>
             <name>unartig m2 snapshot repo</name>
-            <url>scp://alex@svn.unartig.ch/opt/maven2/repo</url>
+            <url>scp://svn.unartig.ch/opt/maven2/repo</url>
         </snapshotRepository>
     </distributionManagement>
 

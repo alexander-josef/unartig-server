@@ -781,9 +781,11 @@
         <!-- Set Module-awareness to true -->
         <set-property property="moduleAware" value="true"/>
 
-        <set-property property="httpPort" value="8080"/>
-        <set-property property="httpsPort" value="8443"/>
-        <set-property property="enable" value="true"/>
+        <!-- TODO !!!! replace with profile settings-->
+
+        <set-property property="httpPort" value="${server.httpPort}"/>
+        <set-property property="httpsPort" value="${server.httpsPort}"/>
+        <set-property property="enable" value="${server.enableSsl}"/>
         <set-property property="addSession" value="true"/>
     </plug-in>
 
