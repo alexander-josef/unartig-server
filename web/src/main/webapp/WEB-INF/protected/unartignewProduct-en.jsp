@@ -31,16 +31,16 @@
             an E-Mail containing a link for downloading the file.<br/>
             In some albums you can order the "Digi Foto 600x400" as a separate product.</p>
 
-        <h3>Digital Negative, Genuine</h3>
+        <h3>Digital High-Res, Genuine</h3>
 
-        <p>The "Digital Negative" represents the genuine data as it was captured by the camera. The image comprises 5-6 million
+        <p>The digital high resolution photo represents the genuine data as it was captured by the camera. The image comprises 5-6 million
             pixels and the file size varies between 1.5-3 MB.<br/>
-            In contrast to the "Digi Foto 600x400" we offer this product for all albums.</p>
+            </p>
         <br/>
         ============================ Information ============================
         <h3>Advantage</h3>
 
-        <p>If you need a large number of prints from the same picture you are better off ordering the "Digital Negative"
+        <p>If you need a large number of prints from the same picture you are better off ordering the digital high resolution photo
             and reproducing it low-priced at a fotolab of your choice.<br/>
             In addition, if you exclusively order digital products you can safe shipping costs.</p>
 

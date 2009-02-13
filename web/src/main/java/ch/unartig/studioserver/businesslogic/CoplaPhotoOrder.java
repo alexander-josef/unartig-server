@@ -815,7 +815,7 @@ public class CoplaPhotoOrder implements PhotoOrderIF
     /**
      * Return the price of a digital prodoct as it is stored in the product db
      * <p> the price will be in minor units. Example:
-     * <p> Digital Negative costs 20 CHF.
+     * <p> Digital High Res costs 20 CHF.
      * <p> return value will be 2000
      *
      * @param product the product form the orderItem

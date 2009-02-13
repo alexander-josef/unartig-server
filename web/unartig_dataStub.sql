@@ -15,8 +15,8 @@ insert into PriceSegments (pricesegmentId,priceSegmentName) values (99,'unused')
 --
 -- Set up category "Festliche Anlaesse", Sportliche Anlaesse
 --
-INSERT INTO GenericLevels (genericlevelid, hierarchy_level,navtitle,longtitle,description) VALUES (1, 'CATEGORY','fest_anlaesse','Festliche Anlässe','Bälle und andere festliche Anlässe');
-INSERT INTO GenericLevels (genericlevelid, hierarchy_level,navtitle,longtitle,description) VALUES (2, 'CATEGORY','sport_anlaesse','Sportliche Anlässe','Sportliche Anlässe');
+INSERT INTO GenericLevels (genericlevelid, hierarchy_level,navtitle,longtitle,description) VALUES (1, 'CATEGORY','fest_anlaesse','Festliche Anlï¿½sse','Bï¿½lle und andere festliche Anlï¿½sse');
+INSERT INTO GenericLevels (genericlevelid, hierarchy_level,navtitle,longtitle,description) VALUES (2, 'CATEGORY','sport_anlaesse','Sportliche Anlï¿½sse','Sportliche Anlï¿½sse');
 
 --
 -- Product List (one entry for each oips product)
@@ -51,11 +51,11 @@ INSERT INTO Products (productid,productname,oipspid,oipsname,oipsPriceCHF,oipsPr
 -- Product name will be shown in the shopping cart
 -- ##
 -- Digi photo 600 x 400
-INSERT INTO Products (productid,productname,oipspid,oipsname,oipsPriceCHF,oipsPriceEUR,oipsPriceGBP,oipsPriceSEK,oipswidth,oipsheight,oipsvariablelength,oipsgroupid,priceSegmentId) VALUES (17,'Digi Foto 600x400','998','Digi Foto 600x400',295,190,99999,99999,600,400,true,1,1);
+INSERT INTO Products (productid,productname,oipspid,oipsname,oipsPriceCHF,oipsPriceEUR,oipsPriceGBP,oipsPriceSEK,oipswidth,oipsheight,oipsvariablelength,oipsgroupid,priceSegmentId) VALUES (17,'Digi Foto 600x400','998','Digi Foto 600x400','295',190,99999,99999,600,400,true,1,1);
 INSERT INTO Products (productid,productname,oipspid,oipsname,oipsPriceCHF,oipsPriceEUR,oipsPriceGBP,oipsPriceSEK,oipswidth,oipsheight,oipsvariablelength,oipsgroupid,priceSegmentId) VALUES (18,'Digi Foto 600x400','998','Digi Foto 600x400','800',360,99999,99999,600,400,true,1,99);
 -- Digi photo original
-INSERT INTO Products (productid,productname,oipspid,oipsname,oipsPriceCHF,oipsPriceEUR,oipsPriceGBP,oipsPriceSEK,oipswidth,oipsheight,oipsvariablelength,oipsgroupid,priceSegmentId) VALUES (19,'Digitales Negativ','998','Digitales Negativ','990',650,99999,99999,600,400,true,1,1);
-INSERT INTO Products (productid,productname,oipspid,oipsname,oipsPriceCHF,oipsPriceEUR,oipsPriceGBP,oipsPriceSEK,oipswidth,oipsheight,oipsvariablelength,oipsgroupid,priceSegmentId) VALUES (20,'Digitales Negativ','998','Digitales Negativ','2990',1900,99999,99999,600,400,true,1,2);
+INSERT INTO Products (productid,productname,oipspid,oipsname,oipsPriceCHF,oipsPriceEUR,oipsPriceGBP,oipsPriceSEK,oipswidth,oipsheight,oipsvariablelength,oipsgroupid,priceSegmentId) VALUES (19,'Digital hochaufgelÃ¶st','998','Digital hochaufgelÃ¶st','990',650,99999,99999,600,400,true,1,1);
+INSERT INTO Products (productid,productname,oipspid,oipsname,oipsPriceCHF,oipsPriceEUR,oipsPriceGBP,oipsPriceSEK,oipswidth,oipsheight,oipsvariablelength,oipsgroupid,priceSegmentId) VALUES (20,'Digital hochaufgelÃ¶st','998','Digital hochaufgelÃ¶st','2990',1900,99999,99999,600,400,true,1,2);
 -- todo: tshirts, price segments
 
 

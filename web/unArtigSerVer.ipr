@@ -30,6 +30,9 @@
       <entry name="?*.ftl" />
     </wildcardResourcePatterns>
   </component>
+  <component name="CopyrightManager" default="">
+    <module2copyright />
+  </component>
   <component name="DaemonCodeAnalyzer">
     <disable_hints />
   </component>
@@ -270,6 +273,9 @@
     <option name="projectName" value="unArtigSerVer" />
   </component>
   <component name="ProjectFileVersion" converted="true" />
+  <component name="ProjectKey">
+    <option name="state" value="svn+ssh://svn.unartig.ch/opt/svn/repos/unartig-server/trunk/web/unArtigSerVer.ipr" />
+  </component>
   <component name="ProjectLevelVcsManager">
     <OptionsSetting value="true" id="Add" />
     <OptionsSetting value="true" id="Remove" />
@@ -382,6 +388,7 @@
       </map>
     </option>
     <option name="myVersion" value="124" />
+    <option name="mySupportsUserInfoFilter" value="true" />
   </component>
   <component name="SvnConfiguration">
     <option name="USER" value="" />
@@ -841,6 +848,13 @@
     <library name="hibernate3">
       <CLASSES>
         <root url="jar://$PROJECT_DIR$/lib/hibernate-annotations.jar!/" />
+      </CLASSES>
+      <JAVADOC />
+      <SOURCES />
+    </library>
+    <library name="struts">
+      <CLASSES>
+        <root url="jar://$PROJECT_DIR$/lib/commons-chain.jar!/" />
       </CLASSES>
       <JAVADOC />
       <SOURCES />

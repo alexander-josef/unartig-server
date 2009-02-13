@@ -10,8 +10,8 @@
 --
 -- Set up category "Festliche Anlaesse", Sportliche Anlaesse
 --
-INSERT INTO GenericLevels (genericlevelid, hierarchy_level,navtitle,longtitle,description) VALUES (1, 'CATEGORY','fest_anlaesse','Festliche Anlässe','Bälle und andere festliche Anlässe');
-INSERT INTO GenericLevels (genericlevelid, hierarchy_level,navtitle,longtitle,description) VALUES (2, 'CATEGORY','sport_anlaesse','Sportliche Anlässe','Sportliche Anlässe');
+INSERT INTO GenericLevels (genericlevelid, hierarchy_level,navtitle,longtitle,description) VALUES (1, 'CATEGORY','fest_anlaesse','Festliche Anlï¿½sse','Bï¿½lle und andere festliche Anlï¿½sse');
+INSERT INTO GenericLevels (genericlevelid, hierarchy_level,navtitle,longtitle,description) VALUES (2, 'CATEGORY','sport_anlaesse','Sportliche Anlï¿½sse','Sportliche Anlï¿½sse');
 
 --
 -- Userprofile
@@ -45,7 +45,7 @@ INSERT INTO userprofiles2userroles (username, rolename) VALUES ('admin', 'photog
 -- productType
 --
 INSERT INTO producttypes (producttypeid, name, description, digitalproduct) VALUES (2, 'digifoto 400 x 600', 'digital foto for download 400 by 600 pixels', true);
-INSERT INTO producttypes (producttypeid, name, description, digitalproduct) VALUES (3, 'digital negative', 'digital foto file for download in the native resolution', true);
+INSERT INTO producttypes (producttypeid, name, description, digitalproduct) VALUES (3, 'digital highres', 'digital foto file for download in the native resolution', true);
 INSERT INTO producttypes (producttypeid, name, description, digitalproduct) VALUES (4, '10x15cm Abzug', 'paper print 10 x 15 cm provided by colorplaza', false);
 INSERT INTO producttypes (producttypeid, name, description, digitalproduct) VALUES (5, '11x17cm Abzug', 'paper print 11 x 17 cm  provided by colorplaza', false);
 INSERT INTO producttypes (producttypeid, name, description, digitalproduct) VALUES (6, '13x19cm Abzug', 'paper print 13 x 19 cm provided by colorplaza', false);

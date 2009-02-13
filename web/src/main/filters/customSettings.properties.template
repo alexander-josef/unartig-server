@@ -11,6 +11,7 @@ server.enableSsl=true
 
 
 
+logging.folder=
 appSettings.frontendDir=
 #appSettings.frontendDir=C:/apache-tomcat-5.5.23/mywebapps/ROOT
 appSettings.dataDir=
