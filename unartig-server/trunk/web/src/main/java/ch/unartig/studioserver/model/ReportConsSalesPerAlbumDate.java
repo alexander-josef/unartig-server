@@ -73,7 +73,7 @@ public class ReportConsSalesPerAlbumDate extends GeneratedReportConsSalesPerAlbu
      * @param totalOrdersPerAlbum_chf count total fotos ordered total best. per album
      * @param totalPerAlbum_chf sum sales CHF per album
      * @param prodDigiFoto_chf sum of digi foto sold
-     * @param prodDigitalNegative_chf sum of digital negative fotos sold
+     * @param prodDigitalNegative_chf sum of digital high res fotos sold
      * @param prod10_er_eur
      * @param prod11_er_eur
      * @param prod13_er_eur

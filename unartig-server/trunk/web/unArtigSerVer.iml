@@ -173,6 +173,10 @@
             <attribute name="method" value="1" />
             <attribute name="URI" value="/WEB-INF/classes" />
           </containerElement>
+          <containerElement type="library" name="struts" level="project">
+            <attribute name="method" value="1" />
+            <attribute name="URI" value="/WEB-INF/lib" />
+          </containerElement>
         </packaging>
       </configuration>
       <facet type="struts" name="Struts">
@@ -252,6 +256,7 @@
     <orderEntry type="library" exported="" name="Maven: cglib:cglib:2.1_3" level="project" />
     <orderEntry type="library" exported="" name="Maven: asm:asm:1.5.3" level="project" />
     <orderEntry type="library" exported="" name="Maven: xalan:xalan:2.5.1" level="project" />
+    <orderEntry type="library" name="struts" level="project" />
   </component>
 </module>
 

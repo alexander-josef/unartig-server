@@ -17,7 +17,7 @@
         <put name="htmlHeader" value="/WEB-INF/protected/tiles/htmlHeadStandard.jsp"/>
         <put name="cssOverrule" value="/WEB-INF/protected/tiles/cssOverrule_en.jsp"/>
 
-        <put name="sidebar1" value="/WEB-INF/protected/tiles/sidebarNews_en.jsp"/>
+        <!--<put name="sidebar1" value="/WEB-INF/protected/tiles/sidebarNews_en.jsp"/>-->
 
     </definition>
 

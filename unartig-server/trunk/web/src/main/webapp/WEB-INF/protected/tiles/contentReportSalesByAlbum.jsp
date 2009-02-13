@@ -28,7 +28,7 @@
             <th>50x75</th>
             <th>Mousepad</th>
             <th>Digi Foto</th>
-            <th>Digital Negative</th>
+            <th>Digital High Res</th>
             <th>Total Fotos bestellt</th>
             <th>Total Bestellungen / Album</th>
             <th>Umsatz CHF / Album</th>
@@ -93,7 +93,7 @@
             <th>50x75</th>
             <th>Mousepad</th>
             <th>Digi Foto</th>
-            <th>Digital Negative</th>
+            <th>Digital High Res</th>
             <th>Total Fotos bestellt</th>
             <th>Total Bestellungen / Album</th>
             <th>Umsatz CHF / Album</th>

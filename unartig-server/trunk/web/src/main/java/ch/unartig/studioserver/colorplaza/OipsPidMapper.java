@@ -68,7 +68,7 @@ public class OipsPidMapper implements ProductMapperIF {
         productPricesOipsid[2][19]= new String[] {"998","0.45"};
         productPricesOipsid[2][22]= new String[] {"998","3.51"};
         productPricesOipsid[2][28]= new String[] {"998","14.40"};
-        // digital negative
+        // digital High res
         productPricesOipsid[3][2]= new String[] {"998","4.95"};
         productPricesOipsid[3][26]= new String[] {"998","26.55"};
         productPricesOipsid[3][29]= new String[] {"998","8.91"};
