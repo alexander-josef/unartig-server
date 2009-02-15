@@ -1,12 +1,11 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>ch.unartig.server</groupId>
     <artifactId>unArtigSerVer</artifactId>
     <packaging>
         war
     </packaging>
-    <version>3.1-SNAPSHOT</version>
+    <version>3.0.1</version>
     <name>unArtig Server</name>
     <url>http://server.unartig.ch</url>
 
@@ -319,7 +318,7 @@
             </activation>
             <properties>
                 <tomcatUsername>admin</tomcatUsername>
-                <tomcatPassword/>
+                <tomcatPassword />
                 <appConfigFilterFile>customSettings.properties</appConfigFilterFile>
             </properties>
 
@@ -369,9 +368,8 @@
         <!-- not sure if the connection should be given with or without username.
              if username is given, person who makes release may need to adjust pom first.
          -->
-        <connection>scm:svn:svn+ssh://alex@svn.unartig.ch/opt/svn/repos/unartig-server/trunk/web</connection>
-        <developerConnection>scm:svn:svn+ssh://alex@svn.unartig.ch/opt/svn/repos/unartig-server/trunk/web
-        </developerConnection>
+        <connection>scm:svn:svn+ssh://alex@svn.unartig.ch/opt/svn/repos/unartig-server/tags/unArtigSerVer-3.0.1</connection>
+        <developerConnection>scm:svn:svn+ssh://alex@svn.unartig.ch/opt/svn/repos/unartig-server/tags/unArtigSerVer-3.0.1</developerConnection>
         <!--<url>svn+ssh://svn.unartig.ch/opt/svn/repos/sportrait-server/trunk</url>-->
     </scm>
 
