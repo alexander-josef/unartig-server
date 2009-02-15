@@ -54,6 +54,7 @@ import ch.unartig.studioserver.imaging.ImagingHelper;
 import ch.unartig.studioserver.model.Order;
 import ch.unartig.studioserver.model.OrderItem;
 import ch.unartig.studioserver.model.Photo;
+import ch.unartig.studioserver.model.ProductType;
 import ch.unartig.studioserver.persistence.DAOs.OrderDAO;
 import ch.unartig.util.FileUtils;
 import org.apache.log4j.Logger;
@@ -81,6 +82,10 @@ public class DownloadImageBean
     private String orderHash;
     private String downloadUrl;
     private Photo downloadPhoto;
+    private static final int _ID_DIGI_FOTO_400_600 = 2;
+    private static final int _ID_DIGITAL_NEGATIVE = 3;
+
+
 
     /**
      * constructor; takes the order hash to retrieve the order
@@ -143,16 +148,11 @@ public class DownloadImageBean
         try
         {
             // use application/octet-stream instead to download and not display the image??
-//            downloadPhotoStream.connect(renderedProduct);
             _logger.debug("streaming photo with name : " + downloadPhoto.getFilename());
             response.setContentType("image/JPG");
             response.setHeader("Content-Disposition", "attachment; filename=\"" + downloadPhoto.getFilename() + "\"");
-//            response.setHeader("Content-Length", "" + downloadPhoto.getFile().length());
 
-            // copy the file to the outputstream:
-            // todo rename ...
-            createDigitalProduct(downloadOrderItem, response.getOutputStream());
-//            FileUtils.copyFile(downloadPhotoStream, response.getOutputStream());
+            streamDigitalProduct(downloadOrderItem, response.getOutputStream());
         } catch (IOException e)
         {
             // for exmaple if high-res file was not found ...
@@ -172,24 +172,26 @@ public class DownloadImageBean
      * @throws ch.unartig.exceptions.UnartigImagingException
      *          if exception during the calculation of the ordered image is thrown
      */
-    private void createDigitalProduct(OrderItem orderItem, OutputStream os) throws UnartigImagingException
+    private void streamDigitalProduct(OrderItem orderItem, OutputStream os) throws UnartigImagingException
     {
         try
         {
             // digi foto 400 x 600 : (productIds 17 & 18)
             Photo photo = orderItem.getPhoto();
-            if (orderItem.getProduct().getProductId().intValue() == 17 || orderItem.getProduct().getProductId().intValue() == 18)
+            ProductType productType = orderItem.getProduct().getProductType();
+//            if (orderItem.getProduct().getProductId().intValue() == 17 || orderItem.getProduct().getProductId().intValue() == 18)
+            if (productType.getProductTypeId() == _ID_DIGI_FOTO_400_600)
             {
                 stream400x600Photo(photo, os);
 
-            } else if (orderItem.getProduct().getProductId().intValue() == 19 || orderItem.getProduct().getProductId().intValue() == 20)
+            } else if (productType.getProductTypeId() == _ID_DIGITAL_NEGATIVE)
             {
                 // digital negativ copy the file to the output stream
                 _logger.info("streaming the digital negativ");
                 FileUtils.copyFile(photo.getFile(), os);
             } else // everything else
             {
-                _logger.warn("unknown state .... download photo is not withing digital products ....");
+                _logger.info("Not a digital product; streaming standard preview size");
                 stream400x600Photo(photo, os);
 
             }
