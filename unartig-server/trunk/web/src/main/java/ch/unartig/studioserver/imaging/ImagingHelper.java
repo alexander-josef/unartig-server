@@ -35,7 +35,7 @@
  * fast upload
  *
  * Revision 1.4  2005/11/25 10:56:58  alex
- * todo liste, admin tool, sonstiges
+ * admin tool, sonstiges
  *
  * Revision 1.3  2005/11/16 14:26:49  alex
  * validator works for email, new library
