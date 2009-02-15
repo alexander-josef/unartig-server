@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class
+        name="ch.unartig.studioserver.model.ReportProductSales"
+        table="ReportProductSales"
+        mutable="false"
+        >
+        <meta attribute="generated-class">ch.unartig.studioserver.model.GeneratedReportProductSales</meta>
+        <composite-id>
+            <key-property name="eventName"
+                column="event"
+                length="255"
+                type="java.lang.String"
+                />
+            <key-property name="albumName"
+                type="java.lang.String"
+                column="album"
+                length="255"
+                />
+            <key-property name="albumId"
+                type="java.lang.Long"
+                column="albumid"
+                length="255"
+                />
+            <key-property name="productName"
+                type="java.lang.String"
+                column="produktname"
+                length="255"
+                />
+            <key-property name="productId"
+                type="java.lang.Long"
+                column="productId"
+                length="255"
+                />
+            <key-property name="count"
+                type="java.lang.Integer"
+                column="count"
+                length="255"
+                />
+            <key-property name="quantity"
+                type="java.lang.Integer"
+                column="quantity"
+                length="255"
+                />
+        </composite-id>
+
+    </class>
+
+</hibernate-mapping>

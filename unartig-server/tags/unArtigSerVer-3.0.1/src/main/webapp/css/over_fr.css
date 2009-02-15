@@ -1,0 +1,53 @@
+#menu_about a {
+        background: url( "/images/topMenu/link_about_passive_fr.gif" ) 0% 0 no-repeat;
+    }
+
+    #menu_about a:hover, #menu_about a:active {
+        background: url( "/images/topMenu/link_about_active_fr.gif" ) 0% 0 no-repeat;
+    }
+
+    #menu_contact a {
+        background: url( "/images/topMenu/link_contact_passive_fr.gif" ) 0% 0 no-repeat;
+    }
+
+    #menu_contact a:hover, #menu_contact_de a:active {
+        background: url( "/images/topMenu/link_contact_active_fr.gif" ) 0% 0 no-repeat;
+    }
+
+    #menu_account a {
+        background: url( "/images/topMenu/link_account_passive_fr.gif" ) 0% 0 no-repeat;
+    }
+
+    #menu_account a:hover, #menu_my_account_de a:active {
+        background: url( "/images/topMenu/link_account_active_fr.gif" ) 0% 0 no-repeat;
+    }
+
+    li#lang_de a {
+        background: url( /images/topMenu/link_lang_DE_passive.gif ) 0% 0 no-repeat;
+    }
+
+    li#lang_de a:hover {
+        background: url( /images/topMenu/link_lang_DE_active.gif ) 0% 0 no-repeat;
+    }
+
+    li#lang_en a {
+        background: url( /images/topMenu/link_lang_EN_passive.gif ) 0% 0 no-repeat;
+    }
+
+    li#lang_en a:hover {
+        background: url( /images/topMenu/link_lang_EN_active.gif ) 0% 0 no-repeat;
+    }
+
+    li#lang_fr a {
+        background: url( /images/topMenu/link_lang_FR_active.gif ) 0% 0 no-repeat;
+    }
+td.price_button a{
+    display:block;
+    background: url(/images/lang_spec_images/price_button_passive_fr.gif) 0 0 no-repeat;
+}
+td.price_button a:hover{
+    background: url(/images/lang_spec_images/price_button_hover_fr.gif) 0 0 no-repeat;
+}
+td.price_button a:active{
+    background: url(/images/lang_spec_images/price_button_active_fr.gif) 0 0 no-repeat;
+}
