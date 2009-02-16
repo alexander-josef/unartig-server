@@ -375,6 +375,7 @@
 
     <distributionManagement>
         <!-- use the following if you're not using a snapshot version. -->
+        <!-- the authentication settings can be put to settings.xml (in [your homedir]/.m2/settings.xml) -->
         <repository>
             <id>ssh-repo</id>
             <name>unartig m2 repo</name>
