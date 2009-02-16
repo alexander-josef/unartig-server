@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+        "-//Apache Software Foundation//DTD Tiles Configuration 1.1//EN"
+        "http://jakarta.apache.org/struts/dtds/tiles-config_1_1.dtd">
+
+
+<!--
+     This is a blank Tiles definition file with a commented example.
+-->
+
+<tiles-definitions>
+
+    <definition name=".unartigHome" path="/WEB-INF/protected/layout/layoutBanner.jsp">
+        <put name="htmlTitle" type="string"><![CDATA[unartig studio -- The mobile, professional photographic studio - The online-album for ambitious photography]]></put>
+        <put name="jsTreeInsert" value="/WEB-INF/protected/tiles/jsTreeInsert_en.jsp"/>
+        <put name="htmlHeader" value="/WEB-INF/protected/tiles/htmlHeadStandard.jsp"/>
+        <put name="cssOverrule" value="/WEB-INF/protected/tiles/cssOverrule_en.jsp"/>
+
+        <!--<put name="sidebar1" value="/WEB-INF/protected/tiles/sidebarNews_en.jsp"/>-->
+
+    </definition>
+
+    <definition name=".unartigAbout" extends=".unartigHome">
+        <put name="content1" value="/WEB-INF/protected/tiles/contentAbout_en.jsp"/>
+    </definition>
+
+    <definition name=".unartigServices" extends=".unartigAbout">
+        <put name="content1" value="/WEB-INF/protected/tiles/contentServices_en.jsp"/>
+    </definition>
+
+    <definition name=".unartigFirm" extends=".unartigAbout">
+        <put name="content1" value="/WEB-INF/protected/tiles/contentFirm_en.jsp"/>
+    </definition>
+
+    <definition name=".unartigPhotographers" extends=".unartigAbout">
+        <put name="htmlTitle" type="string"><![CDATA[unartig studio -- photographers]]></put>
+    </definition>
+
+    <definition name=".unartigPhotographersMore" path="/WEB-INF/protected/layout/layoutNoBannerAlbum.jsp">
+        <put name="jsTreeInsert" value="/WEB-INF/protected/tiles/jsTreeInsert_de.jsp"/>
+        <put name="htmlTitle" type="string"><![CDATA[unartig studio -- Photographer]]></put>
+        <put name="cssOverrule" value="/WEB-INF/protected/tiles/cssOverrule_en.jsp"/>
+    </definition>
+
+    <definition name=".unartigPartners" extends=".unartigAbout">
+        <put name="htmlTitle" type="string"><![CDATA[unartig studio -- partners]]></put>
+    </definition>
+
+    <definition name=".unartigCopyright" extends=".unartigHome">
+        <put name="content1" value="/WEB-INF/protected/tiles/contentCopyright_en.jsp"/>
+    </definition>
+
+    <definition name=".unartigPrivacy" extends=".unartigHome">
+        <put name="content1" value="/WEB-INF/protected/tiles/contentPrivacy_en.jsp"/>
+    </definition>
+
+    <definition name=".unartigAGB" extends=".unartigHome">
+        <put name="content1" value="/WEB-INF/protected/tiles/contentAGB_en.jsp"/>
+    </definition>
+
+    <definition name=".unartigProtectedAccess" extends=".unartigOverview">
+        <put name="htmlTitle" type="string"><![CDATA[unartig studio -- limited access]]></put>
+        <put name="content" value="/WEB-INF/protected/tiles/contentProtectedAccess.jsp"/>
+    </definition>
+
+
+    <!--find and order-->
+    <definition name=".unartigAlbum" path="/WEB-INF/protected/layout/layoutBannerAlbum.jsp">
+        <put name="jsTreeInsert" value="/WEB-INF/protected/tiles/jsTreeInsert_en.jsp"/>
+        <put name="htmlHeader" value="/WEB-INF/protected/tiles/htmlHeadStandard.jsp"/>
+        <put name="cssOverrule" value="/WEB-INF/protected/tiles/cssOverrule_en.jsp"/>
+    </definition>
+
+    <definition name=".unartigDisplay" path="/WEB-INF/protected/layout/layoutNoBanner.jsp">
+        <put name="jsTreeInsert" value="/WEB-INF/protected/tiles/jsTreeInsert_en.jsp"/>
+        <put name="htmlHeader" value="/WEB-INF/protected/tiles/htmlHeadStandard.jsp"/>
+        <put name="cssOverrule" value="/WEB-INF/protected/tiles/cssOverrule_en.jsp"/>
+    </definition>
+
+    <definition name=".unartigInShoppingCart" path="/WEB-INF/protected/layout/layoutNoBannerSC.jsp">
+        <put name="htmlTitle" type="string"><![CDATA[unartig studio -- in shopping cart]]></put>
+        <put name="jsTreeInsert" value="/WEB-INF/protected/tiles/jsTreeInsert_en.jsp"/>
+        <put name="cssOverrule" value="/WEB-INF/protected/tiles/cssOverrule_en.jsp"/>
+    </definition>
+
+    <definition name=".unartigShoppingCartOver" extends=".unartigInShoppingCart">
+        <put name="htmlTitle" type="string"><![CDATA[unartig studio -- overview shopping cart]]></put>
+    </definition>
+
+    <definition name=".unartigShoppingCartLoginNoLoginPass" extends=".unartigShoppingCartLogin">
+        <put name="htmlTitle" type="string"><![CDATA[unartig studio -- forgot password]]></put>
+    </definition>
+
+    <definition name=".unartigShoppingCartAddress" extends=".unartigShoppingCartOver">
+        <put name="htmlTitle" type="string"><![CDATA[unartig studio -- address]]></put>
+    </definition>
+
+    <definition name=".unartigShoppingCartBilling" extends=".unartigShoppingCartAddress">
+        <put name="htmlTitle" type="string"><![CDATA[unartig studio -- method of payment]]></put>
+    </definition>
+
+    <definition name=".unartigShoppingCartOrder" extends=".unartigShoppingCartOver">
+        <put name="htmlTitle" type="string"><![CDATA[unartig studio -- send order]]></put>
+    </definition>
+
+    <definition name=".unartigShoppingCartConfirmOUT" extends=".unartigShoppingCartLogin">
+        <put name="htmlTitle" type="string"><![CDATA[unartig studio -- order confirm]]></put>
+    </definition>
+
+    <definition name=".unartigAccount" path="/WEB-INF/protected/layout/layoutNoBannerSC.jsp">
+        <put name="htmlTitle" type="string"><![CDATA[unartig studio -- account]]></put>
+        <put name="jsTreeInsert" value="/WEB-INF/protected/tiles/jsTreeInsert_en.jsp"/>
+        <put name="htmlHeader" value="/WEB-INF/protected/tiles/htmlHeadStandard.jsp"/>
+        <put name="cssOverrule" value="/WEB-INF/protected/tiles/cssOverrule_en.jsp"/>
+    </definition>
+
+    <definition name=".unartigAccountAlbum" path="/WEB-INF/protected/layout/layoutNoBannerAlbum.jsp">
+        <put name="htmlTitle" type="string"><![CDATA[unartig studio -- account album]]></put>
+        <put name="jsTreeInsert" value="/WEB-INF/protected/tiles/jsTreeInsert_en.jsp"/>
+        <put name="htmlHeader" value="/WEB-INF/protected/tiles/htmlHeadStandard.jsp"/>
+        <put name="cssOverrule" value="/WEB-INF/protected/tiles/cssOverrule_en.jsp"/>
+    </definition>
+
+    <!--admin-->
+
+    <definition name=".unartigLogin" extends=".unartigHome">
+        <put name="htmlTitle" type="string"><![CDATA[unartig studio -- login]]></put>
+        <put name="jsTreeInsert" value="/WEB-INF/protected/tiles/jsTreeInsert_en.jsp"/>
+        <put name="cssOverrule" value="/WEB-INF/protected/tiles/cssOverrule_en.jsp"/>
+    </definition>
+
+    <!--fatal error pages-->
+    <definition name=".unartigError1" extends=".unartigInShoppingCart">
+        <put name="htmlTitle" type="string"><![CDATA[unartig studio -- error]]></put>
+        <put name="jsTreeInsert" value="/WEB-INF/protected/tiles/Empty.jsp"/>
+        <put name="htmlHeader" value="/WEB-INF/protected/tiles/htmlHeadStandard.jsp"/>
+        <put name="topMenu" value="/WEB-INF/protected/tiles/topMenuError.jsp"/>
+        <put name="sidebar1" value="/WEB-INF/protected/tiles/Empty.jsp"/>
+        <put name="contentHead" value="/WEB-INF/protected/tiles/Empty.jsp"/>
+        <put name="content1" value="/WEB-INF/protected/tiles/contentError1.jsp"/>
+    </definition>
+
+</tiles-definitions>
