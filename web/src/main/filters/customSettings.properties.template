@@ -26,6 +26,9 @@ appSettings.colorplaza.oipsColorcorrection=true
 
 appSettings.simulateOrderOnly=true
 
+
+unartig.loglevel=INFO
+
 ##
 ## Hibernate Settings
 ##
