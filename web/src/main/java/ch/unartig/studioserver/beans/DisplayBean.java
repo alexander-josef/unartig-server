@@ -93,10 +93,11 @@ public class DisplayBean implements NavigableObject
     }
 
     /**
-     * main mehtod called from action;
+     * Main method called from action;
      * <br> will populate all the necessary information to display the display-view of the album
      * <br> todo: can albumbean be null? sure it can
      * <br> set the back to album link using the navigationhelper object
+     * @throws ch.unartig.exceptions.UnartigException If album can't be reloaded.
      */
     public void processDisplayBean() throws UnartigException
     {
@@ -131,7 +132,7 @@ public class DisplayBean implements NavigableObject
     }
 
     /**
-     * check the albumBean Photo List for the display photo, and the preview photos (next and previous thumbnails)
+     * Check the albumBean Photo List for the display photo, and the preview photos (next and previous thumbnails)
      *<pre>
      *Index
      *List:     ++---------++--------++-------++
@@ -139,6 +140,7 @@ public class DisplayBean implements NavigableObject
      *Photo:              prev     disp     next
      * </pre>
      * @return true if all photos have been found and set or false, if at least one photo has not been found
+     * @throws ch.unartig.exceptions.UnartigException
      */
     private boolean loadPhotosFromAlbumBean() throws UnartigException
     {
