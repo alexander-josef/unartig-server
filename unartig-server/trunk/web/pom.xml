@@ -232,6 +232,7 @@
 
             <!--build system with teamCity has no svn ... until then : -->
 
+            <!-- todo: put in profile. skip for local development where no svn connection can be established -->
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>buildnumber-maven-plugin</artifactId>

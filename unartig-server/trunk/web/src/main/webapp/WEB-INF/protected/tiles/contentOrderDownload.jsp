@@ -34,7 +34,8 @@
                         </c:if>
                     </p>
                     <br/>
-                    <html:link href="${downloadBean.downloadUrl}?phId=${downloadableItem.photo.photoId}">
+                        <%--<html:link href="${downloadBean.downloadUrl}?phId=${downloadableItem.photo.photoId}">--%>
+                    <html:link href="${downloadBean.downloadUrl}?OIID=${downloadableItem.orderItemId}">
                         <img src="/images/button/download.gif" alt=""/>
                     </html:link>
                     <p><br/>
