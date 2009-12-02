@@ -81,7 +81,6 @@ public class DownloadImageBean
     private Order order;
     private String orderHash;
     private String downloadUrl;
-    private Photo downloadPhoto;
     private static final int _ID_DIGI_FOTO_400_600 = 2;
     private static final int _ID_DIGITAL_NEGATIVE = 3;
 
@@ -115,43 +114,41 @@ public class DownloadImageBean
     /**
      * prepare a photo for download<p/>
      *
-     * @param photoId  the photoId-parameter value that has been passed in the request
+     * @param orderItemId
      * @param response servlet response
      * @throws ch.unartig.exceptions.UnartigInvalidArgument
      *          if the passed photoId is not part of this order
      */
-    public void downloadPhoto(String photoId, HttpServletResponse response) throws UnartigException
+    public void downloadPhoto(String orderItemId, HttpServletResponse response) throws UnartigException
     {
-        // check photoId
-        downloadPhoto = null;
         OrderItem downloadOrderItem = null;
-        // go through orderitems, check if the provided photoid matches the photoid of the orderitem
-        for (Iterator iterator = order.getDigitalItems().iterator(); iterator.hasNext();)
+        for (Iterator iterator = order.getOrderItems().iterator(); iterator.hasNext();)
         {
             OrderItem orderItem = (OrderItem) iterator.next();
-            Long orderItemPhotoId = orderItem.getPhoto().getPhotoId();
-            if (orderItemPhotoId.toString().equals(photoId))
+            if (orderItemId.equals(orderItem.getOrderItemId().toString()))
             {
+                // we found the orderitem
                 downloadOrderItem = orderItem;
-                downloadPhoto = orderItem.getPhoto();
                 break;
             }
         }
-        // exception if photoId not part of this order
-        if (downloadPhoto == null)
-        {
-            throw new UnartigInvalidArgument("passed photoId not part of order");
-        }
-        // todo
 
+
+        // exception if oderItemId not part of this order
+        if (downloadOrderItem == null)
+        {
+            throw new UnartigInvalidArgument("passed oderItemId not part of order");
+        }
 
         try
         {
             // use application/octet-stream instead to download and not display the image??
-            _logger.debug("streaming photo with name : " + downloadPhoto.getFilename());
+            _logger.debug("streaming photo with name : " + downloadOrderItem.getPhoto().getFilename());
             response.setContentType("image/JPG");
-            response.setHeader("Content-Disposition", "attachment; filename=\"" + downloadPhoto.getFilename() + "\"");
+            response.setHeader("Content-Disposition", "attachment; filename=\"" + downloadOrderItem.getPhoto().getFilename() + "\"");
 
+            // copy the file to the outputstream:
+            // todo rename ...
             streamDigitalProduct(downloadOrderItem, response.getOutputStream());
         } catch (IOException e)
         {
@@ -226,18 +223,21 @@ public class DownloadImageBean
     public Set getDownloadableOrderItems()
     {
         Set retVal = new TreeSet(DownloadableItemComp);
-        Set returnedPhotos = new HashSet();
+        Set returnedBonusPhotos = new HashSet();
 
         Set orderItems = order.getOrderItems();
         for (Iterator iterator = orderItems.iterator(); iterator.hasNext();)
         {
             OrderItem orderItem = (OrderItem) iterator.next();
             // add to retVal unless it's not a digital product and it's already in the set
-            if (orderItem.getProduct().isDigitalProduct() || !returnedPhotos.contains(orderItem.getPhoto()))
-            {
-                _logger.debug("adding orderitem to set");
+            if (orderItem.getProduct().isDigitalProduct())
+            { // digital products are always added
+                _logger.debug("adding digital orderitem to set");
                 retVal.add(orderItem);
-                returnedPhotos.add(orderItem.getPhoto());
+            } else if (!returnedBonusPhotos.contains(orderItem.getPhoto()))
+            { // only add if it's not already in the bonus-photos:
+                retVal.add(orderItem);
+                returnedBonusPhotos.add(orderItem.getPhoto());
             } else
             {
                 _logger.debug("skipping orderitem");
@@ -269,10 +269,6 @@ public class DownloadImageBean
     }
 
 
-    public Photo getDownloadPhoto()
-    {
-        return downloadPhoto;
-    }
 
     /**
      * sort the list of downloadable items; digital items first
@@ -287,8 +283,11 @@ public class DownloadImageBean
             {
                 // lowest order (first) for digital
                 return -1;
+            } else if (!item1.getProduct().isDigitalProduct() && item2.getProduct().isDigitalProduct())
+            { // same: compare orderitemid
+                return 1;
             } else if (item1.getProduct().isDigitalProduct() && item2.getProduct().isDigitalProduct())
-            {
+            { // same: compare orderitemid
                 return item1.getOrderItemId().compareTo(item2.getOrderItemId());
             }
             else if (!item2.getProduct().isDigitalProduct())
@@ -296,8 +295,7 @@ public class DownloadImageBean
                 return item1.getOrderItemId().compareTo(item2.getOrderItemId());
             } else
             {
-                // highest order (last) for non-digital
-                return 1;
+                throw new RuntimeException("unexpected state");
             }
         }
     };

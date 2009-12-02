@@ -80,7 +80,6 @@ public class DownloadOrderAction extends Action
             downloadBean = new DownloadImageBean(orderHash,downloadUrl);
             if (downloadBean.getOrder()==null)
             {
-                // todo error message no order available
                 return actionMapping.findForward("dbProblem");
             }
             request.setAttribute("downloadBean",downloadBean);
@@ -90,13 +89,13 @@ public class DownloadOrderAction extends Action
             return actionMapping.findForward("dbProblem");
         }
 
-        String photoId = request.getParameter("phId");
-        if (request.getParameter("phId") != null && !"".equals(photoId))
+//        String photoId = request.getParameter("phId");
+        String orderItemId = request.getParameter("OIID");
+        if (request.getParameter("OIID") != null && !"".equals(orderItemId))
         {
             // prepare and check for download
-            downloadBean.downloadPhoto(photoId, httpServletResponse);
+            downloadBean.downloadPhoto(orderItemId, httpServletResponse);
             return null;
-//            return actionMapping.findForward("downloadPhoto");
         } else
         {
             return actionMapping.findForward("success");
