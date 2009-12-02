@@ -1,0 +1,204 @@
+html {
+    background: rgb( 232, 231, 230 ) url( ../images/bg_gradient.gif ) 0% 0 repeat-x;
+    z-index: 0
+}
+
+body, div {
+    border: 0px;
+    margin: 0px;
+    padding: 0px;
+    z-index: 10;
+}
+
+div.float {
+    float: left;
+}
+
+img {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+/*=================================================indexnavigation=================================*/
+div#navigationhead {
+    float: right;
+    width: 612px;
+    height: 73px;
+    border-bottom: 1px solid rgb( 165, 165, 165 );
+}
+
+ul#indexnav {
+    float:left;
+    padding: 0;
+    margin: 0;
+    width: 612px;
+    height: 12px;
+}
+
+ul#indexnav li a {
+    display:block;
+    color: #000/*rgb( 189, 189, 189 )*/;
+        font: normal 10px Arial, verdana, sans-serif;
+    vertical-align:text-top;
+}
+ul#indexnav li a:hover {
+    color: #FFF;
+}
+
+ul#indexnav li {
+    height:14px;
+    padding:0 7px;
+    float: left;
+    font: normal 10px Arial, verdana, sans-serif;
+    background: transparent url( ../images/indexarrow.gif ) 0% 0px no-repeat;
+}
+
+div#navigationhead h2 {
+    float:left;
+    font: bold 0.7em / .7em Arial, Verdana, sans-serif;
+    color: #FFF;
+    padding:0px;
+    margin:0px;
+    width:612px;
+    height:18px;
+    vertical-align:text-top;
+}
+
+/*======================================time=====================================*/
+div#navigationline {
+    position:relative;
+    width:612px;
+    height:31px;
+}
+div#time {
+    float:left;
+    width:180px;
+    height:31px;
+}
+
+div#time #hours{
+    height:18px;
+    width:48px;
+    font:0.7em / 0.7em Arial, VErdana, sans-serif;
+}
+div#time #minute{
+    height:18px;
+    width:40px;
+    font:0.7em / 0.7em Arial, VErdana, sans-serif;
+}
+
+div#time option {
+    padding: 0 2px;
+}
+
+div#time a {
+    position:relative;
+    padding:1px;
+    top:0px;
+    height: 17px;
+    width: 18px;
+}
+div#time img {
+    position:relative;
+    top:4px;
+}
+*html div#time img {
+    top:3px;
+    t\op:3px;
+}
+/*=====================================pagenav=====================================*/
+div#pagenav{
+    position:relative;
+    padding:0;
+    height:28px;
+    border:1px dotted red
+}
+#pagenav ul{
+    float:left;
+    padding:0;
+    border:1px dotted blue
+}
+#pagenav li {
+    font:11px verdana, arial sans-serif;
+    color:#FFF;
+    float: left;
+    height: 11px;
+    background: transparent;
+}
+
+#pagenav a {
+    display:block;
+    vertical-align:text-top;
+    text-align:center;
+    width:11px;
+}
+#pagenav .page {
+    background: transparent;
+    padding: 0 1px;
+}
+
+#pagenav .page a:hover{
+    color:rgb(255,140,8);
+}
+#pagenav #lastpage a{
+    background: transparent;
+    padding: 0 1px;
+    width:auto;
+}
+#pagenav #lastpage a:hover{
+    color:rgb(255,140,8);
+}
+#pagenav .page a:active{
+    color:#000;
+    background: url( ../images/bg_pagenav.gif) 50% 50% no-repeat;
+}
+
+li#pagenav-a {
+    padding: 0;
+    background: url( ../images/page_nav_a.gif ) 0% 0 no-repeat;
+
+}
+li#pagenav-a a:hover{
+    padding: 0;
+    background: url( ../images/page_nav_a_hover.gif ) 0% 0 no-repeat;
+}
+li#pagenav-b {
+    padding: 0 4px 0 0;
+    background: url( ../images/page_nav_b.gif ) 0% 0 no-repeat;
+}
+li#pagenav-b a:hover{
+    padding: 0;
+    background: url( ../images/page_nav_b_hover.gif ) 0% 0 no-repeat;
+}
+li#pagenav-c {
+    padding: 0 0 0 4px;
+    background: url( ../images/page_nav_c.gif ) 100% 0 no-repeat;
+}
+li#pagenav-c a:hover{
+    padding: 0;
+    background: url( ../images/page_nav_c_hover.gif ) 100% 0 no-repeat;
+}
+li#pagenav-d {
+    padding: 0;
+    background: url( ../images/page_nav_d.gif ) 100% 0 no-repeat;
+}
+li#pagenav-d a:hover{
+    padding: 0;
+    background: url( ../images/page_nav_d_hover.gif ) 100% 0 no-repeat;
+}
+/*============================================pagesnumbers=================================*/
+div#numberofpages {
+    float:right;
+
+}
+

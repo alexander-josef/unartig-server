@@ -1,0 +1,235 @@
+html {
+    background: rgb( 232, 231, 230 ) url( /images/bg_gradient.gif ) 0% 0 repeat-x;
+    z-index: 0
+}
+
+body, div, tr, td, th {
+    border: 0px;
+    margin: 0px;
+    padding: 0px;
+    z-index: 10;
+}
+
+div.float {
+    float: left;
+    margin: 0;
+    padding: 0;
+}
+
+img {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+div#newcategory #abschicken {
+    border:0;
+    float:right;
+    height:auto;
+    width:auto;
+}
+
+/*=================================================background=================================*/
+div#dynamic_whiteboard {
+    width: 852px;
+    height: auto;
+    background: transparent url( /images/bg_dyn_whiteboard.gif ) 0% 0 repeat-y;
+    z-index: 20;
+    visibility: visible;
+}
+
+div#dynamic_whiteboard_wide {
+    width: 992px;
+    height: auto;
+    background: transparent url( /images/bg_dyn_whiteboard_wide.gif ) 0% 0 repeat-y;
+    z-index: 20;
+    visibility: visible;
+}
+
+div#board {
+    width: 850px;
+    min-height: 402px;
+    background: transparent url( /images/bg_fix_whiteboard.gif ) 0% 0 no-repeat;
+    z-index: 30;
+    visibility: visible;
+}
+
+div#board_wide {
+    width: 992px;
+    min-height: 402px;
+    background: transparent url( /images/bg_fix_whiteboard_wide.gif ) 0% 0 no-repeat;
+    z-index: 30;
+    visibility: visible;
+}
+
+/*=================================================heather=================================*/
+div#heather {
+    position: relative;
+    top: 21px;
+    left: 21px;
+    width: 819px;
+    height: 124px;
+    background: transparent url( /images/container_gradient.gif ) 0% 0 repeat-x;
+    z-index: 40;
+}
+
+div#heather_wide {
+    position: relative;
+    top: 21px;
+    left: 21px;
+    width: 959px;
+    height: 124px;
+    background: transparent url( /images/container_gradient.gif ) 0% 0 repeat-x;
+    z-index: 40;
+}
+
+/*=================================================topnav=================================*/
+
+div#menu_wide {
+    position: absolute;
+    top: 63px;
+    left: 186px;
+    height: 20px;
+    width: 752px;
+    background: rgb( 123, 120, 120 );
+    z-index: 200;
+}
+#topmenu{
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+#topmenu {
+    float: left;
+}
+
+#topmenu li{
+    float: left;
+}
+
+/*=================================================container=================================*/
+div#containertopspacer {
+    float: left;
+    width: 819px;
+    height: 24px;
+}
+
+div#container {
+    width: 780px;
+    min-height: 402px;
+    padding: 0px 0px 0px 42px;
+    z-index: 40;
+}
+
+/*==============================================container_wide================================*/
+div#containertopspacer_wide {
+    float: left;
+    width: 595px;
+    height: 24px;
+}
+
+div#container_wide {
+    width: 920px;
+    min-height: 402px;
+    padding: 0px 0px 0px 42px;
+    z-index: 40;
+}
+
+
+/*=================================================indexnavigation=================================*/
+
+div.navigationhead_wide {
+    float: right;
+    width: 755px;
+    height: 63px;
+    background: url( /images/horiz_devider_wide.gif ) 0% 100% no-repeat;
+}
+
+ul.indexnav_wide {
+    float: left;
+    padding: 0 0 4px 0;
+    margin: 0;
+    width: 752px;
+    height: 12px;
+}
+
+.index {
+    height: 14px;
+    padding: 0 7px;
+    float: left;
+    font: normal 10px verdana, arial, sans-serif;
+    color:rgb(190,190,190);
+    background: transparent url( /images/indexarrow.gif ) 0% 0px no-repeat;
+}
+
+/*=================================================content=================================*/
+
+div#content_wide {
+    float: right;
+    width: 756px;
+    height: auto;
+    background: transparent;
+    visibility: visible;
+}
+/*=================================================upload=================================*/
+div#content_wide div{
+    float:left;
+    font:bold 12px verdana, arial, sans-serif;
+    color:rgb(190,190,190);
+    padding:10px 0;
+    border-bottom:1px solid rgb(190,190,190);
+    width:400px;
+}
+div#content_wide div img{
+  float:right;
+}
+div#content_wide div ul{
+    float:right;
+}
+div#content_wide div li{
+    float:right;
+    padding:5px 0;
+}
+div#content_wide div input{
+    height:15px;
+    border: ridge rgb(190,190,190);
+    padding:0 5px;
+    font:normal 11px verdana, arial, sans-serif;
+    color:rgb(120,120,120)
+}
+div#content_wide div ul p{
+    display:inline;
+    padding:0 10px 0 0;
+    font:bold 11px verdana, arial, sans-serif;
+    color:#FFF
+}
+
+
+/*=================================================footer=================================*/
+div#footer {
+    clear: left;
+    width: 852px;
+    height: 22px;
+    background: transparent url( /images/bg_end_whiteboard.gif ) 0% 0 no-repeat;
+    z-index: 30;
+    visibility: visible
+}
+
+div#footer_wide {
+    clear: left;
+    width: 992px;
+    height: 22px;
+    background: transparent url( /images/bg_end_whiteboard_wide.gif ) 0% 0 no-repeat;
+    z-index: 30;
+    visibility: visible
+}
