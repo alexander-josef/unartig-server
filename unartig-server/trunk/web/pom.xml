@@ -10,7 +10,6 @@
     <url>http://server.unartig.ch</url>
 
     <properties>
-        <project.build.sourceEncoding>ISO-8859-1</project.build.sourceEncoding>
     </properties>
 
     <dependencies>
