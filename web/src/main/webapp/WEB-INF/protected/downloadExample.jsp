@@ -159,7 +159,7 @@
 
                 <p><br/>
                     <span>WICHTIG, bitte Anleitung lesen: </span> Klicken Sie auf den "download" Knopf, und <span>benutzen Sie die 'Speichern' ('Save', 'Save to Disk') Funktion des Browsers</span>
-                    bevor Sie das Foto �ffnen!
+                    bevor Sie das Foto öffnen!
                 </p>
 
             </td>
@@ -196,7 +196,7 @@
 
                 <p><br/>
                     <span>WICHTIG, bitte Anleitung lesen: </span> Klicken Sie auf den "download" Knopf, und <span>benutzen Sie die 'Speichern' ('Save', 'Save to Disk') Funktion des Browsers</span>
-                    bevor Sie das Foto �ffnen!
+                    bevor Sie das Foto öffnen!
                 </p>
 
             </td>
