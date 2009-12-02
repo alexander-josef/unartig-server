@@ -10,7 +10,7 @@
           <root url="file://$MODULE_DIR$/src/main/webapp" relative="/" />
         </webroots>
         <building>
-          <setting name="EXPLODED_URL" value="file://$MODULE_DIR$/../../../../../programme/apache-tomcat-6.0.20/webapps/ROOT" />
+          <setting name="EXPLODED_URL" value="file:///programme/apache-tomcat-6.0.20/webapps/ROOT" />
           <setting name="EXPLODED_ENABLED" value="true" />
           <setting name="JAR_URL" value="file://$MODULE_DIR$/target/ROOT.war" />
           <setting name="JAR_ENABLED" value="false" />
