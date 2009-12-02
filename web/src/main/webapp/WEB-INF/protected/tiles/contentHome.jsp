@@ -35,6 +35,16 @@
     <ul class="aktuell">
         <li>
             <div>
+                <p class="aktuell_date">28.11.2009</p>
+
+                <a href="/overview/322/Polyball-2009-ETH-Zuerich/show.html"><img src="/DATA/322/index.jpg"/></a>
+
+                <p class="aktuell_name">Polyball 2009</p>
+
+            </div>
+        </li>
+        <li>
+            <div>
                 <p class="aktuell_date">4.4.2009</p>
 
                 <a href="/overview/314/kantiball-aarau-2009/show.html"><img src="/DATA/314/index.jpg"/></a>
@@ -128,6 +138,8 @@
             </div>
         </li>
 
+        <%--
+
         <li>
             <div><p class="aktuell_date">28.4.2007</p>
 
@@ -140,7 +152,6 @@
             </div>
         </li>
 
-<%--
         <li>
             <div><p class="aktuell_date">31.03.2007</p>
 
