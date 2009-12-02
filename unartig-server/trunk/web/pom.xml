@@ -5,7 +5,7 @@
     <packaging>
         war
     </packaging>
-    <version>3.0-SNAPSHOT</version>
+    <version>3.0.3</version>
     <name>unArtig Server</name>
     <url>http://server.unartig.ch</url>
 
@@ -370,8 +370,8 @@
         <!-- not sure if the connection should be given with or without username.
              if username is given, person who makes release may need to adjust pom first.
          -->
-        <connection>scm:svn:svn+ssh://alex@svn.unartig.ch/opt/svn/repos/unartig-server/trunk/web</connection>
-        <developerConnection>scm:svn:svn+ssh://alex@svn.unartig.ch/opt/svn/repos/unartig-server/trunk/web</developerConnection>
+        <connection>scm:svn:svn+ssh://alex@svn.unartig.ch/opt/svn/repos/unartig-server/tags/unArtigSerVer-3.0.3</connection>
+        <developerConnection>scm:svn:svn+ssh://alex@svn.unartig.ch/opt/svn/repos/unartig-server/tags/unArtigSerVer-3.0.3</developerConnection>
         <!--<url>svn+ssh://svn.unartig.ch/opt/svn/repos/sportrait-server/trunk</url>-->
     </scm>
 
