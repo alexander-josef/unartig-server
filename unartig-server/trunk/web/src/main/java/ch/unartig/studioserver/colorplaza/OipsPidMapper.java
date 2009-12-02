@@ -41,7 +41,7 @@ public class OipsPidMapper implements ProductMapperIF {
      * 2-dimensional arrays for producttype-price-oipspid mapping<br/>
      * [ProductTypeId][PriceId]
      */
-    Object[][] productPricesOipsid = new Object[30][30];
+    Object[][] productPricesOipsid = new Object[40][40];
     private static final int _OIPS_PID_INDEX = 0; // location of the oips pid information in the array
     private static final int _UNARTIG_EARNINGS_INDEX = 1 ; // index for the position of the unartig earnings value in the array
 
