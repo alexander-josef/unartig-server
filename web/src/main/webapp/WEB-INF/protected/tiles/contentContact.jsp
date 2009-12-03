@@ -33,7 +33,7 @@
     <p><span>Studio unArtig</span><br/>
         unartig AG<br/>
 
-        Clausiusstrasse 34, 8006 Zürich<br/>
+        Hörnlistrasse 21, 9500 Wil<br/>
         Tel +41 (0)79 600 3561<br/>
         <img src="/images/Email_unartig.gif" alt="E-Mail unartig Kundendienst"/>
     </p>
