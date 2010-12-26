@@ -35,6 +35,17 @@
     <ul class="aktuell">
         <li>
             <div>
+                <p class="aktuell_date">27.11.2010</p>
+
+                <a href="/overview/335/polyball-2010-a-night-out-in-the-20-ies/show.html"><img
+                        src="/DATA/335/index.jpg"/></a>
+
+                <p class="aktuell_name">Polyball 2010</p>
+
+            </div>
+        </li>
+        <li>
+            <div>
                 <p class="aktuell_date">30.1.2010</p>
 
                 <a href="/overview/326/Fromm-Ball-Basel-2010-01-31/show.html"><img src="/DATA/326/index.jpg"/></a>
@@ -126,6 +137,7 @@
 
             </div>
         </li>
+        <%--
         <li>
             <div><p class="aktuell_date">10.11.2007</p>
 
@@ -137,7 +149,6 @@
 
             </div>
         </li>
-        <%--
 
         <li>
             <div><p class="aktuell_date">1.6.2007</p>
