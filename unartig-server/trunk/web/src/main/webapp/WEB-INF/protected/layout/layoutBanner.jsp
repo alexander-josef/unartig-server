@@ -14,7 +14,7 @@
         <title><tiles:insert attribute="htmlTitle"/></title>
     </head>
 
-    <body onload="preloadimages()">
+    <body onload="preloadimages();<tiles:insert attribute="onloadFunctions"/>">
     <div id="dynamic_whiteboard" class="float">
         <div id="board" class="float">
             <div id="header" class="narrow">
@@ -68,7 +68,7 @@
             <li><a href="/About.html"><bean:message bundle="CONTENT" key="link.about"/></a>|</li>
             <li><a href="/Contact.html"><bean:message bundle="CONTENT" key="link.contact"/></a>|</li>
             <li><a href="/FAQ.html"><bean:message bundle="CONTENT" key="link.faq"/></a>|</li>
-            <li><a href="/Copyright.html">&copy; unartig AG 2005-2009</a>|</li>
+            <li><a href="/Copyright.html">&copy; unartig AG 2005-2011</a>|</li>
             <li><a href="/Privacy.html"><bean:message bundle="CONTENT" key="link.privacy"  /></a>|</li>
             <li><a href="/AGB.html"><bean:message bundle="CONTENT" key="link.agb"  /></a>|</li>
             <li><a href="/setLocale.html?language=de">DE</a>|</li>

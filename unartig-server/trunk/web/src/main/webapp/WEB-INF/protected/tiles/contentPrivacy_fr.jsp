@@ -39,7 +39,7 @@
         "Cookie"), um folgende Ziele zu erreichen: <br/><br/>
 
         - Darstellung komplexer und dynamischer Inhalte <br/>
-        - Pr&auml;zise Erhebung der Besuchszahlen (sog. Visits) <br/>
+        - Pr&auml;zise Erhebung der Besuchszahlen (sog. Visits)<br/>
         - Authentifizierung von Nutzerinnen und Nutzern, die sich mit einem Passwort identifiziert
         haben. <br/><br/>
         Das Verhalten einer individuellen Person wird nicht beobachtet oder gar gespeichert. Die Angabe
@@ -47,9 +47,10 @@
         zwingend, wenn Sie eine kostenpflichtige Dienstleistung von der unartig AG in Anspruch nehmen,
         die das zur
         Verf&uuml;gung Stellen dieser Daten unerl&auml;sslich macht. Die E-Mail Adresse wird vom
-        studio-uartig und von unserem Partnerlabor (Colormailer Ltd., www.colorplaza.com) ausschliesslich dazu
+        studio-uartig und von unserem Partnerlabor (www.colormailer.ch) ausschliesslich dazu
         verwendet, den
         Kunden zu kontaktieren, wenn Schwierigkeiten bei der Abwicklung einer Bestellung auftreten.
+
 
     </p>
 

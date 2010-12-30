@@ -23,6 +23,7 @@
     <facet type="hibernate" name="Hibernate">
       <configuration>
         <datasource-map>
+          <unit-entry name="hibernate.cfg.xml" value="1e651bfe-899e-4130-bed4-081e3e28f658" />
           <unit-entry name="src/main/resources/hibernate.cfg.xml" value="24d8a23c-ca4f-4627-a352-4be882237482" />
         </datasource-map>
         <deploymentDescriptor name="hibernate.cfg.xml" url="file://$MODULE_DIR$/src/main/resources/hibernate.cfg.xml" />
@@ -49,6 +50,7 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="hibernate3" level="project" />
     <orderEntry type="library" name="struts" level="project" />
+    <orderEntry type="library" name="struts (2)" level="project" />
     <orderEntry type="library" name="Maven: org.zkoss.zk:zhtml:3.0.0" level="project" />
     <orderEntry type="library" name="Maven: org.zkoss.common:zcommon:3.0.0" level="project" />
     <orderEntry type="library" name="Maven: commons-fileupload:commons-fileupload:1.1.1" level="project" />

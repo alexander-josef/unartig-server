@@ -16,8 +16,12 @@
         <put name="jsTreeInsert" value="/WEB-INF/protected/tiles/jsTreeInsert_de.jsp"/>
         <put name="htmlHeader" value="/WEB-INF/protected/tiles/htmlHeadStandard.jsp"/>
         <put name="cssOverrule" value="/WEB-INF/protected/tiles/cssOverrule_de.jsp"/>
+        <put name="onloadFunctions" type="string">
+            <![CDATA[ModalPopupsAlert1()]]>
+        </put>
         <put name="htmlTitle" type="string">
-            <![CDATA[unartig studio -- Das mobile, professionelle Fotostudio - Das Online-Album für anspruchsvolle Fotografie]]></put>
+            <![CDATA[unartig studio -- Das mobile, professionelle Fotostudio - Das Online-Album für anspruchsvolle Fotografie]]>
+        </put>
         <put name="topMenu" value="/WEB-INF/protected/tiles/topMenu.jsp"/>
         <put name="indexNavigation" value="/WEB-INF/protected/tiles/Empty.jsp"/>
         <put name="pageName" value="/WEB-INF/protected/tiles/Empty.jsp"/>
@@ -46,6 +50,7 @@
 
     <!--Unartig Links-->
     <definition name=".unartigAbout" extends=".unartigHome">
+        <put name="onloadFunctions" type="string"><![CDATA[;]]></put>
         <put name="sidebar1" value="/WEB-INF/protected/tiles/sidebarAbout.jsp"/>
         <put name="sidebar2" value="/WEB-INF/protected/tiles/Empty.jsp"/>
         <put name="content1" value="/WEB-INF/protected/tiles/contentAbout_de.jsp"/>
@@ -65,7 +70,7 @@
         <put name="content1" value="/WEB-INF/protected/tiles/contentPhotographers.jsp"/>
     </definition>
 
-<definition name=".unartigPhotographerMore" path="/WEB-INF/protected/layout/layoutNoBannerAlbum.jsp">
+    <definition name=".unartigPhotographerMore" path="/WEB-INF/protected/layout/layoutNoBannerAlbum.jsp">
         <put name="jsTreeInsert" value="/WEB-INF/protected/tiles/jsTreeInsert_de.jsp"/>
         <put name="htmlHeader" value="/WEB-INF/protected/tiles/htmlHeadStandard.jsp"/>
         <put name="cssOverrule" value="/WEB-INF/protected/tiles/Empty.jsp"/>
@@ -100,12 +105,14 @@
     </definition>
 
     <definition name=".unartigContact" extends=".unartigHome">
+        <put name="onloadFunctions" type="string"><![CDATA[;]]></put>
         <put name="htmlTitle" type="string"><![CDATA[unartig studio -- kontakt]]></put>
         <put name="content1" value="/WEB-INF/protected/tiles/contentContact.jsp"/>
         <put name="content2" value="/WEB-INF/protected/tiles/Empty.jsp"/>
     </definition>
 
     <definition name=".unartigFAQ" extends=".unartigHome">
+        <put name="onloadFunctions" type="string"><![CDATA[;]]></put>
         <put name="htmlTitle" type="string"><![CDATA[unartig studio -- faq]]></put>
         <put name="content1" value="/WEB-INF/protected/tiles/contentFAQ.jsp"/>
         <put name="content2" value="/WEB-INF/protected/tiles/Empty.jsp"/>
@@ -113,22 +120,26 @@
 
     <!--Footnavigation Links-->
     <definition name=".unartigCopyright" extends=".unartigHome">
+        <put name="onloadFunctions" type="string"><![CDATA[;]]></put>
         <put name="content1" value="/WEB-INF/protected/tiles/contentCopyright_de.jsp"/>
         <put name="content2" value="/WEB-INF/protected/tiles/Empty.jsp"/>
     </definition>
 
     <definition name=".unartigPrivacy" extends=".unartigHome">
+        <put name="onloadFunctions" type="string"><![CDATA[;]]></put>
         <put name="content1" value="/WEB-INF/protected/tiles/contentPrivacy_de.jsp"/>
         <put name="content2" value="/WEB-INF/protected/tiles/Empty.jsp"/>
     </definition>
 
     <definition name=".unartigAGB" extends=".unartigHome">
+        <put name="onloadFunctions" type="string"><![CDATA[;]]></put>
         <put name="content1" value="/WEB-INF/protected/tiles/contentAGB_de.jsp"/>
         <put name="content2" value="/WEB-INF/protected/tiles/Empty.jsp"/>
     </definition>
 
     <!--Find and order pictures,'normal' overview-->
     <definition name=".unartigOverview" extends=".unartigHome">
+        <put name="onloadFunctions" type="string"><![CDATA[;]]></put>
         <put name="htmlTitle" value="/WEB-INF/protected/tiles/Empty.jsp"/>
         <put name="indexNavigation" value="/WEB-INF/protected/tiles/indexNavigation.jsp"/>
 
@@ -294,6 +305,7 @@
 
     <!--Account, Login et.c.-->
     <definition name=".unartigLogin" extends=".unartigHome">
+        <put name="onloadFunctions" type="string"><![CDATA[;]]></put>
         <put name="htmlTitle" type="string"><![CDATA[unartig studio -- login]]></put>
         <put name="sidebar1" value="/WEB-INF/protected/tiles/sidebarTree.jsp"/>
         <!--<put name="sidebar1" value="/WEB-INF/protected/tiles/sidebarLogin.jsp"/>-->
@@ -301,7 +313,7 @@
         <put name="content1" value="/WEB-INF/protected/tiles/contentLoginForm.jsp"/>
         <put name="content2" value="/WEB-INF/protected/tiles/TopMessage.jsp"/>
     </definition>
-    
+
 
     <definition name=".unartigLoginNoLoginPass" extends=".unartigLogin">
         <put name="htmlTitle" type="string"><![CDATA[unartig studio -- passwort vergessen]]></put>
@@ -367,19 +379,19 @@
         <put name="content1" value="/WEB-INF/protected/tiles/contentAccountEditLoginPass.jsp"/>
     </definition>
 
-<!--
-nicht gebraucht:
+    <!--
+    nicht gebraucht:
 
-    <definition name=".unartigAccountEditAddressBill" extends=".unartigAccountEditEmail">
-        <put name="htmlTitle" type="string"><![CDATA[unartig studio -*- konto rechnungsadresse &auml;ndern]]></put>
-        <put name="content1" value="/WEB-INF/protected/tiles/contentAccountEditAddressBill.jsp"/>
-    </definition>
+        <definition name=".unartigAccountEditAddressBill" extends=".unartigAccountEditEmail">
+            <put name="htmlTitle" type="string"><![CDATA[unartig studio -*- konto rechnungsadresse &auml;ndern]]></put>
+            <put name="content1" value="/WEB-INF/protected/tiles/contentAccountEditAddressBill.jsp"/>
+        </definition>
 
-    <definition name=".unartigAccountEditAddressMail" extends=".unartigAccountEditEmail">
-        <put name="htmlTitle" type="string"><![CDATA[unartig studio -*- konto lieferadresse &auml;ndern]]></put>
-        <put name="content1" value="/WEB-INF/protected/tiles/contentAccountEditAddressMail.jsp"/>
-    </definition>
--->
+        <definition name=".unartigAccountEditAddressMail" extends=".unartigAccountEditEmail">
+            <put name="htmlTitle" type="string"><![CDATA[unartig studio -*- konto lieferadresse &auml;ndern]]></put>
+            <put name="content1" value="/WEB-INF/protected/tiles/contentAccountEditAddressMail.jsp"/>
+        </definition>
+    -->
 
     <definition name=".unartigAccountEditBilling" extends=".unartigAccountEditEmail">
         <put name="htmlTitle" type="string"><![CDATA[unartig studio -- konto Zahlungsmethode &auml;ndern]]></put>

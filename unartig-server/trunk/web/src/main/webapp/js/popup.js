@@ -1,20 +1,39 @@
-function myFunct(myPopUp)
-{
+function myFunct(myPopUp) {
     myPopUp.close();
     return false;
 }
 
-var myimages = new Array();
-function preloadimages()
-{
-    for (i = 0; i < preloadimages.arguments.length; i++)
+// Called from onload handler
+function ModalPopupsAlert1() {
+    ModalPopups.Alert("jsAlert1",
+            "Bestellen von Papierabzügen / Ordering Prints",
+            "<div style='padding:25px;'>Liebe Besucher<br/>" +
+                    "Auf Ende Januar 2011 beenden wir die Zusammenarbeit mit unserem langjährigen Partnerlabor \"Colormailer\"<br/>" +
+                    "Da die Details einer neuen Lösung noch nicht geklärt sind, bitten wir Sie Ihre geplanten Bestellungen bis zum 31.1.2011 zu machen.<br/>" +
+                    "Vielen Dank.<br/>" +
+                    "<br/>" +
+                    "Dear Visitor<br/>" +
+                    "We will discontinue our longstanding collaboration with our partner lab \"Colormailer\" after January 31, 2011<br/>" +
+                    "Since the details of a new solution for providing print products are not clear yet,<br/>" +
+                    "we kindly ask you to place your planned orders before January 31, 2011.<br/>" +
+                    "Thank you.<br/>" +
+
+                    "</div>",
     {
+        okButtonText: "Close"
+    }
+            );
+}
+
+var myimages = new Array();
+function preloadimages() {
+    for (i = 0; i < preloadimages.arguments.length; i++) {
         myimages[i] = new Image()
         myimages[i].src = preloadimages.arguments[i]
     }
 }
 
-// Pfad und Name der Images innerhalb von Anf�hrungszeichen eintragen.
+// Pfad und Name der Images innerhalb von Anf�hrungszeichen eintragen.
 // Liste nach Bedarf erweitern.
 preloadimages(
         "/images/topMenu/link_home_active.gif",

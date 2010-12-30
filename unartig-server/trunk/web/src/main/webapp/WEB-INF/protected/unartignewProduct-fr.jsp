@@ -6,7 +6,7 @@
 <html:html>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <!--todo: language depending keywords-->
-    <meta name="author" content="studio unartig; --www.unartig.ch--; (c)2005-2009"/>
+    <meta name="author" content="studio unartig; --www.unartig.ch--; (c)2005-2011"/>
     <meta name="keywords" content="unartig, digital, data, original"/>
     <link href="/css/popup.css" rel="stylesheet" type="text/css"/>
 
