@@ -143,10 +143,6 @@
                     <td>
                         <html:select property="creditCardExpiryYear" styleId="creditCardExpiryYear" errorStyleClass="inputError">
                             <html:option value="****"/>
-                            <html:option value="2006"/>
-                            <html:option value="2007"/>
-                            <html:option value="2008"/>
-                            <html:option value="2009"/>
                             <html:option value="2010"/>
                             <html:option value="2011"/>
                             <html:option value="2012"/>

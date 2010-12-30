@@ -40,7 +40,7 @@
                 <a href="/overview/335/polyball-2010-a-night-out-in-the-20-ies/show.html"><img
                         src="/DATA/335/index.jpg"/></a>
 
-                <p class="aktuell_name">Polyball 2010</p>
+                <p class="aktuell_name">Polyball 2013</p>
 
             </div>
         </li>
@@ -48,7 +48,7 @@
             <div>
                 <p class="aktuell_date">30.1.2010</p>
 
-                <a href="/overview/326/Fromm-Ball-Basel-2010-01-31/show.html"><img src="/DATA/326/index.jpg"/></a>
+                <a href="/overview/326/Fromm-Ball-Basel-2010-01-31/show.html"><img src="/DATA/326/index.jpg" alt="frommball 2010"/></a>
 
                 <p class="aktuell_name">Fromm-Ball 2010</p>
 

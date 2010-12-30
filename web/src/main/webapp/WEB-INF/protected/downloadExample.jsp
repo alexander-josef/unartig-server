@@ -8,7 +8,7 @@
 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 
-    <meta name="author" content="unartig --www.unartig.ch--; (c)2005-2009"/>
+    <meta name="author" content="unartig --www.unartig.ch--; (c)2005-2011"/>
     <meta name="keywords" content="unartig, foto, fotos, photo, photos, online-album, bestellen, album, service, anlass, ball, event, photography, eth, polyball"/>
     <link href="/css/tree.css" rel="stylesheet" type="text/css"/>
     <link href="/css/main.css" rel="stylesheet" type="text/css"/>
@@ -88,7 +88,7 @@
     <div class="sidebarElement">
         <h3 class="sidebarContent">Polyball Aktion!</h3>
 
-        <p class="sidebarContent"><span>Ab sofort kï¿½nnen Sie die Fotos des Polyballs 2003-2005 zu stark reduzierten Preisen beziehen.</span></p>
+        <p class="sidebarContent"><span>Ab sofort k?nnen Sie die Fotos des Polyballs 2003-2005 zu stark reduzierten Preisen beziehen.</span></p>
 
         <p class="sidebarContent"><a href="http://www.unartig.ch/overview/100/Polyball/show.html"><img src="/images/button/sales-de.gif" alt="Ausverkauf"/></a>
         </p>
@@ -96,7 +96,7 @@
     <div class="sidebarElement">
         <h3 class="sidebarContent">Neue Produkte!</h3>
 
-        <p class="sidebarContent"><span>Ab sofort kï¿½nnen Sie digitale Bilddaten bestellen.</span></p>
+        <p class="sidebarContent"><span>Ab sofort k?nnen Sie digitale Bilddaten bestellen.</span></p>
 
         <p class="sidebarContent"><a href="/newProduct-de.html"
                                      onclick="PriceList=window.open('/newProduct-de.html','Preisliste','toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=no,resizable=no,width=600px,height=600px,left=200px,top=100px'); PriceList.focus(); return false;"><img
@@ -159,7 +159,7 @@
 
                 <p><br/>
                     <span>WICHTIG, bitte Anleitung lesen: </span> Klicken Sie auf den "download" Knopf, und <span>benutzen Sie die 'Speichern' ('Save', 'Save to Disk') Funktion des Browsers</span>
-                    bevor Sie das Foto Ã¶ffnen!
+                    bevor Sie das Foto šffnen!
                 </p>
 
             </td>
@@ -196,7 +196,7 @@
 
                 <p><br/>
                     <span>WICHTIG, bitte Anleitung lesen: </span> Klicken Sie auf den "download" Knopf, und <span>benutzen Sie die 'Speichern' ('Save', 'Save to Disk') Funktion des Browsers</span>
-                    bevor Sie das Foto Ã¶ffnen!
+                    bevor Sie das Foto šffnen!
                 </p>
 
             </td>
@@ -215,13 +215,13 @@
 <div id="footer_wide">
     <ul id="footerlinks-access">
         <li><a href="/index.html">Home</a>|</li>
-        <li><a href="/About.html">ï¿½ber unArtig</a>|</li>
+        <li><a href="/About.html">?ber unArtig</a>|</li>
         <li><a href="/Contact.html">Kontakt</a>|</li>
 
         <li><a href="/FAQ.html">FAQ</a>|</li>
-        <li><a href="/Copyright.html">&copy; unartig AG 2005-2009</a>|</li>
+        <li><a href="/Copyright.html">&copy; unartig AG 2005-2011</a>|</li>
         <li><a href="/Privacy.html">DATENSCHUTZ</a>|</li>
-        <li><a href="/AGB.html">ALLGEMEINE GESCHï¿½FTSBESTIMMUNGEN</a>|</li>
+        <li><a href="/AGB.html">ALLGEMEINE GESCH?FTSBESTIMMUNGEN</a>|</li>
 
         <li><a href="/setLocale.html?language=de">DE</a>|</li>
         <li><a href="/setLocale.html?language=en">EN</a>|</li>
