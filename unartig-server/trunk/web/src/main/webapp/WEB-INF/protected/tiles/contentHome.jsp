@@ -45,47 +45,57 @@
             </div>
         </li>
         <li>
-            <div>
-                <p class="aktuell_date">30.1.2010</p>
+             <div>
+                 <p class="aktuell_date">8.4.2010</p>
 
-                <a href="/overview/326/Fromm-Ball-Basel-2010-01-31/show.html"><img src="/DATA/326/index.jpg" alt="frommball 2010"/></a>
+                 <a href="/overview/329/kantiball-aarau-2010-baerenmatte-suhr/show.html"><img src="/DATA/329/index.jpg"/></a>
 
-                <p class="aktuell_name">Fromm-Ball 2010</p>
+                 <p class="aktuell_name">Kantiball 2010</p>
 
-            </div>
+             </div>
         </li>
         <li>
-            <div>
-                <p class="aktuell_date">28.11.2009</p>
+             <div>
+                 <p class="aktuell_date">30.1.2010</p>
 
-                <a href="/overview/322/Polyball-2009-ETH-Zuerich/show.html"><img src="/DATA/322/index.jpg"/></a>
+                 <a href="/overview/326/Fromm-Ball-Basel-2010-01-31/show.html"><img src="/DATA/326/index.jpg"/></a>
 
-                <p class="aktuell_name">Polyball 2009</p>
+                 <p class="aktuell_name">Fromm-Ball 2010</p>
 
-            </div>
-        </li>
+             </div>
+         </li>
+         <li>
+             <div>
+                 <p class="aktuell_date">28.11.2009</p>
 
-        <li>
-            <div>
-                <p class="aktuell_date">4.4.2009</p>
+                 <a href="/overview/322/Polyball-2009-ETH-Zuerich/show.html"><img src="/DATA/322/index.jpg"/></a>
 
-                <a href="/overview/314/kantiball-aarau-2009/show.html"><img src="/DATA/314/index.jpg"/></a>
+                 <p class="aktuell_name">Polyball 2009</p>
 
-                <p class="aktuell_name">Kantiball Aarau 2009</p>
+             </div>
+         </li>
+         <li>
+             <div>
+                 <p class="aktuell_date">4.4.2009</p>
 
-            </div>
-        </li>
+                 <a href="/overview/314/kantiball-aarau-2009/show.html"><img src="/DATA/314/index.jpg"/></a>
 
-        <li>
-            <div>
-                <p class="aktuell_date">29.11.2008</p>
+                 <p class="aktuell_name">Kantiball Aarau 2009</p>
 
-                <a href="/overview/309/polyball-2008/show.html"><img src="/DATA/309/index.jpg"/></a>
+             </div>
+         </li>
 
-                <p class="aktuell_name">Polyball 2008</p>
+         <li>
+             <div>
+                 <p class="aktuell_date">29.11.2008</p>
 
-            </div>
-        </li>
+                 <a href="/overview/309/polyball-2008/show.html"><img src="/DATA/309/index.jpg"/></a>
+
+                 <p class="aktuell_name">Polyball 2008</p>
+
+             </div>
+         </li>
+
         <li>
             <div><p class="aktuell_date">29.3.2008</p>
 
@@ -127,65 +137,6 @@
 
             </div>
         </li>
-        <li>
-            <div><p class="aktuell_date">24.11.2007</p>
-
-                <a href="/overview/284/ball-2007-11-24/show.html"><img src="/DATA/286/index.jpg"/></a>
-
-                <p class="aktuell_name">GC Ball 2007</p>
-
-
-            </div>
-        </li>
-        <%--
-        <li>
-            <div><p class="aktuell_date">10.11.2007</p>
-
-                <a href="/overview/280/Diplomfeier D-CHAB 2007/show.html"><img src="/images/temp/index-d-chab.jpg"
-                                                                               alt="Diplomfeier D-CHAB 2007"/></a>
-
-                <p class="aktuell_name">Diplomfeier D-CHAB 2007</p>
-
-
-            </div>
-        </li>
-
-        <li>
-            <div><p class="aktuell_date">1.6.2007</p>
-
-                <a href="/overview/276/Logistik Offiziersball 2-07/show.html"><img src="/DATA/276/index.jpg"
-                                                                                   alt="Logistik Offiziersball 2-07"/></a>
-
-                <p class="aktuell_name">Logistik Offiziersball 2-07</p>
-
-
-            </div>
-        </li>
-
-
-        <li>
-            <div><p class="aktuell_date">28.4.2007</p>
-
-                <a href="/overview/272/Uniball-St-Gallen/show.html"><img src="/DATA/272/index.jpg"
-                                                                         alt="uniball st.gallen 2007"/></a>
-
-                <p class="aktuell_name">Uniball St.Gallen 2007</p>
-
-
-            </div>
-        </li>
-
-        <li>
-            <div><p class="aktuell_date">31.03.2007</p>
-
-                <a href="/overview/268/Kantiball-Aarau-2007/show.html"><img src="/DATA/268/index.jpg" alt=""/></a>
-
-                <p class="aktuell_name">Kantiball Aarau 2007</p>
-
-
-            </div>
-        </li>
---%>
 
 
     </ul>
