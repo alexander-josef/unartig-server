@@ -1,0 +1,35 @@
+##
+## (todo explain the properties, only default values where useful)
+##
+
+
+#
+# Server Settings
+server.httpPort=8080
+server.httpsPort=443
+server.enableSsl=true
+
+
+
+logging.folder=
+appSettings.frontendDir=
+#appSettings.frontendDir=C:/apache-tomcat-5.5.23/mywebapps/ROOT
+appSettings.dataDir=
+#appSettings.dataDir=C:/apache-tomcat-5.5.23/mywebapps/ROOT/DATA/
+appSettings.mailHost=
+#appSettings.mailHost=vm2.unartig.ch
+##
+## Colorplaza Settings
+##
+appSettings.colorplaza.demoOrder=true
+appSettings.colorplaza.oipsColorcorrection=true
+
+appSettings.simulateOrderOnly=true
+
+
+unartig.loglevel=INFO
+
+##
+## Hibernate Settings
+##
+hibernate.showSQL=false
