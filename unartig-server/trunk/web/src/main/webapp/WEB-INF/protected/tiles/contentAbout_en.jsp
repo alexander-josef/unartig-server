@@ -32,7 +32,7 @@
         order them online.</p>
 
     <p class="pad15Right pad7Bottom">In the mean time, unArtig offers its services at several events and evolved into a small
-        <html:link action="/Firm">company</html:link>.</p>
+        company.</p>
 
 </div>
 

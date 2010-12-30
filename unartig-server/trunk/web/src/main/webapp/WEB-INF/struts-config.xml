@@ -253,7 +253,7 @@
 
         <action path="/About" forward=".unartigAbout"></action>
         <action path="/Services" forward=".unartigServices"></action>
-        <action path="/Firm" forward=".unartigFirm"></action>
+        <!--<action path="/Firm" forward=".unartigFirm"></action>-->
         <action path="/Copyright" forward=".unartigCopyright"></action>
         <action path="/Privacy" forward=".unartigPrivacy"></action>
         <!--example for ssl redirection:-->

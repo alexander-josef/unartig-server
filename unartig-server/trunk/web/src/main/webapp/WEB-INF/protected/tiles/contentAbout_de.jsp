@@ -40,8 +40,8 @@
         Bilder schon kurze Zeit nach dem Ball bequem online bestellen.</p>
 
     <p class="pad15Right pad7Bottom">Inzwischen wird die Dienstleistung vom Studio-unArtig von verschiedenen Veranstaltern von
-        Anlässen in Anspruch genommen, und das Studio-unArtig ist zu einem kleinen <html:link action="/Firm">
-        Unternehmen</html:link> herangewachsen.
+        Anlässen in Anspruch genommen, und das Studio-unArtig ist zu einem kleinen
+        Unternehmen herangewachsen.
     </p>
 </div>
 
