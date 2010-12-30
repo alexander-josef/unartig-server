@@ -17,7 +17,7 @@
 
 <div class="content_left">
 
-    <p class="pad15Right">The <span>unartig AG </span>located in Zürich handles the business
+    <p class="pad15Right">The <span>unartig AG </span>located in Wil, SG, handles the business
         of the Studio unArtig since September 2005. </p><br/>
 
     <p class="pad15Right"><span>Company management:<br/><br/>Alexander Josef </span><br/>

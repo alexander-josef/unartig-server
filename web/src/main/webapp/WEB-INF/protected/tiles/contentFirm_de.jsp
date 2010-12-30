@@ -17,7 +17,7 @@
 
 <div class="content_left">
 
-    <p class="pad15Right">Die <span>unartig AG </span>mit Sitz in Zürich wickelt seit September 2005
+    <p class="pad15Right">Die <span>unartig AG </span>mit Sitz in Wil, SG, wickelt seit September 2005
         die Geschäfte des Studio unArtig ab. </p><br/>
 
     <p class="pad15Right"><span>Geschäftsleitung und Gründer:<br/><br/>Alexander Josef </span><br/>

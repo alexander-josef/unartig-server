@@ -54,6 +54,6 @@
         <p class="pad15Right pad7Bottom"><span>Datenschutz</span>
             <br/>Die Bestimmungen zum Datenschutz sind unter www.unartig.ch <a href="Privacy.html">(Datenschutz)</a>zu finden.
         </p>
-        <p class="pad15Right pad7Bottom"><span>Gerichtsstand</span><br/>Der Gerichtsstand der unartig AG ist Zürich.
+        <p class="pad15Right pad7Bottom"><span>Gerichtsstand</span><br/>Der Gerichtsstand der unartig AG ist Wil, SG.
         </p>
     </div>
