@@ -35,7 +35,7 @@
             Unartig-Studios ihre
             Bilder schon kurze Zeit nach dem Ball bequem online bestellen.</p>
         <p class="pad15Right pad7Bottom">Inzwischen wird die Dienstleistung vom Unartig-Studio von verschiedenen Veranstaltern von
-            Anlässen und Unartig ist zu einem kleinen <html:link action="/Firm">Unternehmen</html:link> herangewachsen.
+            Anlässen und Unartig ist zu einem kleinen Unternehmen herangewachsen.
         </p>
     </div>
 
