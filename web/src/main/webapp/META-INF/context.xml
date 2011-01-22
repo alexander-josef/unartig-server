@@ -1,4 +1,5 @@
-<Context path="/">
+<Context path="/" allowLinking="true">
+    <!-- allowLinking helps to make test deployments web symlinks easier. -->
     <Resource name="jdbc/unartig"
               auth="Container"
               type="javax.sql.DataSource"
