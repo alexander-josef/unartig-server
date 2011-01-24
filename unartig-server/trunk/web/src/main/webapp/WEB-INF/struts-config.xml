@@ -636,6 +636,31 @@
             <!--<forward name="coError" path="/coWizard_page3_error.html"/>-->
 
         </action>
+
+        <!-- Go to Paypal -->
+        <action path="/checkOutPaypalEC" type="ch.unartig.studioserver.actions.CheckOutAction"
+                parameter="checkOutPaypalEC"
+                name="checkOutForm"
+                scope="session"
+                input="coError"
+                >
+            <set-property property="secure" value="true"/>
+            <!--todo: better sessionExpired page-->
+            <forward name="sessionExpired" path=".unartigError1"/>
+            <forward name="checkOutOverviewSuccess" path="/coWizard_page4.html" redirect="true"/>
+            <forward name="checkOutSuccessPaypalSandbox" path="https://www.sandbox.paypal.com/webscr?cmd=_express-checkout&amp;token={token}" redirect="true"/>
+            <forward name="checkOutSuccessPaypal" path="https://www.paypal.com/webscr?cmd=_express-checkout&amp;token={token}" redirect="true"/>
+
+
+
+            <!-- Todo redirect to paypal ?? Token ??-->
+            <forward name="coError" path=".unartigShoppingCartBilling"/>
+            <!--no redirection: (for testing)-->
+            <!--<forward name="coError" path="/coWizard_page3_error.html"/>-->
+        </action>
+
+
+        
         <!--check session also with get pages!-->
         <action path="/coWizard_page4" type="ch.unartig.studioserver.actions.CheckOutAction"
                 parameter="checkSession"

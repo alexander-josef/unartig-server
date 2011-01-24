@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module MavenProjectsManager.isMavenModule="true" org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" relativePaths="true" type="JAVA_MODULE" version="4">
+<module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" type="JAVA_MODULE" version="4">
   <component name="FacetManager">
     <facet type="web" name="Web">
       <configuration>
@@ -23,8 +23,7 @@
     <facet type="hibernate" name="Hibernate">
       <configuration>
         <datasource-map>
-          <unit-entry name="hibernate.cfg.xml" value="1e651bfe-899e-4130-bed4-081e3e28f658" />
-          <unit-entry name="src/main/resources/hibernate.cfg.xml" value="24d8a23c-ca4f-4627-a352-4be882237482" />
+          <unit-entry name="hibernate.cfg.xml" />
         </datasource-map>
         <deploymentDescriptor name="hibernate.cfg.xml" url="file://$MODULE_DIR$/src/main/resources/hibernate.cfg.xml" />
       </configuration>
@@ -48,9 +47,6 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="hibernate3" level="project" />
-    <orderEntry type="library" name="struts" level="project" />
-    <orderEntry type="library" name="struts (2)" level="project" />
     <orderEntry type="library" name="Maven: org.zkoss.zk:zhtml:3.0.0" level="project" />
     <orderEntry type="library" name="Maven: org.zkoss.common:zcommon:3.0.0" level="project" />
     <orderEntry type="library" name="Maven: commons-fileupload:commons-fileupload:1.1.1" level="project" />
@@ -79,7 +75,7 @@
     <orderEntry type="library" name="Maven: javax.servlet:jstl:1.1.2" level="project" />
     <orderEntry type="library" name="Maven: taglibs:standard:1.1.2" level="project" />
     <orderEntry type="library" name="Maven: jdom:jdom:1.0" level="project" />
-    <orderEntry type="library" name="Maven: commons-httpclient:commons-httpclient:2.0.2" level="project" />
+    <orderEntry type="library" name="Maven: commons-httpclient:commons-httpclient:3.1" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.geronimo.specs:geronimo-j2ee_1.4_spec:1.0" level="project" />
     <orderEntry type="library" name="Maven: log4j:log4j:1.2.14" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: junit:junit:3.8.1" level="project" />
@@ -91,6 +87,9 @@
     <orderEntry type="library" name="Maven: cglib:cglib:2.1_3" level="project" />
     <orderEntry type="library" name="Maven: asm:asm:1.5.3" level="project" />
     <orderEntry type="library" name="Maven: xalan:xalan:2.5.1" level="project" />
+    <orderEntry type="library" name="Maven: com.paypal:paypal_base:1.0.0" level="project" />
+    <orderEntry type="library" name="Maven: sax:sax:2.0.1" level="project" />
+    <orderEntry type="library" name="Maven: xerces:xercesImpl:2.4.0" level="project" />
   </component>
 </module>
 
