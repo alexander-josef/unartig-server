@@ -99,7 +99,8 @@ public class HttpUtil
         {
             if (x_client != null)
             {
-                x_client.endSession();
+//                deprecated, and not available anymore in v3 of httpclient
+//                x_client.endSession();
             }
         } catch (Exception e)
         {
@@ -156,7 +157,10 @@ public class HttpUtil
         x_client.getState().setCredentials(//null,
                 null,
                 new UsernamePasswordCredentials(x_user, x_pwd));
-        x_client.startSession(new URL(x_new_url));
+
+//        Deprecated in httpclient > v3.0
+//        x_client.startSession(new URL(x_new_url));
+        x_client.getHostConfiguration().setHost(address);
         //	GetMethod get = new GetMethod(x_new_url);
         GetMethod get = new GetMethod(new URL(x_new_url).getPath());
         if (x_new_url.indexOf('?') > 0)

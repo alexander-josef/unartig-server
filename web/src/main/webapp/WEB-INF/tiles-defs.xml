@@ -271,7 +271,7 @@
     <definition name=".unartigShoppingCartBilling" extends=".unartigShoppingCartAddress">
         <put name="htmlTitle" type="string"><![CDATA[unartig studio -- zahlungsmethode]]></put>
         <put name="sidebar1" value="/WEB-INF/protected/tiles/sidebarSCBilling.jsp"/>
-        <put name="content1" value="/WEB-INF/protected/tiles/contentSCBilling.jsp"/>
+        <put name="content1" value="/WEB-INF/protected/tiles/contentSCPaypalEC.jsp"/>
     </definition>
 
     <!--confirms check-out process-->

@@ -148,6 +148,11 @@ import ch.unartig.studioserver.businesslogic.SessionHelper;
 import ch.unartig.studioserver.businesslogic.ShoppingCartLogic;
 import ch.unartig.studioserver.model.Customer;
 import ch.unartig.util.DebugUtils;
+import com.paypal.sdk.core.nvp.NVPDecoder;
+import com.paypal.sdk.core.nvp.NVPEncoder;
+import com.paypal.sdk.profiles.APIProfile;
+import com.paypal.sdk.profiles.ProfileFactory;
+import com.paypal.sdk.services.NVPCallerServices;
 import org.apache.log4j.Logger;
 import org.apache.struts.Globals;
 import org.apache.struts.action.*;
@@ -156,14 +161,14 @@ import org.apache.struts.actions.MappingDispatchAction;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.util.Iterator;
 import java.util.Locale;
 
 
 /**
  * todo insert client object that contains all client relevant information like locale, customer, shoppingcart etc etc
  */
-public class CheckOutAction extends MappingDispatchAction
-{
+public class CheckOutAction extends MappingDispatchAction {
     Logger _logger = Logger.getLogger(getClass().getName());
 
 
@@ -175,8 +180,7 @@ public class CheckOutAction extends MappingDispatchAction
      * @return
      * @throws UnartigSessionExpiredException
      */
-    public ActionForward setMessages(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws UnartigSessionExpiredException
-    {
+    public ActionForward setMessages(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws UnartigSessionExpiredException {
         System.out.println("CheckOutAction.setMessages start");
         DebugUtils.debugActionMessage(request);
         request.getSession().setAttribute(Globals.ERROR_KEY, request.getAttribute(Globals.ERROR_KEY));
@@ -195,15 +199,12 @@ public class CheckOutAction extends MappingDispatchAction
      * @throws ch.unartig.exceptions.UnartigSessionExpiredException
      *
      */
-    public ActionForward checkSession(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws UnartigSessionExpiredException
-    {
-        try
-        {
+    public ActionForward checkSession(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws UnartigSessionExpiredException {
+        try {
             getExistingScFromSession(request);
             saveToken(request);
 
-        } catch (UnartigSessionExpiredException e)
-        {
+        } catch (UnartigSessionExpiredException e) {
             _logger.debug("throwing no shopping cart exception");
             throw new UnartigSessionExpiredException(e);
         }
@@ -220,8 +221,7 @@ public class CheckOutAction extends MappingDispatchAction
      * @param response
      * @return a forward depending on logged in page
      */
-    public ActionForward checkOutError(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response)
-    {
+    public ActionForward checkOutError(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) {
         request.getSession().setAttribute(Globals.ERROR_KEY, request.getAttribute(Globals.ERROR_KEY));
         request.getAttribute(Globals.MESSAGES_KEY);
 //        System.out.println("************* checkOutError  **********************");
@@ -241,30 +241,25 @@ public class CheckOutAction extends MappingDispatchAction
      * @param response
      * @return a forward depending on logged in page
      */
-    public ActionForward startCheckOut(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response)
-    {
+    public ActionForward startCheckOut(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) {
         ActionForward retVal = mapping.findForward("toLogin");
         ActionMessages msgs;
         msgs = new ActionMessages();
 
-        try
-        {
+        try {
             ShoppingCart shoppingCart = getExistingScFromSession(request);
 //            shoppingCart.updateCart();
-            if (shoppingCart.getScItemsForConfirmation().size() == 0)
-            {
+            if (shoppingCart.getScItemsForConfirmation().size() == 0) {
                 // todo: jedes photo einzeln checken. kein photo ohne ein produkt mit mindestens menge 1
                 _logger.info("check-out attempt with no items in cart");
                 msgs.add(ActionMessages.GLOBAL_MESSAGE, new ActionMessage("shoppingcart.empty.error"));
                 retVal = mapping.findForward("backToCart");
             }
-        } catch (UnartigSessionExpiredException e)
-        {
+        } catch (UnartigSessionExpiredException e) {
             msgs.add(ActionMessages.GLOBAL_MESSAGE, new ActionMessage("session.expired"));
             _logger.info("session has expired, check out not possible");
             retVal = mapping.findForward("sessionExpired");
-        } catch (UAPersistenceException e)
-        {
+        } catch (UAPersistenceException e) {
             _logger.error("persistence exception");
             retVal = mapping.findForward("error");
         }
@@ -287,8 +282,7 @@ public class CheckOutAction extends MappingDispatchAction
      * @param response
      * @return forward to address
      */
-    public ActionForward checkOutAddress(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response)
-    {
+    public ActionForward checkOutAddress(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) {
         // todo: in case user is logged in map to address page
         _logger.debug("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
         _logger.debug("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
@@ -307,8 +301,7 @@ public class CheckOutAction extends MappingDispatchAction
      * @param response
      * @return forward to address
      */
-    public ActionForward checkOutStoreAddress(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws UnartigSessionExpiredException
-    {
+    public ActionForward checkOutStoreAddress(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws UnartigSessionExpiredException {
         // NOT USED CURRENTLY
         checkSessionExpired(request);
         return mapping.findForward("toBilling");
@@ -327,8 +320,7 @@ public class CheckOutAction extends MappingDispatchAction
      * @throws ch.unartig.exceptions.UnartigSessionExpiredException
      *
      */
-    public ActionForward checkOutOverview(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws UnartigSessionExpiredException
-    {
+    public ActionForward checkOutOverview(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws UnartigSessionExpiredException {
         checkSessionExpired(request);
         CheckOutForm coForm = (CheckOutForm) form;
         // todo: country in shopping cart, ok?
@@ -339,17 +331,114 @@ public class CheckOutAction extends MappingDispatchAction
     }
 
     /**
+     * Prepare Express Checkout Session with Paybal<br>
+     * clean out the
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return forward to overview or session expired page
+     * @throws ch.unartig.exceptions.UnartigSessionExpiredException
+     *
+     */
+    public ActionForward checkOutPaypalEC(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws UnartigSessionExpiredException {
+        checkSessionExpired(request);
+
+        CheckOutForm coForm = (CheckOutForm) form;
+        // todo: country in shopping cart, ok?
+        // todo: does the scitem know its shopping cart?
+        // todo: store a reference to the shopping cart in the sc item?
+        ShoppingCart shoppingCart = SessionHelper.getShoppingCartFromSession(request);
+        shoppingCart.setCustomerCountry(coForm.getCountry());
+
+
+        /* Paypal Code*/
+
+        /* Todo: better move this to own helper class
+        *
+        * */
+        NVPEncoder encoder = new NVPEncoder();
+        NVPDecoder decoder = new NVPDecoder();
+
+        try {
+            NVPCallerServices caller = new NVPCallerServices();
+
+            APIProfile profile = ProfileFactory.createSignatureAPIProfile();
+            /*
+                WARNING: Do not embed plaintext credentials in your application code.
+                Doing so is insecure and against best practices.
+                Your API credentials must be handled securely. Please consider
+                encrypting them for use in any production environment, and ensure
+                that only authorized individuals may view or modify them.
+                */
+
+            // Set up your API credentials, PayPal end point, API operation and version.
+//            Todo: use profile to set the variables, use sandbox in local test profiles
+//
+            profile.setAPIUsername("seller_1295092736_biz_api1.unartig.ch");
+            profile.setAPIPassword("1295092747");
+            profile.setSignature("AS09Xn3myqiJJijuHSqjKPSskBhVATzb4fUv-kxZGWqkAF5Dxcx3k3Jt");
+            profile.setEnvironment("sandbox");
+            profile.setSubject("");
+            caller.setAPIProfile(profile);
+            encoder.add("VERSION", "64.0"); // todo use properties
+            encoder.add("METHOD", "SetExpressCheckout");
+
+            // Add request-specific fields to the request string.
+            String returnURL = "http://www.unartig.ch/success";
+            encoder.add("RETURNURL", returnURL);
+            String cancelURL="http://www.unartig.ch/cancel";
+            encoder.add("CANCELURL", cancelURL);
+            encoder.add("SOLUTIONTYPE", "Sole");
+            encoder.add("PAYMENTREQUEST_0_AMT", Double.toString(shoppingCart.getTotalPhotosCHF())); // how does the string look like?
+            encoder.add("PAYMENTREQUEST_0_PAYMENTACTION", "Sale");
+            encoder.add("PAYMENTREQUEST_0_CURRENCYCODE", "CHF"); // Todo check currency codes ...
+
+            // Execute the API operation and obtain the response.
+            String nvpRequest = encoder.encode();
+            String nvpResponse = caller.call(nvpRequest);
+
+            decoder.decode(nvpResponse);
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
+        // todo remove debug output...
+        for (Object key : decoder.getMap().keySet() ) {
+            System.out.println(key.toString() + " = " + decoder.getMap().get(key).toString());
+        }
+
+
+         String successMsg = decoder.get("ACK");
+         String token = decoder.get("TOKEN");
+
+
+
+        /* todo: redirect ot paypal with the token received from setting up express checkout*/
+        ActionForward forward = mapping.findForward("checkOutOverviewSuccess");
+        ActionRedirect redirect;
+        if (Registry.isDemoOrderMode()) {
+            redirect = new ActionRedirect(mapping.findForward("checkOutSuccessPaypalSandbox"));
+        } else {
+            redirect = new ActionRedirect(mapping.findForward("checkOutSuccessPaypal"));
+        }
+        redirect.addParameter("token",token);
+
+        return redirect;
+    }
+
+    /**
      * helper method to check for an experied session during the check out process
      *
      * @param request Http Request
      * @throws ch.unartig.exceptions.UnartigSessionExpiredException
      *          If Session has expired
      */
-    private void checkSessionExpired(HttpServletRequest request) throws UnartigSessionExpiredException
-    {
+    private void checkSessionExpired(HttpServletRequest request) throws UnartigSessionExpiredException {
         HttpSession session = request.getSession(false);
-        if (session == null || session.getAttribute(Registry._NAME_SHOPPING_CART_SESSION) == null)
-        {
+        if (session == null || session.getAttribute(Registry._NAME_SHOPPING_CART_SESSION) == null) {
             _logger.warn("Session has expired during check-out process! throwing session-expired exception");
             throw new UnartigSessionExpiredException("Session expired during check-out");
         }
@@ -375,8 +464,7 @@ public class CheckOutAction extends MappingDispatchAction
      * @throws ch.unartig.exceptions.UnartigSessionExpiredException
      *          if the current shopping sesssion has expired
      */
-    public ActionForward checkOutConfirm(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws UnartigSessionExpiredException, UAPersistenceException
-    {
+    public ActionForward checkOutConfirm(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws UnartigSessionExpiredException, UAPersistenceException {
         ActionMessages msgs;
         ShoppingCartLogic shoppingCartLogic = new ShoppingCartLogic(request);
         String customerIpAddress;
@@ -387,20 +475,17 @@ public class CheckOutAction extends MappingDispatchAction
         ShoppingCart sc = (ShoppingCart) session.getAttribute(Registry._NAME_SHOPPING_CART_SESSION);
         CheckOutForm coForm = (CheckOutForm) form;
 
-        if (!isTokenValid(request))
-        {
+        if (!isTokenValid(request)) {
             // unexpected error; show order-not-ok message as confirmation message
             _logger.error("wrong token! probably caused by a double submission");
             msgs.add(ActionMessages.GLOBAL_MESSAGE, new ActionMessage("warnings.invalid.token"));
             // stop here, no processing of the order
-        } else
-        {
+        } else {
             saveToken(request);
 
             _logger.debug("coForm.isAcceptTermsCondition() = " + coForm.isAcceptTermsCondition());
 
-            if (!coForm.isAcceptTermsCondition())
-            { // terms & conditions not accepted ... return, show error message
+            if (!coForm.isAcceptTermsCondition()) { // terms & conditions not accepted ... return, show error message
                 _logger.debug("coForm.isAcceptTermsCondition() = " + coForm.isAcceptTermsCondition());
                 _logger.debug("going back");
                 msgs.add(ActionMessages.GLOBAL_MESSAGE, new ActionMessage("errors.acceptTermsCondition.required"));
@@ -413,8 +498,7 @@ public class CheckOutAction extends MappingDispatchAction
             // retrieve the remote ip-address that will be stored for the records.
             customerIpAddress = request.getRemoteAddr();
             // use the shopping cart logic to store the order definitively
-            try
-            {
+            try {
 
                 shoppingCartLogic.storeAndExecuteOrder(customerIpAddress);
                 Customer customer = shoppingCartLogic.getCustomer();
@@ -426,12 +510,10 @@ public class CheckOutAction extends MappingDispatchAction
                 // keep the customer-userid in the session
                 session.setAttribute(Registry._NAME_CUSTOMER_ID_SESSION_ATTR, customer.getCustomerId());
                 SessionHelper.remove(request, Registry._NAME_SHOPPING_CART_SESSION);
-            } catch (CreditCardException ccExp)
-            {
+            } catch (CreditCardException ccExp) {
 
                 _logger.info("Creditcard Validation error");
-                switch (shoppingCartLogic.getPhotoOrder().getErrorCode())
-                {
+                switch (shoppingCartLogic.getPhotoOrder().getErrorCode()) {
                     case PhotoOrderIF._CREDIT_CARD_REJECTED:
                         msgs.add(ActionMessages.GLOBAL_MESSAGE, new ActionMessage("errors.creditcard.rejected"));
                         break;
@@ -447,8 +529,7 @@ public class CheckOutAction extends MappingDispatchAction
                 }
                 saveMessages(request.getSession(), msgs);
                 return mapping.findForward("checkOutCcException");
-            } catch (UnartigException e)
-            {
+            } catch (UnartigException e) {
                 // unexpected error; show order-not-ok message as confirmation message
                 msgs.add(ActionMessages.GLOBAL_MESSAGE, new ActionMessage("errors.creditcard.unknownerror"));
                 _logger.error("unexpected error; preparing error massage for customer and sending confirmation page");
@@ -472,20 +553,17 @@ public class CheckOutAction extends MappingDispatchAction
      * @return
      * @throws UnartigSessionExpiredException
      */
-    private ShoppingCart getExistingScFromSession(HttpServletRequest request) throws UnartigSessionExpiredException
-    {
+    private ShoppingCart getExistingScFromSession(HttpServletRequest request) throws UnartigSessionExpiredException {
         HttpSession s = request.getSession();
         ShoppingCart shoppingCart = (ShoppingCart) s.getAttribute(Registry._NAME_SHOPPING_CART_SESSION);
-        if (shoppingCart == null)
-        {
+        if (shoppingCart == null) {
             _logger.debug("no shopping cart found in session. throwing exception");
             throw new UnartigSessionExpiredException("Session expired, no Shopping cart available");
         }
         return shoppingCart;
     }
 
-    private void clear(ActionForm form)
-    {
+    private void clear(ActionForm form) {
         CheckOutForm coForm = (CheckOutForm) form;
         coForm.clear();
     }
