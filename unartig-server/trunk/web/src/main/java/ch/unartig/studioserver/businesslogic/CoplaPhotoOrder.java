@@ -646,7 +646,7 @@ public class CoplaPhotoOrder implements PhotoOrderIF
     /**
      * upload all images for the current order:<br/>
      * create a set of ordered images; NOTE: ordered images is not equal to ordered items!
-     * todo use a separate thread to upload the images?? think also about the automated order proces ...
+     * todo use a separate thread to upload the images?? think also about the automated order process ...
      *
      * @throws Exception If image server is not ready
      */
