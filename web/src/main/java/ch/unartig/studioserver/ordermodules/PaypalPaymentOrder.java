@@ -27,13 +27,15 @@ public class PaypalPaymentOrder implements PhotoOrderIF {
     private boolean demoOrderMode;
     private boolean simulateOrderOnly;
     private String customerIpAddress;
+    private Order order;
 
-    public PaypalPaymentOrder(ShoppingCart shoppingCart, boolean demoOrderMode, boolean simulateOrderOnly, String customerIpAddress) {
+    public PaypalPaymentOrder(ShoppingCart shoppingCart, boolean demoOrderMode, boolean simulateOrderOnly, String customerIpAddress, Order order) {
 
         this.shoppingCart = shoppingCart;
         this.demoOrderMode = demoOrderMode;
         this.simulateOrderOnly = simulateOrderOnly;
         this.customerIpAddress = customerIpAddress;
+        this.order = order;
         if (simulateOrderOnly) {
             _logger.info("*******************************************************************");
             _logger.info("******* ONLY Simulation of order ********");
@@ -232,10 +234,11 @@ public class PaypalPaymentOrder implements PhotoOrderIF {
     }
 
     public void setOrder(Order order) {
+        this.order = order;
     }
 
     public Order getOrder() {
-        return null;
+        return order;
     }
 
 }

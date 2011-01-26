@@ -396,9 +396,20 @@ public class CheckOutAction extends MappingDispatchAction {
             encoder.add("CANCELURL", cancelURL);
             encoder.add("SOLUTIONTYPE", "Sole");
             encoder.add("NOSHIPPING", "1"); // don's show shipping address in paypal dialog
+            encoder.add("LOCALECODE", "CH"); // todo set locale code according to session locale
+            encoder.add("EMAIL", coForm.getEmail());
+            encoder.add("LANDINGPAGE", "Billing"); //
+            encoder.add("BRANDNAME", "unartig Studio"); //
             encoder.add("PAYMENTREQUEST_0_AMT", Double.toString(shoppingCart.getTotalPhotosCHF())); // how does the string look like?
             encoder.add("PAYMENTREQUEST_0_PAYMENTACTION", "Sale");
             encoder.add("PAYMENTREQUEST_0_CURRENCYCODE", "CHF"); // Todo check currency codes ...
+            encoder.add("PAYMENTREQUEST_0_SHIPTOZIP", coForm.getZipCode().toString());
+            encoder.add("PAYMENTREQUEST_0_SHIPTOCOUNTRYCODE", "CH"); // todo set correct country code from shopping cart
+            encoder.add("PAYMENTREQUEST_0_SHIPTOCITY", coForm.getCity());
+            encoder.add("PAYMENTREQUEST_0_SHIPTONAME", coForm.getFirstName() + " " + coForm.getLastName());
+            encoder.add("PAYMENTREQUEST_0_SHIPTOSTREET", coForm.getAddr1());
+            encoder.add("PAYMENTREQUEST_0_SHIPTOSTREET2", coForm.getAddr2());
+            encoder.add("PAYMENTREQUEST_0_SHIPTOPHONENUM", "055 555 5555");
 
             // Execute the API operation and obtain the response.
             String nvpRequest = encoder.encode();

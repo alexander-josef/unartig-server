@@ -72,6 +72,13 @@
                 <arg0  key="checkout.city.displayname" name="required"/>
             </field>
 
+
+<!--
+Only used if own credit card processing
+-->
+
+<!--
+
             <field property="paymentMethod" depends="required" page="2">
                 <msg bundle="ERROR" key="errors.required" name="required"/>
                 <arg0  key="checkout.paymentMethod.displayname" name="required"/>
@@ -79,7 +86,7 @@
 
             <field property="creditCardNumber" depends="creditCard" page="2">
                 <msg bundle="ERROR" key="errors.creditcard.wrongnumber" name="creditCard"/>
-                <!--<arg0  key="${creditCardNumber}" name="required"/>-->
+                &lt;!&ndash;<arg0  key="${creditCardNumber}" name="required"/>&ndash;&gt;
             </field>
 
             <field property="creditCardExpiryMonth" depends="validwhen" page="2">
@@ -112,6 +119,7 @@
                 </var>
             </field>
 
+-->
 
         </form>
         

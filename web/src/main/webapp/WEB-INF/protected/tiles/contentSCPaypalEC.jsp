@@ -7,11 +7,13 @@
 
 <html:xhtml/>
 
-<div class="contentW rightalign padding19bottom bottomBorder">
+<div class="contentW leftalign padding19bottom bottomBorder">
     <html:img bundle="IMAGES" srcKey="title.billing.src" altKey="title.billing.alt"/>
-    <p id="head_coment">
-        <bean:message bundle="CONTENT" key="billing.select"/>
-    </p>
+    <%--
+        <p id="head_coment">
+            <bean:message bundle="CONTENT" key="billing.select"/>
+        </p>
+    --%>
 </div>
 
 
@@ -24,7 +26,8 @@
 
     <logic:messagesPresent message="true">
         <div class="contentN rightalign padding19top">
-            <p class="errorstyle"><span>BITTE BEACHTEN<br> Bei der Abwicklung traten Probleme auf (todo vielleicht kann man dieses Feld noch rot hinterlegen):</span>
+                <%-- (todo vielleicht kann man dieses Feld noch rot hinterlegen) --%>
+            <p class="errorstyle"><span>BITTE BEACHTEN<br> Bei der Abwicklung traten Probleme auf :</span>
             </p>
             <ul>
                 <html:messages id="msg" message="true" bundle="ERROR">
@@ -49,23 +52,17 @@
         </div>
     </logic:messagesPresent>
 
-    <div class="contentW rightalign padding19both bottomBorder">
 
-        <c:if test="${shoppingCart.onlyDigitalProducts}">
-            <p><br><bean:message key="message.payment.onlyDigitalProducts" bundle="CONTENT"/><br/><br/>
-            </p>
-        </c:if>
-
-        <!--todo: auch nach Laendern checken .... fuer gewisse Laender ist Lieferung nur mit Kreditkartenzahlung moeglich-->
-        <c:if test="${!shoppingCart.onlyDigitalProducts}">
+    <!--todo: auch nach Laendern checken .... fuer gewisse Laender ist Lieferung nur mit Kreditkartenzahlung moeglich-->
+    <c:if test="${!shoppingCart.onlyDigitalProducts}">
+        <div class="contentW rightalign padding19both bottomBorder">
 
             <h3>
                 Something went wrong ....
                 Ordering of print products not possible
             </h3>
-
-        </c:if>
-    </div>
+        </div>
+    </c:if>
 
     <div class="contentW rightalign padding19top">
         <c:if test="${shoppingCart.onlyDigitalProducts}">
@@ -74,77 +71,21 @@
         <table class="leftalign">
             <tr>
                 <td>
-                    Check out with PayPal Credit card payment
-                    (you don't need to have a paypal account)
-                    todo: nice bildli of paypal
+                    <bean:message key="payment.paypal.explanation" bundle="CONTENT"/>
+                        <%-- TODO Paypal button here?--%>
+
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <img src="https://www.paypal.com/en_US/CH/i/btn/btn_xpressCheckout.gif" align="left"
+                         style="margin-right:7px;" alt="Paypal Express Checkout">
                 </td>
             </tr>
         </table>
     </div>
 
-    <div class="contentW rightalign padding19top">
-        <fieldset class="forms">
-            <table>
-                <tr>
-                    <td>
-                        <label for="creditCardNumber"><p><bean:message bundle="CONTENT" key="billing.cc.number" />&nbsp;</p></label>
-                    </td>
-                    <td colspan="2">
-                        <html:text property="creditCardNumber" styleClass="kontaktfeld" errorStyleClass="inputError" styleId="creditCardNumber" size="25"/>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>
-                        <p class=""><bean:message bundle="CONTENT" key="billing.cc.exp" />&nbsp;</p>
-                    </td>
-
-                    <td>
-                        <html:select property="creditCardExpiryMonth" styleId="creditCardExpiryMonth" errorStyleClass="inputError">
-                            <html:option value="**"/>
-                            <html:option value="01"/>
-                            <html:option value="02"/>
-                            <html:option value="03"/>
-                            <html:option value="04"/>
-                            <html:option value="05"/>
-                            <html:option value="06"/>
-                            <html:option value="07"/>
-                            <html:option value="09"/>
-                            <html:option value="08"/>
-                            <html:option value="09"/>
-                            <html:option value="10"/>
-                            <html:option value="11"/>
-                            <html:option value="12"/>
-                        </html:select>
-                    </td>
-
-                    <td>
-                        <html:select property="creditCardExpiryYear" styleId="creditCardExpiryYear" errorStyleClass="inputError">
-                            <html:option value="****"/>
-                            <html:option value="2010"/>
-                            <html:option value="2011"/>
-                            <html:option value="2012"/>
-                            <html:option value="2013"/>
-                            <html:option value="2014"/>
-                            <html:option value="2015"/>
-                            <html:option value="2016"/>
-                            <html:option value="2017"/>
-                            <html:option value="2018"/>
-                        </html:select>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label for="creditCardHolderName"><p class="nobreak"><bean:message bundle="CONTENT" key="billing.cc.owner"/>&nbsp;</p></label>
-                    </td>
-                    <td colspan="2">
-                        <html:text styleId="creditCardHolderName" property="creditCardHolderName" size="25"/>
-                    </td>
-                </tr>
-            </table>
-        </fieldset>
-
-    </div>
 
     <div class="contentW rightalign padding19both bottomBorder">
 
@@ -177,13 +118,13 @@
         </div>
 
         <div class="rightalign">
-                <html:image bundle="IMAGES" srcKey="btn.next.src" altKey="btn.next.alt"/>
+            <html:image bundle="IMAGES" srcKey="btn.next.src" altKey="btn.next.alt"/>
 
-            <%-- TODO Paypal button here?--%>
         </div>
     </div>
 
-    <div class="contentW rightalign padding19bottom"><p class="rightalign"><bean:message bundle="CONTENT" key="order.conf.later"/></p>
+    <div class="contentW rightalign padding19bottom"><p class="rightalign"><bean:message bundle="CONTENT"
+                                                                                         key="order.conf.later"/></p>
     </div>
 
 
