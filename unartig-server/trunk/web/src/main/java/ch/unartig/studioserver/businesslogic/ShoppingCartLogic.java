@@ -189,8 +189,8 @@ public class ShoppingCartLogic
             {
                 // send order now! use credit card payment
                 _logger.debug("payment method: credit card");
-                // todo the Order object is needed later to send the customer notification email
-                photoOrder = new PaypalPaymentOrder(shoppingCart, Registry.isDemoOrderMode(), Registry.isSimulateOrderOnly(), ipAddress);
+                // the Order object is needed later to send the customer notification email. put reference to shopping cart?
+                photoOrder = new PaypalPaymentOrder(shoppingCart, Registry.isDemoOrderMode(), Registry.isSimulateOrderOnly(), ipAddress, order);
 //                photoOrder = new CoplaPhotoOrder(order, Registry.isDemoOrderMode(), Registry.isSimulateOrderOnly());
                 String cardHolderName = getCardHolderName();
 
