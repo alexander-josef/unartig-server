@@ -1113,16 +1113,13 @@ public class CoplaPhotoOrder implements PhotoOrderIF
         this.unartigCustomer = unartigCustomer;
     }
 
-    public Order getOrder()
-    {
-        return order;
+    public void setOrder(Order order) {
+        //To change body of implemented methods use File | Settings | File Templates.
     }
 
-    public void setOrder(Order order)
-    {
-        this.order = order;
+    public Order getOrder() {
+        return null;  //To change body of implemented methods use File | Settings | File Templates.
     }
-
 
     public boolean isDemoOrder()
     {
