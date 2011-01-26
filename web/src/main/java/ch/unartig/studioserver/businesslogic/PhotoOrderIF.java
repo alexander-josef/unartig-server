@@ -61,11 +61,10 @@ import ch.unartig.studioserver.model.Order;
 
 /**
  * <p>The purpose of this interface is to define a photo order</p>
- * <p>A photo order can be handeled internally, for example for sales of digital photos using credit cards
+ * <p>A photo order can be handled internally, for example for sales of digital photos using credit cards
  * or a photo order can be implemented to talk to a partner lab
  */
-public interface PhotoOrderIF
-{
+public interface PhotoOrderIF {
     // all interface fields are constants
     static final int _SUCCESS = 0;
     static final int _CREDIT_CARD_REJECTED = 40;
@@ -79,8 +78,17 @@ public interface PhotoOrderIF
     // todo error codes ???
     public void setUnartigCustomer(Customer customer);
 
+    /**
+     * @param order
+     * @deprecated order can be gotten via shoppingcart
+     */
     public void setOrder(Order order);
+
+    /**
+     * @deprecated order can be gotten via shoppingcart
+     */
     public Order getOrder();
+
     /**
      * process the order and return true for success of false for problems (check error message)
      *
@@ -104,18 +112,17 @@ public interface PhotoOrderIF
     /**
      * <p>set the credit card details to the photo order object
      * <p>a not-null CreditCardDetails object means that payment is done by credit card
+     *
      * @param ccDetail a complete creditCardDetails object
      */
     void setCreditCardDetails(CreditCardDetails ccDetail);
 
     /**
-     *
      * @param errorCode the error code as type code, see constants
      */
     void setErrorCode(int errorCode);
 
     /**
-     *
      * @return the error code as a type code, see constants in this class
      */
     int getErrorCode();

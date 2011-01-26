@@ -665,6 +665,7 @@
         <action path="/coWizard_page4" type="ch.unartig.studioserver.actions.CheckOutAction"
                 parameter="checkSession"
                 >
+            <!-- todo check for valid paypal token -->
             <forward name="success" path=".unartigShoppingCartOrder"/>
         </action>
 

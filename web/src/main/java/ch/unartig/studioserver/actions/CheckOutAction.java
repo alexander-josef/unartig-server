@@ -382,15 +382,20 @@ public class CheckOutAction extends MappingDispatchAction {
             profile.setEnvironment("sandbox");
             profile.setSubject("");
             caller.setAPIProfile(profile);
-            encoder.add("VERSION", "64.0"); // todo use properties
+            // todo use properties
+            encoder.add("VERSION", "64.0");
             encoder.add("METHOD", "SetExpressCheckout");
 
             // Add request-specific fields to the request string.
-            String returnURL = "http://www.unartig.ch/success";
+            // todo check token on this page. only continue with identical token
+            // todo : configure paypal to use no shipping address
+            String returnURL = "http://localhost:8080/coWizard_page4.html";
+//            String returnURL = "http://www.unartig.ch/coWizard_page4.html";
             encoder.add("RETURNURL", returnURL);
             String cancelURL="http://www.unartig.ch/cancel";
             encoder.add("CANCELURL", cancelURL);
             encoder.add("SOLUTIONTYPE", "Sole");
+            encoder.add("NOSHIPPING", "1"); // don's show shipping address in paypal dialog
             encoder.add("PAYMENTREQUEST_0_AMT", Double.toString(shoppingCart.getTotalPhotosCHF())); // how does the string look like?
             encoder.add("PAYMENTREQUEST_0_PAYMENTACTION", "Sale");
             encoder.add("PAYMENTREQUEST_0_CURRENCYCODE", "CHF"); // Todo check currency codes ...
@@ -412,12 +417,16 @@ public class CheckOutAction extends MappingDispatchAction {
 
 
          String successMsg = decoder.get("ACK");
+
+        // todo: where to store the token? It's needed again in the shopping cart logic storeandexecute order ...
          String token = decoder.get("TOKEN");
 
+        shoppingCart.setPaypalToken(token);
 
 
         /* todo: redirect ot paypal with the token received from setting up express checkout*/
-        ActionForward forward = mapping.findForward("checkOutOverviewSuccess");
+//        ActionForward forward = mapping.findForward("checkOutOverviewSuccess");
+
         ActionRedirect redirect;
         if (Registry.isDemoOrderMode()) {
             redirect = new ActionRedirect(mapping.findForward("checkOutSuccessPaypalSandbox"));

@@ -80,6 +80,7 @@ import ch.unartig.studioserver.beans.CheckOutForm;
 import ch.unartig.studioserver.beans.ScOrderItem;
 import ch.unartig.studioserver.beans.ShoppingCart;
 import ch.unartig.studioserver.model.*;
+import ch.unartig.studioserver.ordermodules.PaypalPaymentOrder;
 import ch.unartig.studioserver.persistence.DAOs.OrderDAO;
 import ch.unartig.studioserver.persistence.DAOs.OrderHashDAO;
 import ch.unartig.studioserver.persistence.DAOs.PhotoDAO;
@@ -154,7 +155,7 @@ public class ShoppingCartLogic
      * <p>Store the order, log the ip-address, send confirmation email to customer</p>
      * <p>Orders are collected in the unartig database. A service that runs every night collects the open orders and sends them to the lab.</p>
      * <p>NEW: for digital-only orders, no image files have to be sent with the nightly service, but the order will take place right away using the credit card interface</p>
-     * <p>todo: use a separate thread for the cc booking? no!</p>
+     * <p>use a separate thread for the cc booking? no!</p>
      * <p></p>
      *
      * @param ipAddress retrieved from the request;
@@ -172,7 +173,7 @@ public class ShoppingCartLogic
         // transaction for writing order to the database:
         try
         {
-            // Think about exception handlind: what happens if credit card payment does not work?
+            // Think about exception handling: what happens if credit card payment does not work?
             // what if we can not create an order hash? etc.etc
             // transaction also includes credit card processing if payment method id creditcard
             HibernateUtil.beginTransaction();
@@ -183,25 +184,22 @@ public class ShoppingCartLogic
             prepareDownloadLink(order);
             _logger.info("Order with orderid [" + order.getOrderId().toString() + "] commited from IP-Address [" + ipAddress + "]");
             _logger.info("successfully stored new order; oipsorderid = " + order.getOipsOrderId());
-            // reload order
-//            order = orderDao.reLoad(order.getOrderId());
-            if (checkOutForm.isPaymentMethodCreditCard())
+//            if (checkOutForm.isPaymentMethodCreditCard())
+            if (true) // all orders are processed immediately. No deferred orders like colorplaza before.
             {
                 // send order now! use credit card payment
                 _logger.debug("payment method: credit card");
-                photoOrder = new CoplaPhotoOrder(order, Registry.isDemoOrderMode(), Registry.isSimulateOrderOnly());
+                // todo the Order object is needed later to send the customer notification email
+                photoOrder = new PaypalPaymentOrder(shoppingCart, Registry.isDemoOrderMode(), Registry.isSimulateOrderOnly(), ipAddress);
+//                photoOrder = new CoplaPhotoOrder(order, Registry.isDemoOrderMode(), Registry.isSimulateOrderOnly());
                 String cardHolderName = getCardHolderName();
 
-                CreditCardDetails ccDetail = new CreditCardDetails(checkOutForm.getCreditCardTypeCode(), checkOutForm.getCreditCardNumber(), null, cardHolderName, new Integer(checkOutForm.getCreditCardExpiryYear()), new Integer(checkOutForm.getCreditCardExpiryMonth()));
-                photoOrder.setCreditCardDetails(ccDetail);
+                // not relevant for paypal payment
+//                CreditCardDetails ccDetail = new CreditCardDetails(checkOutForm.getCreditCardTypeCode(), checkOutForm.getCreditCardNumber(), null, cardHolderName, new Integer(checkOutForm.getCreditCardExpiryYear()), new Integer(checkOutForm.getCreditCardExpiryMonth()));
+//                photoOrder.setCreditCardDetails(ccDetail);
                 photoOrder.processOrder();
             }
             HibernateUtil.commitTransaction();
-            if (photoOrder!=null)
-            {
-                System.out.println("photoOrder.getOrder() = " + photoOrder.getOrder());
-            }
-            System.out.println("order = " + order);
             // if everything goes well, send confirmation
             sendCustomerNotification();
         } catch (UnartigException e)

@@ -177,6 +177,8 @@ public class ShoppingCart extends ActionForm implements Serializable, NavigableO
     //todo make generic:
     private String currency="undefined";
     private String customerCountry;
+    private String paypalToken; /* Added to integrate paypal express checkout*/
+    private String paypalPayerId; /* PayerId can be read with getExpressCheckoutDetails after the customer has successfully from paypal*/
 
 
     /**
@@ -708,5 +710,21 @@ public class ShoppingCart extends ActionForm implements Serializable, NavigableO
     public double getShippingHandlingGER()
     {
         return isOnlyDigitalProducts()?0:Product._SHIPPING_HANDLING_GER_EUR;
+    }
+
+    public String getPaypalToken() {
+        return paypalToken;
+    }
+
+    public void setPaypalToken(String paypalToken) {
+        this.paypalToken = paypalToken;
+    }
+
+    public String getPaypalPayerId() {
+        return paypalPayerId;
+    }
+
+    public void setPaypalPayerId(String paypalPayerId) {
+        this.paypalPayerId = paypalPayerId;
     }
 }
