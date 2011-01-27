@@ -148,6 +148,7 @@ import ch.unartig.studioserver.businesslogic.SessionHelper;
 import ch.unartig.studioserver.businesslogic.ShoppingCartLogic;
 import ch.unartig.studioserver.model.Customer;
 import ch.unartig.util.DebugUtils;
+import ch.unartig.util.HttpUtil;
 import com.paypal.sdk.core.nvp.NVPDecoder;
 import com.paypal.sdk.core.nvp.NVPEncoder;
 import com.paypal.sdk.profiles.APIProfile;
@@ -163,6 +164,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.Iterator;
 import java.util.Locale;
+
+import static ch.unartig.studioserver.ordermodules.PaypalPaymentOrder.getPaypalLiveProfile;
+import static ch.unartig.studioserver.ordermodules.PaypalPaymentOrder.getPaypalSanboxProfile;
 
 
 /**
@@ -374,12 +378,13 @@ public class CheckOutAction extends MappingDispatchAction {
                 */
 
             // Set up your API credentials, PayPal end point, API operation and version.
-//            Todo: use profile to set the variables, use sandbox in local test profiles
-//
-            profile.setAPIUsername("seller_1295092736_biz_api1.unartig.ch");
-            profile.setAPIPassword("1295092747");
-            profile.setSignature("AS09Xn3myqiJJijuHSqjKPSskBhVATzb4fUv-kxZGWqkAF5Dxcx3k3Jt");
-            profile.setEnvironment("sandbox");
+            if (Registry.isDemoOrderMode()) {
+                getPaypalSanboxProfile(profile);
+            } else
+            {
+                getPaypalLiveProfile(profile);
+
+            }
             profile.setSubject("");
             caller.setAPIProfile(profile);
             // todo use properties
@@ -389,10 +394,10 @@ public class CheckOutAction extends MappingDispatchAction {
             // Add request-specific fields to the request string.
             // todo check token on this page. only continue with identical token
             // todo : configure paypal to use no shipping address
-            String returnURL = "http://localhost:8080/coWizard_page4.html";
+            String returnURL = HttpUtil.getBaseUrl(request,false) + "/coWizard_page4.html";
 //            String returnURL = "http://www.unartig.ch/coWizard_page4.html";
             encoder.add("RETURNURL", returnURL);
-            String cancelURL="http://www.unartig.ch/cancel";
+            String cancelURL="http://www.unartig.ch";
             encoder.add("CANCELURL", cancelURL);
             encoder.add("SOLUTIONTYPE", "Sole");
             encoder.add("NOSHIPPING", "1"); // don's show shipping address in paypal dialog
@@ -421,22 +426,21 @@ public class CheckOutAction extends MappingDispatchAction {
             ex.printStackTrace();
         }
 
-        // todo remove debug output...
+        // logging the response ...
         for (Object key : decoder.getMap().keySet() ) {
-            System.out.println(key.toString() + " = " + decoder.getMap().get(key).toString());
+            _logger.info(key.toString() + " = " + decoder.getMap().get(key).toString());
         }
 
 
          String successMsg = decoder.get("ACK");
 
-        // todo: where to store the token? It's needed again in the shopping cart logic storeandexecute order ...
+        // Store the token: It's needed again in the shopping cart logic storeandexecute order ...
          String token = decoder.get("TOKEN");
 
         shoppingCart.setPaypalToken(token);
 
 
-        /* todo: redirect ot paypal with the token received from setting up express checkout*/
-//        ActionForward forward = mapping.findForward("checkOutOverviewSuccess");
+        /* redirect ot paypal with the token received from setting up express checkout*/
 
         ActionRedirect redirect;
         if (Registry.isDemoOrderMode()) {

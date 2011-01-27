@@ -283,4 +283,26 @@ public class HttpUtil
         // use request.getScheme() if the scheme must match the current scheme
         return "http://" + request.getServerName() + port + request.getContextPath() + "/order/" + orderHash + "/download.html";
     }
+
+    /**
+     * return a url as string that points to a download site for the order-hash that is passed
+     * @param request servlet request
+     * @return String to the downloadURL
+     */
+    public static String getBaseUrl(HttpServletRequest request, boolean https)
+    {
+        // for non standard port ...
+        String port="";
+        if (request.getServerPort()!=80 && request.getServerPort()!=443)
+        {
+
+            port=String.valueOf(":"+request.getServerPort());
+        }
+        // use request.getScheme() if the scheme must match the current scheme
+        if (https) {
+            return "https://" + request.getServerName() + port + request.getContextPath();
+        } else {
+            return "http://" + request.getServerName() + port + request.getContextPath();
+        }
+    }
 }
