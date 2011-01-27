@@ -72,15 +72,25 @@
             <tr>
                 <td>
                     <bean:message key="payment.paypal.explanation" bundle="CONTENT"/>
-                        <%-- TODO Paypal button here?--%>
-
                 </td>
             </tr>
 
             <tr>
                 <td>
-                    <img src="https://www.paypal.com/en_US/CH/i/btn/btn_xpressCheckout.gif" align="left"
-                         style="margin-right:7px;" alt="Paypal Express Checkout">
+
+                        <%--
+                                            <img src="https://www.paypal.com/en_US/CH/i/btn/btn_xpressCheckout.gif" align="left"
+                                                 style="margin-right:7px;" alt="Paypal Express Checkout">
+                        --%>
+                    <br/>
+                    <br/>
+                    <html:image bundle="IMAGES" srcKey="btn.paypal.expresscheckout" altKey="btn.next.alt"/>
+                    <br/>
+
+                    <h3 class="leftalign leftclear"><bean:message key="creditcard.booking.explanation"
+                                                                  bundle="CONTENT"/></h3>
+
+
                 </td>
             </tr>
         </table>
@@ -102,7 +112,6 @@
             --%>
         <br/>
 
-        <h3 class="leftalign leftclear"><bean:message key="creditcard.booking.explanation" bundle="CONTENT"/></h3>
         <br/>
 
     </div>
@@ -117,15 +126,19 @@
             </html:link>
         </div>
 
-        <div class="rightalign">
-            <html:image bundle="IMAGES" srcKey="btn.next.src" altKey="btn.next.alt"/>
+<%--
+<div class="rightalign">
+    <html:image bundle="IMAGES" srcKey="btn.next.src" altKey="btn.next.alt"/>
 
-        </div>
+</div>
+--%>
     </div>
 
+<%--
     <div class="contentW rightalign padding19bottom"><p class="rightalign"><bean:message bundle="CONTENT"
                                                                                          key="order.conf.later"/></p>
     </div>
+--%>
 
 
 </html:form>
