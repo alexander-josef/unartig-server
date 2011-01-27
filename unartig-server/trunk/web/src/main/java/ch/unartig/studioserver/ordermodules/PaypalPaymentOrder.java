@@ -1,6 +1,7 @@
 package ch.unartig.studioserver.ordermodules;
 
 import ch.unartig.exceptions.UnartigException;
+import ch.unartig.studioserver.Registry;
 import ch.unartig.studioserver.beans.ShoppingCart;
 import ch.unartig.studioserver.businesslogic.CreditCardDetails;
 import ch.unartig.studioserver.businesslogic.PhotoOrderIF;
@@ -8,6 +9,7 @@ import ch.unartig.studioserver.model.Customer;
 import ch.unartig.studioserver.model.Order;
 import com.paypal.sdk.core.nvp.NVPDecoder;
 import com.paypal.sdk.core.nvp.NVPEncoder;
+import com.paypal.sdk.exceptions.PayPalException;
 import com.paypal.sdk.profiles.APIProfile;
 import com.paypal.sdk.profiles.ProfileFactory;
 import com.paypal.sdk.services.NVPCallerServices;
@@ -28,6 +30,33 @@ public class PaypalPaymentOrder implements PhotoOrderIF {
     private boolean simulateOrderOnly;
     private String customerIpAddress;
     private Order order;
+
+    /**
+     *
+     * @param profile
+     * @throws PayPalException
+     */
+    public static void getPaypalLiveProfile(APIProfile profile) throws PayPalException {
+        // todo: insert values
+        // todo: not so good to store that here in plain text ...
+        profile.setAPIUsername("");
+        profile.setAPIPassword("");
+        profile.setSignature("");
+        profile.setEnvironment("live");
+    }
+
+    /**
+     *
+     * @param profile
+     * @throws PayPalException
+     */
+    public static void getPaypalSanboxProfile(APIProfile profile) throws PayPalException {
+        profile.setAPIUsername("seller_1295092736_biz_api1.unartig.ch");
+        profile.setAPIPassword("1295092747");
+        profile.setSignature("AS09Xn3myqiJJijuHSqjKPSskBhVATzb4fUv-kxZGWqkAF5Dxcx3k3Jt");
+        profile.setEnvironment("sandbox");
+    }
+
 
     public PaypalPaymentOrder(ShoppingCart shoppingCart, boolean demoOrderMode, boolean simulateOrderOnly, String customerIpAddress, Order order) {
 
@@ -93,12 +122,13 @@ public class PaypalPaymentOrder implements PhotoOrderIF {
                 */
 
             // Set up your API credentials, PayPal end point, API operation and version.
-//            Todo: use profile to set the variables, use sandbox in local test profiles
-//
-            profile.setAPIUsername("seller_1295092736_biz_api1.unartig.ch");
-            profile.setAPIPassword("1295092747");
-            profile.setSignature("AS09Xn3myqiJJijuHSqjKPSskBhVATzb4fUv-kxZGWqkAF5Dxcx3k3Jt");
-            profile.setEnvironment("sandbox");
+            if (Registry.isDemoOrderMode()) {
+                getPaypalSanboxProfile(profile);
+            } else
+            {
+                getPaypalLiveProfile(profile);
+
+            }
             profile.setSubject("");
             caller.setAPIProfile(profile);
             // todo use properties
@@ -140,6 +170,7 @@ public class PaypalPaymentOrder implements PhotoOrderIF {
     }
 
 
+
     /**
      * get the paypal express checkout details (payerid needed for completing transaction)
      * @return
@@ -162,12 +193,14 @@ public class PaypalPaymentOrder implements PhotoOrderIF {
                 */
 
             // Set up your API credentials, PayPal end point, API operation and version.
-//            Todo: use profile to set the variables, use sandbox in local test profiles
-//
-            profile.setAPIUsername("seller_1295092736_biz_api1.unartig.ch");
-            profile.setAPIPassword("1295092747");
-            profile.setSignature("AS09Xn3myqiJJijuHSqjKPSskBhVATzb4fUv-kxZGWqkAF5Dxcx3k3Jt");
-            profile.setEnvironment("sandbox");
+            if (Registry.isDemoOrderMode()) {
+                getPaypalSanboxProfile(profile);
+            } else
+            {
+                // todo: insert values
+                // todo: not so good to store that here in plain text ...
+                getPaypalLiveProfile(profile);
+            }
             profile.setSubject("");
             caller.setAPIProfile(profile);
             // todo use properties
@@ -204,6 +237,7 @@ public class PaypalPaymentOrder implements PhotoOrderIF {
 
         return false;
     }
+
 
 
     public void setCreditCardDetails(CreditCardDetails ccDetail) {
