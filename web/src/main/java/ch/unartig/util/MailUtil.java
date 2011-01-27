@@ -193,8 +193,8 @@ public class MailUtil
                 // todo shipping und handling
                 localizedBody.append(content.getMessage(locale, "email.orderAccepted.body.ccBooked"));
                 localizedBody.append(" " + shoppingCart.getFormattedTotal()  + " " + shoppingCart.getCurrency() + "\n");
-                localizedBody.append(content.getMessage(locale, "email.orderAccepted.body.ccNoteColorplaza"))
-                        .append("\n\n");
+//                localizedBody.append(content.getMessage(locale, "email.orderAccepted.body.ccNoteColorplaza"))
+                localizedBody.append("\n\n");
             }
             localizedBody.append("Link zum Fotodownload : \n");
             localizedBody.append(downloadLink).append("\n");

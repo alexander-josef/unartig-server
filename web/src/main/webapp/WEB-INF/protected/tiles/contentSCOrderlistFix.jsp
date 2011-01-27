@@ -128,10 +128,19 @@
 <div class="contentW rightalign padding19both bottomBorder">
     <h3>
         <bean:message bundle="CONTENT" key="billing"/>
+<%--
+
         <html:link action="/checkOutStoreAddress">&nbsp;...
             <bean:message bundle="BUTTONS" key="change"/>
         </html:link>
+--%>
     </h3>
+    <p>
+        <bean:message bundle="CONTENT" key="billing.paypal"/>
+    </p>
+
+<%--
+
     <c:if test="${checkOutForm.paymentMethodInvoice}">
         <p>
             <bean:message bundle="CONTENT" key="billing.invoice"/>
@@ -147,6 +156,7 @@
 
         <p>Kartennummer : ${checkOutForm.obfuscatedCreditCardNumber}</p>
     </c:if>
+--%>
 </div>
 
 <%-- *********************Order list**********************  --%>
