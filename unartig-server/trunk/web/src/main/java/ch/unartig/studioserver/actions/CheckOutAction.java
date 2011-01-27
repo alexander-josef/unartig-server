@@ -147,13 +147,8 @@ import ch.unartig.studioserver.businesslogic.PhotoOrderIF;
 import ch.unartig.studioserver.businesslogic.SessionHelper;
 import ch.unartig.studioserver.businesslogic.ShoppingCartLogic;
 import ch.unartig.studioserver.model.Customer;
+import ch.unartig.studioserver.ordermodules.PaypalPaymentOrder;
 import ch.unartig.util.DebugUtils;
-import ch.unartig.util.HttpUtil;
-import com.paypal.sdk.core.nvp.NVPDecoder;
-import com.paypal.sdk.core.nvp.NVPEncoder;
-import com.paypal.sdk.profiles.APIProfile;
-import com.paypal.sdk.profiles.ProfileFactory;
-import com.paypal.sdk.services.NVPCallerServices;
 import org.apache.log4j.Logger;
 import org.apache.struts.Globals;
 import org.apache.struts.action.*;
@@ -162,11 +157,7 @@ import org.apache.struts.actions.MappingDispatchAction;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.util.Iterator;
 import java.util.Locale;
-
-import static ch.unartig.studioserver.ordermodules.PaypalPaymentOrder.getPaypalLiveProfile;
-import static ch.unartig.studioserver.ordermodules.PaypalPaymentOrder.getPaypalSanboxProfile;
 
 
 /**
@@ -355,87 +346,8 @@ public class CheckOutAction extends MappingDispatchAction {
         // todo: store a reference to the shopping cart in the sc item?
         ShoppingCart shoppingCart = SessionHelper.getShoppingCartFromSession(request);
         shoppingCart.setCustomerCountry(coForm.getCountry());
+        String token = PaypalPaymentOrder.setupPaypalExpressCheckout(request, coForm, shoppingCart);
 
-
-        /* Paypal Code*/
-
-        /* Todo: better move this to own helper class
-        *
-        * */
-        NVPEncoder encoder = new NVPEncoder();
-        NVPDecoder decoder = new NVPDecoder();
-
-        try {
-            NVPCallerServices caller = new NVPCallerServices();
-
-            APIProfile profile = ProfileFactory.createSignatureAPIProfile();
-            /*
-                WARNING: Do not embed plaintext credentials in your application code.
-                Doing so is insecure and against best practices.
-                Your API credentials must be handled securely. Please consider
-                encrypting them for use in any production environment, and ensure
-                that only authorized individuals may view or modify them.
-                */
-
-            // Set up your API credentials, PayPal end point, API operation and version.
-            if (Registry.isDemoOrderMode()) {
-                getPaypalSanboxProfile(profile);
-            } else
-            {
-                getPaypalLiveProfile(profile);
-
-            }
-            profile.setSubject("");
-            caller.setAPIProfile(profile);
-            // todo use properties
-            encoder.add("VERSION", "64.0");
-            encoder.add("METHOD", "SetExpressCheckout");
-
-            // Add request-specific fields to the request string.
-            // todo check token on this page. only continue with identical token
-            // todo : configure paypal to use no shipping address
-            String returnURL = HttpUtil.getBaseUrl(request,false) + "/coWizard_page4.html";
-//            String returnURL = "http://www.unartig.ch/coWizard_page4.html";
-            encoder.add("RETURNURL", returnURL);
-            String cancelURL="http://www.unartig.ch";
-            encoder.add("CANCELURL", cancelURL);
-            encoder.add("SOLUTIONTYPE", "Sole");
-            encoder.add("NOSHIPPING", "1"); // don's show shipping address in paypal dialog
-            encoder.add("LOCALECODE", "CH"); // todo set locale code according to session locale
-            encoder.add("EMAIL", coForm.getEmail());
-            encoder.add("LANDINGPAGE", "Billing"); //
-            encoder.add("BRANDNAME", "unartig Studio"); //
-            encoder.add("PAYMENTREQUEST_0_AMT", Double.toString(shoppingCart.getTotalPhotosCHF())); // how does the string look like?
-            encoder.add("PAYMENTREQUEST_0_PAYMENTACTION", "Sale");
-            encoder.add("PAYMENTREQUEST_0_CURRENCYCODE", "CHF"); // Todo check currency codes ...
-            encoder.add("PAYMENTREQUEST_0_SHIPTOZIP", coForm.getZipCode().toString());
-            encoder.add("PAYMENTREQUEST_0_SHIPTOCOUNTRYCODE", "CH"); // todo set correct country code from shopping cart
-            encoder.add("PAYMENTREQUEST_0_SHIPTOCITY", coForm.getCity());
-            encoder.add("PAYMENTREQUEST_0_SHIPTONAME", coForm.getFirstName() + " " + coForm.getLastName());
-            encoder.add("PAYMENTREQUEST_0_SHIPTOSTREET", coForm.getAddr1());
-            encoder.add("PAYMENTREQUEST_0_SHIPTOSTREET2", coForm.getAddr2());
-            encoder.add("PAYMENTREQUEST_0_SHIPTOPHONENUM", "055 555 5555");
-
-            // Execute the API operation and obtain the response.
-            String nvpRequest = encoder.encode();
-            String nvpResponse = caller.call(nvpRequest);
-
-            decoder.decode(nvpResponse);
-
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-
-        // logging the response ...
-        for (Object key : decoder.getMap().keySet() ) {
-            _logger.info(key.toString() + " = " + decoder.getMap().get(key).toString());
-        }
-
-
-         String successMsg = decoder.get("ACK");
-
-        // Store the token: It's needed again in the shopping cart logic storeandexecute order ...
-         String token = decoder.get("TOKEN");
 
         shoppingCart.setPaypalToken(token);
 
