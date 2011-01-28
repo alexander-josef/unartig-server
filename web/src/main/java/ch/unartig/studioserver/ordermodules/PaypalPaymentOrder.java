@@ -41,11 +41,10 @@ public class PaypalPaymentOrder implements PhotoOrderIF {
      * @throws PayPalException
      */
     public static void getPaypalLiveProfile(APIProfile profile) throws PayPalException {
-        // todo: insert values
         // todo: not so good to store that here in plain text ...
-        profile.setAPIUsername("");
-        profile.setAPIPassword("");
-        profile.setSignature("");
+        profile.setAPIUsername("aj_api1.unartig.ch");
+        profile.setAPIPassword("7U686HK6MN27GRX5");
+        profile.setSignature("ATNLM76uyV2QXdOt2q18SNHXBqlGADXW4bOBVVLzgepvg0dQU2vV6igB");
         profile.setEnvironment("live");
     }
 
