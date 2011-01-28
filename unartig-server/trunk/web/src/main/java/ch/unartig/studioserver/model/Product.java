@@ -95,7 +95,7 @@ public class Product extends GeneratedProduct
     public static final double _SHIPPING_HANDLING_GER_EUR = 3.30;
 
     // array of initial producttypes from highest to lowest priority, first one that exists gets chosen
-    static Long[] preselectedProductTypeIds = {(long) 4, (long) 1, (long) 5};
+    static Long[] preselectedProductTypeIds = {(long)3};
 
     public Product()
     {
