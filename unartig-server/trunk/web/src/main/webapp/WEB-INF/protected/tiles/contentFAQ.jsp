@@ -24,6 +24,7 @@
     <html:link href="/FAQ.html#find_fest_no_foto" linkName="Top" styleClass="errorstyle">Ich kann die Fotos von einem
         festlichen Anlass nicht finden!
     </html:link><br/>
+<%--
     <html:link href="/FAQ.html#find_bib_foto" linkName="Top" styleClass="errorstyle">Wie finde ich Fotos von einem
         Sportanlass mit Hilfe der Startnummer?
     </html:link><br/>
@@ -31,6 +32,8 @@
     <html:link href="/FAQ.html#find_bib_no_foto" linkName="Top" styleClass="errorstyle">Ich kann die Fotos von einem
         Sportanlass nicht finden!
     </html:link><br/>
+--%>
+
     <br/>
 
     <h2>Fotos bestellen</h2>
@@ -133,6 +136,7 @@
         aufwies und deswegen gelöscht werden musste.<br/>
         <html:link href="/FAQ.html#Top">zum Anfang der Seite</html:link></p><br/>
 
+<%--
 
     <html:link linkName="find_bib_foto" styleClass="errorstyle">Wie finde ich Fotos von einem Sportanlass mit Hilfe der
         Startnummer?</html:link>
@@ -172,33 +176,34 @@
         können, sind die Fotos nicht vorhanden.<br/>
         <html:link href="/FAQ.html#Top">zum Anfang der Seite</html:link></p><br/>
 
+--%>
 
     <h2>Fotos bestellen</h2><br/>
     <html:link linkName="order_foto" styleClass="errorstyle">Wie kann ich ein Foto bestellen?</html:link>
 
     <p> Sie haben Ihr Foto gefunden und wissen nicht, wie Sie dieses Foto bestellen können. Klicken Sie im Album auf das
         gewünschte Foto und gelangen Sie so zur grösseren Ansicht des Fotos. Wenn Sie dieses Foto bestellen möchten,
-        klicken Sie auf den orange Text im oberen Bildrahmen "in den Warenkorb legen". Die Anzahl und das Format können
+        klicken Sie auf den orange Text im oberen Bildrahmen "in den Wartenkorb legen". Die Anzahl und das Format können
         Sie später wählen. Sie können diese Bestellung zu einem späteren Zeitpunkt auch problemlos rückgängig machen.
-        Legen wir dieses Foto also in den Einkaufswagen. Sie gelangen nun zu einer Bestätigungsseite. die Taste „zum
-        Einkaufswagen“ führt Sie durch den Bestellvorgang, die Taste „zurück zur Bildauswahl“ führt Sie wieder zum Album
+        Legen wir dieses Foto also in den Einkaufswagen. Sie gelangen nun zu einer Bestätigungsseite. die Taste "zum
+        Einkaufswagen" führt Sie durch den Bestellvorgang, die Taste "zurück zur Bildauswahl" führt Sie wieder zum Album
         und erlaubt Ihnen, weitere Bilder auszuwählen. Wir wählen ein weiteres Foto aus und gehen dann zum
         Einkaufswagen. Sie finden nun eine Übersicht der bestellten Bilder. Wählen Sie das Format und die Anzahl Abzüge
         für jedes Foto. Wenn Sie dasselbe Foto in einem weiteren Format bestellen möchten, dann benutzen Sie die zweite
-        Zeile und wählen Sie erneut das Format und die Anzahl Abzüge etc.. Durch Drücken der „neu berechnen“ Taste, wird
+        Zeile und wählen Sie erneut das Format und die Anzahl Abzüge etc.. Durch Drücken der "neu berechnen" Taste, wird
         der
         aktuelle Betrag Ihrer Bestellung aktualisiert. Wenn Sie ein Foto löschen möchten, dann drücken Sie den Text
-        „löschen“ im unteren Bildrahmen des entsprechenden Dias. Sind Sie mit der Bestellung zufrieden, dann drücken Sie
-        die Taste „zur Kasse“. Wollen Sie noch weitere Fotos bestellen, dann drücken Sie die Taste „weitere Bilder
-        auswählen“. Die Angaben in Ihrem Einkaufswagen bleiben dabei erhalten. Wir sind nun mit der Bestellung
+        "löschen" im unteren Bildrahmen des entsprechenden Dias. Sind Sie mit der Bestellung zufrieden, dann drücken Sie
+        die Taste "zur Kasse". Wollen Sie noch weitere Fotos bestellen, dann drücken Sie die Taste "weitere Bilder
+        auswählen". Die Angaben in Ihrem Einkaufswagen bleiben dabei erhalten. Wir sind nun mit der Bestellung
         zufrieden und wollen die Bestellung abschliessen. Sie gelangen auf eine Seite, die nach Ihrer E-Mail Adresse
         bittet. Diese E-Mail Adresse wird von uns und unserem Partnerlabor lediglich zur Abwicklung der Bestellung
-        verwendet und und nicht an Dritte weiter gegeben. Drücken Sie die Taste „ weiter“. Geben Sie auf der nächsten
+        verwendet und und nicht an Dritte weiter gegeben. Drücken Sie die Taste "weiter". Geben Sie auf der nächsten
         Seite Ihre Adresse ein. Die Felder, die mit einem Stern versehen sind, müssen ausgefüllt werden. Wählen
-        Sie auf der nächsten Seite die Zahlungsmethode und drücken Sie die Taste „weiter“. Sie finden hier Ihre
+        Sie auf der nächsten Seite die Zahlungsmethode und drücken Sie die Taste "weiter". Sie finden hier Ihre
         Bestellung noch einmal im Überblick. Überprüfen Sie die Angaben. Wenn alle Angaben korrekt sind, wenn Sie
         unsere Allgemeinen Geschäftsbedingungen gelesen und damit einverstanden sind, dann klicken Sie in die
-        entsprechende Checkbox und drücken Sie die Taste „Bestellen“. Jetzt wird Ihre Bestellung definitiv abgeschickt.
+        entsprechende Checkbox und drücken Sie die Taste "Bestellen". Jetzt wird Ihre Bestellung definitiv abgeschickt.
         Sie erhalten als Bestätigung der Bestellung ein E-Mail.
         <br/>
         <html:link href="/FAQ.html#Top">zum Anfang der Seite</html:link></p><br/>

@@ -77,7 +77,11 @@ todo: beim aendern eines photos weit unten in der shoppingcartliste wird immer w
                 </p>
             </td>
             <td>
+<%--
                 <p class="rightalign"><span><bean:message bundle="CONTENT" key="order.price"/></span>&nbsp;(Euro)
+--%>
+                <p class="rightalign"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
                 </p>
             </td>
         </tr>
@@ -173,8 +177,9 @@ todo: beim aendern eines photos weit unten in der shoppingcartliste wird immer w
                     <p class="rightalign">${scItem.formattedItemPriceCHF}</p>
                 </td>
                 <td>
-                        <%--<p class="rightalign">${scItem.priceMajorUnitsEUR}.${scItem.priceMinorUnitsPartEUR}</p>--%>
+<%--
                     <p class="rightalign">${scItem.formattedItemPriceEUR}</p>
+--%>
                 </td>
             </tr>
         </table>
@@ -213,7 +218,10 @@ Total and subtotal
             <td></td>
             <td></td>
             <td class="sc_format_fourthcol"><p class="rightalign"><span>SFr.</span></p></td>
+<%--
             <td><p class="rightalign"><span>Euro</span></p></td>
+--%>
+            <td><p class="rightalign"><span>&nbsp;</span></p></td>
         </tr>
         <tr>
             <td class="sc_format_firstcol">
@@ -228,7 +236,9 @@ Total and subtotal
             </td>
 
             <td>
+<%--
                 <p class="rightalign">${shoppingCart.formattedSubtotalPhotosEUR}</p>
+--%>
             </td>
 
         </tr>
@@ -244,7 +254,9 @@ Total and subtotal
                 <p class="rightalign">${shoppingCart.formattedShippingCHE}</p>
             </td>
             <td>
+<%--
                 <p class="rightalign">${shoppingCart.formattedShippingGER}</p>
+--%>
             </td>
         </tr>
         <tr>
@@ -264,8 +276,10 @@ Total and subtotal
                     <span>${shoppingCart.formattedTotalCHE}</span></p>
             </td>
             <td>
+<%--
                 <p class="rightalign">
                     <span>${shoppingCart.formattedTotalGER}</span></p>
+--%>
             </td>
         </tr>
     </table>
