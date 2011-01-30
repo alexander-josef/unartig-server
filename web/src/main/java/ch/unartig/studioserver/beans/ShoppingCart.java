@@ -671,7 +671,7 @@ public class ShoppingCart extends ActionForm implements Serializable, NavigableO
 
     /**
      * set shopping cart field for the customers country AND set the appropriate currency
-     * whenever the country changes, this method should be called
+     * Whenever the country changes, this method should be called
      * @param customerCountry
      */
     public void setCustomerCountry(String customerCountry)
@@ -683,7 +683,9 @@ public class ShoppingCart extends ActionForm implements Serializable, NavigableO
         }
         else if (Registry._GERMANY_COUNTRY_CODE.equals(customerCountry))
         {
-            currency=Registry._CURRENCY_EURO;
+            currency=Registry._CURRENCY_SWISS_FRANCS;
+// no other currency currently ... :)
+//            currency=Registry._CURRENCY_EURO;
         }
         this.customerCountry = customerCountry;
     }
