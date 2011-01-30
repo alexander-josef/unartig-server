@@ -346,7 +346,7 @@ public class CheckOutAction extends MappingDispatchAction {
         // todo: store a reference to the shopping cart in the sc item?
         ShoppingCart shoppingCart = SessionHelper.getShoppingCartFromSession(request);
         shoppingCart.setCustomerCountry(coForm.getCountry());
-        String token = PaypalPaymentOrder.setupPaypalExpressCheckout(request, coForm, shoppingCart);
+        String token = PaypalPaymentOrder.callSetupPaypalExpressCheckout(request, coForm, shoppingCart);
 
 
         shoppingCart.setPaypalToken(token);

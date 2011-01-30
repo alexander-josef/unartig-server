@@ -1,5 +1,6 @@
 package ch.unartig.studioserver.ordermodules;
 
+import ch.unartig.exceptions.UAPersistenceException;
 import ch.unartig.exceptions.UnartigException;
 import ch.unartig.studioserver.Registry;
 import ch.unartig.studioserver.beans.CheckOutForm;
@@ -8,6 +9,7 @@ import ch.unartig.studioserver.businesslogic.CreditCardDetails;
 import ch.unartig.studioserver.businesslogic.PhotoOrderIF;
 import ch.unartig.studioserver.model.Customer;
 import ch.unartig.studioserver.model.Order;
+import ch.unartig.studioserver.persistence.DAOs.OrderDAO;
 import ch.unartig.util.HttpUtil;
 import com.paypal.sdk.core.nvp.NVPDecoder;
 import com.paypal.sdk.core.nvp.NVPEncoder;
@@ -28,6 +30,8 @@ import javax.servlet.http.HttpServletRequest;
  */
 public class PaypalPaymentOrder implements PhotoOrderIF {
     static Logger _logger = Logger.getLogger("PaypalPaymentOrder");
+    // Return value for a successful transaction in paypal:
+    private static final String PAYPAL_ACK_SUCCESS = "Success";
 
     private ShoppingCart shoppingCart;
     private boolean demoOrderMode;
@@ -86,7 +90,7 @@ public class PaypalPaymentOrder implements PhotoOrderIF {
      * @param shoppingCart
      * @return The token that is returned from the paypal service
      */
-    public static String setupPaypalExpressCheckout(HttpServletRequest request, CheckOutForm coForm, ShoppingCart shoppingCart) {
+    public static String callSetupPaypalExpressCheckout(HttpServletRequest request, CheckOutForm coForm, ShoppingCart shoppingCart) {
         /* Paypal Code*/
 
         NVPEncoder encoder = new NVPEncoder();
@@ -188,13 +192,9 @@ public class PaypalPaymentOrder implements PhotoOrderIF {
     }
 
     private boolean callPaypalEcDoPayment() {
-        // todo implement paypal doEC Payment
 
         /* Paypal Code*/
 
-        /* Todo: better move this to own helper class
-        *
-        * */
         NVPEncoder encoder = new NVPEncoder();
         NVPDecoder decoder = new NVPDecoder();
 
@@ -243,16 +243,30 @@ public class PaypalPaymentOrder implements PhotoOrderIF {
 
         } catch (Exception ex) {
             ex.printStackTrace();
+            _logger.error(ex);
         }
 
-        // todo remove debug output...
         for (Object key : decoder.getMap().keySet()) {
-            System.out.println(key.toString() + " = " + decoder.getMap().get(key).toString());
+            _logger.debug(key.toString() + " = " + decoder.getMap().get(key).toString());
         }
 
 
         String successMsg = decoder.get("ACK");
         String token = decoder.get("TOKEN");
+        String transactionId = decoder.get("PAYMENTINFO_0_TRANSACTIONID");
+
+        // todo read status (and write to order object?)
+
+        if (PAYPAL_ACK_SUCCESS.equals(successMsg)) {
+            OrderDAO oDao = new OrderDAO();
+            order.confirmUpload(transactionId);
+            try {
+                _logger.info("Trying to save order for transaction: " + transactionId);
+                oDao.save(order);
+                _logger.info("Order persisted for transaction: " + transactionId);
+            } catch (UAPersistenceException e) {
+                _logger.error(e);            }
+        }
 
 
         return false;

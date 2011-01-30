@@ -218,6 +218,7 @@ todo: beim aendern eines photos weit unten in der shoppingcartliste wird immer w
                 <td class="sc_format_fourthcol">
                     <p class="rightalign">${shoppingCart.formattedSubtotalPhotosCHF}</p>
                 </td>
+
                 <td>
                     <p class="rightalign">${shoppingCart.formattedSubtotalPhotosEUR}</p>
                 </td>
