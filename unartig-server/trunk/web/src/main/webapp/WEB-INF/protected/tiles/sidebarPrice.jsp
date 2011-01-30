@@ -21,16 +21,18 @@
         </tr>
 
         <c:forEach items="${albumBean.album.activeProducts}" var="product" varStatus="forEachStatus">
-             <c:if test="${product.digitalProduct}">
-                 <tr class="evenOddRow${forEachStatus.index%2}">
-                     <td class="priceListFirstRow"><p>${product.productType.name}</p></td>
-                     <td class="priceListSecondRow"><p>${product.formattedPriceCHF}</p></td>
-                     <td><p>${product.formattedPriceEUR}</p></td>
-                 </tr>
-             </c:if>
-         </c:forEach>
+            <c:if test="${product.digitalProduct}">
+                <tr class="evenOddRow${forEachStatus.index%2}">
+                    <td class="priceListFirstRow"><p>${product.productType.name}</p></td>
+                    <td class="priceListSecondRow"><p>${product.formattedPriceCHF}</p></td>
+                    <td><p>${product.formattedPriceEUR}</p></td>
+                </tr>
+            </c:if>
+        </c:forEach>
 
-        <tr><td colspan="3">&nbsp;</td></tr>
+        <tr>
+            <td colspan="3">&nbsp;</td>
+        </tr>
         <tr>
             <td>
                 <h3>Abzug&nbsp;
@@ -43,9 +45,9 @@
             </td>
             <td><h3>SFr.</h3></td>
             <td><h3>Euro</h3></td>
-        </tr>   
-        
-<!--todo : refactor the getAlbumProducts in many methods: one for each product category-->
+        </tr>
+
+        <!--todo : refactor the getAlbumProducts in many methods: one for each product category-->
         <c:forEach items="${albumBean.album.activeProducts}" var="product" varStatus="forEachStatus">
             <c:if test="${!product.digitalProduct}">
                 <tr class="evenOddRow${forEachStatus.index%2}">
