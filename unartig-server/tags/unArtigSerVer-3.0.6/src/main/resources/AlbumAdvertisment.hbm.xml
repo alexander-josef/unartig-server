@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class
+            name="ch.unartig.studioserver.model.AlbumAdvertisment"
+            table="AlbumAdvertisments"
+            >
+        <meta attribute="generated-class" inherit="false">ch.unartig.studioserver.model.GeneratedAlbumAdvertisment</meta>
+        <cache usage="read-write"/>
+
+        <id
+                name="albumAdvertismentId"
+                type="java.lang.Long"
+                >
+            <meta attribute="use-in-tostring">true</meta>
+            <generator class="native">
+                <param name="sequence">sequence_albumAdvertismentId</param>
+            </generator>
+        </id>
+
+        <property
+                name="position"
+                type="java.lang.String"
+                length="255"
+                not-null="true"
+                >
+            <meta attribute="use-in-tostring">true</meta>
+        </property>
+
+        <property
+                name="adLinkText"
+                type="java.lang.String"
+                length="5000"
+                >
+            <meta attribute="use-in-tostring">true</meta>
+        </property>
+
+
+        <many-to-one
+                name="album"
+                class="ch.unartig.studioserver.model.GenericLevel"
+                lazy="false"
+                not-null="true"
+                >
+            <meta attribute="use-in-tostring">true</meta>
+            <column name="albumId" index="AlbumAdvertisment_Album_INDEX"/>
+        </many-to-one>
+
+    </class>
+</hibernate-mapping>

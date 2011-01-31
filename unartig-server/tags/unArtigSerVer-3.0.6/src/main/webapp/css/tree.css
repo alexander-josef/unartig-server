@@ -1,0 +1,84 @@
+/* Style for tree item text */
+#cunartigTree_0{
+    padding:0 8px;
+}
+
+#cunartigTree_0>table td:first-child{
+    width:140px;
+}
+
+#cunartigTree_1 img{
+    height:14px
+}
+div#sidenav img{
+    height:14px
+}
+
+.mout a {
+    visibility:hidden;
+}
+
+.mover a {
+    visibility:hidden;
+}
+
+.pseudo_active a{
+    font: 11px verdana, arial, sans-serif;
+    color: #FFF;
+    padding:0;
+}
+
+.file a, .node a {
+    font: 11px verdana, arial, sans-serif;
+    color: #FFF;
+    padding: 0 2px;
+}
+
+.file_hover a, .node_hover a{
+    font: 11px verdana, arial, sans-serif;
+    color: rgb( 255, 138, 9 );
+    padding: 0 2px;
+}
+
+.file_selected a, .node_selected a{
+    font: 11px verdana, arial, sans-serif;
+    color: rgb(120,120,120);
+    padding: 0 2px;
+    background: #FFF;
+}
+.file_selected_hover a, .node_selected_hover a {
+    font: 11px verdana, arial, sans-serif;
+    color: rgb( 255, 138, 9 );
+    padding: 0 2px;
+    background: #FFF;
+}
+
+.protected a, .node_protected a {
+    font: 11px verdana, arial, sans-serif;
+    color: #FFF;
+    background: transparent url( ../images/tree_icons/locker.gif ) 100% 2px no-repeat;
+    padding: 0 12px 0 2px;
+}
+
+.protected_hover a, .node_protected_hover a {
+    font: 11px verdana, arial, sans-serif;
+    color: rgb( 255, 138, 9 );
+    background: transparent url( ../images/tree_icons/locker_hover.gif ) 100% 2px no-repeat;
+    padding: 0 12px 0 2px;
+}
+
+.protected_selected a, .node_protected_selected a {
+    font: 11px verdana, arial, sans-serif;
+    color: #000;
+    padding: 0 12px 0 2px;
+    background: #FFF url( ../images/tree_icons/locker_selected.gif ) 100% 2px no-repeat;
+
+}
+
+.protected_selected_hover a, .node_protected_selected_hover a {
+    font: 11px verdana, arial, sans-serif;
+    color: rgb( 255, 138, 9 );
+    padding: 0 12px 0 2px;
+    background: #FFF url( ../images/tree_icons/locker_selected_hover.gif ) 100% 2px no-repeat;
+
+}
