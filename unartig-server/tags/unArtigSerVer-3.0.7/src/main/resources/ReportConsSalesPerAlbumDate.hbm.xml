@@ -1,0 +1,264 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class
+            name="ch.unartig.studioserver.model.ReportConsSalesPerAlbumDate"
+            table="vReportAllConsProdCountDate"
+            mutable="false"
+            >
+        <meta attribute="generated-class">ch.unartig.studioserver.model.GeneratedReportConsSalesPerAlbumDate</meta>
+        <composite-id>
+            <key-property name="date"
+                          column="date"
+                          length="255"
+                          type="timestamp"
+                    >
+                <meta attribute="use-in-tostring">true</meta>
+            </key-property>
+            <key-property name="eventName"
+                          column="event"
+                          length="255"
+                          type="java.lang.String"
+                    >
+                <meta attribute="use-in-tostring">true</meta>
+            </key-property>
+            <key-property name="albumName"
+                          type="java.lang.String"
+                          column="album"
+                          length="255"
+                    >
+                <meta attribute="use-in-tostring">true</meta>
+            </key-property>
+            <key-property name="albumId"
+                          type="java.lang.Long"
+                          column="albumid"
+                          length="255"
+                    >
+                <meta attribute="use-in-tostring">true</meta>
+            </key-property>
+
+            <key-property name="prod10_er_chf"
+                          type="java.lang.Long"
+                          column="`prod10_er_chf`"
+                          length="255"
+                    >
+                <meta attribute="use-in-tostring">true</meta>
+            </key-property>
+            <key-property name="prod10_er_eur"
+                          type="java.lang.Long"
+                          column="`prod10_er_eur`"
+                          length="255"
+                    >
+                <meta attribute="use-in-tostring">true</meta>
+            </key-property>
+
+            <key-property name="prod11_er_chf"
+                          type="java.lang.Long"
+                          column="`prod11_er_chf`"
+                          length="255"
+                    >
+                <meta attribute="use-in-tostring">true</meta>
+            </key-property>
+            <key-property name="prod11_er_eur"
+                          type="java.lang.Long"
+                          column="`prod11_er_eur`"
+                          length="255"
+                    >
+                <meta attribute="use-in-tostring">true</meta>
+            </key-property>
+            
+            <key-property name="prod13_er_chf"
+                          type="java.lang.Long"
+                          column="`prod13_er_chf`"
+                          length="255"
+                    >
+                <meta attribute="use-in-tostring">true</meta>
+            </key-property>
+            <key-property name="prod13_er_eur"
+                          type="java.lang.Long"
+                          column="`prod13_er_eur`"
+                          length="255"
+                    >
+                <meta attribute="use-in-tostring">true</meta>
+            </key-property>
+
+
+            <key-property name="prod20_er_chf"
+                          type="java.lang.Long"
+                          column="`prod20_er_chf`"
+                          length="255"
+                    >
+                <meta attribute="use-in-tostring">true</meta>
+            </key-property>
+            <key-property name="prod20_er_eur"
+                          type="java.lang.Long"
+                          column="`prod20_er_eur`"
+                          length="255"
+                    >
+                <meta attribute="use-in-tostring">true</meta>
+            </key-property>
+
+            <key-property name="prod30x45_chf"
+                          type="java.lang.Long"
+                          column="`prod30x45_chf`"
+                          length="255"
+                    >
+                <meta attribute="use-in-tostring">true</meta>
+            </key-property>
+            <key-property name="prod30x45_eur"
+                          type="java.lang.Long"
+                          column="`prod30x45_eur`"
+                          length="255"
+                    >
+                <meta attribute="use-in-tostring">true</meta>
+            </key-property>
+
+            <key-property name="prod40x60_chf"
+                          type="java.lang.Long"
+                          column="`prod40x60_chf`"
+                          length="255"
+                    >
+                <meta attribute="use-in-tostring">true</meta>
+            </key-property>
+            <key-property name="prod40x60_eur"
+                          type="java.lang.Long"
+                          column="`prod40x60_eur`"
+                          length="255"
+                    >
+                <meta attribute="use-in-tostring">true</meta>
+            </key-property>
+
+            <key-property name="prod50x75_chf"
+                          type="java.lang.Long"
+                          column="`prod50x75_chf`"
+                          length="255"
+                    >
+                <meta attribute="use-in-tostring">true</meta>
+            </key-property>
+            <key-property name="prod50x75_eur"
+                          type="java.lang.Long"
+                          column="`prod50x75_eur`"
+                          length="255"
+                    >
+                <meta attribute="use-in-tostring">true</meta>
+            </key-property>
+
+            <key-property name="prodMousepad_chf"
+                          type="java.lang.Long"
+                          column="`prodMousepad_chf`"
+                          length="255"
+                    >
+                <meta attribute="use-in-tostring">true</meta>
+            </key-property>
+            <key-property name="prodMousepad_eur"
+                          type="java.lang.Long"
+                          column="`prodMousepad_eur`"
+                          length="255"
+                    >
+                <meta attribute="use-in-tostring">true</meta>
+            </key-property>
+
+            <key-property name="prodDigiFoto_chf"
+                          type="java.lang.Long"
+                          column="`prodDigiFoto_chf`"
+                          length="255"
+                    >
+                <meta attribute="use-in-tostring">true</meta>
+            </key-property>
+            <key-property name="prodDigiFoto_eur"
+                          type="java.lang.Long"
+                          column="`prodDigiFoto_eur`"
+                          length="255"
+                    >
+                <meta attribute="use-in-tostring">true</meta>
+            </key-property>
+
+            <key-property name="prodDigitalNegative_chf"
+                          type="java.lang.Long"
+                          column="`prodDigitalNegative_chf`"
+                          length="255"
+                    >
+                <meta attribute="use-in-tostring">true</meta>
+            </key-property>
+            <key-property name="prodDigitalNegative_eur"
+                          type="java.lang.Long"
+                          column="`prodDigitalNegative_eur`"
+                          length="255"
+                    >
+                <meta attribute="use-in-tostring">true</meta>
+            </key-property>
+
+            <key-property name="totalPhotosOrdered_chf"
+                          type="java.lang.Long"
+                          column="`TOTAL_PHOTOS_CHF`"
+                          length="255"
+                    >
+                <meta attribute="use-in-tostring">true</meta>
+            </key-property>
+             <key-property name="totalPhotosOrdered_eur"
+                          type="java.lang.Long"
+                          column="`TOTAL_PHOTOS_EUR`"
+                          length="255"
+                    >
+                <meta attribute="use-in-tostring">true</meta>
+            </key-property>
+            <!--this is number of orders per album and date ... one line in the view; needs to be summed at the end-->
+            <key-property name="totalOrdersPerAlbumDate_chf"
+                          type="java.lang.Long"
+                          column="`TOTAL_BEST_PER_ALBUM_CHF`"
+                          length="255"
+                    >
+                <meta attribute="use-in-tostring">true</meta>
+            </key-property>
+            <key-property name="totalOrdersPerAlbumDate_eur"
+                          type="java.lang.Long"
+                          column="`TOTAL_BEST_PER_ALBUM_EUR`"
+                          length="255"
+                    >
+                <meta attribute="use-in-tostring">true</meta>
+            </key-property>
+            <!--this is sales chf for this line in the view (one line shows all orders for an album at a certain date)-->
+            <key-property name="totalSalesPerAlbumDate_chf"
+                          type="big_decimal"
+                          column="`TOTAL_PER_ALBUM_CHF`"
+                          length="255"
+                    >
+                <meta attribute="use-in-tostring">true</meta>
+            </key-property>
+            <key-property name="totalSalesPerAlbumDate_eur"
+                          type="big_decimal"
+                          column="`TOTAL_PER_ALBUM_EUR`"
+                          length="255"
+                    >
+                <meta attribute="use-in-tostring">true</meta>
+            </key-property>
+<!--
+            -->
+<!--this is average photo for a date ... useless, no ?-->
+<!--
+            <key-property name="avgPhotosPerOrder"
+                          type="double"
+                          column="`PHOTOS_PER_ORDER`"
+                          length="255"
+                    >
+                <meta attribute="use-in-tostring">true</meta>
+            </key-property>
+            -->
+<!--this is average chf per line, (per album and date) ...pretty useless-->
+<!--
+            <key-property name="avgSaleChfPerOrder"
+                          type="double"
+                          column="`CHF_PER_ORDER`"
+                          length="255"
+                    >
+                <meta attribute="use-in-tostring">true</meta>
+            </key-property>
+-->
+        </composite-id>
+
+    </class>
+
+</hibernate-mapping>
