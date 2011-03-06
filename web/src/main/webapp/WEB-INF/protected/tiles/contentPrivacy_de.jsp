@@ -47,10 +47,7 @@
         zwingend, wenn Sie eine kostenpflichtige Dienstleistung von der unartig AG in Anspruch nehmen,
         die das zur
         Verf&uuml;gung Stellen dieser Daten unerl&auml;sslich macht. Die E-Mail Adresse wird vom
-        studio-uartig und von unserem Partnerlabor (www.colormailer.ch) ausschliesslich dazu
-        verwendet, den
-        Kunden zu kontaktieren, wenn Schwierigkeiten bei der Abwicklung einer Bestellung auftreten.
-
+        studio-uartig dazu verwendet, den Kunden zu kontaktieren, wenn Schwierigkeiten bei der Abwicklung einer Bestellung auftreten.
     </p>
 
 <%--
@@ -79,10 +76,9 @@
         gemacht werden.
     </p>
 
-    <p class="pad15Right pad7Bottom"><span>Abwicklung einer Bestellung</span><br/>Zur Abwicklung einer Bestellung, werden Daten
-        wie Name, Vorname, Adresse und E-Mail an unser Partner-Labor (colormailer.ch) weitergeleitet. Das
-        Partner-Labor hat Zugang zu den Bilddaten, benutzt diese aber ausschliesslich zur Abwicklung Ihrer
-        Bestellung.</p>
+    <p class="pad15Right pad7Bottom"><span>Abwicklung einer Bestellung</span><br/>Zur Abwicklung einer Bestellung, können Daten
+        wie Name, Vorname, Adresse und E-Mail an unsere Partner weitergeleitet werden, sollte dies zur Erfüllung des Auftrages notwendig sein.
+        Die Partner benutzen diese aber ausschliesslich zur Abwicklung Ihrer Bestellung.</p>
 
     <p class="pad15Right pad7Bottom">Wenn Sie weitere Fragen zu dieser Datenschutzerklärung haben, geben wir Ihnen gerne
         Auskunft: <a href="/Contact.html">Kontakt</a><br/><br/></p>
