@@ -20,8 +20,7 @@
         <p class="pad15Right pad7Bottom"><span>Dienstleistung</span><br/>Die unartig AG erstellt digitale Bilder von Besucherinnen und
             Besucher eines Anlasses, und stellt diese auf der Internet-Plattform www.unartig.ch zur Verfügung. Den
             Kunden und Kundinnen steht somit eine Internet-Plattform zur Verfügung, um die erstellten Bilder einfach zu
-            finden und zu bestellen. Die Erstellung und der Versand bestellter Papierabz&uuml;ge (Print) werden bis zum 31.1.2011 vom
-            Partner-Labor Colormailer abgewickelt. Beachten Sie bitte die allgemeinen Geschäftsbestimmungen auf www.colormailer.com.
+            finden und zu bestellen.
         </p>
 
         <p class="pad15Right pad7Bottom"><span>Original-Bilddaten</span><br/>Original-Bilddaten sind die digitalen Daten mit einer

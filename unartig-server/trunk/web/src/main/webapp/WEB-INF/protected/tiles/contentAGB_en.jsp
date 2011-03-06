@@ -19,8 +19,7 @@
         </p>
         <p class="pad15Right pad7Bottom"><span>Services</span><br/>The unartig AG establishes digital photographs from visitors of a
             certain event and publishes those photographs on the website www.unartig.ch. Therewith an online platform
-            for comfortabely viewing and ordering photographs is at the customer's disposal. Our partner lab Colormailer is in charge of printing, shipping and invoicing the ordered photographs (until 2011/1/31). Please read their General Terms and
-            Conditions at www.colormailer.com.
+            for comfortabely viewing and ordering photographs is at the customer's disposal.
         </p>
         <p class="pad15Right pad7Bottom"><span>Original Image File</span><br/>An image-file is a file of a digital photograph at
             a resolution sufficient for foto finishing (establish a print). Purchasing a print through this website explicitly

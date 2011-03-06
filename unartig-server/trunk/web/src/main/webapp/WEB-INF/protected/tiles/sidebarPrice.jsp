@@ -30,7 +30,7 @@
             </c:if>
         </c:forEach>
 
-<%--
+<%-- no print products currently
         <tr>
             <td colspan="3">&nbsp;</td>
         </tr>

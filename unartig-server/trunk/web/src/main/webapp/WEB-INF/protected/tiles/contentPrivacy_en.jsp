@@ -40,12 +40,11 @@
         fisrt name, last name, address and E-Mail address is voluntary for the general use of the website and only
         mandatory if the user calls for
         services with costs (e.g. ordering photos). The afore entioned personal data shall not be passed to Third
-        Parties,unless the Client has given his express consent revocable at any time. Service partners of unartig AG (www.colormailer.ch) are exempted from this rule inasfar as they require
-        submitted data to process orders.
+        Parties,unless the Client has given his express consent revocable at any time. Service partners of unartig AG
+        are exempted from this rule inasfar as they require submitted data to process orders.
         However, in these cases, the scope of submitted data is limited to the required minimum. Technical and
         organisationalsecurity measures are used to protect administered data from accidental or wilful
-        manipulation, loss, destruction or access by unauthorised individuals. Please also consider the privacy
-        statement of our Service partner at www.colormailer.ch.
+        manipulation, loss, destruction or access by unauthorised individuals.
     </p>
 
     <p class="pad15Right pad7Bottom"><span>Personal account</span><br/>Ordering photos does not require registration
