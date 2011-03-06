@@ -17,6 +17,7 @@
         <put name="htmlHeader" value="/WEB-INF/protected/tiles/htmlHeadStandard.jsp"/>
         <put name="cssOverrule" value="/WEB-INF/protected/tiles/cssOverrule_de.jsp"/>
         <put name="onloadFunctions" type="string">
+            <![CDATA[;]]>
 <!--
             <![CDATA[ModalPopupsAlert1()]]>
 -->
