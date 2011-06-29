@@ -40,7 +40,7 @@
                 <a href="/overview/335/polyball-2010-a-night-out-in-the-20-ies/show.html"><img
                         src="/DATA/335/index.jpg"/></a>
 
-                <p class="aktuell_name">Polyball 2013</p>
+                <p class="aktuell_name">Polyball 2010</p>
 
             </div>
         </li>
