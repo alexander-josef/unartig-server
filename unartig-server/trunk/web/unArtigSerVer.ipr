@@ -375,6 +375,11 @@
           <option name="VM_PARAMETERS" value="" />
           <option name="PROGRAM_PARAMETERS" value=" stop" />
         </SHUTDOWN>
+        <EnvironmentVariables>
+          <option name="NAME" value="CATALINA_OPTS" />
+          <option name="VALUE" value="-Xms256m -Xmx512m" />
+          <option name="IS_PREDEFINED" value="false" />
+        </EnvironmentVariables>
       </ConfigurationWrapper>
       <method>
         <option name="BuildArtifacts" enabled="true">
