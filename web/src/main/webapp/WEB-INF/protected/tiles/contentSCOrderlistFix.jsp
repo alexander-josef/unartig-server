@@ -262,7 +262,7 @@
             <td class="sc_format_secondcol"></td>
             <td class="sc_format_thirdcol"></td>
             <td class="price_group">
-                <p class="rightalign">${shoppingCart.formattedSubtotalPhotos} &nbsp;${shoppingCart.currency}</p></td>
+                <p class="rightalign">${shoppingCart.formattedSubtotalPhotosCHF} &nbsp;${shoppingCart.currency}</p></td>
         </tr>
         <tr>
             <td class="sc_format_firstcol">
@@ -290,7 +290,7 @@
             <td class="sc_format_secondcol"></td>
             <td class="sc_format_thirdcol"></td>
             <td class="price_group"><p class="rightalign">
-                <span>${shoppingCart.formattedTotal} &nbsp;${shoppingCart.currency}</span></p></td>
+                <span>${shoppingCart.formattedTotalCHE} &nbsp;${shoppingCart.currency}</span></p></td>
         </tr>
     </table>
 </div>
