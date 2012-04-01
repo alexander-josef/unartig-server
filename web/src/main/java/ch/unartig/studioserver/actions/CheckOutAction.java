@@ -176,16 +176,17 @@ public class CheckOutAction extends MappingDispatchAction {
      * @throws UnartigSessionExpiredException
      */
     public ActionForward setMessages(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws UnartigSessionExpiredException {
-        System.out.println("CheckOutAction.setMessages start");
+        _logger.debug("CheckOutAction.setMessages start");
         DebugUtils.debugActionMessage(request);
         request.getSession().setAttribute(Globals.ERROR_KEY, request.getAttribute(Globals.ERROR_KEY));
         request.getSession().setAttribute(Globals.MESSAGE_KEY, request.getAttribute(Globals.MESSAGE_KEY));
-        System.out.println("CheckOutAction.setMessages end");
+        _logger.debug("CheckOutAction.setMessages end");
         DebugUtils.debugActionMessage(request);
         return mapping.findForward("success");
     }
 
     /**
+     * Check for existing shopping cart or throw excpetion
      * @param mapping
      * @param form
      * @param request
@@ -196,7 +197,9 @@ public class CheckOutAction extends MappingDispatchAction {
      */
     public ActionForward checkSession(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws UnartigSessionExpiredException {
         try {
-            getExistingScFromSession(request);
+
+            getExistingScFromSession(request); // throws exception if no shopping cart exists
+            // todo if paypal pay session check for valid paypal token? --> a timeout on the call for the paypal api could result in a delivered order without pay
             saveToken(request);
 
         } catch (UnartigSessionExpiredException e) {
