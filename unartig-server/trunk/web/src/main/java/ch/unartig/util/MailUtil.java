@@ -175,7 +175,7 @@ public class MailUtil
                         .append("\t")
                         .append(createTableDataString(orderItem.getPhoto().getDisplayTitle(), 19))
                         .append("\t")
-                        .append(orderItem.getFormattedPrice())
+                        .append(orderItem.getPrice())
                         .append(" ")
                         .append(shoppingCart.getCurrency())
                         .append("\n");
@@ -192,7 +192,7 @@ public class MailUtil
                 }
                 // todo shipping und handling
                 localizedBody.append(content.getMessage(locale, "email.orderAccepted.body.ccBooked"));
-                localizedBody.append(" " + shoppingCart.getFormattedTotal()  + " " + shoppingCart.getCurrency() + "\n");
+                localizedBody.append(" " + shoppingCart.getFormattedTotalCHE()  + " " + shoppingCart.getCurrency() + "\n");
 //                localizedBody.append(content.getMessage(locale, "email.orderAccepted.body.ccNoteColorplaza"))
                 localizedBody.append("\n\n");
             }

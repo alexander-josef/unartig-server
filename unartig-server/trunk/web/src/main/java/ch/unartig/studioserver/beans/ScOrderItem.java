@@ -153,6 +153,7 @@ public class ScOrderItem {
 
     /**
      * this is called from the view after the the address has been entered. it shows the relevent amount in the correct currency
+     * Also used from mail util to create confirmation mail.
      *
      * @return the price as formatted string
      * @throws ch.unartig.exceptions.UnartigInvalidArgument in case customer currency not available

@@ -326,7 +326,6 @@
   <component name="ProjectRunConfigurationManager">
     <configuration default="false" name="unartig" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" editBeforeRun="true" APPLICATION_SERVER_NAME="Tomcat 6">
       <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/" />
-      <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
         <artifact name="unArtigSerVer:war exploded">
           <settings>

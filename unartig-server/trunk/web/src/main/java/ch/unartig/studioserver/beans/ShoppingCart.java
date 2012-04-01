@@ -450,7 +450,7 @@ public class ShoppingCart extends ActionForm implements Serializable, NavigableO
         {
             return getFormattedTotalGER();
         }
-        throw new UnartigInvalidArgument("Country invaled");
+        throw new UnartigInvalidArgument("Country invalid");
     }
 
     /**
