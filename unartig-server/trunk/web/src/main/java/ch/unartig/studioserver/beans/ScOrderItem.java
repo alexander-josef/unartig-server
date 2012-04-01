@@ -158,7 +158,10 @@ public class ScOrderItem {
      * @throws ch.unartig.exceptions.UnartigInvalidArgument in case customer currency not available
      */
     public String getPrice() throws UnartigInvalidArgument {
-        return Price.monetaryAmountFormat.format(getPriceCustomerCurrency());
+
+        // return Price.monetaryAmountFormat.format(getPriceCustomerCurrency());
+        // only CHF available:
+        return Price.monetaryAmountFormat.format(itemPriceCHF);
     }
 
 

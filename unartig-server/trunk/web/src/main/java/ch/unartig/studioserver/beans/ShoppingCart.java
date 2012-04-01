@@ -548,6 +548,7 @@ public class ShoppingCart extends ActionForm implements Serializable, NavigableO
                 _logger.debug("scOrderItem.getPhotoId() = " + scOrderItem.getPhotoId());
                 _logger.debug("scOrderItem.getProductId() = " + scOrderItem.getProductId());
                 _logger.debug("scOrderItem.getQuantity() = " + scOrderItem.getQuantity());
+
             }
         }
         return consolidatedItems;
