@@ -620,6 +620,7 @@ public class ShoppingCart extends ActionForm implements Serializable, NavigableO
 
     /**
      * does the necessary BL to update the shopping cart
+     * We don't want digital photos to be ordered more than once, so that needs to be checked
      *
      * @throws ch.unartig.exceptions.UAPersistenceException
      * @throws ch.unartig.exceptions.UnartigInvalidArgument
@@ -631,8 +632,8 @@ public class ShoppingCart extends ActionForm implements Serializable, NavigableO
         for (int i = 0; i < getScItems().size(); i++)
         {
             ScOrderItem scOrderItem = (ScOrderItem) getScItems().get(i);
-            // if a product has been chosen, update price:
-            if (scOrderItem.getProductId().intValue() > 0)
+            // if a product has been chosen (productId > 0) and it's not an digital product that's in the cart already, update price:
+            if ((scOrderItem.getProductId().intValue() > 0) && (!orderedPhotos.containsKey(scOrderItem.getPhotoId()) && !scOrderItem.getProduct().isDigitalProduct()))
             {
                 scOrderItem.updateItemPrice();
                 addProduct(pDao.load(scOrderItem.getProductId()));

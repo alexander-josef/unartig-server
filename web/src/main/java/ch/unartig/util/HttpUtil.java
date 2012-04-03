@@ -287,6 +287,7 @@ public class HttpUtil
     /**
      * return a url as string that points to a download site for the order-hash that is passed
      * @param request servlet request
+     * @param https return a https url?
      * @return String to the downloadURL
      */
     public static String getBaseUrl(HttpServletRequest request, boolean https)

@@ -266,6 +266,7 @@
                 <configuration>
                     <doCheck>false</doCheck>
                     <doUpdate>false</doUpdate>
+                    <revisionOnScmFailure>no_revision</revisionOnScmFailure>
                     <!--<format>{0,date,yyyy-MM-dd HH:mm:ss} SVN-Revision {1}</format>-->
                     <!--<items>-->
                         <!--<item>timestamp</item>-->
@@ -364,7 +365,10 @@
         <repository>
             <id>http-repo</id>
             <name>unArtig maven2 repo</name>
-            <url>http://vm3-bugz.unartig.ch/maven2</url>
+            <url>http://svn.unartig.ch/maven2</url>
+            <releases>
+                <checksumPolicy>warn</checksumPolicy>
+            </releases>
         </repository>
 
     </repositories>
