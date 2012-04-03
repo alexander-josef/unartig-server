@@ -344,10 +344,24 @@ public class ShoppingCartAction extends MappingDispatchAction
         _logger.debug("ShoppingCartAction.updateShoppingCart");
         ShoppingCart shoppingCart = (ShoppingCart) form;
 //        System.out.println("shoppingCart.getAction() = " + shoppingCart.getAction());
+        Long orderedPhotoId = new Long(request.getParameter("orderedPhotoId"));
+        shoppingCart.getScItems();
+
+        // todo:
+        // check for shopping cart items with same photo and product digital
+
+        for (int i = 0; i < shoppingCart.getScItems().size(); i++) {
+            ScOrderItem scOrderItem= (ScOrderItem) shoppingCart.getScItems().get(i);
+            if (scOrderItem.getPhotoId().equals(orderedPhotoId))
+        }
 
         try
         {
-            shoppingCart.updateCart();
+            // no update of already ordered digital photos
+            if ((!shoppingCart.getOrderedPhotosMap().containsKey(orderedPhotoId)) && orderedPhoto.)
+            {
+                shoppingCart.updateCart();
+            }
         } catch (UAPersistenceException e)
         {
             _logger.error("Error while updateing cart", e);
