@@ -637,7 +637,8 @@ public class ShoppingCart extends ActionForm implements Serializable, NavigableO
 
             if (scOrderItem.getProductId().intValue() > 0)
             {
-                // other scorderitem with same photoa and is digital?
+                // if orderitem is digital, other scorderitem with same photo and is digital exists?
+                // still not the best solution ... if we want to set to price to 0 for 2nd occurence of a digital order for the same photo, we have to know which is the 2nd photo ...
                 if (! sameDigitalPhotoExistsFor(scOrderItem))
                 {
                     scOrderItem.updateItemPrice();
@@ -658,11 +659,21 @@ public class ShoppingCart extends ActionForm implements Serializable, NavigableO
     }
 
     /**
+     * other scorderitem with same photo and is digital?
      * TODO implement method
      * @return
      * @param scOrderItem
      */
-    private boolean sameDigitalPhotoExistsFor(ScOrderItem scOrderItem) {
+    private boolean sameDigitalPhotoExistsFor(ScOrderItem scOrderItem)
+    {
+        for (Object scItem : scItems) {
+            ScOrderItem orderItem = (ScOrderItem) scItem;
+            if (!scOrderItem.equals(orderItem) && orderItem.getProductId().intValue() > 0 &&  (orderItem.getPhotoId() != null) && (scOrderItem.getProduct() != null)) {
+                if (scOrderItem.getPhotoId().equals(orderItem.getPhotoId()) && scOrderItem.getProduct().isDigitalProduct()) {
+                    return true;
+                }
+            }
+        }
 
         return false;  //To change body of created methods use File | Settings | File Templates.
     }
