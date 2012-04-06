@@ -632,12 +632,18 @@ public class ShoppingCart extends ActionForm implements Serializable, NavigableO
         for (int i = 0; i < getScItems().size(); i++)
         {
             ScOrderItem scOrderItem = (ScOrderItem) getScItems().get(i);
-            // if a product has been chosen (productId > 0) and it's not an digital product that's in the cart already, update price:
-            if ((scOrderItem.getProductId().intValue() > 0) && (!orderedPhotos.containsKey(scOrderItem.getPhotoId()) && !scOrderItem.getProduct().isDigitalProduct()))
+            // if a product has been chosen (productId > 0)
+            //if ((scOrderItem.getProductId().intValue() > 0) && (!orderedPhotos.containsKey(scOrderItem.getPhotoId()) && !scOrderItem.getProduct().isDigitalProduct()))
+
+            if (scOrderItem.getProductId().intValue() > 0)
             {
-                scOrderItem.updateItemPrice();
-                addProduct(pDao.load(scOrderItem.getProductId()));
-                updated = true;
+                // other scorderitem with same photoa and is digital?
+                if (! sameDigitalPhotoExistsFor(scOrderItem))
+                {
+                    scOrderItem.updateItemPrice();
+                    addProduct(pDao.load(scOrderItem.getProductId()));
+                    updated = true;
+                }
             } else
             { // no product chosen; make sure the item price is 0
                 scOrderItem.setQuantity(0);
@@ -649,6 +655,16 @@ public class ShoppingCart extends ActionForm implements Serializable, NavigableO
         {
             throw new UnartigInvalidArgument("no valid product to update");
         }
+    }
+
+    /**
+     * TODO implement method
+     * @return
+     * @param scOrderItem
+     */
+    private boolean sameDigitalPhotoExistsFor(ScOrderItem scOrderItem) {
+
+        return false;  //To change body of created methods use File | Settings | File Templates.
     }
 
     public String getActionParam()
