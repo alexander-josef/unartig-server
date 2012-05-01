@@ -1,0 +1,11 @@
+postgresql installieren
+jdbc treiber in tomcat/lib/
+Postgresql User 'sportrait' erstellen, passwort 'unartig'
+DB sportrait erstellen, owned by user sportrait
+Tabellen erstellen mit maven target: mvn hibernate3:hbm2ddl
+
+Tabellen-Skript auf db sportrait ausführen.
+data-stub.sql ausführen
+add_on.sql ausführen
+
+TODO: print-produkte aus data-stub skript entfernen.
